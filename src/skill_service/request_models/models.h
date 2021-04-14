@@ -10,6 +10,8 @@
 
 #include <nlohmann/json.hpp>
 
+// TODO (n.chernyh) : move to smart pointers and add move constructors and etc for 5 part rule
+
 class GetCountersPopularityByShopRequest : public IMarshaller
 {
   public:

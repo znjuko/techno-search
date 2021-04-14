@@ -13,17 +13,20 @@ using namespace Pistache;
 
 class IResponseWriter
 {
+  public:
     virtual void WriteResponse(IUnMarshaller u, Http::ResponseWriter writer) = 0;
-    //    virtual ~IResponseWriter() = 0;
+
+    virtual ~IResponseWriter() noexcept = 0;
 };
 
 class JsonResponseWriter : public IResponseWriter
 {
+  public:
     JsonResponseWriter() = default;
 
     void WriteResponse(IUnMarshaller u, Http::ResponseWriter writer) override;
 
-    ~JsonResponseWriter() = default;
+    ~JsonResponseWriter() noexcept override;
 };
 
 #endif // TECHNO_SEARCH_WRITER_H

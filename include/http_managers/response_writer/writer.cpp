@@ -4,4 +4,8 @@
 
 #include "writer.h"
 
+IResponseWriter::~IResponseWriter() noexcept {};
+
+JsonResponseWriter::~JsonResponseWriter() noexcept {};
+
 void JsonResponseWriter::WriteResponse(IUnMarshaller u, Http::ResponseWriter writer){};

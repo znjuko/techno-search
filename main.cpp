@@ -52,6 +52,11 @@ class CClass3
     {
         pTarget->DoSomething();
     }
+
+    iInterface v()
+    {
+        return CClass1();
+    }
 };
 
 int main()

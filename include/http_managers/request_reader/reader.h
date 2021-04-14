@@ -13,25 +13,30 @@ using namespace Pistache;
 
 class IRequestReader
 {
+  public:
     virtual void ReadRequest(IMarshaller m, Http::Request r) = 0;
+
+    virtual ~IRequestReader() noexcept = 0;
 };
 
 class JsonRequestBodyReader : public IRequestReader
 {
+  public:
     JsonRequestBodyReader() = default;
 
     void ReadRequest(IMarshaller m, Http::Request r) override;
 
-    ~JsonRequestBodyReader() = default;
+    ~JsonRequestBodyReader() noexcept override;
 };
 
-class JsonRequestQueryReader : public IRequestReader
+class RequestQueryReader : public IRequestReader
 {
-    JsonRequestQueryReader() = default;
+  public:
+    RequestQueryReader() = default;
 
     void ReadRequest(IMarshaller m, Http::Request r) override;
 
-    ~JsonRequestQueryReader() = default;
+    ~RequestQueryReader() noexcept override;
 };
 
 #endif // TECHNO_SEARCH_READER_H
