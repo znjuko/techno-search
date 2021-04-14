@@ -1,0 +1,10 @@
+---
+BasedOnStyle: Microsoft
+AlignEscapedNewlines: Right
+AllowShortLoopsOnASingleLine: 'true'
+ColumnLimit: '120'
+Cpp11BracedListStyle: 'true'
+IncludeBlocks: Regroup
+IndentCaseLabels: 'true'
+IndentPPDirectives: AfterHash
+Language: Cpp
