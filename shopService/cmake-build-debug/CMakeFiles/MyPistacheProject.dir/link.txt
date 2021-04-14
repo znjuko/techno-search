@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/MyPistacheProject.dir/main.cpp.o -o MyPistacheProject  -lmarshaller -lunmarshaller -lmodels 

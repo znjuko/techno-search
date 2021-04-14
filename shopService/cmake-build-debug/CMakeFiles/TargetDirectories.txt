@@ -1,0 +1,4 @@
+/home/fillinmar/CLionProjects/shopService/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/fillinmar/CLionProjects/shopService/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/fillinmar/CLionProjects/shopService/cmake-build-debug/CMakeFiles/MyPistacheProject.dir
+/home/fillinmar/CLionProjects/shopService/cmake-build-debug/CMakeFiles/shopService.dir

@@ -1,0 +1,8 @@
+/snap/clion/149/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/fillinmar/CLionProjects/shopService
+CMake Error at CMakeLists.txt:14 (target_link_libraries):
+  Cannot specify link libraries for target "TECHNO_SEARCH" which is not built
+  by this project.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/fillinmar/CLionProjects/shopService/cmake-build-debug/CMakeFiles/CMakeOutput.log".
