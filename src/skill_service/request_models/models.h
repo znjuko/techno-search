@@ -9,27 +9,30 @@
 #include "unmarshaller.h"
 
 #include <nlohmann/json.hpp>
+#include <pistache/endpoint.h>
+
+using namespace Pistache;
 
 // TODO (n.chernyh) : move to smart pointers and add move constructors and etc for 5 part rule
 
-class GetCountersPopularityByShopRequest : public IMarshaller
+class GetCountersPopularityByShopRequest : public IQueryMarshaller
 {
   public:
     GetCountersPopularityByShopRequest();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &body) override;
 
     ~GetCountersPopularityByShopRequest() override = default;
 
     int StorageID;
 };
 
-class GetProductPopularityByShopRequest : public IMarshaller
+class GetProductPopularityByShopRequest : public IQueryMarshaller
 {
   public:
     GetProductPopularityByShopRequest();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &body) override;
 
     ~GetProductPopularityByShopRequest() override = default;
 
@@ -37,12 +40,12 @@ class GetProductPopularityByShopRequest : public IMarshaller
     std::vector<int> ProductIDs;
 };
 
-class GetProductsTotalPopularityRequest : public IMarshaller
+class GetProductsTotalPopularityRequest : public IQueryMarshaller
 {
   public:
     GetProductsTotalPopularityRequest();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &body) override;
 
     ~GetProductsTotalPopularityRequest() override = default;
 

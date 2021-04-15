@@ -14,5 +14,6 @@ void ClickStorage::Insert(const ClickQuery &q)
 
 ClickReader *ClickStorage::Select(const ClickQuery &q)
 {
+    this->client.Select();
     return new ProductPopularityMetricReader;
 }

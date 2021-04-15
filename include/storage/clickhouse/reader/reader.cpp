@@ -4,29 +4,29 @@
 
 #include "reader.h"
 
-void ProductPopularityMetricReader::SetupReader(const Block &b)
+void ProductPopularityMetricReader::Execute(const Block &b)
 {
 }
 
-std::vector<ProductPopularityMetric> ProductPopularityMetricReader::Read()
+std::vector<ProductPopularityMetric> ProductPopularityMetricReader::Get()
 {
-    return std::vector<ProductPopularityMetric>();
+    return metrics;
 }
 
-void CounterPopularityMetricReader::SetupReader(const Block &b)
-{
-}
-
-std::vector<CounterPopularityMetric> CounterPopularityMetricReader::Read()
-{
-    return std::vector<CounterPopularityMetric>();
-}
-
-void ShopProductsPopularityMetricReader::SetupReader(const Block &b)
+void CounterPopularityMetricReader::Execute(const Block &b)
 {
 }
 
-std::vector<ShopProductPopularityMetric> ShopProductsPopularityMetricReader::Read()
+std::vector<CounterPopularityMetric> CounterPopularityMetricReader::Get()
 {
-    return std::vector<ShopProductPopularityMetric>();
+    return metrics;
+}
+
+void ShopProductsPopularityMetricReader::Execute(const Block &b)
+{
+}
+
+std::vector<ShopProductPopularityMetric> ShopProductsPopularityMetricReader::Get()
+{
+    return metrics;
 }

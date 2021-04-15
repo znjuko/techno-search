@@ -4,17 +4,29 @@
 
 #include "models.h"
 
-GetCountersPopularityByShopRequest::GetCountersPopularityByShopRequest() : StorageID(0){};
+GetCountersPopularityByShopRequest::GetCountersPopularityByShopRequest() : StorageID(0)
+{
+}
 
-void GetCountersPopularityByShopRequest::Marshall(const std::string &body){};
+void GetCountersPopularityByShopRequest::Marshall(const Http::Uri::Query &body){
 
-void GetProductPopularityByShopRequest::Marshall(const std::string &body){};
+};
 
-GetProductPopularityByShopRequest::GetProductPopularityByShopRequest() : StorageID(0), ProductIDs(std::vector<int>()){};
+GetProductPopularityByShopRequest::GetProductPopularityByShopRequest() : StorageID(0), ProductIDs(std::vector<int>())
+{
+}
 
-GetProductsTotalPopularityRequest::GetProductsTotalPopularityRequest() : ProductIDs(std::vector<int>()){};
+void GetProductPopularityByShopRequest::Marshall(const Http::Uri::Query &body){
 
-void GetProductsTotalPopularityRequest::Marshall(const std::string &body){};
+};
+
+GetProductsTotalPopularityRequest::GetProductsTotalPopularityRequest() : ProductIDs(std::vector<int>())
+{
+}
+
+void GetProductsTotalPopularityRequest::Marshall(const Http::Uri::Query &body){
+
+};
 
 CounterPopularityMetric::CounterPopularityMetric() : StorageID(0), CounterID(0), Popularity(0){};
 

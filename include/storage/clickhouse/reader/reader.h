@@ -16,7 +16,7 @@ using namespace clickhouse;
 class ClickReader
 {
   public:
-    virtual void SetupReader(const Block &b) = 0;
+    virtual void Execute(const Block &b) = 0;
 
     virtual ~ClickReader() = default;
 };
@@ -26,20 +26,18 @@ class ProductPopularityMetricReader : public ClickReader
   public:
     ProductPopularityMetricReader() = default;
 
-    ProductPopularityMetricReader(const ProductPopularityMetricReader &b) = delete;
+    ProductPopularityMetricReader(const ProductPopularityMetricReader &r) = delete;
 
-    ProductPopularityMetricReader(const Block &b) = delete;
+    ProductPopularityMetricReader(const std::vector<ProductPopularityMetric> &v) = delete;
 
-    ProductPopularityMetricReader(Block *b) = delete;
+    void Execute(const Block &b) override;
 
-    void SetupReader(const Block &b) override;
-
-    std::vector<ProductPopularityMetric> Read();
+    std::vector<ProductPopularityMetric> Get();
 
     ~ProductPopularityMetricReader() override = default;
 
   private:
-    Block b;
+    std::vector<ProductPopularityMetric> metrics;
 };
 
 class CounterPopularityMetricReader : public ClickReader
@@ -47,20 +45,18 @@ class CounterPopularityMetricReader : public ClickReader
   public:
     CounterPopularityMetricReader() = default;
 
-    CounterPopularityMetricReader(const ProductPopularityMetricReader &b) = delete;
+    CounterPopularityMetricReader(const ProductPopularityMetricReader &r) = delete;
 
-    CounterPopularityMetricReader(const Block &b) = delete;
+    CounterPopularityMetricReader(const std::vector<CounterPopularityMetric> &v) = delete;
 
-    CounterPopularityMetricReader(Block *b) = delete;
+    void Execute(const Block &b) override;
 
-    void SetupReader(const Block &b) override;
-
-    std::vector<CounterPopularityMetric> Read();
+    std::vector<CounterPopularityMetric> Get();
 
     ~CounterPopularityMetricReader() override = default;
 
   private:
-    Block b;
+    std::vector<CounterPopularityMetric> metrics;
 };
 
 class ShopProductsPopularityMetricReader : public ClickReader
@@ -68,20 +64,18 @@ class ShopProductsPopularityMetricReader : public ClickReader
   public:
     ShopProductsPopularityMetricReader() = default;
 
-    ShopProductsPopularityMetricReader(const ProductPopularityMetricReader &b) = delete;
+    ShopProductsPopularityMetricReader(const ProductPopularityMetricReader &r) = delete;
 
-    ShopProductsPopularityMetricReader(const Block &b) = delete;
+    ShopProductsPopularityMetricReader(const std::vector<ShopProductPopularityMetric> &v) = delete;
 
-    ShopProductsPopularityMetricReader(Block *b) = delete;
+    void Execute(const Block &b) override;
 
-    void SetupReader(const Block &b) override;
-
-    std::vector<ShopProductPopularityMetric> Read();
+    std::vector<ShopProductPopularityMetric> Get();
 
     ~ShopProductsPopularityMetricReader() override = default;
 
   private:
-    Block b;
+    std::vector<ShopProductPopularityMetric> metrics;
 };
 
 #endif // TECHNO_SEARCH_READER_H
