@@ -3,8 +3,8 @@
 
 class Graph{
 private:
-    AdjajencyTable: **Double;
-    counterArray: *size_t;
+    **Double AdjacencyTable;
+    *size_t counterArray;
 public:
     Graph(**double Table, *size_t Array){
 
@@ -13,12 +13,12 @@ public:
 
 class FindPath{
 private:
-    path: *size_t;
+    *size_t path;
 public:
     FindPath(**double table, size_t A, size_t B){
 
     }
-    GivePath(*size_t array){
+    GivePath(*size_t Array){
 
     }
 };
