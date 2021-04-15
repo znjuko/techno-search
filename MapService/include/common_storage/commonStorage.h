@@ -16,7 +16,6 @@ public:
     };
     Row GetDataJSON(size_t ShopID);
     Rows GetDataGraph(size_t ShopID);
-
 };
 
 #endif //TECHNO_SEARCH_COMMONSTORAGE_H
