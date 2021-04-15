@@ -1,0 +1,2 @@
+add_subdirectory(store_service)
+add_subdirectory(product_service)
