@@ -3,7 +3,7 @@ project(mapService)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(shopService main.cpp)
+add_executable(shopService main.cpp tests/unit/include/common_storage/graph.cpp)
 cmake_minimum_required(VERSION 3.6)
 project("TECHNO_SEARCH")
 

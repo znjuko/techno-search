@@ -1,11 +1,11 @@
 file(GLOB SRCS *.cpp)
 
-project(store_service_models)
+project(graph_tests)
 
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS})
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}
-        models
+        graph
         gtest
         )
 
