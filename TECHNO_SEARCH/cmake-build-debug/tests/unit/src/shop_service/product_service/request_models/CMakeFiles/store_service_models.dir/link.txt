@@ -1,0 +1,1 @@
+/usr/bin/c++  -lpqxx -lpq -g CMakeFiles/store_service_models.dir/main.cpp.o CMakeFiles/store_service_models.dir/models.cpp.o -o store_service_models  -lproduct_models -lgtest 

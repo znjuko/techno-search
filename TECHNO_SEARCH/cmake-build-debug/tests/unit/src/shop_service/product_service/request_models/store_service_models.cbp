@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="store_service_models"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\cmake\;CMake Files\..\..\..\..\usr\lib\cmake\nlohmann_json\;CMake Files\src\;CMake Files\src\shop_service\;CMake Files\src\shop_service\store_service\;CMake Files\src\shop_service\store_service\request_models\;CMake Files\src\shop_service\store_service\store_manager\;CMake Files\src\shop_service\store_service\store_storage\;CMake Files\src\shop_service\store_service\delivery\;CMake Files\src\shop_service\product_service\;CMake Files\src\shop_service\product_service\request_models\;CMake Files\src\shop_service\product_service\product_manager\;CMake Files\src\shop_service\product_service\product_storage\;CMake Files\src\shop_service\product_service\delivery\;CMake Files\include\;CMake Files\include\marshaller\;CMake Files\include\unmarshaller\;CMake Files\include\common_storage\;CMake Files\tests\;CMake Files\tests\unit\;CMake Files\tests\unit\include\;CMake Files\tests\unit\include\common_storage\;CMake Files\tests\unit\src\;CMake Files\tests\unit\src\shop_service\;CMake Files\tests\unit\src\shop_service\product_service\;CMake Files\tests\unit\src\shop_service\product_service\request_models\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_service_models">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/store_service_models" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 store_service_models"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_service_models/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/store_service_models" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 store_service_models/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/product_service/request_models/main.cpp">
+			<Option target="store_service_models"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/product_service/request_models/models.cpp">
+			<Option target="store_service_models"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/local/lib/cmake/libpqxx/libpqxx-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/local/lib/cmake/libpqxx/libpqxx-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/local/lib/cmake/libpqxx/libpqxx-targets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/local/lib/cmake/libpqxx/libpqxx-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/lib/cmake/nlohmann_json/nlohmann_jsonTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/request_models/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\request_models\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_manager/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\store_manager\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_storage/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\store_storage\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/delivery/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\delivery\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/request_models/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\request_models\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_manager/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\product_manager\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_storage/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\product_storage\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/delivery/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\delivery\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\marshaller\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\unmarshaller\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/common_storage/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\common_storage\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/include/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\include\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/include/common_storage/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\include\common_storage\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\src\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\src\shop_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/product_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\src\shop_service\product_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/product_service/request_models/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\src\shop_service\product_service\request_models\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

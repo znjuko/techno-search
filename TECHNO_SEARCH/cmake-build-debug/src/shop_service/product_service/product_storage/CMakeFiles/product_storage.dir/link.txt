@@ -1,0 +1,2 @@
+/usr/bin/ar qc libproduct_storage.a CMakeFiles/product_storage.dir/product_storage.cpp.o
+/usr/bin/ranlib libproduct_storage.a

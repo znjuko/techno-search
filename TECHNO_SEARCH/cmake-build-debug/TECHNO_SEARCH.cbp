@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="TECHNO_SEARCH"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\cmake\;CMake Files\..\..\..\..\usr\lib\cmake\nlohmann_json\;CMake Files\src\;CMake Files\src\shop_service\;CMake Files\src\shop_service\store_service\;CMake Files\src\shop_service\store_service\request_models\;CMake Files\src\shop_service\store_service\store_manager\;CMake Files\src\shop_service\store_service\store_storage\;CMake Files\src\shop_service\store_service\delivery\;CMake Files\src\shop_service\product_service\;CMake Files\src\shop_service\product_service\request_models\;CMake Files\src\shop_service\product_service\product_manager\;CMake Files\src\shop_service\product_service\product_storage\;CMake Files\src\shop_service\product_service\delivery\;CMake Files\include\;CMake Files\include\marshaller\;CMake Files\include\unmarshaller\;CMake Files\include\common_storage\;CMake Files\tests\;CMake Files\tests\unit\;CMake Files\tests\unit\include\;CMake Files\tests\unit\include\common_storage\;CMake Files\tests\unit\src\;CMake Files\tests\unit\src\shop_service\;CMake Files\tests\unit\src\shop_service\product_service\;CMake Files\tests\unit\src\shop_service\product_service\request_models\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TECHNO_SEARCH">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/TECHNO_SEARCH" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/request_models"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 TECHNO_SEARCH"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TECHNO_SEARCH/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/TECHNO_SEARCH" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/request_models"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 TECHNO_SEARCH/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="models">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/libmodels.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/request_models"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/Makefile&quot;  VERBOSE=1 models"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="models/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/libmodels.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/request_models"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/Makefile&quot;  VERBOSE=1 models/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_manager">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/libstore_manager.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_manager"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/Makefile&quot;  VERBOSE=1 store_manager"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_manager/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/libstore_manager.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_manager"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/Makefile&quot;  VERBOSE=1 store_manager/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_manager/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_storage">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/libstore_storage.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_storage"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/Makefile&quot;  VERBOSE=1 store_storage"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_storage/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/libstore_storage.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_storage"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/Makefile&quot;  VERBOSE=1 store_storage/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/store_storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_delivery">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/libstore_delivery.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/delivery"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/Makefile&quot;  VERBOSE=1 store_delivery"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_delivery/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/libstore_delivery.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/delivery"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/Makefile&quot;  VERBOSE=1 store_delivery/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/store_service/delivery/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_models">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/libstore_models.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/request_models"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 store_models"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_models/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/libstore_models.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/request_models"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 store_models/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="product_manager">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/libproduct_manager.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_manager"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/Makefile&quot;  VERBOSE=1 product_manager"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="product_manager/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/libproduct_manager.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_manager"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/Makefile&quot;  VERBOSE=1 product_manager/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_manager/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="product_storage">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/libproduct_storage.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_storage"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/Makefile&quot;  VERBOSE=1 product_storage"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="product_storage/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/libproduct_storage.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_storage"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/Makefile&quot;  VERBOSE=1 product_storage/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/product_storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="product_delivery">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/libproduct_delivery.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/delivery"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/Makefile&quot;  VERBOSE=1 product_delivery"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="product_delivery/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/libproduct_delivery.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/delivery"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller"/>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/Makefile&quot;  VERBOSE=1 product_delivery/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/src/shop_service/product_service/delivery/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="common_storage">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/libcommon_storage.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/common_storage"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/Makefile&quot;  VERBOSE=1 common_storage"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="common_storage/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/libcommon_storage.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/common_storage"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/Makefile&quot;  VERBOSE=1 common_storage/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/include/common_storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="common_storage_test">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/common_storage_test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/common_storage"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/Makefile&quot;  VERBOSE=1 common_storage_test"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="common_storage_test/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/common_storage_test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/common_storage"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/Makefile&quot;  VERBOSE=1 common_storage_test/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/include/common_storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_service_models">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/store_service_models" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 store_service_models"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="store_service_models/fast">
+				<Option output="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/store_service_models" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 store_service_models/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/fillinmar/Рабочий\ стол/TECHNO_SEARCH/cmake-build-debug/tests/unit/src/shop_service/product_service/request_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/common_storage/commonStorage.h">
+			<Option target="common_storage"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller/marshaller.h">
+			<Option target="TECHNO_SEARCH"/>
+			<Option target="models"/>
+			<Option target="store_manager"/>
+			<Option target="store_storage"/>
+			<Option target="store_delivery"/>
+			<Option target="store_models"/>
+			<Option target="product_manager"/>
+			<Option target="product_storage"/>
+			<Option target="product_delivery"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller/unmarshaller.h">
+			<Option target="TECHNO_SEARCH"/>
+			<Option target="models"/>
+			<Option target="store_manager"/>
+			<Option target="store_storage"/>
+			<Option target="store_delivery"/>
+			<Option target="store_models"/>
+			<Option target="product_manager"/>
+			<Option target="product_storage"/>
+			<Option target="product_delivery"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/main.cpp">
+			<Option target="TECHNO_SEARCH"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/delivery/product_service.cpp">
+			<Option target="product_delivery"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/delivery/product_service.h">
+			<Option target="product_delivery"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_manager/product_manager.cpp">
+			<Option target="product_manager"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_manager/product_manager.h">
+			<Option target="product_manager"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_storage/product_storage.cpp">
+			<Option target="product_storage"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_storage/product_storage.h">
+			<Option target="product_storage"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/request_models/models.cpp">
+			<Option target="store_models"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/request_models/models.h">
+			<Option target="store_models"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/delivery/store_service.cpp">
+			<Option target="store_delivery"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/delivery/store_service.h">
+			<Option target="store_delivery"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/request_models/models.cpp">
+			<Option target="models"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/request_models/models.h">
+			<Option target="models"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_manager/store_manager.cpp">
+			<Option target="store_manager"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_manager/store_manager.h">
+			<Option target="store_manager"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_storage/store_storage.cpp">
+			<Option target="store_storage"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_storage/store_storage.h">
+			<Option target="store_storage"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/include/common_storage/common_storage.cpp">
+			<Option target="common_storage_test"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/include/common_storage/main.cpp">
+			<Option target="common_storage_test"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/product_service/request_models/main.cpp">
+			<Option target="store_service_models"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/product_service/request_models/models.cpp">
+			<Option target="store_service_models"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/local/lib/cmake/libpqxx/libpqxx-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/local/lib/cmake/libpqxx/libpqxx-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/local/lib/cmake/libpqxx/libpqxx-targets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/local/lib/cmake/libpqxx/libpqxx-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\libpqxx\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/../../../../usr/lib/cmake/nlohmann_json/nlohmann_jsonTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/request_models/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\request_models\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_manager/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\store_manager\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/store_storage/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\store_storage\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/store_service/delivery/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\store_service\delivery\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/request_models/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\request_models\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_manager/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\product_manager\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/product_storage/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\product_storage\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/src/shop_service/product_service/delivery/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\shop_service\product_service\delivery\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/marshaller/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\marshaller\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/unmarshaller/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\unmarshaller\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/include/common_storage/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\common_storage\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/include/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\include\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/include/common_storage/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\include\common_storage\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\src\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\src\shop_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/product_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\src\shop_service\product_service\"/>
+		</Unit>
+		<Unit filename="/home/fillinmar/Рабочий стол/TECHNO_SEARCH/tests/unit/src/shop_service/product_service/request_models/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\src\shop_service\product_service\request_models\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
