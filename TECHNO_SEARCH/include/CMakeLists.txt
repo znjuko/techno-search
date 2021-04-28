@@ -1,3 +1,0 @@
-add_subdirectory(marshaller)
-add_subdirectory(unmarshaller)
-add_subdirectory(common_storage)

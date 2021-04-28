@@ -1,9 +1,20 @@
-set(LIBRARY_NAME common_storage commonStorage.h)
+#set(LIBRARY_NAME common_storage commonStorage.h)
+#
+#add_library(${LIBRARY_NAME} INTERFACE)
+#
+#target_sources(${LIBRARY_NAME} INTERFACE ${SRC})
+#
+#target_include_directories(${LIBRARY_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+#
+#target_link_libraries(${LIBRARY_NAME} INTERFACE nlohmann_json::nlohmann_json)
+find_package(nlohmann_json 3.2.0 REQUIRED)
 
-add_library(${LIBRARY_NAME} INTERFACE)
+set(LIBRARY_NAME common_storage)
 
-target_sources(${LIBRARY_NAME} INTERFACE ${SRC})
+file(GLOB SRC *.h *.cpp)
 
-target_include_directories(${LIBRARY_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+add_library(${LIBRARY_NAME} STATIC ${SRC})
 
-target_link_libraries(${LIBRARY_NAME} INTERFACE nlohmann_json::nlohmann_json)
+target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_link_libraries(${LIBRARY_NAME} PUBLIC libpqxx::pqxx)
