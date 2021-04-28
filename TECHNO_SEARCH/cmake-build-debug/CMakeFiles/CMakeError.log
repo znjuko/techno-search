@@ -1,0 +1,60 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d8c67/fast && /usr/bin/make  -f CMakeFiles/cmTC_d8c67.dir/build.make CMakeFiles/cmTC_d8c67.dir/build
+make[1]: вход в каталог «/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/CMakeFiles/CMakeTmp»
+Building C object CMakeFiles/cmTC_d8c67.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_d8c67.dir/src.c.o -c "/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/CMakeFiles/CMakeTmp/src.c"
+Linking C executable cmTC_d8c67
+/snap/clion/151/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8c67.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_d8c67.dir/src.c.o -o cmTC_d8c67 
+/usr/bin/ld: CMakeFiles/cmTC_d8c67.dir/src.c.o: в функции «main»:
+src.c:(.text+0x46): неопределённая ссылка на «pthread_create»
+/usr/bin/ld: src.c:(.text+0x52): неопределённая ссылка на «pthread_detach»
+/usr/bin/ld: src.c:(.text+0x5e): неопределённая ссылка на «pthread_cancel»
+/usr/bin/ld: src.c:(.text+0x6f): неопределённая ссылка на «pthread_join»
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_d8c67.dir/build.make:106: cmTC_d8c67] Ошибка 1
+make[1]: выход из каталога «/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/CMakeFiles/CMakeTmp»
+make: *** [Makefile:140: cmTC_d8c67/fast] Ошибка 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1c9ec/fast && /usr/bin/make  -f CMakeFiles/cmTC_1c9ec.dir/build.make CMakeFiles/cmTC_1c9ec.dir/build
+make[1]: вход в каталог «/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/CMakeFiles/CMakeTmp»
+Building C object CMakeFiles/cmTC_1c9ec.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_1c9ec.dir/CheckFunctionExists.c.o -c /snap/clion/151/bin/cmake/linux/share/cmake-3.19/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1c9ec
+/snap/clion/151/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c9ec.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_1c9ec.dir/CheckFunctionExists.c.o -o cmTC_1c9ec  -lpthreads 
+/usr/bin/ld: невозможно найти -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_1c9ec.dir/build.make:106: cmTC_1c9ec] Ошибка 1
+make[1]: выход из каталога «/home/fillinmar/Рабочий стол/TECHNO_SEARCH/cmake-build-debug/CMakeFiles/CMakeTmp»
+make: *** [Makefile:140: cmTC_1c9ec/fast] Ошибка 2
+
+
+

@@ -1,0 +1,1 @@
+/usr/bin/c++  -lpqxx -lpq -g CMakeFiles/TECHNO_SEARCH.dir/main.cpp.o -o TECHNO_SEARCH  /usr/local/lib/libpqxx-7.5.a src/shop_service/store_service/request_models/libmodels.a /usr/lib/x86_64-linux-gnu/libpq.so 

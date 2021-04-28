@@ -1,0 +1,2 @@
+/usr/bin/ar qc libstore_storage.a CMakeFiles/store_storage.dir/store_storage.cpp.o
+/usr/bin/ranlib libstore_storage.a
