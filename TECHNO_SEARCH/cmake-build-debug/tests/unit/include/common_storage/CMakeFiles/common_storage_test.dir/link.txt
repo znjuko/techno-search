@@ -1,1 +1,0 @@
-/usr/bin/c++  -lpqxx -lpq -g CMakeFiles/common_storage_test.dir/common_storage.cpp.o CMakeFiles/common_storage_test.dir/main.cpp.o -o common_storage_test  ../../../../include/common_storage/libcommon_storage.a -lgtest /usr/local/lib/libpqxx-7.5.a /usr/lib/x86_64-linux-gnu/libpq.so 

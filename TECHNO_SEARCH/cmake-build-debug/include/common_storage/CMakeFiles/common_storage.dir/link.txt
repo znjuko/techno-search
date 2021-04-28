@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcommon_storage.a 
-/usr/bin/ranlib libcommon_storage.a

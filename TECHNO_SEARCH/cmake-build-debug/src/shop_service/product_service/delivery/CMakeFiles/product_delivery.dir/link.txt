@@ -1,2 +1,0 @@
-/usr/bin/ar qc libproduct_delivery.a CMakeFiles/product_delivery.dir/product_service.cpp.o
-/usr/bin/ranlib libproduct_delivery.a
