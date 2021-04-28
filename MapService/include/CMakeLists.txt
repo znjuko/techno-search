@@ -1,3 +1,0 @@
-add_subdirectory(common_storage)
-add_subdirectory(map_storage)
-add_subdirectory(graph_storage)

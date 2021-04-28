@@ -1,3 +1,0 @@
-add_subdirectory(map_manager)
-add_subdirectory(map_storage)
-add_subdirectory(request_models)
