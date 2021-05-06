@@ -2,7 +2,7 @@ find_package(nlohmann_json 3.2.0 REQUIRED)
 
 set(SRC models.h models.cpp)
 
-set(LIBRARY_NAME store_models)
+set(LIBRARY_NAME product_models)
 
 file(GLOB SRC *.h *.cpp)
 
