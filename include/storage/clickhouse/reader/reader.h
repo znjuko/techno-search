@@ -6,8 +6,10 @@
 #define TECHNO_SEARCH_READER_H
 
 #include "models.h"
+// TODO (n.chernyh) get how to link dat with cmake
+#include "../../../../vendor/clickhouse-cpp/clickhouse/client.h"
 
-#include <clickhouse/client.h>
+//#include <clickhouse/client.h>
 #include <vector>
 
 using namespace clickhouse;
