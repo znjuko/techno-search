@@ -15,7 +15,7 @@ public:
 
     explicit MetricStorage(std::shared_ptr<ClickStorage> storage);
 
-    CounterPopularityMetricResponse ResponseGetCounterPopularityByShop(const GetCountersPopularityByShopRequest &req);
+    CounterPopularityMetricResponse GetCounterPopularityByShop(const GetCountersPopularityByShopRequest &req);
 
     ShopProductPopularityMetricResponse GetProductsPopularityByShop(const GetProductPopularityByShopRequest &req);
 

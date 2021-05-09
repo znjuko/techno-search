@@ -14,7 +14,7 @@ using namespace Pistache;
 class IRequestReader
 {
   public:
-    virtual void ReadRequest(IMarshaller m, Http::Request r) = 0;
+    virtual void ReadRequest(std::shared_ptr<IMarshaller> m, Http::Request r) = 0;
 
     virtual ~IRequestReader() noexcept = 0;
 };
@@ -24,19 +24,19 @@ class JsonRequestBodyReader : public IRequestReader
   public:
     JsonRequestBodyReader() = default;
 
-    void ReadRequest(IMarshaller m, Http::Request r) override;
+    void ReadRequest(std::shared_ptr<IMarshaller> m, Http::Request r) override;
 
     ~JsonRequestBodyReader() noexcept override;
 };
 
-class RequestQueryReader : public IRequestReader
+class RequestQueryReader
 {
   public:
     RequestQueryReader() = default;
 
-    void ReadRequest(IMarshaller m, Http::Request r) override;
+    void ReadRequest(std::shared_ptr<IQueryMarshaller> m, Http::Request r);
 
-    ~RequestQueryReader() noexcept override;
+    ~RequestQueryReader() noexcept;
 };
 
 #endif // TECHNO_SEARCH_READER_H

@@ -4,7 +4,7 @@
 
 #include "storage.h"
 
-CounterPopularityMetricResponse MetricStorage::ResponseGetCounterPopularityByShop(
+CounterPopularityMetricResponse MetricStorage::GetCounterPopularityByShop(
         const GetCountersPopularityByShopRequest &req) {
     auto q = GetCounterPopularityMetricQuery();
     q.SetupQuery(req);

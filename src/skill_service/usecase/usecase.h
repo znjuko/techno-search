@@ -19,7 +19,7 @@ class MetricManager
 
     explicit MetricManager(const MetricStorage &storage) noexcept;
 
-    CounterPopularityMetricResponse ResponseGetCounterPopularityByShop(const GetCountersPopularityByShopRequest &req);
+    CounterPopularityMetricResponse GetCounterPopularityByShop(const GetCountersPopularityByShopRequest &req);
 
     ShopProductPopularityMetricResponse GetProductsPopularityByShop(const GetProductPopularityByShopRequest &req);
 

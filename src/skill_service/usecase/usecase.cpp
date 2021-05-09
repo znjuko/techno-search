@@ -4,21 +4,21 @@
 
 #include "usecase.h"
 
-CounterPopularityMetricResponse MetricManager::ResponseGetCounterPopularityByShop(
+CounterPopularityMetricResponse MetricManager::GetCounterPopularityByShop(
     const GetCountersPopularityByShopRequest &req)
 {
-    return CounterPopularityMetricResponse();
+    return this->storage.GetCounterPopularityByShop(req);
 }
 
 ShopProductPopularityMetricResponse MetricManager::GetProductsPopularityByShop(
     const GetProductPopularityByShopRequest &req)
 {
-    return ShopProductPopularityMetricResponse();
+    return this->storage.GetProductsPopularityByShop(req);
 }
 
 ProductPopularityMetricResponse MetricManager::GetProductsTotalPopularity(const GetProductsTotalPopularityRequest &req)
 {
-    return ProductPopularityMetricResponse();
+    return this->storage.GetProductsTotalPopularity(req);
 }
 
 MetricManager::MetricManager(const MetricStorage &storage) noexcept : storage(storage)

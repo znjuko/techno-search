@@ -15,5 +15,5 @@ target_link_libraries(
         ${LIBRARY_NAME} PRIVATE
         marshaller unmarshaller nlohmann_json::nlohmann_json
         pistache router_setupper request_reader response_writer
-        skill_usecase
+        skill_usecase models
 )

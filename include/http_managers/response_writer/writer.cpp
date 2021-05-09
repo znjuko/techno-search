@@ -8,4 +8,6 @@ IResponseWriter::~IResponseWriter() noexcept {};
 
 JsonResponseWriter::~JsonResponseWriter() noexcept {};
 
-void JsonResponseWriter::WriteResponse(IUnMarshaller u, Http::ResponseWriter writer){};
+void JsonResponseWriter::WriteResponse(IUnMarshaller u, Http::ResponseWriter writer){
+
+};
