@@ -10,6 +10,7 @@ ClickStorage::ClickStorage(const ClientOptions &opts) : client(opts)
 
 void ClickStorage::Insert(const ClickQuery &q)
 {
+    this->client.Execute(q.GetQuery());
 }
 
 void ClickStorage::Select(const ClickQuery &q, std::shared_ptr<ClickReader> r)
