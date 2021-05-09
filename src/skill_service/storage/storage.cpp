@@ -13,6 +13,8 @@ CounterPopularityMetricResponse MetricStorage::ResponseGetCounterPopularityBySho
 ShopProductPopularityMetricResponse MetricStorage::GetProductsPopularityByShop(
     const GetProductPopularityByShopRequest &req)
 {
+
+
     return ShopProductPopularityMetricResponse();
 }
 
@@ -25,6 +27,6 @@ MetricStorage::~MetricStorage()
 {
 }
 
-MetricStorage::MetricStorage(ClickStorage *storage) : storage(storage)
+MetricStorage::MetricStorage(std::shared_ptr<ClickStorage> storage) : storage(storage)
 {
 }

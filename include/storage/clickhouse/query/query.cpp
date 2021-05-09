@@ -2,59 +2,78 @@
 // Created by paccbet on 15.04.2021.
 //
 
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <sstream>
+#include <iterator>
+
 #include "query.h"
 
-ClickQuery::~ClickQuery()
-{
+ClickQuery::~ClickQuery() {
 }
 
-GetCounterPopularityMetricQuery::GetCounterPopularityMetricQuery()
-{
+GetCounterPopularityMetricQuery::GetCounterPopularityMetricQuery() {
 }
 
-GetCounterPopularityMetricQuery::~GetCounterPopularityMetricQuery()
-{
+GetCounterPopularityMetricQuery::~GetCounterPopularityMetricQuery() {
 }
 
-Block *GetCounterPopularityMetricQuery::GetQuery()
-{
-    return nullptr;
+std::string GetCounterPopularityMetricQuery::GetQuery() const {
+    return this->query;
 }
 
-void GetCounterPopularityMetricQuery::SetupQuery(const GetCountersPopularityByShopRequest &req)
-{
+void GetCounterPopularityMetricQuery::SetupQuery(const GetCountersPopularityByShopRequest &req) {
+    this->query = "SELECT storage_id, counter_id, count(*) as 'popularity' "
+                  "FROM storage_counter_popularity WHERE storage_id=" + std::to_string(req.StorageID) + " " +
+                  "GROUP BY storage_id,counter_id ORDER_BY counter_id;";
 }
 
-GetShopPopularityMetricQuery::GetShopPopularityMetricQuery()
-{
+GetProductPopularityByShopMetricQuery::GetProductPopularityByShopMetricQuery() {
 }
 
-Block *GetShopPopularityMetricQuery::GetQuery()
-{
-    return nullptr;
+std::string GetProductPopularityByShopMetricQuery::GetQuery() const {
+    return this->query;
 }
 
-void GetShopPopularityMetricQuery::SetupQuery(const GetCountersPopularityByShopRequest &req)
-{
+void GetProductPopularityByShopMetricQuery::SetupQuery(const GetProductPopularityByShopRequest &req) {
+    std::string inQuery = "";
+    if (!req.ProductIDs.empty()) {
+        std::ostringstream oss;
+        std::copy(req.ProductIDs.begin(), req.ProductIDs.end(), std::ostream_iterator<int>(oss, ","));
+        inQuery = oss.str();
+        inQuery.pop_back();
+    }
+
+    this->query = "SELECT storage_id, product_id, count(*) as 'popularity' "
+                  "FROM storage_product_popularity WHERE storage_id = " + std::to_string(req.StorageID) + " " +
+                  "AND product_id IN (" + inQuery + ") " +
+                  "GROUP BY storage_id, product_id ORDER BY product_id;";
 }
 
-GetShopPopularityMetricQuery::~GetShopPopularityMetricQuery()
-{
+GetProductPopularityByShopMetricQuery::~GetProductPopularityByShopMetricQuery() {
 }
 
-GetProductPopularityMetricQuery::GetProductPopularityMetricQuery()
-{
+GetProductsTotalPopularityMetricQuery::GetProductsTotalPopularityMetricQuery() {
 }
 
-Block *GetProductPopularityMetricQuery::GetQuery()
-{
-    return nullptr;
+std::string GetProductsTotalPopularityMetricQuery::GetQuery() const {
+    return this->query;
 }
 
-void GetProductPopularityMetricQuery::SetupQuery(const GetCountersPopularityByShopRequest &req)
-{
+void GetProductsTotalPopularityMetricQuery::SetupQuery(const GetProductsTotalPopularityRequest &req) {
+    std::string inQuery = "";
+    if (!req.ProductIDs.empty()) {
+        std::ostringstream oss;
+        std::copy(req.ProductIDs.begin(), req.ProductIDs.end(), std::ostream_iterator<int>(oss, ","));
+        inQuery = oss.str();
+        inQuery.pop_back();
+    }
+
+    this->query = "SELECT product_id, count(*) as 'popularity' "
+                  "FROM storage_product_popularity WHERE product_id IN (" + inQuery + ") " +
+                  "GROUP BY product_id ORDER BY product_id;";
 }
 
-GetProductPopularityMetricQuery::~GetProductPopularityMetricQuery()
-{
+GetProductsTotalPopularityMetricQuery::~GetProductsTotalPopularityMetricQuery() {
 }

@@ -12,8 +12,9 @@ void ClickStorage::Insert(const ClickQuery &q)
 {
 }
 
-ClickReader *ClickStorage::Select(const ClickQuery &q)
+void ClickStorage::Select(const ClickQuery &q, std::shared_ptr<ClickReader> r)
 {
-    this->client.Select();
-    return new ProductPopularityMetricReader;
+    this->client.Select(q.GetQuery(), [&] (const Block& block) {
+        r->Execute(block);
+    });
 }
