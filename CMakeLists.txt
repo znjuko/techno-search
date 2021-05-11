@@ -23,10 +23,12 @@ cmake_minimum_required(VERSION 3.10.2)
 project(techno_algo CXX)
 set (CMAKE_CXX_STANDARD 17)
 
+include_directories(.)
+include_directories(vendor)
+
 add_subdirectory(src)
 add_subdirectory(include)
 add_subdirectory(vendor)
-
 
 
 set(MAIN_SRCS main.cpp)

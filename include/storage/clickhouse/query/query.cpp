@@ -23,9 +23,9 @@ std::string GetCounterPopularityMetricQuery::GetQuery() const {
     return this->query;
 }
 
-void GetCounterPopularityMetricQuery::SetupQuery(const GetCountersPopularityByShopRequest &req) {
+void GetCounterPopularityMetricQuery::SetupQuery(std::shared_ptr<GetCountersPopularityByStoreRequest> req) {
     this->query = "SELECT storage_id, counter_id, count(*) as 'popularity' "
-                  "FROM storage_counter_popularity WHERE storage_id=" + std::to_string(req.StorageID) + " " +
+                  "FROM storage_counter_popularity WHERE storage_id=" + std::to_string(req->StoreID) + " " +
                   "GROUP BY storage_id,counter_id ORDER_BY counter_id;";
 }
 
@@ -36,17 +36,17 @@ std::string GetProductPopularityByShopMetricQuery::GetQuery() const {
     return this->query;
 }
 
-void GetProductPopularityByShopMetricQuery::SetupQuery(const GetProductPopularityByShopRequest &req) {
+void GetProductPopularityByShopMetricQuery::SetupQuery(std::shared_ptr<GetProductsPopularityByStoreRequest> req) {
     std::string inQuery = "";
-    if (!req.ProductIDs.empty()) {
+    if (!req->ProductIDs.empty()) {
         std::ostringstream oss;
-        std::copy(req.ProductIDs.begin(), req.ProductIDs.end(), std::ostream_iterator<int>(oss, ","));
+        std::copy(req->ProductIDs.begin(), req->ProductIDs.end(), std::ostream_iterator<int>(oss, ","));
         inQuery = oss.str();
         inQuery.pop_back();
     }
 
     this->query = "SELECT storage_id, product_id, count(*) as 'popularity' "
-                  "FROM storage_product_popularity WHERE storage_id = " + std::to_string(req.StorageID) + " " +
+                  "FROM storage_product_popularity WHERE storage_id = " + std::to_string(req.StoreID) + " " +
                   "AND product_id IN (" + inQuery + ") " +
                   "GROUP BY storage_id, product_id ORDER BY product_id;";
 }
@@ -61,11 +61,11 @@ std::string GetProductsTotalPopularityMetricQuery::GetQuery() const {
     return this->query;
 }
 
-void GetProductsTotalPopularityMetricQuery::SetupQuery(const GetProductsTotalPopularityRequest &req) {
+void GetProductsTotalPopularityMetricQuery::SetupQuery(std::shared_ptr<GetProductsTotalPopularityRequest> req) {
     std::string inQuery = "";
-    if (!req.ProductIDs.empty()) {
+    if (!req->ProductIDs.empty()) {
         std::ostringstream oss;
-        std::copy(req.ProductIDs.begin(), req.ProductIDs.end(), std::ostream_iterator<int>(oss, ","));
+        std::copy(req->ProductIDs.begin(), req->ProductIDs.end(), std::ostream_iterator<int>(oss, ","));
         inQuery = oss.str();
         inQuery.pop_back();
     }

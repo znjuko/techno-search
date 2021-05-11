@@ -25,7 +25,7 @@ void CounterPopularityMetricReader::Execute(const Block &b) {
     metrics.resize(lastSize + rowCount);
 
     for (size_t i = 0; i < rowCount; ++i) {
-        metrics[lastSize + i].StorageID = (*b[0]->As<ColumnInt64>())[i];
+        metrics[lastSize + i].StoreID = (*b[0]->As<ColumnInt64>())[i];
         metrics[lastSize + i].CounterID = (*b[1]->As<ColumnUInt16>())[i];
         metrics[lastSize + i].Popularity = (*b[2]->As<ColumnUInt64>())[i];
     }
@@ -41,12 +41,12 @@ void ShopProductsPopularityMetricReader::Execute(const Block &b) {
     metrics.resize(lastSize + rowCount);
 
     for (size_t i = 0; i < rowCount; ++i) {
-        metrics[lastSize + i].StorageID = (*b[0]->As<ColumnInt64>())[i];
+        metrics[lastSize + i].StoreID = (*b[0]->As<ColumnInt64>())[i];
         metrics[lastSize + i].ProductID = (*b[1]->As<ColumnUInt16>())[i];
         metrics[lastSize + i].Popularity = (*b[2]->As<ColumnUInt64>())[i];
     }
 }
 
-std::vector<ShopProductPopularityMetric> ShopProductsPopularityMetricReader::Get() {
+std::vector<ProductPopularityByStoreMetric> ShopProductsPopularityMetricReader::Get() {
     return metrics;
 }

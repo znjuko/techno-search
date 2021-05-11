@@ -4,42 +4,44 @@
 
 #include "storage.h"
 
-CounterPopularityMetricResponse MetricStorage::GetCounterPopularityByShop(
-        const GetCountersPopularityByShopRequest &req) {
-    auto q = GetCounterPopularityMetricQuery();
-    q.SetupQuery(req);
+#include <utility>
+
+std::shared_ptr<CountersPopularityMetricResponse> MetricStorage::GetCounterPopularityByShop(
+        std::shared_ptr<GetCountersPopularityByStoreRequest> req) {
+    auto q = std::shared_ptr<GetCounterPopularityMetricQuery>();
+    q->SetupQuery(req);
     std::shared_ptr<CounterPopularityMetricReader> reader;
 
-    this->storage->Select(q, reader);
+    storage->Select(q, reader);
 
-    auto res = CounterPopularityMetricResponse();
-    res.array = reader->Get();
+    auto res = std::shared_ptr<CountersPopularityMetricResponse>();
+    res->array = std::move(reader->Get());
     return res;
 }
 
-ShopProductPopularityMetricResponse MetricStorage::GetProductsPopularityByShop(
-        const GetProductPopularityByShopRequest &req) {
-    auto q = GetProductPopularityByShopMetricQuery();
-    q.SetupQuery(req);
+std::shared_ptr<ProductsPopularityByStoreMetricResponse> MetricStorage::GetProductsPopularityByShop(
+        std::shared_ptr<GetProductsPopularityByStoreRequest> req) {
+    auto q = std::shared_ptr<GetProductPopularityByShopMetricQuery>();
+    q->SetupQuery(req);
     std::shared_ptr<ShopProductsPopularityMetricReader> reader;
 
-    this->storage->Select(q, reader);
+    storage->Select(q, reader);
 
-    auto res = ShopProductPopularityMetricResponse();
-    res.array = reader->Get();
+    auto res = std::shared_ptr<ProductsPopularityByStoreMetricResponse>();
+    res->array = std::move(reader->Get());
     return res;
 }
 
-ProductPopularityMetricResponse
-MetricStorage::GetProductsTotalPopularity(const GetProductsTotalPopularityRequest &req) {
-    auto q = GetProductsTotalPopularityMetricQuery();
-    q.SetupQuery(req);
+std::shared_ptr<ProductsPopularityMetricResponse>
+MetricStorage::GetProductsTotalPopularity(std::shared_ptr<GetProductsTotalPopularityRequest> req) {
+    auto q = std::shared_ptr<GetProductsTotalPopularityMetricQuery>();
+    q->SetupQuery(req);
     std::shared_ptr<ProductPopularityMetricReader> reader;
 
-    this->storage->Select(q, reader);
+    storage->Select(q, reader);
 
-    auto res = ProductPopularityMetricResponse();
-    res.array = reader->Get();
+    auto res = std::shared_ptr<ProductsPopularityMetricResponse>();
+    res->array = std::move(reader->Get());
     return res;
 }
 

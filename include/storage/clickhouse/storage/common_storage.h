@@ -22,7 +22,7 @@ class ClickStorage
     // TODO (n.chernyh) : add move constr r8 here
     void Insert(const ClickQuery &q);
 
-    void Select(const ClickQuery &q, std::shared_ptr<ClickReader> r);
+    void Select(std::shared_ptr<ClickQuery> q, std::shared_ptr<ClickReader> r);
 
     ~ClickStorage() = default;
 

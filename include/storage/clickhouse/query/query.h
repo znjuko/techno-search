@@ -27,7 +27,7 @@ class GetCounterPopularityMetricQuery : public ClickQuery
 
     std::string GetQuery() const override;
 
-    void SetupQuery(const GetCountersPopularityByShopRequest &req);
+    void SetupQuery(std::shared_ptr<GetCountersPopularityByStoreRequest> req);
 
     ~GetCounterPopularityMetricQuery() override;
 
@@ -40,13 +40,13 @@ class GetProductPopularityByShopMetricQuery : public ClickQuery
   public:
     GetProductPopularityByShopMetricQuery();
 
-    GetProductPopularityByShopMetricQuery(std::string query) = delete;
+    GetProductPopularityByShopMetricQuery(std::string *query) = delete;
 
     GetProductPopularityByShopMetricQuery(std::string &query) = delete;
 
     std::string GetQuery() const override;
 
-    void SetupQuery(const GetProductPopularityByShopRequest &req);
+    void SetupQuery(std::shared_ptr<GetProductsPopularityByStoreRequest> req);
 
     ~GetProductPopularityByShopMetricQuery() override;
 
@@ -65,7 +65,7 @@ class GetProductsTotalPopularityMetricQuery : public ClickQuery
 
     std::string GetQuery() const override;
 
-    void SetupQuery(const GetProductsTotalPopularityRequest &req);
+    void SetupQuery(std::shared_ptr<GetProductsTotalPopularityRequest> req);
 
     ~GetProductsTotalPopularityMetricQuery() override;
 
