@@ -16,11 +16,12 @@ class GetStoreMetadataRequest : public IMarshaller
   public:
     GetStoreMetadataRequest();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &query) override;
 
     ~GetStoreMetadataRequest() override = default;
 
     std::string name;
+    void Marshall(const Http::Uri::Query &query);
 };
 
 class GetStoreListRequest : public IMarshaller

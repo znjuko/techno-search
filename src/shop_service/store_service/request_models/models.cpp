@@ -4,9 +4,15 @@
 
 #include "models.h"
 
-GetStoreMetadataRequest::GetStoreMetadataRequest() : name(""){};
+using namespace Pistache;
 
-void GetStoreMetadataRequest::Marshall(const std::string &body){};
+GetStoreMetadataRequest::GetStoreMetadataRequest() : name(""){
+
+}
+
+void GetStoreMetadataRequest::Marshall(const Http::Uri::Query &query){
+    //TODO
+};
 
 GetStoreListRequest::GetStoreListRequest() : name(""), search(""){};
 
@@ -18,7 +24,7 @@ void UpdateStoreRequest::Marshall(const std::string &body){};
 
 AddStoreRequest::AddStoreRequest() : openAt(0), closeAt(0), address(""), name(""){};
 
-void AddStoreRequest::Marshall(const std::string &body){};
+void AddStoreRequest::Marshall(const Http::Uri::Query &query){};
 
 StoreMetadata::StoreMetadata() : openAt(0), closeAt(0), address(""), name(""){};
 
