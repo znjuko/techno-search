@@ -68,7 +68,7 @@ void MetricService::GetProductsTotalPopularity(const Http::Request& req, Http::R
         errorWriter.WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
-    responseWriter.WriteResponse(respWriter, &res);
+    responseWriter.Writeesponse(respWriter, &res);
 }
 
 void MetricService::SetupService(Rest::Router router) {
