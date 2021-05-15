@@ -1,4 +1,5 @@
+#add_subdirectory(map_graph)
+add_subdirectory(graph_converter)
+add_subdirectory(map)
 add_subdirectory(map_manager)
-add_subdirectory(map_storage)
 add_subdirectory(request_models)
-add_subdirectory(map_graph)

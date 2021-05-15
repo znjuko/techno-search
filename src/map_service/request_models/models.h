@@ -1,176 +1,74 @@
 #ifndef TECHNO_SEARCH_MODELS_H
 #define TECHNO_SEARCH_MODELS_H
 
-#include "marshaller.h"
-#include "unmarshaller.h"
-
 #include <nlohmann/json.hpp>
+#include <vector>
 
-class GetStoreMetadataRequest : public IMarshaller
-{
-  public:
-    GetStoreMetadataRequest();
+class Point {
 
-    void Marshall(const std::string &body) override;
-
-    ~GetStoreMetadataRequest() override = default;
-
-    string name;
-};
-
-class GetStoreListRequest : public IMarshaller
-{
-  public:
-    GetStoreListRequest();
-
-    void Marshall(const std::string &body) override;
-
-    ~GetStoreListRequest() override = default;
-
-    string search;
-    string name;
-};
-
-class UpdateStoreRequest : public IMarshaller
-{
 public:
-    UpdateStoreRequest();
+    double x, y;
 
-    void Marshall(const std::string &body) override;
+    Point(double _x, double  _y);
 
-    ~UpdateStoreRequest() override = default;
+    ~Point() = default;
 
-    float openAt;
-    float closeAt;
-    string address;
-    string name;
 };
 
-class AddStoreRequest : public IMarshaller
-{
+class Line {
+
 public:
-    AddStoreRequest();
-    void Marshall(const std::string &body) override;
-    ~AddStoreRequest() override = default;
+    Point p1, p2;
 
-    float openAt;
-    float closeAt;
-    string address;
-    string name;
+    Line(Point _p1, Point _p2);
+
+    ~Line() = default;
+
+    Point GetMiddleOfLine() const;
+
+    Point * LineIntersectionWithLine(Line l);
+
 };
 
-class StoreMetadata : public IMarshaller, public IUnMarshaller
-{
-  public:
-    StoreMetadata();
 
-    void Marshall(const std::string &body) override;
+class Polygon {
 
-    nlohmann::json UnMarshall() override;
-
-    ~StoreMetadata() override = default;
-
-    float openAt;
-    float closeAt;
-    string address;
-    string name;
-};
-
-class StoreList: public IMarshaller, public IUnMarshaller
-{
-  public:
-    StoreList();
-
-    void Marshall(const std::string &body) override;
-
-    nlohmann::json UnMarshall() override;
-
-    ~StoreList() override = default;
-
-    StoreMetadata* storeList;
-    int skip;
-    int limit;
-};
-
-class UpdateStore : public IMarshaller, public IUnMarshaller
-{
 public:
-    UpdateStore();
-    void Marshall(const std::string &body) override;
+    Polygon();
 
-    nlohmann::json UnMarshall() override;
+    ~Polygon() = default;
 
-    ~UpdateStore() override = default;
+    bool IsPointInsidePolygon(Point p);
 
-    float openAt;
-    float closeAt;
-    string address;
-    string name;
+    Point GetPolygonCenter();
+
+    Point GetPointWithLowestX();
+
+    void InitLines();
+
+    std::vector<Point> CollisionsWithVerticalLine();
+
+private:
+
+    std::vector<Point> vertices;
+    std::vector<Line> lines;
+    size_t count;
+    
 };
 
-class AddStore: public IMarshaller, public IUnMarshaller
-{
-public:
-    AddStore();
 
-    void Marshall(const std::string &body) override;
+//class GetCoordinates : public IMarshaller
+//{
+//  public:
+//    GetStoreMetadataRequest();
+//
+//    void Marshall(const std::string &body) override;
+//
+//    ~GetStoreMetadataRequest() override = default;
+//
+//    string name;
+//};
 
-    nlohmann::json UnMarshall() override;
 
-    ~AddStore() override = default;
-
-    float openAt;
-    float closeAt;
-    string address;
-    string name;
-};
-
-class GetStoreMetadataResponse : public IUnMarshaller
-{
-  public:
-    GetStoreMetadataResponse();
-
-    nlohmann::json UnMarshall() override;
-
-    ~GetStoreMetadataResponse() override = default;
-
-    std::vector<StoreMetadata> array;
-};
-
-class GetStoreListResponse : public IUnMarshaller
-{
-  public:
-    GetStoreListResponse();
-
-    nlohmann::json UnMarshall() override;
-
-    ~GetStoreListResponse() override = default;
-
-    std::vector<StoreList> array;
-};
-
-class UpdateStoreResponse : public IUnMarshaller
-{
-  public:
-    UpdateStoreResponse();
-
-    nlohmann::json UnMarshall() override;
-
-    ~UpdateStoreResponse() override = default;
-
-    std::vector<UpdateStore> array;
-};
-
-class AddStoreResponse : public IUnMarshaller
-{
-public:
-    AddStoreResponse();
-
-    nlohmann::json UnMarshall() override;
-
-    ~AddStoreResponse() override = default;
-
-    std::vector<AddStore> array;
-};
 
 #endif // TECHNO_SEARCH_MODELS_H

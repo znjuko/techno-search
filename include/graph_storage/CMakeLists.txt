@@ -1,4 +1,6 @@
-set(LIBRARY_NAME graph_storage graphStorage.h)
+set(LIBRARY_NAME graph_storage)
+
+file(GLOB SRC *.h *.cpp)
 
 add_library(${LIBRARY_NAME} INTERFACE)
 

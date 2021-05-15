@@ -1,4 +1,6 @@
-set(LIBRARY_NAME map_storage mapStorage.h)
+set(LIBRARY_NAME map_storage)
+
+file(GLOB SRC *.h *.cpp)
 
 add_library(${LIBRARY_NAME} INTERFACE)
 

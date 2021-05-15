@@ -1,73 +1,59 @@
 #include "models.h"
+#include <nlohmann/json.hpp>
 
-GetStoreMetadataRequest::GetStoreMetadataRequest() : name(""){};
+Point::Point(double _x, double _y) : x(_x), y(_y) {}
 
-void GetStoreMetadataRequest::Marshall(const std::string &body){};
+Point Line::GetMiddleOfLine() const {
+    Point p((p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
+    return p;
+}
 
-GetStoreListRequest::GetStoreListRequest() : name(""), search(""){};
+Point* Line::LineIntersectionWithLine(Line l) {
+    // Line AB represented as a1x + b1y = c1
+    double a1 = this->p2.y - this->p1.y;
+    double b1 = this->p1.x - this->p2.x;
+    double c1 = a1 * (this->p1.x) + b1 * (this->p1.y);
 
-void GetStoreListRequest::Marshall(const std::string &body){};
+    // Line CD represented as a2x + b2y = c2
+    double a2 = l.p2.y - l.p1.y;
+    double b2 = l.p1.x - l.p2.x;
+    double c2 = a2 * (l.p1.x) + b2 * (l.p1.y);
 
-UpdateStoreRequest::UpdateStoreRequest() : openAt(0), closeAt(0), address(""), name(""){};
+    double determinant = a1 * b2 - a2 * b1;
 
-void UpdateStoreRequest::Marshall(const std::string &body){};
+    if (determinant == 0) {
+        // The lines are parallel. This is simplified
+        // by returning a pair of FLT_MAX
+        return nullptr;
+    }
 
-AddStoreRequest::AddtoreRequest() : openAt(0), closeAt(0), address(""), name(""){};
+    double x = (b2 * c1 - b1 * c2)/determinant;
+    double y = (a1 * c2 - a2 * c1)/determinant;
+    auto p = new Point(x, y);
+    return p;
 
-void AddStoreRequest::Marshall(const std::string &body){};
+}
 
-StoreMetadata::StoreMetadata() : openAt(0), closeAt(0), address(""), name(""){};
+Line::Line(Point _p1, Point _p2) : p1(_p1), p2(_p2) {}
 
-void StoreMetadata::Marshall(const std::string &body){};
+Polygon::Polygon() : vertices(), lines(), count(0) {}
 
-nlohmann::json StoreMetadata::UnMarshall()
-{
-    return nlohmann::json();
-};
+bool Polygon::IsPointInsidePolygon(Point p) {
+    return 0;
+}
 
-StoreList::StoreList() : storeList(0, 0, "", ""){};
-void StoreList::Marshall(const std::string &body){};
-nlohmann::json StoreList::UnMarshall()
-{
-    return nlohmann::json();
-};
+Point Polygon::GetPolygonCenter() {
+    return Point(0, 0);
+}
 
-UpdateStore::UpdateStore() : openAt(0), closeAt(0), address(""), name(""){};
-void UpdateStore::Marshall(const std::string &body){};
-nlohmann::json UpdateStore::UnMarshall()
-{
-    return nlohmann::json();
-};
+Point Polygon::GetPointWithLowestX() {
+    return Point(0, 0);
+}
 
-AddStore::AddStore() : openAt(0), closeAt(0), address(""), name(""){};
+void Polygon::InitLines() {
 
-void AddStore::Marshall(const std::string &body){};
+}
 
-nlohmann::json AddStore::UnMarshall()
-{
-    return nlohmann::json();
-};
-
-GetStoreMetadataResponse::GetStoreMetadataResponse() : array(std::vector<StoreMetadata>()){};
-nlohmann::json GetStoreMetadataResponse::UnMarshall()
-{
-    return nlohmann::json();
-};
-
-GetStoreListResponse::GetStoreListResponse() : array(std::vector<StoreList>()){};
-nlohmann::json GetStoreListResponse::UnMarshall()
-{
-    return nlohmann::json();
-};
-
-UpdateStoreResponse::UpdateStoreResponse() : array(std::vector<UpdateStore>()){};
-nlohmann::json UpdateStoreResponse::UnMarshall()
-{
-    return nlohmann::json();
-};
-
-AddStoreResponse::AddStoreResponse() : array(std::vector<AddStore>()){};
-nlohmann::json AddStoreResponse::UnMarshall()
-{
-    return nlohmann::json();
-};
+std::vector<Point> Polygon::CollisionsWithVerticalLine() {
+    return std::vector<Point>();
+}
