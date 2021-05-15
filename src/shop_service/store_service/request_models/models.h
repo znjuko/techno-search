@@ -7,34 +7,54 @@
 
 #include "marshaller.h"
 #include "unmarshaller.h"
+
 #include <string>
-
+#include <pistache/endpoint.h>
 #include <nlohmann/json.hpp>
+#include <algorithm>
+#include <pistache/http.h>
+#include <boost/algorithm/string.hpp>
+#include <boost/lexical_cast.hpp>
 
-class GetStoreMetadataRequest : public IMarshaller
+using namespace Pistache;
+
+struct StoreStruct{
+    int StoreID;
+    std::string Name;
+    float OpenAt;
+    float CloseAt;
+    std::string Address;
+    StoreStruct(int StoreID, std::string Name,float OpenAt,float CloseAt,std::string Address){
+        this->StoreID = StoreID;
+        this->Name = Name;
+        this->OpenAt = OpenAt;
+        this->CloseAt = CloseAt;
+        this->Address = Address;
+    }
+};
+
+class GetStoreMetadataRequest : public IQueryMarshaller
 {
   public:
     GetStoreMetadataRequest();
 
-    void Marshall(const Http::Uri::Query &query) override;
-
     ~GetStoreMetadataRequest() override = default;
 
-    std::string name;
-    void Marshall(const Http::Uri::Query &query);
+    void Marshall(const Http::Uri::Query &body) override;
+
+    int StoreID;
 };
 
-class GetStoreListRequest : public IMarshaller
+class GetStoreListRequest : public IQueryMarshaller
 {
   public:
     GetStoreListRequest();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &body) override;
 
     ~GetStoreListRequest() override = default;
 
-    std::string search;
-    std::string name;
+    std::string Search;
 };
 
 class UpdateStoreRequest : public IMarshaller
@@ -45,11 +65,7 @@ public:
     void Marshall(const std::string &body) override;
 
     ~UpdateStoreRequest() override = default;
-
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    StoreStruct Store;
 };
 
 class AddStoreRequest : public IMarshaller
@@ -58,11 +74,7 @@ public:
     AddStoreRequest();
     void Marshall(const std::string &body) override;
     ~AddStoreRequest() override = default;
-
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    StoreStruct Store;
 };
 
 class StoreMetadata : public IMarshaller, public IUnMarshaller

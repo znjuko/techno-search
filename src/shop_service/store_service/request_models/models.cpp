@@ -3,28 +3,44 @@
 //
 
 #include "models.h"
+#include <iomanip>
+#include "struct_mapping/struct_mapping.h"
 
 using namespace Pistache;
 
-GetStoreMetadataRequest::GetStoreMetadataRequest() : name(""){
-
+GetStoreMetadataRequest::GetStoreMetadataRequest() : StoreID(0){
 }
 
 void GetStoreMetadataRequest::Marshall(const Http::Uri::Query &query){
-    //TODO
+    StoreID = boost::lexical_cast<int>(query.get("id").value());
 };
 
-GetStoreListRequest::GetStoreListRequest() : name(""), search(""){};
+GetStoreListRequest::GetStoreListRequest() : Search(""){
 
-void GetStoreListRequest::Marshall(const std::string &body){};
+      };
 
-UpdateStoreRequest::UpdateStoreRequest() : openAt(0), closeAt(0), address(""), name(""){};
+void GetStoreListRequest::Marshall(const Http::Uri::Query &query){
+    Search = (query.get("name").value());
+};
 
-void UpdateStoreRequest::Marshall(const std::string &body){};
+UpdateStoreRequest::UpdateStoreRequest() : Store(0, "", 0.0, 0.0, ""){};
 
-AddStoreRequest::AddStoreRequest() : openAt(0), closeAt(0), address(""), name(""){};
+void UpdateStoreRequest::Marshall(const std::string &body){
+    //TODO:: check regular is it
+    auto jsonData = std::istringstream(R"json(\n" + body + "\n)json");
+    nlohmann::json d;
 
-void AddStoreRequest::Marshall(const Http::Uri::Query &query){};
+    struct_mapping::map_json_to_struct(Store, jsonData);
+};
+
+AddStoreRequest::AddStoreRequest() : Store(0, "", 0.0, 0.0, ""){};
+
+void AddStoreRequest::Marshall(const std::string &body){
+    //TODO:: check regular is it
+    auto jsonData = std::istringstream(R"(json)" + body + R"(json)");
+
+    struct_mapping::map_json_to_struct(Store, jsonData);
+};
 
 StoreMetadata::StoreMetadata() : openAt(0), closeAt(0), address(""), name(""){};
 
