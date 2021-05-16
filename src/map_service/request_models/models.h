@@ -3,11 +3,14 @@
 
 #include <nlohmann/json.hpp>
 #include <vector>
+#include <iostream>
 
 class Point {
 
 public:
     double x, y;
+
+    void Show() const;
 
     Point(double _x, double  _y);
 
@@ -19,6 +22,8 @@ class Line {
 
 public:
     Point p1, p2;
+
+    void Show() const;
 
     Line(Point _p1, Point _p2);
 
@@ -40,6 +45,8 @@ public:
 
     bool IsPointInsidePolygon(Point p);
 
+    void ShowLines();
+
     Point GetPolygonCenter();
 
     Point GetPointWithLowestX();
@@ -52,7 +59,7 @@ public:
 
     std::vector<Point> GetVertices();
 
-    std::vector<Point> IntersectionWithVerticalLine();
+    std::vector<Point*> IntersectionWithVerticalLine(Line l);
 
 private:
 

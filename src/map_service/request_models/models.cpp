@@ -23,8 +23,8 @@ Point* Line::LineIntersectionWithLine(Line l) {
         return nullptr;
     }
 
-    double x = (b2 * c1 - b1 * c2)/determinant;
-    double y = (a1 * c2 - a2 * c1)/determinant;
+    double x = (b2 * c1 - b1 * c2) / determinant;
+    double y = (a1 * c2 - a2 * c1) / determinant;
     auto p = new Point(x, y);
     return p;
 }
@@ -34,7 +34,25 @@ Line::Line(Point _p1, Point _p2) : p1(_p1), p2(_p2) {}
 Polygon::Polygon() : vertices(), lines(), count(0) {}
 
 bool Polygon::IsPointInsidePolygon(Point p) {
-    return 0;
+    Point p1 = p;
+    Point p2(p.x + 1,p.y);
+    Line l(p1, p2);
+
+    size_t IntersectionsCount = 0;
+
+    for(auto line : lines) {
+        Point* point = l.LineIntersectionWithLine(line);
+        if(point != nullptr && p.x <= point->x) {
+            ++IntersectionsCount;
+        }
+        delete point;
+    }
+
+    if(IntersectionsCount % 2 == 1) {
+        return true;
+    }
+
+    return false;
 }
 
 Point Polygon::GetPolygonCenter() {
@@ -55,17 +73,42 @@ void Polygon::InitLines() {
 }
 
 void Polygon::AddPoint(Point p) {
+    ++this->count;
     vertices.push_back(p);
 }
 
-std::vector<Point> Polygon::IntersectionWithVerticalLine() {
-    return std::vector<Point>();
+std::vector<Point*> Polygon::IntersectionWithVerticalLine(Line l) {
+    std::vector<Point*> points;
+    for(auto line : lines) {
+        Point* point = l.LineIntersectionWithLine(line);
+        if(point != nullptr) {
+            points.push_back(point);
+        }
+    }
+    return points;
 }
-std::vector<Line> Polygon::GetLines()
-{
+
+std::vector<Line> Polygon::GetLines() {
     return lines;
 }
-std::vector<Point> Polygon::GetVertices()
-{
+
+std::vector<Point> Polygon::GetVertices() {
     return vertices;
+}
+
+void Polygon::ShowLines(){
+    for(auto l : lines) {
+        l.Show();
+    }
+}
+
+void Line::Show() const {
+    p1.Show();
+    std::cout << ' ';
+    p2.Show();
+    std::cout << std::endl;
+}
+
+void Point::Show() const {
+    std::cout << '(' << x << ", " << y << ')';
 }
