@@ -9,12 +9,10 @@ Point Line::GetMiddleOfLine() const {
 }
 
 Point* Line::LineIntersectionWithLine(Line l) {
-    // Line AB represented as a1x + b1y = c1
     double a1 = this->p2.y - this->p1.y;
     double b1 = this->p1.x - this->p2.x;
     double c1 = a1 * (this->p1.x) + b1 * (this->p1.y);
 
-    // Line CD represented as a2x + b2y = c2
     double a2 = l.p2.y - l.p1.y;
     double b2 = l.p1.x - l.p2.x;
     double c2 = a2 * (l.p1.x) + b2 * (l.p1.y);
@@ -22,8 +20,6 @@ Point* Line::LineIntersectionWithLine(Line l) {
     double determinant = a1 * b2 - a2 * b1;
 
     if (determinant == 0) {
-        // The lines are parallel. This is simplified
-        // by returning a pair of FLT_MAX
         return nullptr;
     }
 
@@ -31,7 +27,6 @@ Point* Line::LineIntersectionWithLine(Line l) {
     double y = (a1 * c2 - a2 * c1)/determinant;
     auto p = new Point(x, y);
     return p;
-
 }
 
 Line::Line(Point _p1, Point _p2) : p1(_p1), p2(_p2) {}
@@ -51,9 +46,26 @@ Point Polygon::GetPointWithLowestX() {
 }
 
 void Polygon::InitLines() {
-
+    for(size_t i = 1; i < vertices.size(); ++i) {
+        Line l(vertices[i - 1], vertices[i]);
+        lines.push_back(l);
+    }
+    Line l(vertices[vertices.size() - 1], vertices[0]);
+    lines.push_back(l);
 }
 
-std::vector<Point> Polygon::CollisionsWithVerticalLine() {
+void Polygon::AddPoint(Point p) {
+    vertices.push_back(p);
+}
+
+std::vector<Point> Polygon::IntersectionWithVerticalLine() {
     return std::vector<Point>();
+}
+std::vector<Line> Polygon::GetLines()
+{
+    return lines;
+}
+std::vector<Point> Polygon::GetVertices()
+{
+    return vertices;
 }

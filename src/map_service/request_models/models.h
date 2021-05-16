@@ -46,7 +46,13 @@ public:
 
     void InitLines();
 
-    std::vector<Point> CollisionsWithVerticalLine();
+    void AddPoint(Point p);
+
+    std::vector<Line> GetLines();
+
+    std::vector<Point> GetVertices();
+
+    std::vector<Point> IntersectionWithVerticalLine();
 
 private:
 
