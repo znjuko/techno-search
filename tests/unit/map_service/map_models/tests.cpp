@@ -1,5 +1,6 @@
+#include "map_models.h"
+
 #include <gtest/gtest.h>
-#include "models.h"
 #include <iostream>
 
 TEST(LINE, INTERSECTION) {

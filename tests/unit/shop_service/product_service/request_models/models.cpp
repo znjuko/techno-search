@@ -1,10 +1,9 @@
 //
 // Created by fillinmar on 31.03.2021.
 //
-#include <gtest/gtest.h>
+#include "map_models.h"
+
 #include <fstream>
-
-#include "models.h"
-
+#include <gtest/gtest.h>
 }
 

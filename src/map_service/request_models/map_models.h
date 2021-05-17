@@ -1,5 +1,5 @@
-#ifndef TECHNO_SEARCH_MODELS_H
-#define TECHNO_SEARCH_MODELS_H
+#ifndef TECHNO_SEARCH_MAP_MODELS_H
+#define TECHNO_SEARCH_MAP_MODELS_H
 
 #include <nlohmann/json.hpp>
 #include <vector>
@@ -84,4 +84,4 @@ private:
 
 
 
-#endif // TECHNO_SEARCH_MODELS_H
+#endif // TECHNO_SEARCH_MAP_MODELS_H

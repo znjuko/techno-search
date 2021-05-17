@@ -1,4 +1,5 @@
-#include "models.h"
+#include "map_models.h"
+
 #include <nlohmann/json.hpp>
 
 Point::Point(double _x, double _y) : x(_x), y(_y) {}
@@ -56,11 +57,18 @@ bool Polygon::IsPointInsidePolygon(Point p) {
 }
 
 Point Polygon::GetPolygonCenter() {
-    return Point(0, 0);
+    Point centroid(0,0);
+    return centroid;
 }
 
 Point Polygon::GetPointWithLowestX() {
-    return Point(0, 0);
+    Point min = vertices[0];
+    for(size_t i = 1; i < vertices.size(); ++i) {
+        if(vertices[i].x < min.x) {
+            min = vertices[i];
+        }
+    }
+    return min;
 }
 
 void Polygon::InitLines() {

@@ -3,19 +3,22 @@
 
 #include <vector>
 #include <map>
-#include "graph_converter.h"
-#include "models.h"
+#include "map_models.h"
+//#include "graph_converter.h"
 
 class Map {
 
 public:
-    std::map<Polygon, int> getCounters();
-    Feature getShop();
+    std::vector<Polygon> GetCounters();
+    Polygon GetShop();
+    void SetCounters(std::map<Polygon, int> counters);
+    void SetShop(Polygon shop);
 
 private:
     int id;
     std::map<Polygon, int> counters;
-    Feature shop;
+    Polygon shop;
+
 };
 
 

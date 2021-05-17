@@ -1,12 +1,16 @@
-#include "graph_converter.h"
 #include "shop_map.h"
 #include <vector>
+#include "map_models.h"
+#include "graph_converter.h"
+
+std::vector<std::vector<double>> GraphConverter::Generate(Map map) {
+
+    std::vector<std::vector<double>> AdjacencyTable;
+
+    std::vector<Polygon> counters = map.GetCounters();
+    Polygon shop = map.GetShop();
 
 
-std::vector<vector<double>> GraphConverter::Generate(Map map) {
 
-    std::vector<Feature> counters = map.getCounters();
-    Feature shop = map.getShop();
-
-
+    return AdjacencyTable;
 }
