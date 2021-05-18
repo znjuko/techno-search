@@ -6,9 +6,10 @@
 
 #include <utility>
 
-//TOBEDONE
+// TODO this
 
-std::shared_ptr<GetStoreMetadataResponse> StoreStorage::GetStoreMetadata(std::shared_ptr<GetStoreMetadataRequest> req){
+std::shared_ptr<GetStoreMetadataResponse> StoreStorage::GetStoreMetadata(std::shared_ptr<GetStoreMetadataRequest> req)
+{
     auto q = std::shared_ptr<GetStoreMetadataQuery>();
     q->SetupQuery(req);
     std::shared_ptr<StoreMetadataReader> reader;

@@ -3,21 +3,26 @@
 //
 
 #include "models.h"
-#include <iomanip>
+
 #include "struct_mapping/struct_mapping.h"
+
+#include <iomanip>
 
 using namespace Pistache;
 
-GetStoreMetadataRequest::GetStoreMetadataRequest() : StoreID(0){
+GetStoreMetadataRequest::GetStoreMetadataRequest() : StoreID(0)
+{
 }
 
-void GetStoreMetadataRequest::Marshall(const Http::Uri::Query &query){
+void GetStoreMetadataRequest::Marshall(const Http::Uri::Query &query)
+{
     StoreID = boost::lexical_cast<int>(query.get("id").value());
 };
 
 GetStoreListRequest::GetStoreListRequest() : Search(""), limit(0), skip(0){};
 
-void GetStoreListRequest::Marshall(const Http::Uri::Query &query){
+void GetStoreListRequest::Marshall(const Http::Uri::Query &query)
+{
     Search = (query.get("name").value());
     limit = boost::lexical_cast<int>(query.get("storage").value());
     skip = boost::lexical_cast<int>(query.get("storage").value());
@@ -25,8 +30,9 @@ void GetStoreListRequest::Marshall(const Http::Uri::Query &query){
 
 UpdateStoreRequest::UpdateStoreRequest() : Store(0, "", 0.0, 0.0, ""){};
 
-void UpdateStoreRequest::Marshall(const std::string &body){
-    //TODO:: check regular is it
+void UpdateStoreRequest::Marshall(const std::string &body)
+{
+    // TODO:: check regular is it
     auto jsonData = std::istringstream(R"json(\n" + body + "\n)json");
     nlohmann::json d;
 
@@ -35,8 +41,9 @@ void UpdateStoreRequest::Marshall(const std::string &body){
 
 AddStoreRequest::AddStoreRequest() : Store(0, "", 0.0, 0.0, ""){};
 
-void AddStoreRequest::Marshall(const std::string &body){
-    //TODO:: check regular is it
+void AddStoreRequest::Marshall(const std::string &body)
+{
+    // TODO:: check regular is it
     auto jsonData = std::istringstream(R"(json)" + body + R"(json)");
 
     struct_mapping::map_json_to_struct(Store, jsonData);
@@ -57,7 +64,7 @@ nlohmann::json StoreMetadata::UnMarshall()
     return output;
 };
 
-StoreList::StoreList() :  Store(0, "", 0.0, 0.0, "") {};
+StoreList::StoreList() : Store(0, "", 0.0, 0.0, ""){};
 void StoreList::Marshall(const std::string &body){};
 nlohmann::json StoreList::UnMarshall()
 {
@@ -112,7 +119,8 @@ nlohmann::json GetStoreListResponse::UnMarshall()
 {
     nlohmann::json output;
     nlohmann::json outputArray = nlohmann::json::array();
-    for (auto item = array.begin(); item != array.end(); ++item) {
+    for (auto item = array.begin(); item != array.end(); ++item)
+    {
         outputArray.push_back(item->UnMarshall());
     }
     output["values"] = outputArray;
@@ -125,7 +133,8 @@ nlohmann::json UpdateStoreResponse::UnMarshall()
 {
     nlohmann::json output;
     nlohmann::json outputArray = nlohmann::json::array();
-    for (auto item = array.begin(); item != array.end(); ++item) {
+    for (auto item = array.begin(); item != array.end(); ++item)
+    {
         outputArray.push_back(item->UnMarshall());
     }
     output["values"] = outputArray;

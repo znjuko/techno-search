@@ -18,6 +18,7 @@ class StoreManager
     UpdateStoreResponse UpdateStoreMetadata(UpdateStoreRequest req);
     AddStoreResponse AddStore(AddStoreRequest req);
     ~StoreManager();
+
   private:
     StoreStorage store;
 };

@@ -2,8 +2,8 @@
 // Created by fillinmar on 14.04.2021.
 //
 
-#include "store_manager.h"
+#include "usecase.h"
 
-//todo
+// todo
 
 StoreManager::~StoreManager() = default;

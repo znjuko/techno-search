@@ -1,8 +1,8 @@
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-set(SRC store_manager.h store_manager.cpp)
+set(SRC usecase.h usecase.cpp)
 
-set(LIBRARY_NAME store_manager)
+set(LIBRARY_NAME store_usecase)
 
 add_library(${LIBRARY_NAME} STATIC ${SRC})
 

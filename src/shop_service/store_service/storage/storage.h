@@ -5,8 +5,9 @@
 #ifndef TECHNO_SEARCH_STORE_STORAGE_H
 #define TECHNO_SEARCH_STORE_STORAGE_H
 
-#include "models.h"
 #include "common_storage.h"
+#include "models.h"
+
 #include <memory>
 
 class StoreStorage
