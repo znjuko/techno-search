@@ -5,14 +5,21 @@
 #ifndef TECHNO_SEARCH_STORE_MANAGER_H
 #define TECHNO_SEARCH_STORE_MANAGER_H
 
-class StoreManager{
-private:
-    StoreStorage: store;
-public:
-    GetStoreMetadataResponse GetStoreMetadata( GetStoreMetadataRequest req){};
-    GetListStoreResponse GetListStore(GetListStoreRequest req);
-    UpdateStoreMetadataResponse UpdateStoreMetadata(UpdateMetadataRequest req);
-    AddListStoreResponse AddStore(AddStoreRequest req);
+#include "models.h"
+#include "storage.h"
+
+class StoreManager
+{
+  public:
+    StoreManager() = delete;
+    explicit StoreManager(const StoreManager &storage) noexcept;
+    GetStoreMetadataResponse GetStoreMetadata(GetStoreMetadataRequest req);
+    GetStoreListResponse GetListStore(GetStoreMetadataRequest req);
+    UpdateStoreResponse UpdateStoreMetadata(UpdateStoreRequest req);
+    AddStoreResponse AddStore(AddStoreRequest req);
+    ~StoreManager();
+  private:
+    StoreStorage store;
 };
 
-#endif //TECHNO_SEARCH_STORE_MANAGER_H
+#endif // TECHNO_SEARCH_STORE_MANAGER_H

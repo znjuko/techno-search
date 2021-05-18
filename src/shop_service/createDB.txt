@@ -53,6 +53,26 @@ CREATE TABLE product (
    UNIQUE (name, id_store)
 );
 
+SELECT *
+FROM store;
+
+#поиск магазина
+SELECT id, name, open_at, close_at, address
+FROM store WHERE id=1;
+
+#поиск магазинов
+SELECT id, name, open_at, close_at, address
+FROM store
+WHERE name LIKE 'V%';
+
+#изменение значений
+UPDATE store
+SET name = 'Vica', open_at = 9.0, close_at = 23.0, address = 'Arbat, 5'
+WHERE id = 1;
+
+#ДОБАВЛЕНИЕ МАГАЗИНА
+INSERT INTO store(name, open_at, close_at, address)
+VALUES ('Victoria', 9.0, 23.0, 'Arbat, 7');
 
 INSERT INTO store(name, open_at, close_at, address) 
 VALUES ('Victoria', 9.0, 23.0, 'Arbat, 7'),

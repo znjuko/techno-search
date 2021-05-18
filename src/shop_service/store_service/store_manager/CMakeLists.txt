@@ -8,4 +8,5 @@ add_library(${LIBRARY_NAME} STATIC ${SRC})
 
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(${LIBRARY_NAME} PRIVATE marshaller unmarshaller nlohmann_json::nlohmann_json)
+target_link_libraries(${LIBRARY_NAME} PRIVATE store_models
+        store_storage )

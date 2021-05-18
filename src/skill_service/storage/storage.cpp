@@ -6,7 +6,7 @@
 
 #include <utility>
 
-std::shared_ptr<CountersPopularityMetricResponse> MetricStorage::GetCounterPopularityByShop(
+std::shared_ptr<CountersPopularityMetricResponse> GetCounterPopularityByShop::GetCounterPopularityByShop(
         std::shared_ptr<GetCountersPopularityByStoreRequest> req) {
     auto q = std::shared_ptr<GetCounterPopularityMetricQuery>();
     q->SetupQuery(req);

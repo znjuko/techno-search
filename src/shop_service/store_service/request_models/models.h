@@ -18,13 +18,15 @@
 
 using namespace Pistache;
 
-struct StoreStruct{
+class Store
+{
+  public:
     int StoreID;
     std::string Name;
     float OpenAt;
     float CloseAt;
     std::string Address;
-    StoreStruct(int StoreID, std::string Name,float OpenAt,float CloseAt,std::string Address){
+    Store(int StoreID, std::string Name,float OpenAt,float CloseAt,std::string Address){
         this->StoreID = StoreID;
         this->Name = Name;
         this->OpenAt = OpenAt;
@@ -55,6 +57,8 @@ class GetStoreListRequest : public IQueryMarshaller
     ~GetStoreListRequest() override = default;
 
     std::string Search;
+    int limit;
+    int skip;
 };
 
 class UpdateStoreRequest : public IMarshaller
@@ -65,7 +69,7 @@ public:
     void Marshall(const std::string &body) override;
 
     ~UpdateStoreRequest() override = default;
-    StoreStruct Store;
+    Store Store;
 };
 
 class AddStoreRequest : public IMarshaller
@@ -74,24 +78,21 @@ public:
     AddStoreRequest();
     void Marshall(const std::string &body) override;
     ~AddStoreRequest() override = default;
-    StoreStruct Store;
+    Store Store;
 };
 
-class StoreMetadata : public IMarshaller, public IUnMarshaller
+class StoreMetadata : public IQueryMarshaller, public IUnMarshaller
 {
   public:
     StoreMetadata();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &body) override;
 
     nlohmann::json UnMarshall() override;
 
     ~StoreMetadata() override = default;
 
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    Store Store;
 };
 
 class StoreList: public IMarshaller, public IUnMarshaller
@@ -105,25 +106,21 @@ class StoreList: public IMarshaller, public IUnMarshaller
 
     ~StoreList() override = default;
 
-    StoreMetadata* storeList;
-    int skip;
-    int limit;
+    Store Store;
 };
 
 class UpdateStore : public IMarshaller, public IUnMarshaller
 {
 public:
     UpdateStore();
+
     void Marshall(const std::string &body) override;
 
     nlohmann::json UnMarshall() override;
 
     ~UpdateStore() override = default;
 
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    Store Store;
 };
 
 class AddStore: public IMarshaller, public IUnMarshaller
@@ -137,10 +134,7 @@ public:
 
     ~AddStore() override = default;
 
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    Store Store;
 };
 
 class GetStoreMetadataResponse : public IUnMarshaller
