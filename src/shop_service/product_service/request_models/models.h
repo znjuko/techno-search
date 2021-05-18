@@ -2,39 +2,46 @@
 // Created by fillinmar on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_MODELS_H
-#define TECHNO_SEARCH_MODELS_H
+#ifndef TECHNO_SEARCH_PRODUCT_MODELS_H
+#define TECHNO_SEARCH_PRODUCT_MODELS_H
 
 #include "marshaller.h"
 #include "unmarshaller.h"
 
+#include <algorithm>
+#include <boost/algorithm/string.hpp>
+#include <boost/lexical_cast.hpp>
 #include <nlohmann/json.hpp>
+#include <pistache/endpoint.h>
+#include <pistache/http.h>
+#include <string>
 
-class GetProductMetadataRequest : public IMarshaller
+using namespace Pistache;
+
+class GetProductMetadataRequest : public IQueryMarshaller
 {
   public:
     GetProductMetadataRequest();
 
-    void Marshall(const std::string &body) override;
-
     ~GetProductMetadataRequest() override = default;
 
-    std::string name;
-    std::string shopName;
+    void Marshall(const Http::Uri::Query &body) override;
+
+    int ProductID;
 };
 
-class GetProductListRequest : public IMarshaller
+class GetProductListRequest : public IQueryMarshaller
 {
   public:
     GetProductListRequest();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &body) override;
 
     ~GetProductListRequest() override = default;
 
-    std::string search;
-    std::string name;
-    std::string shopName;
+    std::string Search;
+    int limit;
+    int skip;
 };
 
 class UpdateProductRequest : public IMarshaller
@@ -46,6 +53,7 @@ public:
 
     ~UpdateProductRequest() override = default;
 
+    int ProductID;
     std::string shopName;
     std::string name;
     std::string category;
@@ -74,12 +82,13 @@ class ProductMetadata : public IMarshaller, public IUnMarshaller
   public:
     ProductMetadata();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &body) override;
 
     nlohmann::json UnMarshall() override;
 
     ~ProductMetadata() override = default;
 
+    int ProductID;
     std::string shopName;
     std::string name;
     std::string category;
@@ -99,9 +108,13 @@ class ProductList: public IMarshaller, public IUnMarshaller
 
     ~ProductList() override = default;
 
-    ProductMetadata* productList;
-    int limit;
-    int skip;
+    int ProductID;
+    std::string shopName;
+    std::string name;
+    std::string category;
+    int price;
+    int quantity;
+    std::string articul;
 };
 
 class UpdateProduct : public IMarshaller, public IUnMarshaller
@@ -114,6 +127,7 @@ public:
 
     ~UpdateProduct() override = default;
 
+    int ProductID;
     std::string shopName;
     std::string name;
     std::string category;
@@ -189,4 +203,4 @@ public:
     std::vector<AddProduct> array;
 };
 
-#endif // TECHNO_SEARCH_MODELS_H
+#endif // TECHNO_SEARCH_PRODUCT_MODELS_H
