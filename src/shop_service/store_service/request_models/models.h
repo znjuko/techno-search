@@ -2,86 +2,101 @@
 // Created by fillinmar on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_MAP_MODELS_H
+#ifndef TECHNO_SEARCH_MODELS_H
 #define TECHNO_SEARCH_MODELS_H
 
 #include "marshaller.h"
 #include "unmarshaller.h"
+
+#include <algorithm>
+#include <boost/algorithm/string.hpp>
+#include <boost/lexical_cast.hpp>
+#include <nlohmann/json.hpp>
+#include <pistache/endpoint.h>
+#include <pistache/http.h>
 #include <string>
 
-#include <nlohmann/json.hpp>
+using namespace Pistache;
 
-class GetStoreMetadataRequest : public IMarshaller
+class Store
+{
+  public:
+    int StoreID;
+    std::string Name;
+    float OpenAt;
+    float CloseAt;
+    std::string Address;
+    Store(int StoreID, std::string Name, float OpenAt, float CloseAt, std::string Address)
+    {
+        this->StoreID = StoreID;
+        this->Name = Name;
+        this->OpenAt = OpenAt;
+        this->CloseAt = CloseAt;
+        this->Address = Address;
+    }
+};
+
+class GetStoreMetadataRequest : public IQueryMarshaller
 {
   public:
     GetStoreMetadataRequest();
 
-    void Marshall(const std::string &body) override;
-
     ~GetStoreMetadataRequest() override = default;
 
-    std::string name;
+    void Marshall(const Http::Uri::Query &body) override;
+
+    int StoreID;
 };
 
-class GetStoreListRequest : public IMarshaller
+class GetStoreListRequest : public IQueryMarshaller
 {
   public:
     GetStoreListRequest();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &body) override;
 
     ~GetStoreListRequest() override = default;
 
-    std::string search;
-    std::string name;
+    std::string Search;
+    int limit;
+    int skip;
 };
 
 class UpdateStoreRequest : public IMarshaller
 {
-public:
+  public:
     UpdateStoreRequest();
 
     void Marshall(const std::string &body) override;
 
     ~UpdateStoreRequest() override = default;
-
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    Store Store;
 };
 
 class AddStoreRequest : public IMarshaller
 {
-public:
+  public:
     AddStoreRequest();
     void Marshall(const std::string &body) override;
     ~AddStoreRequest() override = default;
-
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    Store Store;
 };
 
-class StoreMetadata : public IMarshaller, public IUnMarshaller
+class StoreMetadata : public IQueryMarshaller, public IUnMarshaller
 {
   public:
     StoreMetadata();
 
-    void Marshall(const std::string &body) override;
+    void Marshall(const Http::Uri::Query &body) override;
 
     nlohmann::json UnMarshall() override;
 
     ~StoreMetadata() override = default;
 
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    Store Store;
 };
 
-class StoreList: public IMarshaller, public IUnMarshaller
+class StoreList : public IMarshaller, public IUnMarshaller
 {
   public:
     StoreList();
@@ -92,30 +107,26 @@ class StoreList: public IMarshaller, public IUnMarshaller
 
     ~StoreList() override = default;
 
-    StoreMetadata* storeList;
-    int skip;
-    int limit;
+    Store Store;
 };
 
 class UpdateStore : public IMarshaller, public IUnMarshaller
 {
-public:
+  public:
     UpdateStore();
+
     void Marshall(const std::string &body) override;
 
     nlohmann::json UnMarshall() override;
 
     ~UpdateStore() override = default;
 
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    Store Store;
 };
 
-class AddStore: public IMarshaller, public IUnMarshaller
+class AddStore : public IMarshaller, public IUnMarshaller
 {
-public:
+  public:
     AddStore();
 
     void Marshall(const std::string &body) override;
@@ -124,10 +135,7 @@ public:
 
     ~AddStore() override = default;
 
-    float openAt;
-    float closeAt;
-    std::string address;
-    std::string name;
+    Store Store;
 };
 
 class GetStoreMetadataResponse : public IUnMarshaller
@@ -168,7 +176,7 @@ class UpdateStoreResponse : public IUnMarshaller
 
 class AddStoreResponse : public IUnMarshaller
 {
-public:
+  public:
     AddStoreResponse();
 
     nlohmann::json UnMarshall() override;
@@ -178,4 +186,4 @@ public:
     std::vector<AddStore> array;
 };
 
-#endif // TECHNO_SEARCH_MAP_MODELS_H
+#endif // TECHNO_SEARCH_MODELS_H

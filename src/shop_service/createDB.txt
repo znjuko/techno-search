@@ -1,0 +1,95 @@
+#обновите ваши библиотеки
+sudo apt-get update
+
+#теперь загрузим библиотеки для работы postgresql + python3. 
+#Это для фреймворка Django (python3-pip python3-dev).
+sudo apt-get install python3-pip python3-dev libpq-dev postgresql postgresql-contrib
+
+
+#создание базы
+ createdb technosearch
+ #заходим в консоль postgres. у вас должна поменяться строка приветстви
+ sudo -u fillinmar psql technosearch
+ 
+
+#выход из консоли PostgreSQL
+\q 
+#вывод списком созданных таблиц
+\dt
+#вывод полей таблицы
+\d counter 
+
+#задаем пароль
+ALTER USER fillinmar WITH PASSWORD '1234;
+
+CREATE TABLE store (
+   id serial PRIMARY KEY,
+   name text,
+   open_at numeric,
+   close_at numeric,
+   address text,
+   UNIQUE (name, address)
+);
+
+
+CREATE TABLE counter (
+   id serial PRIMARY KEY,
+   articul integer,
+   id_store integer,
+   FOREIGN KEY (id_store) REFERENCES store (id) ON DELETE CASCADE,
+   UNIQUE (articul, id_store)
+);
+
+CREATE TABLE product (
+   id serial,
+   name text,
+   category text,
+   price integer,
+   quantity integer,
+   id_store integer,
+   id_counter integer,
+   FOREIGN KEY (id_store) REFERENCES store (id) ON DELETE CASCADE,
+   FOREIGN KEY (id_counter) REFERENCES counter (id) ON DELETE CASCADE, 
+   UNIQUE (name, id_store)
+);
+
+SELECT *
+FROM store;
+
+#поиск магазина
+SELECT id, name, open_at, close_at, address
+FROM store WHERE id=1;
+
+#поиск магазинов
+SELECT id, name, open_at, close_at, address
+FROM store
+WHERE name LIKE 'V%';
+
+#изменение значений
+UPDATE store
+SET name = 'Vica', open_at = 9.0, close_at = 23.0, address = 'Arbat, 5'
+WHERE id = 1;
+
+#ДОБАВЛЕНИЕ МАГАЗИНА
+INSERT INTO store(name, open_at, close_at, address)
+VALUES ('Victoria', 9.0, 23.0, 'Arbat, 7');
+
+INSERT INTO store(name, open_at, close_at, address) 
+VALUES ('Victoria', 9.0, 23.0, 'Arbat, 7'),
+('Perekrestok', 9.0, 23.0, 'Pyshkino, 7'),
+('Fivester', 8.0, 22.0, 'Olomskoia, 7');
+
+INSERT INTO counter(articul, id_store) 
+VALUES (1, 1),
+(22, 1),
+(3, 1),
+(11, 1),
+(1, 2),
+(1, 3);
+
+INSERT INTO product(name, category, price, quantity, id_store, id_counter) 
+VALUES ('Cola', 'Drinks', 45, 5, 1, 1),
+('Moloko','Molochka', 65, 3,2,1),
+('Cake','Sweets', 300, 4, 1, 3);
+
+

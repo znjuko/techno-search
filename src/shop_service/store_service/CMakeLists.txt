@@ -1,4 +1,4 @@
 add_subdirectory(request_models)
 add_subdirectory(store_manager)
-add_subdirectory(store_storage)
+add_subdirectory(storage)
 add_subdirectory(delivery)
