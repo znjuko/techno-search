@@ -1,8 +1,10 @@
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-set(SRC product_manager.cpp product_manager.h)
+set(SRC delivery.h delivery.cpp)
 
-set(LIBRARY_NAME product_manager)
+set(LIBRARY_NAME products_delivery)
+
+file(GLOB SRC *.h *.cpp)
 
 add_library(${LIBRARY_NAME} STATIC ${SRC})
 

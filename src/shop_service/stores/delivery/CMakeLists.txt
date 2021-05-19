@@ -4,7 +4,7 @@ INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 
 set(SRC delivery.h delivery.cpp)
 
-set(LIBRARY_NAME store_delivery)
+set(LIBRARY_NAME stores_delivery)
 
 file(GLOB SRC *.h *.cpp)
 
@@ -16,6 +16,6 @@ target_link_libraries(
         ${LIBRARY_NAME} PRIVATE
         marshaller unmarshaller nlohmann_json::nlohmann_json
         pistache router_setupper request_reader response_writer
-        store_usecase store_models
+        stores_usecase stores_models
         ${Boost_LIBRARIES}
 )

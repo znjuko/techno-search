@@ -1,17 +1,10 @@
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-set(LIBRARY_NAME store_models)
+set(LIBRARY_NAME products_models)
 
 file(GLOB SRC *.h *.cpp)
 
 add_library(${LIBRARY_NAME} STATIC ${SRC})
-
-
-target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-#find_package(PkgConfig)
-#
-#pkg_check_modules(Pistache REQUIRED IMPORTED_TARGET libpistache)
 
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

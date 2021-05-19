@@ -1,7 +1,6 @@
 //
 // Created by fillinmar on 14.04.2021.
 //
-
 #ifndef TECHNO_SEARCH_STORE_SERVICE_H
 #define TECHNO_SEARCH_STORE_SERVICE_H
 

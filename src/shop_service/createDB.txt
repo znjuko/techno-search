@@ -46,7 +46,7 @@ CREATE TABLE product (
    category text,
    price integer,
    quantity integer,
-   id_store integer,
+   id_store integer
    id_counter integer,
    FOREIGN KEY (id_store) REFERENCES store (id) ON DELETE CASCADE,
    FOREIGN KEY (id_counter) REFERENCES counter (id) ON DELETE CASCADE, 

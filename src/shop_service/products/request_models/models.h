@@ -18,6 +18,28 @@
 
 using namespace Pistache;
 
+class Product
+{
+  public:
+    int ProductID;
+    int StoreID;
+    std::string Name;
+    std::string Category;
+    int Price;
+    int Quantity;
+    int CounterID;
+    Product(int ProductID, int StoreID, std::string Name, std::string Category, int Price, int Quantity, int CounterID)
+    {
+        this->ProductID = ProductID;
+        this->StoreID = StoreID;
+        this->Name = Name;
+        this->Category = Category;
+        this->Price = Price;
+        this->Quantity = Quantity;
+        this->CounterID = CounterID;
+    }
+};
+
 class GetProductMetadataRequest : public IQueryMarshaller
 {
   public:
@@ -40,44 +62,33 @@ class GetProductListRequest : public IQueryMarshaller
     ~GetProductListRequest() override = default;
 
     std::string Search;
-    int limit;
-    int skip;
+    int Limit;
+    int Skip;
 };
 
 class UpdateProductRequest : public IMarshaller
 {
-public:
+  public:
     UpdateProductRequest();
 
     void Marshall(const std::string &body) override;
 
     ~UpdateProductRequest() override = default;
 
-    int ProductID;
-    std::string shopName;
-    std::string name;
-    std::string category;
-    int price;
-    int quantity;
-    std::string articul;
+    Product Product;
 };
 
 class AddProductRequest : public IMarshaller
 {
-public:
+  public:
     AddProductRequest();
     void Marshall(const std::string &body) override;
     ~AddProductRequest() override = default;
 
-    std::string shopName;
-    std::string name;
-    std::string category;
-    int price;
-    int quantity;
-    std::string articul;
+    Product Product;
 };
 
-class ProductMetadata : public IMarshaller, public IUnMarshaller
+class ProductMetadata : public IQueryMarshaller, public IUnMarshaller
 {
   public:
     ProductMetadata();
@@ -88,16 +99,10 @@ class ProductMetadata : public IMarshaller, public IUnMarshaller
 
     ~ProductMetadata() override = default;
 
-    int ProductID;
-    std::string shopName;
-    std::string name;
-    std::string category;
-    int price;
-    int quantity;
-    std::string articul;
+    Product Product;
 };
 
-class ProductList: public IMarshaller, public IUnMarshaller
+class ProductList : public IMarshaller, public IUnMarshaller
 {
   public:
     ProductList();
@@ -108,18 +113,12 @@ class ProductList: public IMarshaller, public IUnMarshaller
 
     ~ProductList() override = default;
 
-    int ProductID;
-    std::string shopName;
-    std::string name;
-    std::string category;
-    int price;
-    int quantity;
-    std::string articul;
+    Product Product;
 };
 
 class UpdateProduct : public IMarshaller, public IUnMarshaller
 {
-public:
+  public:
     UpdateProduct();
     void Marshall(const std::string &body) override;
 
@@ -127,18 +126,12 @@ public:
 
     ~UpdateProduct() override = default;
 
-    int ProductID;
-    std::string shopName;
-    std::string name;
-    std::string category;
-    int price;
-    int quantity;
-    std::string articul;
+    Product Product;
 };
 
-class AddProduct: public IMarshaller, public IUnMarshaller
+class AddProduct : public IMarshaller, public IUnMarshaller
 {
-public:
+  public:
     AddProduct();
 
     void Marshall(const std::string &body) override;
@@ -147,12 +140,7 @@ public:
 
     ~AddProduct() override = default;
 
-    std::string shopName;
-    std::string name;
-    std::string category;
-    int price;
-    int quantity;
-    std::string articul;
+    Product Product;
 };
 
 class GetProductMetadataResponse : public IUnMarshaller
@@ -193,7 +181,7 @@ class UpdateProductResponse : public IUnMarshaller
 
 class AddProductResponse : public IUnMarshaller
 {
-public:
+  public:
     AddProductResponse();
 
     nlohmann::json UnMarshall() override;

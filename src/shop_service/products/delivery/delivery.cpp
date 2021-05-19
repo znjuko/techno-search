@@ -2,7 +2,7 @@
 // Created by fillinmar on 14.04.2021.
 //
 
-#include "product_service.h"
+#include "delivery.h"
 
 void ProductService::GetProductMetadata(Http::RequestReader req, Http::ResponseWriter res)
 {

@@ -58,8 +58,8 @@ class GetStoreListRequest : public IQueryMarshaller
     ~GetStoreListRequest() override = default;
 
     std::string Search;
-    int limit;
-    int skip;
+    int Limit;
+    int Skip;
 };
 
 class UpdateStoreRequest : public IMarshaller

@@ -19,13 +19,13 @@ void GetStoreMetadataRequest::Marshall(const Http::Uri::Query &query)
     StoreID = boost::lexical_cast<int>(query.get("id").value());
 };
 
-GetStoreListRequest::GetStoreListRequest() : Search(""), limit(0), skip(0){};
+GetStoreListRequest::GetStoreListRequest() : Search(""), Limit(0), Skip(0){};
 
 void GetStoreListRequest::Marshall(const Http::Uri::Query &query)
 {
     Search = (query.get("name").value());
-    limit = boost::lexical_cast<int>(query.get("storage").value());
-    skip = boost::lexical_cast<int>(query.get("storage").value());
+    Limit = boost::lexical_cast<int>(query.get("storage").value());
+    Skip = boost::lexical_cast<int>(query.get("storage").value());
 };
 
 UpdateStoreRequest::UpdateStoreRequest() : Store(0, "", 0.0, 0.0, ""){};

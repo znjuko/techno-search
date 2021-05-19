@@ -1,8 +1,8 @@
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-set(SRC product_storage.cpp product_storage.h)
+set(SRC usecase.cpp usecase.h)
 
-set(LIBRARY_NAME product_storage)
+set(LIBRARY_NAME products_usecase)
 
 add_library(${LIBRARY_NAME} STATIC ${SRC})
 

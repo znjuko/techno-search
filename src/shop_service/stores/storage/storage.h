@@ -26,6 +26,6 @@ class StoreStorage
     std::shared_ptr<AddStoreResponse> AddStore(std::shared_ptr<AddStoreResponse> req);
 
   private:
-    std::shared_ptr<StoreStorage> storage;
+    std::shared_ptr<PostgresStorage> storage;
 };
 #endif // TECHNO_SEARCH_STORE_STORAGE_H
