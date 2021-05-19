@@ -1,1 +1,0 @@
-/usr/bin/g++ -Wall -Wno-unknown-pragmas -Wno-sign-compare -Woverloaded-virtual -Wwrite-strings -Wno-unused -Werror -Wpedantic -fprofile-arcs -ftest-coverage -O0 -g CMakeFiles/tests.dir/tests/unit/map_service/map_graph/graph/graph.cpp.o -o tests  /usr/lib/x86_64-linux-gnu/libgtest.a -lpthread 
