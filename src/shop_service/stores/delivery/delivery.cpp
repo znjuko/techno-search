@@ -91,7 +91,7 @@ void StoreService::AddStore(const Http::Request &req, Http::ResponseWriter res)
     }
     catch (const boost::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, "wrong product ids", &res);
+        errorWriter.WriteError(Http::Code::Bad_Request, "wrong store metadata", &res);
         return;
     }
 

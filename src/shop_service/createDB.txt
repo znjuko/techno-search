@@ -7,8 +7,8 @@ sudo apt-get install python3-pip python3-dev libpq-dev postgresql postgresql-con
 
 
 #создание базы
- createdb technosearch
- #заходим в консоль postgres. у вас должна поменяться строка приветстви
+createdb technosearch
+#заходим в консоль postgres. у вас должна поменяться строка приветстви
  sudo -u fillinmar psql technosearch
  
 
@@ -56,6 +56,24 @@ CREATE TABLE product (
 SELECT *
 FROM store;
 
+#поиск Product
+SELECT id, name, category, price, quantity, id_store, id_counter
+FROM product WHERE id=1;
+
+#поиск Product
+SELECT id, name, category, price, quantity, id_store, id_counter
+FROM product
+WHERE name LIKE 'C%';
+
+#изменение значений
+UPDATE product
+SET name = 'Fanta', category = 'Drinks', price = 35, quantity = 5, id_store = 1, id_counter = 3
+WHERE id = 1;
+
+#ДОБАВЛЕНИЕ Product
+INSERT INTO product(name, category, price, quantity, id_store, id_counter)
+VALUES ('Carry', 'Sauce', 200, 100, 2, 3);
+
 #поиск магазина
 SELECT id, name, open_at, close_at, address
 FROM store WHERE id=1;
@@ -72,8 +90,10 @@ WHERE id = 1;
 
 #ДОБАВЛЕНИЕ МАГАЗИНА
 INSERT INTO store(name, open_at, close_at, address)
-VALUES ('Victoria', 9.0, 23.0, 'Arbat, 7');
+VALUES ('Victoriaы', 9.0, 23.0, 'Arbat, 50');
 
+
+#Заполнение таблиц
 INSERT INTO store(name, open_at, close_at, address) 
 VALUES ('Victoria', 9.0, 23.0, 'Arbat, 7'),
 ('Perekrestok', 9.0, 23.0, 'Pyshkino, 7'),

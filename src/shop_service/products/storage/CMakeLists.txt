@@ -8,4 +8,4 @@ add_library(${LIBRARY_NAME} STATIC ${SRC})
 
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(${LIBRARY_NAME} PRIVATE marshaller unmarshaller nlohmann_json::nlohmann_json products_models)
+target_link_libraries(${LIBRARY_NAME} PRIVATE postgres_storage postgres_query postgres_reader products_models)

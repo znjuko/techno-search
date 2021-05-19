@@ -94,5 +94,80 @@ class AddStoreQuery : public PostgresQuery
   private:
     std::string query;
 };
+class GetProductMetadataQuery : public PostgresQuery
+{
+  public:
+    GetProductMetadataQuery();
+
+    GetProductMetadataQuery (std::string *query) = delete;
+
+    GetProductMetadataQuery (std::string &query) = delete;
+
+    std::string GetQuery() const override;
+
+    void SetupQuery(std::shared_ptr<GetProductMetadataRequest> req);
+
+    ~GetProductMetadataQuery() override;
+
+  private:
+    std::string query;
+};
+
+class GetProductListQuery : public PostgresQuery
+{
+  public:
+    GetProductListQuery();
+
+    GetProductListQuery(std::string *query) = delete;
+
+    GetProductListQuery(std::string &query) = delete;
+
+    std::string GetQuery() const override;
+
+    void SetupQuery(std::shared_ptr<GetProductListRequest> req);
+
+    ~GetProductListQuery() override;
+
+  private:
+    std::string query;
+};
+
+class UpdateProductQuery : public PostgresQuery
+{
+  public:
+    UpdateProductQuery();
+
+    UpdateProductQuery(std::string query) = delete;
+
+    UpdateProductQuery(std::string &query) = delete;
+
+    std::string GetQuery() const override;
+
+    void SetupQuery(std::shared_ptr<UpdateProductRequest> req);
+
+    ~UpdateProductQuery() override;
+
+  private:
+    std::string query;
+};
+
+class AddProductQuery : public PostgresQuery
+{
+  public:
+    AddProductQuery();
+
+    AddProductQuery(std::string query) = delete;
+
+    AddProductQuery(std::string &query) = delete;
+
+    std::string GetQuery() const override;
+
+    void SetupQuery(std::shared_ptr<AddProductRequest> req);
+
+    ~AddProductQuery() override;
+
+  private:
+    std::string query;
+};
 
 #endif // TECHNO_SEARCH_QUERY_H
