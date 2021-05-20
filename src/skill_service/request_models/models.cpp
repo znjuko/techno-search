@@ -4,75 +4,123 @@
 
 #include "models.h"
 
-GetCountersPopularityByShopRequest::GetCountersPopularityByShopRequest() : StorageID(0)
-{
+using namespace Pistache;
+
+GetCountersPopularityByStoreRequest::GetCountersPopularityByStoreRequest() : StoreID(0) {
 }
 
-void GetCountersPopularityByShopRequest::Marshall(const Http::Uri::Query &body){
-
+void GetCountersPopularityByStoreRequest::Marshall(const Http::Uri::Query &query) {
+    StoreID = boost::lexical_cast<int>(query.get("storage").value());
 };
 
-GetProductPopularityByShopRequest::GetProductPopularityByShopRequest() : StorageID(0), ProductIDs(std::vector<int>())
-{
+GetProductsPopularityByStoreRequest::GetProductsPopularityByStoreRequest() : StoreID(0),
+                                                                             ProductIDs(std::vector<int>()) {
 }
 
-void GetProductPopularityByShopRequest::Marshall(const Http::Uri::Query &body){
-
+void GetProductsPopularityByStoreRequest::Marshall(const Http::Uri::Query &query) {
+    StoreID = boost::lexical_cast<int>(query.get("storage").value());
+    auto idsValue = query.get("ids").value();
+    boost::split(ProductIDs, idsValue, boost::is_any_of(","));
 };
 
-GetProductsTotalPopularityRequest::GetProductsTotalPopularityRequest() : ProductIDs(std::vector<int>())
-{
+GetProductsTotalPopularityRequest::GetProductsTotalPopularityRequest() : ProductIDs(std::vector<int>()) {
 }
 
-void GetProductsTotalPopularityRequest::Marshall(const Http::Uri::Query &body){
+void GetProductsTotalPopularityRequest::Marshall(const Http::Uri::Query &query) {
+    auto idsValue = query.get("ids").value();
+    boost::split(ProductIDs, idsValue, boost::is_any_of(","));
+};
+
+CounterPopularityMetric::CounterPopularityMetric() : StoreID(0), CounterID(0), Popularity(0) {};
+
+void CounterPopularityMetric::Marshall(const std::string &body) {};
+
+nlohmann::json CounterPopularityMetric::UnMarshall() {
+    nlohmann::json output;
+    output["storage"] = StoreID;
+    output["counter"] = CounterID;
+    output["popularity"] = Popularity;
+
+    return output;
+}
+
+CounterPopularityMetric::CounterPopularityMetric(const CounterPopularityMetric &&other) : StoreID(other.StoreID),
+                                                                                          CounterID(other.CounterID),
+                                                                                          Popularity(other.Popularity) {
 
 };
 
-CounterPopularityMetric::CounterPopularityMetric() : StorageID(0), CounterID(0), Popularity(0){};
+ProductPopularityByStoreMetric::ProductPopularityByStoreMetric() : StoreID(0), ProductID(0), Popularity(0) {};
 
-void CounterPopularityMetric::Marshall(const std::string &body){};
+void ProductPopularityByStoreMetric::Marshall(const std::string &body) {};
 
-nlohmann::json CounterPopularityMetric::UnMarshall()
-{
-    return nlohmann::json();
+nlohmann::json ProductPopularityByStoreMetric::UnMarshall() {
+    nlohmann::json output;
+    output["storage"] = StoreID;
+    output["product"] = ProductID;
+    output["popularity"] = Popularity;
+
+    return output;
+}
+
+ProductPopularityByStoreMetric::ProductPopularityByStoreMetric(const ProductPopularityByStoreMetric &&other) noexcept
+        : StoreID(other.StoreID), ProductID(other.ProductID), Popularity(other.Popularity) {
+
 };
 
-ShopProductPopularityMetric::ShopProductPopularityMetric() : StorageID(0), ProductID(0), Popularity(0){};
+ProductPopularityMetric::ProductPopularityMetric() : ProductID(0), Popularity(0) {};
 
-void ShopProductPopularityMetric::Marshall(const std::string &body){};
+void ProductPopularityMetric::Marshall(const std::string &body) {};
 
-nlohmann::json ShopProductPopularityMetric::UnMarshall()
-{
-    return nlohmann::json();
+nlohmann::json ProductPopularityMetric::UnMarshall() {
+    nlohmann::json output;
+    output["product"] = ProductID;
+    output["popularity"] = Popularity;
+
+    return output;
+}
+
+ProductPopularityMetric::ProductPopularityMetric(const ProductPopularityMetric &&other) noexcept: ProductID(
+        other.ProductID), Popularity(other.Popularity) {
+
 };
 
-ProductPopularityMetric::ProductPopularityMetric() : ProductID(0), Popularity(0){};
+CountersPopularityMetricResponse::CountersPopularityMetricResponse() : array(std::vector<CounterPopularityMetric>()) {};
 
-void ProductPopularityMetric::Marshall(const std::string &body){};
+nlohmann::json CountersPopularityMetricResponse::UnMarshall() {
+    nlohmann::json output;
+    nlohmann::json outputArray = nlohmann::json::array();
+    for (auto item = array.begin(); item != array.end(); ++item) {
+        outputArray.push_back(item->UnMarshall());
+    }
+    output["values"] = outputArray;
 
-nlohmann::json ProductPopularityMetric::UnMarshall()
-{
-    return nlohmann::json();
+    return output;
 };
 
-CounterPopularityMetricResponse::CounterPopularityMetricResponse() : array(std::vector<CounterPopularityMetric>()){};
+ProductsPopularityByStoreMetricResponse::ProductsPopularityByStoreMetricResponse()
+        : array(std::vector<ProductPopularityByStoreMetric>()) {};
 
-nlohmann::json CounterPopularityMetricResponse::UnMarshall()
-{
-    return nlohmann::json();
+nlohmann::json ProductsPopularityByStoreMetricResponse::UnMarshall() {
+    nlohmann::json output;
+    nlohmann::json outputArray = nlohmann::json::array();
+    for (auto item = array.begin(); item != array.end(); ++item) {
+        outputArray.push_back(item->UnMarshall());
+    }
+    output["values"] = outputArray;
+
+    return output;
 };
 
-ShopProductPopularityMetricResponse::ShopProductPopularityMetricResponse()
-    : array(std::vector<ShopProductPopularityMetric>()){};
+ProductsPopularityMetricResponse::ProductsPopularityMetricResponse() : array(std::vector<ProductPopularityMetric>()) {};
 
-nlohmann::json ShopProductPopularityMetricResponse::UnMarshall()
-{
-    return nlohmann::json();
-};
+nlohmann::json ProductsPopularityMetricResponse::UnMarshall() {
+    nlohmann::json output;
+    nlohmann::json outputArray = nlohmann::json::array();
+    for (auto item = array.begin(); item != array.end(); ++item) {
+        outputArray.push_back(item->UnMarshall());
+    }
+    output["values"] = outputArray;
 
-ProductPopularityMetricResponse::ProductPopularityMetricResponse() : array(std::vector<ProductPopularityMetric>()){};
-
-nlohmann::json ProductPopularityMetricResponse::UnMarshall()
-{
-    return nlohmann::json();
+    return output;
 };

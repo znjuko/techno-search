@@ -1,5 +1,3 @@
-find_package(nlohmann_json 3.2.0 REQUIRED)
-
 set(LIBRARY_NAME click_reader)
 
 file(GLOB SRC *.h *.cpp)

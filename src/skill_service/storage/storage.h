@@ -9,23 +9,22 @@
 #include "models.h"
 
 // TODO (n.chernyh) : do we need 5 rule here ?
-class MetricStorage
-{
-  public:
+class MetricStorage {
+public:
     MetricStorage() = delete;
 
-    explicit MetricStorage(ClickStorage *storage);
+    explicit MetricStorage(std::shared_ptr<ClickStorage> storage);
 
-    CounterPopularityMetricResponse ResponseGetCounterPopularityByShop(const GetCountersPopularityByShopRequest &req);
+    std::shared_ptr<CountersPopularityMetricResponse> GetCounterPopularityByShop(std::shared_ptr<GetCountersPopularityByStoreRequest> req);
 
-    ShopProductPopularityMetricResponse GetProductsPopularityByShop(const GetProductPopularityByShopRequest &req);
+    std::shared_ptr<ProductsPopularityByStoreMetricResponse> GetProductsPopularityByShop(std::shared_ptr<GetProductsPopularityByStoreRequest> req);
 
-    ProductPopularityMetricResponse GetProductsTotalPopularity(const GetProductsTotalPopularityRequest &req);
+    std::shared_ptr<ProductsPopularityMetricResponse> GetProductsTotalPopularity(std::shared_ptr<GetProductsTotalPopularityRequest> req);
 
     ~MetricStorage();
 
-  private:
-    ClickStorage *storage;
+private:
+    std::shared_ptr<ClickStorage> storage;
 };
 
 #endif // TECHNO_SEARCH_STORAGE_H

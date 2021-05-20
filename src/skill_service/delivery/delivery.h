@@ -11,6 +11,8 @@
 #include "writer.h"
 
 #include <pistache/endpoint.h>
+#include <boost/exception/exception.hpp>
+#include <boost/lexical_cast.hpp>
 
 using namespace Pistache;
 
@@ -29,11 +31,11 @@ class MetricService : public IRouterSetupper
     MetricService(const JsonResponseWriter &responseWriter, const JsonRequestBodyReader &bodyReader,
                   const RequestQueryReader &queryReader, const MetricManager &manager);
 
-    void GetCounterPopularityByShop(Http::Request req, Http::Response res);
+    void GetCounterPopularityByShop(const Http::Request& req, Http::ResponseWriter res);
 
-    void GetProductPopularityByShop(Http::Request req, Http::Response res);
+    void GetProductPopularityByShop(const Http::Request& req, Http::ResponseWriter res);
 
-    void GetProductsTotalPopularity(Http::Request req, Http::Response res);
+    void GetProductsTotalPopularity(const Http::Request& req, Http::ResponseWriter res);
 
     void SetupService(Rest::Router router) override;
 
@@ -42,6 +44,7 @@ class MetricService : public IRouterSetupper
   private:
     JsonResponseWriter responseWriter;
     JsonRequestBodyReader bodyReader;
+    ErrorResponseWriter errorWriter;
     RequestQueryReader queryReader;
     MetricManager manager;
 };

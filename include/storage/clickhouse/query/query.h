@@ -6,15 +6,12 @@
 #define TECHNO_SEARCH_QUERY_H
 
 #include "models.h"
-
-#include <clickhouse/client.h>
-
-using namespace clickhouse;
+#include <string>
 
 class ClickQuery
 {
   public:
-    virtual Block *GetQuery() = 0;
+    virtual std::string GetQuery() const = 0;
 
     virtual ~ClickQuery();
 };
@@ -24,56 +21,56 @@ class GetCounterPopularityMetricQuery : public ClickQuery
   public:
     GetCounterPopularityMetricQuery();
 
-    GetCounterPopularityMetricQuery(Block *query) = delete;
+    GetCounterPopularityMetricQuery(std::string *query) = delete;
 
-    GetCounterPopularityMetricQuery(const Block &query) = delete;
+    GetCounterPopularityMetricQuery(std::string &query) = delete;
 
-    Block *GetQuery() override;
+    std::string GetQuery() const override;
 
-    void SetupQuery(const GetCountersPopularityByShopRequest &req);
+    void SetupQuery(std::shared_ptr<GetCountersPopularityByStoreRequest> req);
 
     ~GetCounterPopularityMetricQuery() override;
 
   private:
-    Block *query;
+    std::string query;
 };
 
-class GetShopPopularityMetricQuery : public ClickQuery
+class GetProductPopularityByShopMetricQuery : public ClickQuery
 {
   public:
-    GetShopPopularityMetricQuery();
+    GetProductPopularityByShopMetricQuery();
 
-    GetShopPopularityMetricQuery(Block *query) = delete;
+    GetProductPopularityByShopMetricQuery(std::string *query) = delete;
 
-    GetShopPopularityMetricQuery(const Block &query) = delete;
+    GetProductPopularityByShopMetricQuery(std::string &query) = delete;
 
-    Block *GetQuery() override;
+    std::string GetQuery() const override;
 
-    void SetupQuery(const GetCountersPopularityByShopRequest &req);
+    void SetupQuery(std::shared_ptr<GetProductsPopularityByStoreRequest> req);
 
-    ~GetShopPopularityMetricQuery() override;
+    ~GetProductPopularityByShopMetricQuery() override;
 
   private:
-    Block *query;
+    std::string query;
 };
 
-class GetProductPopularityMetricQuery : public ClickQuery
+class GetProductsTotalPopularityMetricQuery : public ClickQuery
 {
   public:
-    GetProductPopularityMetricQuery();
+    GetProductsTotalPopularityMetricQuery();
 
-    GetProductPopularityMetricQuery(Block *query) = delete;
+    GetProductsTotalPopularityMetricQuery(std::string query) = delete;
 
-    GetProductPopularityMetricQuery(const Block &query) = delete;
+    GetProductsTotalPopularityMetricQuery(std::string &query) = delete;
 
-    Block *GetQuery() override;
+    std::string GetQuery() const override;
 
-    void SetupQuery(const GetCountersPopularityByShopRequest &req);
+    void SetupQuery(std::shared_ptr<GetProductsTotalPopularityRequest> req);
 
-    ~GetProductPopularityMetricQuery() override;
+    ~GetProductsTotalPopularityMetricQuery() override;
 
   private:
-    Block *query;
+    std::string query;
 };
 
 #endif // TECHNO_SEARCH_QUERY_H

@@ -66,16 +66,16 @@ class ShopProductsPopularityMetricReader : public ClickReader
 
     ShopProductsPopularityMetricReader(const ProductPopularityMetricReader &r) = delete;
 
-    ShopProductsPopularityMetricReader(const std::vector<ShopProductPopularityMetric> &v) = delete;
+    ShopProductsPopularityMetricReader(const std::vector<ProductPopularityByStoreMetric> &v) = delete;
 
     void Execute(const Block &b) override;
 
-    std::vector<ShopProductPopularityMetric> Get();
+    std::vector<ProductPopularityByStoreMetric> Get();
 
     ~ShopProductsPopularityMetricReader() override = default;
 
   private:
-    std::vector<ShopProductPopularityMetric> metrics;
+    std::vector<ProductPopularityByStoreMetric> metrics;
 };
 
 #endif // TECHNO_SEARCH_READER_H
