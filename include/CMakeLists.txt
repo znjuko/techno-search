@@ -3,5 +3,6 @@ add_subdirectory(unmarshaller)
 add_subdirectory(http_managers)
 add_subdirectory(router_setupper)
 add_subdirectory(storage)
-
-include(ExternalProject)
+#add_subdirectory(common_storage)
+add_subdirectory(graph_storage)
+add_subdirectory(map_storage)

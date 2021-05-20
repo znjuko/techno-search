@@ -1,4 +1,4 @@
-set(LIBRARY_NAME marshaller)
+set(LIBRARY_NAME graph_storage)
 
 file(GLOB SRC *.h *.cpp)
 
@@ -8,8 +8,4 @@ target_sources(${LIBRARY_NAME} INTERFACE ${SRC})
 
 target_include_directories(${LIBRARY_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-find_package(PkgConfig)
-
-pkg_check_modules(Pistache REQUIRED IMPORTED_TARGET libpistache)
-
-target_link_libraries(${LIBRARY_NAME} INTERFACE PkgConfig::Pistache)
+target_link_libraries(${LIBRARY_NAME} INTERFACE nlohmann_json::nlohmann_json)
