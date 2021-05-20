@@ -1,0 +1,2 @@
+format-code:
+	./formatter.sh  .
