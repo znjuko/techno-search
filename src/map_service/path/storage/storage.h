@@ -17,11 +17,12 @@
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/builder/stream/array.hpp>
 
-#include "models.h"
 
 using bsoncxx::builder::basic::kvp;
 using bsoncxx::builder::basic::make_array;
 using bsoncxx::builder::basic::make_document;
+
+#include "models.h"
 
 #include "exceptions.h"
 

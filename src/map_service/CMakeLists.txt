@@ -1,7 +1,4 @@
-add_subdirectory(storage)
-add_subdirectory(models)
-add_subdirectory(exceptions)
-add_subdirectory(finder)
+add_subdirectory(path)
 add_subdirectory(graph_converter)
 add_subdirectory(map)
 add_subdirectory(map_manager)
