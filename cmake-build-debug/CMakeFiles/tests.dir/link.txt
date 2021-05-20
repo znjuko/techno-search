@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/tests.dir/tests/unit/map_service/map_graph/graph/graph.cpp.o -o tests  /usr/lib/x86_64-linux-gnu/libgtest.a -lpthread 

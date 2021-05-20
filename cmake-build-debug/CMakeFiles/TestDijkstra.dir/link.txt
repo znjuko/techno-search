@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/TestDijkstra.dir/tests/unit/map_service/map_graph/graph/graph.cpp.o CMakeFiles/TestDijkstra.dir/src/map_service/storage/storage.cpp.o CMakeFiles/TestDijkstra.dir/src/map_service/map_graph/graph/graph.cpp.o CMakeFiles/TestDijkstra.dir/src/map_service/path/path.cpp.o -o TestDijkstra 

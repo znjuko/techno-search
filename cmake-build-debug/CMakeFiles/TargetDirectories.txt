@@ -1,0 +1,5 @@
+/home/foxers/techno-search/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/foxers/techno-search/cmake-build-debug/CMakeFiles/TestDijkstra.dir
+/home/foxers/techno-search/cmake-build-debug/CMakeFiles/test.dir
+/home/foxers/techno-search/cmake-build-debug/CMakeFiles/tests.dir
+/home/foxers/techno-search/cmake-build-debug/CMakeFiles/edit_cache.dir

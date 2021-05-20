@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 17)
 
 include_directories(src)
 
-add_executable(TestDijkstra src/map_service/map_graph/graph/graph.h tests/unit/map_service/map_graph/graph/graph.cpp src/map_service/storage/storage.cpp src/map_service/storage/storage.h)
+add_executable(TestDijkstra src/map_service/map_graph/graph/graph.h tests/unit/map_service/map_graph/graph/graph.cpp src/map_service/storage/storage.cpp src/map_service/storage/storage.h src/map_service/map_graph/graph/graph.cpp src/map_service/path/path.h src/map_service/path/path.cpp)
 
 add_executable(tests src/map_service/map_graph/graph/graph.h tests/unit/map_service/map_graph/graph/graph.cpp)
 find_package(GTest REQUIRED)
