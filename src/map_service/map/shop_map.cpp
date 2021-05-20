@@ -1,7 +1,7 @@
+#include <utility>
 #include <vector>
 #include <map>
 #include "shop_map.h"
-#include "graph_converter.h"
 #include "map_models.h"
 
 std::vector<Polygon> Map::GetCounters() {
@@ -15,11 +15,15 @@ Polygon Map::GetShop() {
     return shop;
 }
 
-void Map::SetCounters(std::map<Polygon, int> counters) {
-    this->counters = counters;
+void Map::SetCounters(std::map<Polygon, int> c) {
+    this->counters = std::move(c);
 }
-void Map::SetShop(Polygon shop) {
-    this->shop = shop;
+void Map::SetShop(const Polygon& s) {
+    this->shop = s;
 }
-
-
+void Map::SetFeatures(std::vector<Polygon> f) {
+    this->features = std::move(f);
+}
+std::vector<Polygon> Map::GetFeatures() {
+    return features;
+}

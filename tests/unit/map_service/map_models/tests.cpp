@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
 
-TEST(LINE, INTERSECTION) {
+TEST(LINE, INTERSECTION_WITH_LINE) {
 
     Point p1(0,0),  p2(2,2);
     Point p3(0,1),  p4(3,0);
@@ -17,6 +17,20 @@ TEST(LINE, INTERSECTION) {
 
     delete p;
 }
+
+TEST(LINE, INTERSECTION_WITH_POINT) {
+
+    Point p1(0,0),  p2(2,2);
+    Point p(9,9);
+
+    Line l(p1,p2);
+
+    bool res = l.LineIntersectionWithPoint(p);
+
+    ASSERT_EQ(res, true);
+
+}
+
 
 TEST(POLYGON, INITLINES) {
 
@@ -81,15 +95,15 @@ TEST(POLYGON, INTERSECTIONS_WITH_VERTICAL_LINE) {
     p.AddPoint(p4);
     p.InitLines();
 
-    Point pl1(1, 1);
-    Point pl2(1, 2);
-
+    Point pl1(3, 1);
+    Point pl2(4, 2);
     Line line(pl1, pl2);
+
     std::vector<Point*> points = p.IntersectionWithVerticalLine(line);
     for(auto point : points) {
         point->Show();
         std::cout << std::endl;
+        delete point;
     }
-
 }
 

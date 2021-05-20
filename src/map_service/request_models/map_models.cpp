@@ -1,5 +1,5 @@
 #include "map_models.h"
-
+#include <cmath>
 #include <nlohmann/json.hpp>
 
 Point::Point(double _x, double _y) : x(_x), y(_y) {}
@@ -26,6 +26,7 @@ Point* Line::LineIntersectionWithLine(Line l) {
 
     double x = (b2 * c1 - b1 * c2) / determinant;
     double y = (a1 * c2 - a2 * c1) / determinant;
+
     auto p = new Point(x, y);
     return p;
 }
@@ -39,17 +40,17 @@ bool Polygon::IsPointInsidePolygon(Point p) {
     Point p2(p.x + 1,p.y);
     Line l(p1, p2);
 
-    size_t IntersectionsCount = 0;
+    size_t intersectionsCount = 0;
 
     for(auto line : lines) {
         Point* point = l.LineIntersectionWithLine(line);
         if(point != nullptr && p.x <= point->x) {
-            ++IntersectionsCount;
+            ++intersectionsCount;
         }
         delete point;
     }
 
-    if(IntersectionsCount % 2 == 1) {
+    if(intersectionsCount % 2 == 1) {
         return true;
     }
 
@@ -86,12 +87,20 @@ void Polygon::AddPoint(Point p) {
 }
 
 std::vector<Point*> Polygon::IntersectionWithVerticalLine(Line l) {
-    std::vector<Point*> points;
+    std::vector<Point*> points = std::vector<Point*>();
+
     for(auto line : lines) {
         Point* point = l.LineIntersectionWithLine(line);
-        if(point != nullptr) {
-            points.push_back(point);
+
+        if(point == nullptr) {
+            continue;
         }
+
+        if(point->x <= std::max(line.p1.x, line.p2.x) && point->x >= std::min(line.p1.x, line.p2.x) && point->y <= std::max(line.p1.y, line.p2.y) && point->y >= std::min(line.p1.y, line.p2.y)) {
+            points.push_back(point);
+            continue;
+        }
+        delete point;
     }
     return points;
 }
@@ -117,6 +126,20 @@ void Line::Show() const {
     std::cout << std::endl;
 }
 
+bool Line::LineIntersectionWithPoint(Point p) {
+    double a = this->p2.y - this->p1.y;
+    double b = this->p1.x - this->p2.x;
+    double c = a * (this->p1.x) + b * (this->p1.y);
+
+    if(a * p.x + b * p.y == c) {
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
+
 void Point::Show() const {
-    std::cout << '(' << x << ", " << y << ')';
+    std::cout << '(' << this->x << ", " << this->y << ')';
 }

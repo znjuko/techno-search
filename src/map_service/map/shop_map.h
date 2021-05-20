@@ -1,22 +1,25 @@
 #ifndef TECHNO_SEARCH_MAP_H
 #define TECHNO_SEARCH_MAP_H
 
-#include <vector>
-#include <map>
 #include "map_models.h"
-//#include "graph_converter.h"
+
+#include <map>
+#include <vector>
 
 class Map {
 
 public:
     std::vector<Polygon> GetCounters();
     Polygon GetShop();
+    std::vector<Polygon> GetFeatures();
     void SetCounters(std::map<Polygon, int> counters);
-    void SetShop(Polygon shop);
+    void SetShop(const Polygon& shop);
+    void SetFeatures(std::vector<Polygon> features);
 
 private:
     int id;
     std::map<Polygon, int> counters;
+    std::vector<Polygon> features;
     Polygon shop;
 
 };

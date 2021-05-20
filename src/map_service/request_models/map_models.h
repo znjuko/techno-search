@@ -16,6 +16,13 @@ public:
 
     ~Point() = default;
 
+    bool operator== (const Point p) const {
+        if(this->x == p.x && this->y == p.y) {
+            return true;
+        }
+        return false;
+    }
+
 };
 
 class Line {
@@ -32,6 +39,8 @@ public:
     Point GetMiddleOfLine() const;
 
     Point * LineIntersectionWithLine(Line l);
+
+    bool LineIntersectionWithPoint(Point p);
 
 };
 
@@ -68,20 +77,5 @@ private:
     size_t count;
     
 };
-
-
-//class GetCoordinates : public IMarshaller
-//{
-//  public:
-//    GetStoreMetadataRequest();
-//
-//    void Marshall(const std::string &body) override;
-//
-//    ~GetStoreMetadataRequest() override = default;
-//
-//    string name;
-//};
-
-
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H

@@ -8,9 +8,15 @@
 class GraphConverter{
 
 public:
-    std::vector<std::vector<double>> Generate(Map map);
+    void SetMap(Map m);
+    std::vector<std::vector<double>> Generate();
 private:
 
+    std::vector<double> getAllx();
+    std::vector<Point> getAllIntersectionsWithVerticalLine(Line line);
+    std::vector<Point> getBasePoints(std::vector<Point> points);
+
+    Map map;
 };
 
 #endif //TECHNO_SEARCH_GRAPH_CONVERTER_H
