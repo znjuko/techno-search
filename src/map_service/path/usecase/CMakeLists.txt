@@ -1,6 +1,6 @@
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-set(LIBRARY_NAME map_usecase)
+set(LIBRARY_NAME path_usecase)
 
 file(GLOB SRC *.h *.cpp)
 

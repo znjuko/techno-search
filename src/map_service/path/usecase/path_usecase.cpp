@@ -2,7 +2,7 @@
 // Created by Никита Черных on 20.05.2021.
 //
 
-#include "usecase.h"
+#include "path_usecase.h"
 
 PathManager::PathManager(std::shared_ptr<Adapter> mapAdapter, std::shared_ptr<Storage> mapStorage,
                          std::shared_ptr<PathFinder> pathFinder) : mapAdapter(mapAdapter),
