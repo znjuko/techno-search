@@ -71,18 +71,18 @@ void MetricService::GetProductsTotalPopularity(const Http::Request& req, Http::R
     responseWriter.WriteResponse(respWriter, &res);
 }
 
-void MetricService::SetupService(Rest::Router router) {
-    router.addRoute(
+void MetricService::SetupService(Rest::Router* router) {
+    router->addRoute(
             Http::Method::Get,
             "api/v1/metrics/shop/counters",
             Pistache::Rest::Routes::bind(&MetricService::GetCounterPopularityByShop, this));
 
-    router.addRoute(
+    router->addRoute(
             Http::Method::Get,
             "api/v1/metrics/shop/products",
             Pistache::Rest::Routes::bind(&MetricService::GetProductPopularityByShop, this));
 
-    router.addRoute(
+    router->addRoute(
             Http::Method::Get,
             "api/v1/metrics/products",
             Pistache::Rest::Routes::bind(&MetricService::GetProductsTotalPopularity, this));

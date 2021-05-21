@@ -37,7 +37,7 @@ class MetricService : public IRouterSetupper
 
     void GetProductsTotalPopularity(const Http::Request& req, Http::ResponseWriter res);
 
-    void SetupService(Rest::Router router) override;
+    void SetupService(Rest::Router* router) override;
 
     ~MetricService() override = default;
 
