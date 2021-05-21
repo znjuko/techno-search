@@ -13,4 +13,7 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 #find_package(PkgConfig)
 #pkg_check_modules(Pistache REQUIRED IMPORTED_TARGET libpistache)
 
-target_link_libraries(${LIBRARY_NAME} PRIVATE marshaller unmarshaller nlohmann_json::nlohmann_json pistache ${Boost_LIBRARIES})
+target_link_libraries(${LIBRARY_NAME} PRIVATE
+        marshaller unmarshaller
+        nlohmann_json::nlohmann_json pistache
+        ${Boost_LIBRARIES} common_exceptions)

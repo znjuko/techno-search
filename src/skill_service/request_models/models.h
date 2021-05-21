@@ -7,6 +7,7 @@
 
 #include "marshaller.h"
 #include "unmarshaller.h"
+#include "common_exceptions.h"
 
 #include <algorithm>
 #include <boost/algorithm/string.hpp>

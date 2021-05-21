@@ -3,6 +3,7 @@
 //
 
 #include "path_delivery.h"
+#include "common_exceptions.h"
 
 void PathService::SetupService(Rest::Router *router)
 {
@@ -26,9 +27,14 @@ void PathService::GetStorePath(const Request &req, Http::ResponseWriter res)
     {
         requestReader->ReadRequest(reqReader, req);
     }
+    catch (const EmptyValue& e)
+    {
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
+    }
     catch (const boost::exception &e)
     {
-        errorWriter->WriteError(Http::Code::Bad_Request, "wrong product ids", &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong shop ID value", &res);
         return;
     }
 

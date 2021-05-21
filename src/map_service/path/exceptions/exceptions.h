@@ -8,19 +8,20 @@
 #include <exception>
 #include <string>
 
-class StoreGraphNotFound : public std::exception
-{
-  public:
-    explicit StoreGraphNotFound(const int &ID) : ID(ID){};
+class StoreGraphNotFound : public std::exception {
+public:
+    explicit StoreGraphNotFound(const int &ID) {
+        msg = "store with ID:" + std::to_string(ID) + " not found";
+    };
 
-    [[nodiscard]] const char *what() const throw()
-    {
-        auto msg = "store with ID:" + std::to_string(ID) + " not found";
+    [[nodiscard]] const char *what() const noexcept override {
         return msg.c_str();
     }
 
-  private:
-    int ID;
+private:
+    std::string msg;
 };
+
+
 
 #endif // RENAMEIT_EXCEPTIONS_H

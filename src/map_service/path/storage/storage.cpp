@@ -13,8 +13,7 @@ std::shared_ptr<StoreModel> Storage::GetStoreData(const int &ID)
     auto selectStoreResult = storeCollection.find_one(make_document(kvp("ID", ID)));
     if (!selectStoreResult)
     {
-        const StoreGraphNotFound e = StoreGraphNotFound(ID);
-        throw e;
+        throw StoreGraphNotFound(ID);
     }
 
     auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);

@@ -12,7 +12,11 @@ GetCountersPopularityByStoreRequest::GetCountersPopularityByStoreRequest() : Sto
 
 void GetCountersPopularityByStoreRequest::Marshall(const Http::Uri::Query &query)
 {
-    StoreID = boost::lexical_cast<int>(query.get("store").value());
+    auto storeParam = query.get("store");
+    if(storeParam->empty()) {
+        throw EmptyValue("store");
+    }
+    StoreID = boost::lexical_cast<int>(*storeParam);
 };
 
 GetProductsPopularityByStoreRequest::GetProductsPopularityByStoreRequest() : StoreID(0), ProductIDs(std::vector<int>())
@@ -21,9 +25,17 @@ GetProductsPopularityByStoreRequest::GetProductsPopularityByStoreRequest() : Sto
 
 void GetProductsPopularityByStoreRequest::Marshall(const Http::Uri::Query &query)
 {
-    StoreID = boost::lexical_cast<int>(query.get("store").value());
-    auto idsValue = query.get("ids").value();
-    boost::split(ProductIDs, idsValue, boost::is_any_of(","));
+    auto storeParam = query.get("store");
+    if(storeParam->empty()) {
+        throw EmptyValue("store");
+    }
+    StoreID = boost::lexical_cast<int>(*storeParam);
+
+    auto idsValue = query.get("ids");
+    if(idsValue->empty()) {
+        throw EmptyValue("ids");
+    }
+    boost::split(ProductIDs, *idsValue, boost::is_any_of(","));
 };
 
 GetProductsTotalPopularityRequest::GetProductsTotalPopularityRequest() : ProductIDs(std::vector<int>())
@@ -32,8 +44,11 @@ GetProductsTotalPopularityRequest::GetProductsTotalPopularityRequest() : Product
 
 void GetProductsTotalPopularityRequest::Marshall(const Http::Uri::Query &query)
 {
-    auto idsValue = query.get("ids").value();
-    boost::split(ProductIDs, idsValue, boost::is_any_of(","));
+    auto idsValue = query.get("ids");
+    if(idsValue->empty()) {
+        throw EmptyValue("ids");
+    }
+    boost::split(ProductIDs, *idsValue, boost::is_any_of(","));
 };
 
 CounterPopularityMetric::CounterPopularityMetric() : StoreID(0), CounterID(0), Popularity(0){};

@@ -9,6 +9,7 @@
 #include "router_setupper.h"
 #include "usecase.h"
 #include "writer.h"
+#include "common_exceptions.h"
 
 #include <boost/exception/exception.hpp>
 #include <boost/lexical_cast.hpp>
@@ -16,20 +17,13 @@
 
 using namespace Pistache;
 
-/* TODO(n.chernyh) : add smart pointers (
 
-   for writers/readers - add shared
-   for usecase - add unique ptr
-
-  ) */
-
-class MetricService : public IRouterSetupper
-{
-  public:
+class MetricService : public IRouterSetupper {
+public:
     MetricService() = delete;
 
-    MetricService(const JsonResponseWriter &responseWriter, const JsonRequestBodyReader &bodyReader,
-                  const RequestQueryReader &queryReader, const MetricManager &manager);
+    MetricService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader> bodyReader,
+                  std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MetricManager> manager);
 
     void GetCounterPopularityByShop(const Http::Request &req, Http::ResponseWriter res);
 
@@ -41,12 +35,12 @@ class MetricService : public IRouterSetupper
 
     ~MetricService() override = default;
 
-  private:
-    JsonResponseWriter responseWriter;
-    JsonRequestBodyReader bodyReader;
-    ErrorResponseWriter errorWriter;
-    RequestQueryReader queryReader;
-    MetricManager manager;
+private:
+    std::shared_ptr<JsonResponseWriter> responseWriter;
+    std::shared_ptr<JsonRequestBodyReader> bodyReader;
+    std::shared_ptr<ErrorResponseWriter> errorWriter;
+    std::shared_ptr<RequestQueryReader> queryReader;
+    std::shared_ptr<MetricManager> manager;
 };
 
 #endif // TECHNO_SEARCH_SKILL_DELIVERY_H

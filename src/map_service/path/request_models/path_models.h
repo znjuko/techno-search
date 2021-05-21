@@ -7,6 +7,7 @@
 
 #include "marshaller.h"
 #include "unmarshaller.h"
+#include "common_exceptions.h"
 
 #include <algorithm>
 #include <boost/algorithm/string.hpp>
@@ -19,9 +20,8 @@
 
 using namespace Pistache;
 
-class GetStorePathRequest : public IRequestMarshaller
-{
-  public:
+class GetStorePathRequest : public IRequestMarshaller {
+public:
     GetStorePathRequest();
 
     void Marshall(const Rest::Request &req) override;
@@ -31,9 +31,8 @@ class GetStorePathRequest : public IRequestMarshaller
     int ShopID, FromNode, ToNode;
 };
 
-class GetStorePathResponse : public IUnMarshaller
-{
-  public:
+class GetStorePathResponse : public IUnMarshaller {
+public:
     explicit GetStorePathResponse(std::vector<size_t> Path);
 
     nlohmann::json UnMarshall() override;
