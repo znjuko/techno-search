@@ -12,6 +12,8 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 
+using json = nlohmann::json;
+
 class StoreModel {
 public:
     StoreModel(const std::string &data);

@@ -2,8 +2,8 @@
 // Created by paccbet on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_MAP_MODELS_H
-#define TECHNO_SEARCH_MODELS_H
+#ifndef TECHNO_SEARCH_SKILL_MODELS_H
+#define TECHNO_SEARCH_SKILL_MODELS_H
 
 #include "marshaller.h"
 #include "unmarshaller.h"
@@ -109,7 +109,7 @@ public:
 
     ~CountersPopularityMetricResponse() override = default;
 
-    std::vector<CounterPopularityMetric> array;
+    std::vector<CounterPopularityMetric> Array;
 };
 
 class ProductsPopularityByStoreMetricResponse : public IUnMarshaller {
@@ -120,7 +120,7 @@ public:
 
     ~ProductsPopularityByStoreMetricResponse() override = default;
 
-    std::vector<ProductPopularityByStoreMetric> array;
+    std::vector<ProductPopularityByStoreMetric> Array;
 };
 
 class ProductsPopularityMetricResponse : public IUnMarshaller {
@@ -131,7 +131,7 @@ public:
 
     ~ProductsPopularityMetricResponse() override = default;
 
-    std::vector<ProductPopularityMetric> array;
+    std::vector<ProductPopularityMetric> Array;
 };
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H
