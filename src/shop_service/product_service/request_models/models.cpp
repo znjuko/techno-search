@@ -12,15 +12,16 @@ GetProductListRequest::GetProductListRequest() : shopName(""), name(""), search(
 
 void GetProductListRequest::Marshall(const std::string &body){};
 
-UpdateProductRequest::UpdateProductRequest() : shopName(""), name(""), category(""),price(0), quantity(0), articul(""){};
+UpdateProductRequest::UpdateProductRequest()
+    : shopName(""), name(""), category(""), price(0), quantity(0), articul(""){};
 
 void UpdateProductRequest::Marshall(const std::string &body){};
 
-AddProductRequest::AddProductRequest() : shopName(""), name(""), category(""),price(0), quantity(0), articul(""){};
+AddProductRequest::AddProductRequest() : shopName(""), name(""), category(""), price(0), quantity(0), articul(""){};
 
 void AddProductRequest::Marshall(const std::string &body){};
 
-ProductMetadata::ProductMetadata() : shopName(""), name(""), category(""),price(0), quantity(0), articul(""){};
+ProductMetadata::ProductMetadata() : shopName(""), name(""), category(""), price(0), quantity(0), articul(""){};
 
 void ProductMetadata::Marshall(const std::string &body){};
 
@@ -36,14 +37,14 @@ nlohmann::json ProductList::UnMarshall()
     return nlohmann::json();
 };
 
-UpdateProduct::UpdateProduct() : shopName(""), name(""), category(""),price(0), quantity(0), articul(""){};
+UpdateProduct::UpdateProduct() : shopName(""), name(""), category(""), price(0), quantity(0), articul(""){};
 void UpdateProduct::Marshall(const std::string &body){};
 nlohmann::json UpdateProduct::UnMarshall()
 {
     return nlohmann::json();
 };
 
-AddProduct::AddProduct() : shopName(""), name(""), category(""),price(0), quantity(0), articul(""){};
+AddProduct::AddProduct() : shopName(""), name(""), category(""), price(0), quantity(0), articul(""){};
 
 void AddProduct::Marshall(const std::string &body){};
 

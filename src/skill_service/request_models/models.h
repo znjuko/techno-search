@@ -2,25 +2,27 @@
 // Created by paccbet on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_MAP_MODELS_H
-#define TECHNO_SEARCH_MODELS_H
+#ifndef TECHNO_SEARCH_SKILL_MODELS_H
+#define TECHNO_SEARCH_SKILL_MODELS_H
 
+#include "common_exceptions.h"
 #include "marshaller.h"
 #include "unmarshaller.h"
 
-#include <nlohmann/json.hpp>
-#include <pistache/endpoint.h>
 #include <algorithm>
-#include <pistache/http.h>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
+#include <nlohmann/json.hpp>
+#include <pistache/endpoint.h>
+#include <pistache/http.h>
 
 using namespace Pistache;
 
 // TODO (n.chernyh) : move to smart pointers and add move constructors and etc for 5 part rule
 
-class GetCountersPopularityByStoreRequest : public IQueryMarshaller {
-public:
+class GetCountersPopularityByStoreRequest : public IQueryMarshaller
+{
+  public:
     GetCountersPopularityByStoreRequest();
 
     void Marshall(const Http::Uri::Query &body) override;
@@ -30,8 +32,9 @@ public:
     int StoreID;
 };
 
-class GetProductsPopularityByStoreRequest : public IQueryMarshaller {
-public:
+class GetProductsPopularityByStoreRequest : public IQueryMarshaller
+{
+  public:
     GetProductsPopularityByStoreRequest();
 
     void Marshall(const Http::Uri::Query &body) override;
@@ -42,8 +45,9 @@ public:
     std::vector<int> ProductIDs;
 };
 
-class GetProductsTotalPopularityRequest : public IQueryMarshaller {
-public:
+class GetProductsTotalPopularityRequest : public IQueryMarshaller
+{
+  public:
     GetProductsTotalPopularityRequest();
 
     void Marshall(const Http::Uri::Query &body) override;
@@ -53,11 +57,12 @@ public:
     std::vector<int> ProductIDs;
 };
 
-class CounterPopularityMetric : public IMarshaller, public IUnMarshaller {
-public:
+class CounterPopularityMetric : public IMarshaller, public IUnMarshaller
+{
+  public:
     CounterPopularityMetric();
 
-    CounterPopularityMetric(const CounterPopularityMetric&& other);
+    CounterPopularityMetric(const CounterPopularityMetric &&other);
 
     void Marshall(const std::string &body) override;
 
@@ -69,11 +74,12 @@ public:
     unsigned long int Popularity;
 };
 
-class ProductPopularityByStoreMetric : public IMarshaller, public IUnMarshaller {
-public:
+class ProductPopularityByStoreMetric : public IMarshaller, public IUnMarshaller
+{
+  public:
     ProductPopularityByStoreMetric();
 
-    ProductPopularityByStoreMetric(const ProductPopularityByStoreMetric&& other) noexcept ;
+    ProductPopularityByStoreMetric(const ProductPopularityByStoreMetric &&other) noexcept;
 
     void Marshall(const std::string &body) override;
 
@@ -85,11 +91,12 @@ public:
     unsigned long int Popularity;
 };
 
-class ProductPopularityMetric : public IMarshaller, public IUnMarshaller {
-public:
+class ProductPopularityMetric : public IMarshaller, public IUnMarshaller
+{
+  public:
     ProductPopularityMetric();
 
-    ProductPopularityMetric(const ProductPopularityMetric&& other) noexcept ;
+    ProductPopularityMetric(const ProductPopularityMetric &&other) noexcept;
 
     void Marshall(const std::string &body) override;
 
@@ -101,37 +108,40 @@ public:
     unsigned long int Popularity;
 };
 
-class CountersPopularityMetricResponse : public IUnMarshaller {
-public:
+class CountersPopularityMetricResponse : public IUnMarshaller
+{
+  public:
     CountersPopularityMetricResponse();
 
     nlohmann::json UnMarshall() override;
 
     ~CountersPopularityMetricResponse() override = default;
 
-    std::vector<CounterPopularityMetric> array;
+    std::vector<CounterPopularityMetric> Array;
 };
 
-class ProductsPopularityByStoreMetricResponse : public IUnMarshaller {
-public:
+class ProductsPopularityByStoreMetricResponse : public IUnMarshaller
+{
+  public:
     ProductsPopularityByStoreMetricResponse();
 
     nlohmann::json UnMarshall() override;
 
     ~ProductsPopularityByStoreMetricResponse() override = default;
 
-    std::vector<ProductPopularityByStoreMetric> array;
+    std::vector<ProductPopularityByStoreMetric> Array;
 };
 
-class ProductsPopularityMetricResponse : public IUnMarshaller {
-public:
+class ProductsPopularityMetricResponse : public IUnMarshaller
+{
+  public:
     ProductsPopularityMetricResponse();
 
     nlohmann::json UnMarshall() override;
 
     ~ProductsPopularityMetricResponse() override = default;
 
-    std::vector<ProductPopularityMetric> array;
+    std::vector<ProductPopularityMetric> Array;
 };
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H

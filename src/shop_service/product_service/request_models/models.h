@@ -39,7 +39,7 @@ class GetProductListRequest : public IMarshaller
 
 class UpdateProductRequest : public IMarshaller
 {
-public:
+  public:
     UpdateProductRequest();
 
     void Marshall(const std::string &body) override;
@@ -56,7 +56,7 @@ public:
 
 class AddProductRequest : public IMarshaller
 {
-public:
+  public:
     AddProductRequest();
     void Marshall(const std::string &body) override;
     ~AddProductRequest() override = default;
@@ -88,7 +88,7 @@ class ProductMetadata : public IMarshaller, public IUnMarshaller
     std::string articul;
 };
 
-class ProductList: public IMarshaller, public IUnMarshaller
+class ProductList : public IMarshaller, public IUnMarshaller
 {
   public:
     ProductList();
@@ -99,14 +99,14 @@ class ProductList: public IMarshaller, public IUnMarshaller
 
     ~ProductList() override = default;
 
-    ProductMetadata* productList;
+    ProductMetadata *productList;
     int limit;
     int skip;
 };
 
 class UpdateProduct : public IMarshaller, public IUnMarshaller
 {
-public:
+  public:
     UpdateProduct();
     void Marshall(const std::string &body) override;
 
@@ -122,9 +122,9 @@ public:
     std::string articul;
 };
 
-class AddProduct: public IMarshaller, public IUnMarshaller
+class AddProduct : public IMarshaller, public IUnMarshaller
 {
-public:
+  public:
     AddProduct();
 
     void Marshall(const std::string &body) override;
@@ -179,7 +179,7 @@ class UpdateProductResponse : public IUnMarshaller
 
 class AddProductResponse : public IUnMarshaller
 {
-public:
+  public:
     AddProductResponse();
 
     nlohmann::json UnMarshall() override;

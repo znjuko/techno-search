@@ -9,21 +9,25 @@
 #include "models.h"
 
 // TODO (n.chernyh) : do we need 5 rule here ?
-class MetricStorage {
-public:
+class MetricStorage
+{
+  public:
     MetricStorage() = delete;
 
     explicit MetricStorage(std::shared_ptr<ClickStorage> storage);
 
-    std::shared_ptr<CountersPopularityMetricResponse> GetCounterPopularityByShop(std::shared_ptr<GetCountersPopularityByStoreRequest> req);
+    std::shared_ptr<CountersPopularityMetricResponse> GetCounterPopularityByShop(
+        std::shared_ptr<GetCountersPopularityByStoreRequest> req);
 
-    std::shared_ptr<ProductsPopularityByStoreMetricResponse> GetProductsPopularityByShop(std::shared_ptr<GetProductsPopularityByStoreRequest> req);
+    std::shared_ptr<ProductsPopularityByStoreMetricResponse> GetProductsPopularityByShop(
+        std::shared_ptr<GetProductsPopularityByStoreRequest> req);
 
-    std::shared_ptr<ProductsPopularityMetricResponse> GetProductsTotalPopularity(std::shared_ptr<GetProductsTotalPopularityRequest> req);
+    std::shared_ptr<ProductsPopularityMetricResponse> GetProductsTotalPopularity(
+        std::shared_ptr<GetProductsTotalPopularityRequest> req);
 
     ~MetricStorage();
 
-private:
+  private:
     std::shared_ptr<ClickStorage> storage;
 };
 

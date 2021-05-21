@@ -7,7 +7,8 @@
 #include <utility>
 
 std::shared_ptr<CountersPopularityMetricResponse> MetricStorage::GetCounterPopularityByShop(
-        std::shared_ptr<GetCountersPopularityByStoreRequest> req) {
+    std::shared_ptr<GetCountersPopularityByStoreRequest> req)
+{
     auto q = std::shared_ptr<GetCounterPopularityMetricQuery>();
     q->SetupQuery(req);
     std::shared_ptr<CounterPopularityMetricReader> reader;
@@ -15,12 +16,13 @@ std::shared_ptr<CountersPopularityMetricResponse> MetricStorage::GetCounterPopul
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<CountersPopularityMetricResponse>();
-    res->array = std::move(reader->Get());
+    res->Array = std::move(reader->Get());
     return res;
 }
 
 std::shared_ptr<ProductsPopularityByStoreMetricResponse> MetricStorage::GetProductsPopularityByShop(
-        std::shared_ptr<GetProductsPopularityByStoreRequest> req) {
+    std::shared_ptr<GetProductsPopularityByStoreRequest> req)
+{
     auto q = std::shared_ptr<GetProductPopularityByShopMetricQuery>();
     q->SetupQuery(req);
     std::shared_ptr<ShopProductsPopularityMetricReader> reader;
@@ -28,12 +30,13 @@ std::shared_ptr<ProductsPopularityByStoreMetricResponse> MetricStorage::GetProdu
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<ProductsPopularityByStoreMetricResponse>();
-    res->array = std::move(reader->Get());
+    res->Array = std::move(reader->Get());
     return res;
 }
 
-std::shared_ptr<ProductsPopularityMetricResponse>
-MetricStorage::GetProductsTotalPopularity(std::shared_ptr<GetProductsTotalPopularityRequest> req) {
+std::shared_ptr<ProductsPopularityMetricResponse> MetricStorage::GetProductsTotalPopularity(
+    std::shared_ptr<GetProductsTotalPopularityRequest> req)
+{
     auto q = std::shared_ptr<GetProductsTotalPopularityMetricQuery>();
     q->SetupQuery(req);
     std::shared_ptr<ProductPopularityMetricReader> reader;
@@ -41,12 +44,14 @@ MetricStorage::GetProductsTotalPopularity(std::shared_ptr<GetProductsTotalPopula
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<ProductsPopularityMetricResponse>();
-    res->array = std::move(reader->Get());
+    res->Array = std::move(reader->Get());
     return res;
 }
 
-MetricStorage::~MetricStorage() {
+MetricStorage::~MetricStorage()
+{
 }
 
-MetricStorage::MetricStorage(std::shared_ptr<ClickStorage> storage) : storage(storage) {
+MetricStorage::MetricStorage(std::shared_ptr<ClickStorage> storage) : storage(storage)
+{
 }

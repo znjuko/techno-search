@@ -11,15 +11,17 @@
 
 using namespace Pistache;
 
-class IResponseWriter {
-public:
+class IResponseWriter
+{
+  public:
     virtual void WriteResponse(std::shared_ptr<IUnMarshaller> u, Http::ResponseWriter *writer) = 0;
 
     virtual ~IResponseWriter() noexcept = 0;
 };
 
-class JsonResponseWriter : public IResponseWriter {
-public:
+class JsonResponseWriter : public IResponseWriter
+{
+  public:
     JsonResponseWriter() = default;
 
     void WriteResponse(std::shared_ptr<IUnMarshaller> u, Http::ResponseWriter *writer) override;
@@ -27,9 +29,9 @@ public:
     ~JsonResponseWriter() noexcept override;
 };
 
-
-class ErrorResponseWriter {
-public:
+class ErrorResponseWriter
+{
+  public:
     ErrorResponseWriter() = default;
 
     void WriteError(Http::Code code, const std::string &error, Http::ResponseWriter *writer) noexcept;
