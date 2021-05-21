@@ -13,7 +13,8 @@ GetCountersPopularityByStoreRequest::GetCountersPopularityByStoreRequest() : Sto
 void GetCountersPopularityByStoreRequest::Marshall(const Http::Uri::Query &query)
 {
     auto storeParam = query.get("store");
-    if(storeParam->empty()) {
+    if (storeParam->empty())
+    {
         throw EmptyValue("store");
     }
     StoreID = boost::lexical_cast<int>(*storeParam);
@@ -26,13 +27,15 @@ GetProductsPopularityByStoreRequest::GetProductsPopularityByStoreRequest() : Sto
 void GetProductsPopularityByStoreRequest::Marshall(const Http::Uri::Query &query)
 {
     auto storeParam = query.get("store");
-    if(storeParam->empty()) {
+    if (storeParam->empty())
+    {
         throw EmptyValue("store");
     }
     StoreID = boost::lexical_cast<int>(*storeParam);
 
     auto idsValue = query.get("ids");
-    if(idsValue->empty()) {
+    if (idsValue->empty())
+    {
         throw EmptyValue("ids");
     }
     boost::split(ProductIDs, *idsValue, boost::is_any_of(","));
@@ -45,7 +48,8 @@ GetProductsTotalPopularityRequest::GetProductsTotalPopularityRequest() : Product
 void GetProductsTotalPopularityRequest::Marshall(const Http::Uri::Query &query)
 {
     auto idsValue = query.get("ids");
-    if(idsValue->empty()) {
+    if (idsValue->empty())
+    {
         throw EmptyValue("ids");
     }
     boost::split(ProductIDs, *idsValue, boost::is_any_of(","));

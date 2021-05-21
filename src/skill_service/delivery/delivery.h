@@ -5,11 +5,11 @@
 #ifndef TECHNO_SEARCH_SKILL_DELIVERY_H
 #define TECHNO_SEARCH_SKILL_DELIVERY_H
 
+#include "common_exceptions.h"
 #include "reader.h"
 #include "router_setupper.h"
 #include "usecase.h"
 #include "writer.h"
-#include "common_exceptions.h"
 
 #include <boost/exception/exception.hpp>
 #include <boost/lexical_cast.hpp>
@@ -17,9 +17,9 @@
 
 using namespace Pistache;
 
-
-class MetricService : public IRouterSetupper {
-public:
+class MetricService : public IRouterSetupper
+{
+  public:
     MetricService() = delete;
 
     MetricService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader> bodyReader,
@@ -35,7 +35,7 @@ public:
 
     ~MetricService() override = default;
 
-private:
+  private:
     std::shared_ptr<JsonResponseWriter> responseWriter;
     std::shared_ptr<JsonRequestBodyReader> bodyReader;
     std::shared_ptr<ErrorResponseWriter> errorWriter;

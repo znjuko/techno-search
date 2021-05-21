@@ -3,6 +3,7 @@
 //
 
 #include "path_delivery.h"
+
 #include "common_exceptions.h"
 
 void PathService::SetupService(Rest::Router *router)
@@ -27,7 +28,7 @@ void PathService::GetStorePath(const Request &req, Http::ResponseWriter res)
     {
         requestReader->ReadRequest(reqReader, req);
     }
-    catch (const EmptyValue& e)
+    catch (const EmptyValue &e)
     {
         errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
