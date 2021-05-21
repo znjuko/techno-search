@@ -2,7 +2,7 @@
 // Created by fillinmar on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_PRODUCTS_STORAGE_H
+#ifndef TECHNO_SEARCH_STORES_STORAGE_H
 #define TECHNO_SEARCH_STORES_STORAGE_H
 
 #include "models.h"
@@ -28,4 +28,4 @@ class StoreStorage
   private:
     std::shared_ptr<PostgresStorage> storage;
 };
-#endif // TECHNO_SEARCH_PRODUCTS_STORAGE_H
+#endif

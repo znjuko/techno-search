@@ -2,8 +2,7 @@
 // Created by fillinmar on 14.04.2021.
 //
 
-#include "models.h"
-
+#include "product_models.h"
 #include "struct_mapping/struct_mapping.h"
 
 #include <iomanip>

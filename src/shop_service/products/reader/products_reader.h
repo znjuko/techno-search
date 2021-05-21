@@ -5,7 +5,7 @@
 #ifndef TECHNO_SEARCH_PRODUCTS_READER_H
 #define TECHNO_SEARCH_PRODUCTS_READER_H
 
-#include "models.h"
+#include "product_models.h"
 #include "reader.h"
 
 #include <boost/lexical_cast.hpp>

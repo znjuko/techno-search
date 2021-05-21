@@ -9,16 +9,16 @@ void ProductService::GetProductMetadata(const Http::Request &req, Http::Response
     std::shared_ptr<GetProductMetadataRequest> reqReader;
     try
     {
-        queryReader.ReadRequest(reqReader, req);
+        queryReader->ReadRequest(reqReader, req);
     }
     catch (const EmptyValue &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
     catch (const boost::bad_lexical_cast &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, "wrong product id", &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong product id", &res);
         return;
     }
 
@@ -29,10 +29,10 @@ void ProductService::GetProductMetadata(const Http::Request &req, Http::Response
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Conflict, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
-    responseWriter.WriteResponse(respWriter, &res);
+    responseWriter->WriteResponse(respWriter, &res);
 }
 
 void ProductService::GetProductList(const Http::Request &req, Http::ResponseWriter res)
@@ -40,16 +40,16 @@ void ProductService::GetProductList(const Http::Request &req, Http::ResponseWrit
     std::shared_ptr<GetProductMetadataRequest> reqReader;
     try
     {
-        queryReader.ReadRequest(reqReader, req);
+        queryReader->ReadRequest(reqReader, req);
     }
     catch (const EmptyValue &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
     catch (const boost::bad_lexical_cast &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, "wrong products` name", &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong products` name", &res);
         return;
     }
 
@@ -60,10 +60,10 @@ void ProductService::GetProductList(const Http::Request &req, Http::ResponseWrit
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Conflict, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
-    responseWriter.WriteResponse(respWriter, &res);
+    responseWriter->WriteResponse(respWriter, &res);
 }
 
 void ProductService::UpdateProduct(const Http::Request &req, Http::ResponseWriter res)
@@ -71,16 +71,16 @@ void ProductService::UpdateProduct(const Http::Request &req, Http::ResponseWrite
     std::shared_ptr<UpdateProductRequest> reqReader;
     try
     {
-        bodyReader.ReadRequest(reqReader, req);
+        bodyReader->ReadRequest(reqReader, req);
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
     catch (const boost::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, "wrong product id", &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong product id", &res);
         return;
     }
 
@@ -91,10 +91,10 @@ void ProductService::UpdateProduct(const Http::Request &req, Http::ResponseWrite
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Conflict, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
-    responseWriter.WriteResponse(respWriter, &res);
+    responseWriter->WriteResponse(respWriter, &res);
 }
 
 void ProductService::AddProduct(const Http::Request &req, Http::ResponseWriter res)
@@ -102,16 +102,16 @@ void ProductService::AddProduct(const Http::Request &req, Http::ResponseWriter r
     std::shared_ptr<AddProductRequest> reqReader;
     try
     {
-        bodyReader.ReadRequest(reqReader, req);
+        bodyReader->ReadRequest(reqReader, req);
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
     catch (const boost::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, "wrong product metadata", &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong product metadata", &res);
         return;
     }
 
@@ -122,10 +122,10 @@ void ProductService::AddProduct(const Http::Request &req, Http::ResponseWriter r
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Conflict, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
-    responseWriter.WriteResponse(respWriter, &res);
+    responseWriter->WriteResponse(respWriter, &res);
 }
 void ProductService::SetupService(Rest::Router router)
 {

@@ -38,10 +38,10 @@ class ProductService : public IRouterSetupper
     ~ProductService() override = default;
 
   private:
-    JsonResponseWriter responseWriter;
-    JsonRequestBodyReader bodyReader;
-    ErrorResponseWriter errorWriter;
-    RequestQueryReader queryReader;
-    ProductManager manager;
+    std::shared_ptr<JsonResponseWriter> responseWriter;
+    std::shared_ptr<JsonRequestBodyReader> bodyReader;
+    std::shared_ptr<ErrorResponseWriter> errorWriter;
+    std::shared_ptr<RequestQueryReader> queryReader;
+    std::shared_ptr<ProductManager> manager;
 };
 #endif

@@ -12,7 +12,7 @@ class StoreManager
 {
   public:
     StoreManager() = delete;
-    StoreManager(const StoreStorage &storage);
+    StoreManager(const std::shared_ptr<StoreStorage> &storage);
     std::shared_ptr<GetStoreMetadataResponse> GetStoreMetadata(std::shared_ptr<GetStoreMetadataRequest> req);
     std::shared_ptr<GetStoreListResponse> GetListStore(std::shared_ptr<GetStoreListRequest> req);
     std::shared_ptr<UpdateStoreResponse> UpdateStoreMetadata(std::shared_ptr<UpdateStoreRequest> req);
@@ -20,7 +20,7 @@ class StoreManager
     ~StoreManager();
 
   private:
-    StoreStorage storage;
+    std::shared_ptr<StoreStorage> storage;
 };
 
 #endif

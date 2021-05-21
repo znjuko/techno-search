@@ -5,7 +5,7 @@
 #ifndef TECHNO_SEARCH_PRODUCTS_QUERY_H
 #define TECHNO_SEARCH_PRODUCTS_QUERY_H
 
-#include "models.h"
+#include "product_models.h"
 
 #include <memory>
 #include <query.h>
