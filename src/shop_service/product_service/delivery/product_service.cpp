@@ -23,4 +23,6 @@ void ProductService::SetupService(Rest::Router router)
 {
 }
 
-ProductService::ProductService() {}
+ProductService::ProductService()
+{
+}

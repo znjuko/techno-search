@@ -1,18 +1,18 @@
 //
 // Created by paccbet on 13.04.2021.
 //
-#include <vector>
-#include <string>
 #include <algorithm>
-#include <sstream>
-#include <iterator>
 #include <iostream>
+#include <iterator>
+#include <sstream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
 int main()
 {
-    auto v = vector<int>(7,1);
+    auto v = vector<int>(7, 1);
 
     std::ostringstream oss;
 

@@ -1,23 +1,27 @@
 #include "finder.h"
 
 std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, const size_t &size,
-                                         const std::vector<std::vector<int>> &AdjacencyTable) {
+                                         const std::vector<std::vector<int>> &AdjacencyTable)
+{
     auto distance = std::vector<size_t>(size);
     auto vizited = std::vector<size_t>(size);
     const size_t limit = 10000;
     size_t temp, minindex, min, begin_index = from;
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++)
+    {
         distance[i] = limit;
         vizited[i] = 1;
     }
     distance[begin_index] = 0;
 
-    do {
+    do
+    {
         minindex = limit;
         min = limit;
 
-        for (size_t i = 0; i < size; i++) {
+        for (size_t i = 0; i < size; i++)
+        {
             if (!((vizited[i] == 1) && (distance[i] < min)))
                 continue;
 
@@ -28,12 +32,14 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
         if (minindex == limit)
             continue;
 
-        for (size_t i = 0; i < size; i++) {
+        for (size_t i = 0; i < size; i++)
+        {
             if (AdjacencyTable[minindex][i] <= 0)
                 continue;
 
             temp = min + AdjacencyTable[minindex][i];
-            if (temp < distance[i]) {
+            if (temp < distance[i])
+            {
                 distance[i] = temp;
             }
         }
@@ -46,8 +52,10 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
     int k = 1;
     size_t weight = distance[to];
 
-    while (end != begin_index) {
-        for (int i = 0; i < size; i++) {
+    while (end != begin_index)
+    {
+        for (int i = 0; i < size; i++)
+        {
             if (AdjacencyTable[i][to] != 0)
                 continue;
 

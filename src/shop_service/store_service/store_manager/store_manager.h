@@ -5,14 +5,16 @@
 #ifndef TECHNO_SEARCH_STORE_MANAGER_H
 #define TECHNO_SEARCH_STORE_MANAGER_H
 
-class StoreManager{
-private:
-    StoreStorage: store;
-public:
-    GetStoreMetadataResponse GetStoreMetadata( GetStoreMetadataRequest req){};
+class StoreManager
+{
+  private:
+    StoreStorage : store;
+
+  public:
+    GetStoreMetadataResponse GetStoreMetadata(GetStoreMetadataRequest req){};
     GetListStoreResponse GetListStore(GetListStoreRequest req);
     UpdateStoreMetadataResponse UpdateStoreMetadata(UpdateMetadataRequest req);
     AddListStoreResponse AddStore(AddStoreRequest req);
 };
 
-#endif //TECHNO_SEARCH_STORE_MANAGER_H
+#endif // TECHNO_SEARCH_STORE_MANAGER_H

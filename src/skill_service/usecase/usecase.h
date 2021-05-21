@@ -19,11 +19,14 @@ class MetricManager
 
     explicit MetricManager(const MetricStorage &storage) noexcept;
 
-    std::shared_ptr<CountersPopularityMetricResponse> GetCounterPopularityByShop(std::shared_ptr<GetCountersPopularityByStoreRequest> req);
+    std::shared_ptr<CountersPopularityMetricResponse> GetCounterPopularityByShop(
+        std::shared_ptr<GetCountersPopularityByStoreRequest> req);
 
-    std::shared_ptr<ProductsPopularityByStoreMetricResponse> GetProductsPopularityByShop(std::shared_ptr<GetProductsPopularityByStoreRequest> req);
+    std::shared_ptr<ProductsPopularityByStoreMetricResponse> GetProductsPopularityByShop(
+        std::shared_ptr<GetProductsPopularityByStoreRequest> req);
 
-    std::shared_ptr<ProductsPopularityMetricResponse> GetProductsTotalPopularity(std::shared_ptr<GetProductsTotalPopularityRequest> req);
+    std::shared_ptr<ProductsPopularityMetricResponse> GetProductsTotalPopularity(
+        std::shared_ptr<GetProductsTotalPopularityRequest> req);
 
     ~MetricManager();
 

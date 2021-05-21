@@ -1,26 +1,27 @@
 #ifndef TECHNO_SEARCH_MAP_MODELS_H
 #define TECHNO_SEARCH_MAP_MODELS_H
 
+#include <iostream>
 #include <nlohmann/json.hpp>
 #include <vector>
-#include <iostream>
 
-class Point {
+class Point
+{
 
-public:
+  public:
     double x, y;
 
     void Show() const;
 
-    Point(double _x, double  _y);
+    Point(double _x, double _y);
 
     ~Point() = default;
-
 };
 
-class Line {
+class Line
+{
 
-public:
+  public:
     Point p1, p2;
 
     void Show() const;
@@ -31,14 +32,13 @@ public:
 
     Point GetMiddleOfLine() const;
 
-    Point * LineIntersectionWithLine(Line l);
-
+    Point *LineIntersectionWithLine(Line l);
 };
 
+class Polygon
+{
 
-class Polygon {
-
-public:
+  public:
     Polygon();
 
     ~Polygon() = default;
@@ -59,18 +59,15 @@ public:
 
     std::vector<Point> GetVertices();
 
-    std::vector<Point*> IntersectionWithVerticalLine(Line l);
+    std::vector<Point *> IntersectionWithVerticalLine(Line l);
 
-private:
-
+  private:
     std::vector<Point> vertices;
     std::vector<Line> lines;
     size_t count;
-    
 };
 
-
-//class GetCoordinates : public IMarshaller
+// class GetCoordinates : public IMarshaller
 //{
 //  public:
 //    GetStoreMetadataRequest();
@@ -81,7 +78,5 @@ private:
 //
 //    string name;
 //};
-
-
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H

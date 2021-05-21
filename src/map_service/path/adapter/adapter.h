@@ -5,11 +5,13 @@
 #ifndef TECHNO_ALGO_ADAPTER_H
 #define TECHNO_ALGO_ADAPTER_H
 
-#include <vector>
 #include "models.h"
 
-class Adapter {
-public:
+#include <vector>
+
+class Adapter
+{
+  public:
     Adapter() = default;
 
     std::vector<std::vector<int>> AdaptAdjacency(std::shared_ptr<StoreModel> model);
@@ -17,5 +19,4 @@ public:
     ~Adapter() = default;
 };
 
-
-#endif //TECHNO_ALGO_ADAPTER_H
+#endif // TECHNO_ALGO_ADAPTER_H

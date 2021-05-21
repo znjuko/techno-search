@@ -1,16 +1,18 @@
 #ifndef TECHNO_SEARCH_GRAPH_CONVERTER_H
 #define TECHNO_SEARCH_GRAPH_CONVERTER_H
 
-#include "shop_map.h"
 #include "map_models.h"
+#include "shop_map.h"
+
 #include <vector>
 
-class GraphConverter{
+class GraphConverter
+{
 
-public:
+  public:
     std::vector<std::vector<double>> Generate(Map map);
-private:
 
+  private:
 };
 
-#endif //TECHNO_SEARCH_GRAPH_CONVERTER_H
+#endif // TECHNO_SEARCH_GRAPH_CONVERTER_H

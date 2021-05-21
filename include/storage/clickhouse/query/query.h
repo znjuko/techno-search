@@ -6,6 +6,7 @@
 #define TECHNO_SEARCH_QUERY_H
 
 #include "models.h"
+
 #include <string>
 
 class ClickQuery

@@ -1,17 +1,19 @@
 #ifndef TECHNO_SEARCH_PATH_H
 #define TECHNO_SEARCH_PATH_H
 
-#include <vector>
-
 #include "models.h"
 
-class PathFinder {
-public:
-  PathFinder() = default;
+#include <vector>
 
-  std::vector<size_t> FindPath(const size_t &from, const size_t &to, const size_t& size, const std::vector<std::vector<int>>& AdjacencyTable);
+class PathFinder
+{
+  public:
+    PathFinder() = default;
 
-  ~PathFinder() = default;
+    std::vector<size_t> FindPath(const size_t &from, const size_t &to, const size_t &size,
+                                 const std::vector<std::vector<int>> &AdjacencyTable);
+
+    ~PathFinder() = default;
 };
 
 #endif // TECHNO_SEARCH_PATH_H

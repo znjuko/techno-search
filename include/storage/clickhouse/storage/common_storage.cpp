@@ -15,7 +15,5 @@ void ClickStorage::Insert(const ClickQuery &q)
 
 void ClickStorage::Select(std::shared_ptr<ClickQuery> &q, std::shared_ptr<ClickReader> r)
 {
-    this->client.Select(q.GetQuery(), [&] (const Block& block) {
-        r->Execute(block);
-    });
+    this->client.Select(q.GetQuery(), [&](const Block &block) { r->Execute(block); });
 }

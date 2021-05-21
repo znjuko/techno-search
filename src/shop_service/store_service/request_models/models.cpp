@@ -29,7 +29,7 @@ nlohmann::json StoreMetadata::UnMarshall()
     return nlohmann::json();
 };
 
-StoreList::StoreList() : storeList(), skip(0),limit(0) {};
+StoreList::StoreList() : storeList(), skip(0), limit(0){};
 void StoreList::Marshall(const std::string &body){};
 nlohmann::json StoreList::UnMarshall()
 {

@@ -8,19 +8,20 @@
 #include "marshaller.h"
 #include "unmarshaller.h"
 
-#include <nlohmann/json.hpp>
-#include <pistache/endpoint.h>
 #include <algorithm>
-#include <pistache/http.h>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
+#include <nlohmann/json.hpp>
+#include <pistache/endpoint.h>
+#include <pistache/http.h>
 #include <pistache/router.h>
 #include <vector>
 
 using namespace Pistache;
 
-class GetStorePathRequest : public IRequestMarshaller {
-public:
+class GetStorePathRequest : public IRequestMarshaller
+{
+  public:
     GetStorePathRequest();
 
     void Marshall(const Rest::Request &req) override;
@@ -30,8 +31,9 @@ public:
     int ShopID, FromNode, ToNode;
 };
 
-class GetStorePathResponse : public IUnMarshaller {
-public:
+class GetStorePathResponse : public IUnMarshaller
+{
+  public:
     explicit GetStorePathResponse(std::vector<size_t> Path);
 
     nlohmann::json UnMarshall() override;
@@ -41,5 +43,4 @@ public:
     std::vector<size_t> Array;
 };
 
-
-#endif //TECHNO_ALGO_PATH_MODELS_H
+#endif // TECHNO_ALGO_PATH_MODELS_H
