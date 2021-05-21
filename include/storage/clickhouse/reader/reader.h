@@ -2,8 +2,8 @@
 // Created by paccbet on 15.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_READER_H
-#define TECHNO_SEARCH_READER_H
+#ifndef TECHNO_SEARCH_CLICKHOUSE_READER_H
+#define TECHNO_SEARCH_CLICKHOUSE_READER_H
 
 #include "models.h"
 

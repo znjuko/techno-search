@@ -7,6 +7,7 @@ option(test "Build all tests." ON)
 add_subdirectory(src)
 add_subdirectory(include)
 
+set(CMAKE_CXX_STANDARD 20)
 add_executable(techno_search main.cpp)
 target_link_libraries(${PROJECT_NAME} marshaller unmarshaller models)
 

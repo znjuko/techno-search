@@ -1,6 +1,6 @@
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-set(LIBRARY_NAME postgres_storage)
+set(LIBRARY_NAME stores_query)
 
 file(GLOB SRC *.h *.cpp)
 
@@ -12,4 +12,4 @@ find_package(libpqxx CONFIG REQUIRED)
 
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(${LIBRARY_NAME} PRIVATE libpqxx::pqxx postgres_reader postgres_query)
+target_link_libraries(${LIBRARY_NAME} PRIVATE stores_models libpqxx::pqxx postgres_query)

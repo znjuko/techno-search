@@ -2,12 +2,12 @@
 // Created by fillinmar on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_STORE_SERVICE_H
-#define TECHNO_SEARCH_STORE_SERVICE_H
+#ifndef TECHNO_SEARCH_PRODUCTS_SERVICE_DELIVERY_H
+#define TECHNO_SEARCH_PRODUCTS_SERVICE_DELIVERY_H
 
+#include "products_usecase.h"
 #include "reader.h"
 #include "router_setupper.h"
-#include "usecase.h"
 #include "writer.h"
 
 #include <boost/exception/exception.hpp>
@@ -43,4 +43,4 @@ class ProductService : public IRouterSetupper
     RequestQueryReader queryReader;
     ProductManager manager;
 };
-#endif // TECHNO_SEARCH_STORE_SERVICE_H
+#endif

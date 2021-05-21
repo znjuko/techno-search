@@ -61,7 +61,7 @@ void ProductService::UpdateProduct(const Http::Request &req, Http::ResponseWrite
     std::shared_ptr<UpdateProductRequest> reqReader;
     try
     {
-        queryReader.ReadRequest(reqReader, req);
+        bodyReader.ReadRequest(reqReader, req);
     }
     catch (const boost::exception &e)
     {
@@ -87,7 +87,7 @@ void ProductService::AddProduct(const Http::Request &req, Http::ResponseWriter r
     std::shared_ptr<AddProductRequest> reqReader;
     try
     {
-        queryReader.ReadRequest(reqReader, req);
+        bodyReader.ReadRequest(reqReader, req);
     }
     catch (const boost::exception &e)
     {

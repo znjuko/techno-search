@@ -2,8 +2,8 @@
 // Created by paccbet on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_READER_H
-#define TECHNO_SEARCH_READER_H
+#ifndef TECHNO_SEARCH_HTTP_REQUEST_READER_H
+#define TECHNO_SEARCH_HTTP_REQUEST_READER_H
 
 #include "marshaller.h"
 
@@ -36,4 +36,4 @@ public:
     ~RequestQueryReader() noexcept;
 };
 
-#endif // TECHNO_SEARCH_READER_H
+#endif

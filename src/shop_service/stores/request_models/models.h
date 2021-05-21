@@ -2,8 +2,8 @@
 // Created by fillinmar on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_STORE_MODELS_H
-#define TECHNO_SEARCH_STORE_MODELS_H
+#ifndef TECHNO_SEARCH_STORES_MODELS_H
+#define TECHNO_SEARCH_STORES_MODELS_H
 
 #include "marshaller.h"
 #include "unmarshaller.h"

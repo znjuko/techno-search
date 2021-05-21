@@ -1,8 +1,8 @@
 //
 // Created by fillinmar on 14.04.2021.
 //
-#ifndef TECHNO_SEARCH_STORE_SERVICE_H
-#define TECHNO_SEARCH_STORE_SERVICE_H
+#ifndef TECHNO_SEARCH_STORES_SERVICE_DELIVERY_H
+#define TECHNO_SEARCH_STORES_SERVICE_DELIVERY_H
 
 #include "reader.h"
 #include "router_setupper.h"
@@ -42,4 +42,4 @@ class StoreService : public IRouterSetupper
     RequestQueryReader queryReader;
     StoreManager manager;
 };
-#endif // TECHNO_SEARCH_STORE_SERVICE_H
+#endif
