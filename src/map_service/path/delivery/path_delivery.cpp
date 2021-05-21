@@ -3,3 +3,33 @@
 //
 
 #include "path_delivery.h"
+
+void PathService::SetupService(Rest::Router *router) {
+    router->addRoute(
+            Http::Method::Get,
+            "api/v1/shop/:shopID/map/find",
+            Pistache::Rest::Routes::bind(&PathService::GetStorePath, this));
+}
+
+PathService::PathService(std::shared_ptr<JsonResponseWriter> responseWriter,
+                         std::shared_ptr<JsonRequestBodyReader> bodyReader,
+                         std::shared_ptr<ErrorResponseWriter> errorWriter,
+                         std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<PathManager> manager) :
+        responseWriter(responseWriter), bodyReader(bodyReader), errorWriter(errorWriter), queryReader(queryReader),
+        manager(manager) {
+
+}
+
+void PathService::GetStorePath(const Request &req, Http::ResponseWriter res) {
+    auto reqReader = std::make_shared<GetStorePathRequest>();
+    try {
+        queryReader->ReadRequest(reqReader, req);
+    }
+    catch (const boost::exception &e) {
+        errorWriter.WriteError(Http::Code::Bad_Request, "wrong product ids", &res);
+        return;
+    }
+
+
+
+}

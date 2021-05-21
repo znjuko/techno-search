@@ -18,9 +18,22 @@
 
 using namespace Pistache;
 
-class Delivery : public IRouterSetupper {
+class PathService : public IRouterSetupper {
 public:
+    PathService() = delete;
 
+    PathService(
+            std::shared_ptr<JsonResponseWriter> responseWriter,
+            std::shared_ptr<JsonRequestBodyReader> bodyReader,
+            std::shared_ptr<ErrorResponseWriter> errorWriter,
+            std::shared_ptr<RequestQueryReader> queryReader,
+            std::shared_ptr<PathManager> manager);
+
+    void GetStorePath(const Rest::Request &req, Http::ResponseWriter res);
+
+    void SetupService(Rest::Router* router) override;
+
+    ~PathService() override = default;
 private:
     std::shared_ptr<JsonResponseWriter> responseWriter;
     std::shared_ptr<JsonRequestBodyReader> bodyReader;
