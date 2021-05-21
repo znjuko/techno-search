@@ -8,7 +8,7 @@ Storage::Storage(std::shared_ptr<mongocxx::database> database) : database(databa
 };
 
 std::shared_ptr<StoreModel> Storage::GetStoreData(const int& ID) {
-    auto storeCollection = database->collection("store");
+    auto storeCollection = database->collection("store_graph");
 
     auto selectStoreResult = storeCollection.find_one(make_document(kvp("ID", ID)));
     if(!selectStoreResult) {
