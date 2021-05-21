@@ -8,19 +8,17 @@
 #include "models.h"
 
 #include <memory>
-
-#include <string>
-
 #include <query.h>
+#include <string>
 
 class GetStoreMetadataQuery : public PostgresQuery
 {
   public:
     GetStoreMetadataQuery();
 
-    GetStoreMetadataQuery (std::string *query) = delete;
+    GetStoreMetadataQuery(std::string *query) = delete;
 
-    GetStoreMetadataQuery (std::string &query) = delete;
+    GetStoreMetadataQuery(std::string &query) = delete;
 
     std::string GetQuery() const override;
 

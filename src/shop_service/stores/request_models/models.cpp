@@ -16,16 +16,38 @@ GetStoreMetadataRequest::GetStoreMetadataRequest() : StoreID(0)
 
 void GetStoreMetadataRequest::Marshall(const Http::Uri::Query &query)
 {
-    StoreID = boost::lexical_cast<int>(query.get("id").value());
+    auto storeParam = query.get("id");
+    if (storeParam->empty())
+    {
+        throw EmptyValue("id");
+    }
+    StoreID = boost::lexical_cast<int>(*storeParam);
 };
 
 GetStoreListRequest::GetStoreListRequest() : Search(""), Limit(0), Skip(0){};
 
 void GetStoreListRequest::Marshall(const Http::Uri::Query &query)
 {
-    Search = (query.get("name").value());
-    Limit = boost::lexical_cast<int>(query.get("storage").value());
-    Skip = boost::lexical_cast<int>(query.get("storage").value());
+    auto searchParam = query.get("name");
+    if (searchParam->empty())
+    {
+        throw EmptyValue("name");
+    }
+    Search = *searchParam;
+
+    auto limitParam = query.get("limit");
+    if (limitPatam->empty())
+    {
+        throw EmptyValue("limit");
+    }
+    Limit = boost::lexical_cast<int>(*limitPatam);
+
+    auto skipParam = query.get("skip");
+    if (skipParam->empty())
+    {
+        throw EmptyValue("skip");
+    }
+    Skip = boost::lexical_cast<int>(*skipParam);
 };
 
 UpdateStoreRequest::UpdateStoreRequest() : Store(0, "", 0.0, 0.0, ""){};

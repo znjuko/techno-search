@@ -16,9 +16,9 @@ class ProductStorage
     std::shared_ptr<GetProductListResponse> GetProductStore(std::shared_ptr<GetProductListRequest> req);
     std::shared_ptr<UpdateProductResponse> UpdateProductMetadata(std::shared_ptr<UpdateProductRequest> req);
     std::shared_ptr<AddProductResponse> AddProduct(std::shared_ptr<AddProductRequest> req);
+
   private:
     std::shared_ptr<PostgresStorage> : storage;
-
 };
 
 #endif

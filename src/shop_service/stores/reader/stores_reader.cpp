@@ -53,4 +53,3 @@ std::vector<AddStore> AddStoreReader::Get()
 {
     return data;
 }
-

@@ -3,5 +3,4 @@
 
 #include <string>
 
-
-#endif //TECHNO_SEARCH_COMMONSTORAGE_H
+#endif // TECHNO_SEARCH_COMMONSTORAGE_H

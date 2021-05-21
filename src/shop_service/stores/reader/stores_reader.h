@@ -5,12 +5,11 @@
 #ifndef TECHNO_SEARCH_STORES_READER_H
 #define TECHNO_SEARCH_STORES_READER_H
 
-#include "reader.h"
 #include "models.h"
+#include "reader.h"
 
 #include <pqxx/pqxx>
 #include <vector>
-
 
 class StoreMetadataReader : public PostgresReader
 {

@@ -4,6 +4,7 @@
 #ifndef TECHNO_SEARCH_STORES_SERVICE_DELIVERY_H
 #define TECHNO_SEARCH_STORES_SERVICE_DELIVERY_H
 
+#include "common_exceptions.h"
 #include "reader.h"
 #include "router_setupper.h"
 #include "usecase.h"

@@ -16,16 +16,38 @@ GetProductMetadataRequest::GetProductMetadataRequest() : ProductID(0)
 
 void GetProductMetadataRequest::Marshall(const Http::Uri::Query &query)
 {
-    ProductID = boost::lexical_cast<int>(query.get("id").value());
+    auto productParam = query.get("id");
+    if (productParam->empty())
+    {
+        throw EmptyValue("id");
+    }
+    ProductID = boost::lexical_cast<int>(*productParam);
 };
 
 GetProductListRequest::GetProductListRequest() : Search(""), Limit(0), Skip(0){};
 
 void GetProductListRequest::Marshall(const Http::Uri::Query &query)
 {
-    Search = (query.get("name").value());
-    Limit = boost::lexical_cast<int>(query.get("storage").value());
-    Skip = boost::lexical_cast<int>(query.get("storage").value());
+    auto searchParam = query.get("name");
+    if (searchParam->empty())
+    {
+        throw EmptyValue("name");
+    }
+    Search = *searchParam;
+
+    auto limitParam = query.get("limit");
+    if (limitPatam->empty())
+    {
+        throw EmptyValue("limit");
+    }
+    Limit = boost::lexical_cast<int>(*limitPatam);
+
+    auto skipParam = query.get("skip");
+    if (skipParam->empty())
+    {
+        throw EmptyValue("skip");
+    }
+    Skip = boost::lexical_cast<int>(*skipParam);
 };
 
 UpdateProductRequest::UpdateProductRequest() : Product(0, 0, "", "", 0, 0, 0){};

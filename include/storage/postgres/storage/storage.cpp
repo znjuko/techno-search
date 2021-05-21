@@ -21,13 +21,14 @@ void PostgresStorage::Select(std::shared_ptr<PostgresQuery> q, std::shared_ptr<P
     r->Execute(R);
 }
 
-void PostgresStorage::SelectAndInsert(const PostgresQuery &qIns, std::shared_ptr<PostgresQuery> qSel, std::shared_ptr<PostgresReader> r)
+void PostgresStorage::SelectAndInsert(const PostgresQuery &qIns, std::shared_ptr<PostgresQuery> qSel,
+                                      std::shared_ptr<PostgresReader> r)
 {
     pqxx::work Transaction{C};
 
-    Transaction.exec0(qIns.GetQuery());//добавила или обновила
+    Transaction.exec0(qIns.GetQuery()); //добавила или обновила
 
-    pqxx::result R{Transaction.exec(qSel->GetQuery())};//получила данные
+    pqxx::result R{Transaction.exec(qSel->GetQuery())}; //получила данные
 
     r->Execute(R);
 }

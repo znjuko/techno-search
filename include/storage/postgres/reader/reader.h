@@ -10,7 +10,7 @@
 class PostgresReader
 {
   public:
-   virtual void Execute(const pqxx::result R) = 0;
+    virtual void Execute(const pqxx::result R) = 0;
 
     virtual ~PostgresReader() = default;
 };

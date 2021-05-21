@@ -10,7 +10,6 @@
 
 #include <pqxx/pqxx>
 
-
 class PostgresStorage
 {
   public:
@@ -20,7 +19,8 @@ class PostgresStorage
 
     void Select(std::shared_ptr<PostgresQuery> q, std::shared_ptr<PostgresReader> r);
 
-    void SelectAndInsert(const PostgresQuery &qIns, std::shared_ptr<PostgresQuery> qSel, std::shared_ptr<PostgresReader> r);
+    void SelectAndInsert(const PostgresQuery &qIns, std::shared_ptr<PostgresQuery> qSel,
+                         std::shared_ptr<PostgresReader> r);
 
     ~PostgresStorage() = default;
 

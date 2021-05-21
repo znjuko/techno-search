@@ -11,6 +11,11 @@ void StoreService::GetStoreMetadata(const Http::Request &req, Http::ResponseWrit
     {
         queryReader.ReadRequest(reqReader, req);
     }
+    catch (const EmptyValue &e)
+    {
+        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
+    }
     catch (const boost::bad_lexical_cast &e)
     {
         errorWriter.WriteError(Http::Code::Bad_Request, "wrong storage id", &res);
@@ -36,6 +41,11 @@ void StoreService::GetStoreList(const Http::Request &req, Http::ResponseWriter r
     try
     {
         queryReader.ReadRequest(reqReader, req);
+    }
+    catch (const EmptyValue &e)
+    {
+        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
     }
     catch (const boost::bad_lexical_cast &e)
     {
@@ -63,6 +73,11 @@ void StoreService::UpdateStore(const Http::Request &req, Http::ResponseWriter re
     {
         queryReader.ReadRequest(reqReader, req);
     }
+    catch (const std::exception &e)
+    {
+        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
+    }
     catch (const boost::exception &e)
     {
         errorWriter.WriteError(Http::Code::Bad_Request, "wrong store id", &res);
@@ -88,6 +103,11 @@ void StoreService::AddStore(const Http::Request &req, Http::ResponseWriter res)
     try
     {
         queryReader.ReadRequest(reqReader, req);
+    }
+    catch (const std::exception &e)
+    {
+        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
     }
     catch (const boost::exception &e)
     {

@@ -5,6 +5,7 @@
 #ifndef TECHNO_SEARCH_PRODUCTS_SERVICE_DELIVERY_H
 #define TECHNO_SEARCH_PRODUCTS_SERVICE_DELIVERY_H
 
+#include "common_exceptions.h"
 #include "products_usecase.h"
 #include "reader.h"
 #include "router_setupper.h"

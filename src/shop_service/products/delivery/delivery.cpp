@@ -11,6 +11,11 @@ void ProductService::GetProductMetadata(const Http::Request &req, Http::Response
     {
         queryReader.ReadRequest(reqReader, req);
     }
+    catch (const EmptyValue &e)
+    {
+        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
+    }
     catch (const boost::bad_lexical_cast &e)
     {
         errorWriter.WriteError(Http::Code::Bad_Request, "wrong product id", &res);
@@ -36,6 +41,11 @@ void ProductService::GetProductList(const Http::Request &req, Http::ResponseWrit
     try
     {
         queryReader.ReadRequest(reqReader, req);
+    }
+    catch (const EmptyValue &e)
+    {
+        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
     }
     catch (const boost::bad_lexical_cast &e)
     {
@@ -63,6 +73,11 @@ void ProductService::UpdateProduct(const Http::Request &req, Http::ResponseWrite
     {
         bodyReader.ReadRequest(reqReader, req);
     }
+    catch (const std::exception &e)
+    {
+        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
+    }
     catch (const boost::exception &e)
     {
         errorWriter.WriteError(Http::Code::Bad_Request, "wrong product id", &res);
@@ -88,6 +103,11 @@ void ProductService::AddProduct(const Http::Request &req, Http::ResponseWriter r
     try
     {
         bodyReader.ReadRequest(reqReader, req);
+    }
+    catch (const std::exception &e)
+    {
+        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
     }
     catch (const boost::exception &e)
     {

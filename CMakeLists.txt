@@ -12,10 +12,10 @@ add_executable(techno_search main.cpp)
 target_link_libraries(${PROJECT_NAME} marshaller unmarshaller models)
 
 #if(test)
-    enable_testing()
-
-    find_package(GTest REQUIRED)
-    find_package(Threads REQUIRED)
-
-    add_subdirectory(tests)
+#    enable_testing()
+#
+#    find_package(GTest REQUIRED)
+#    find_package(Threads REQUIRED)
+#
+#    add_subdirectory(tests)
 #endif(test)

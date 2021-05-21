@@ -4,13 +4,13 @@
 
 #include "usecase.h"
 
-std::shared_ptr<GetProductMetadataResponse> ProductManager::GetProductMetadata(std::shared_ptr<GetProductMetadataRequest> req)
+std::shared_ptr<GetProductMetadataResponse> ProductManager::GetProductMetadata(
+    std::shared_ptr<GetProductMetadataRequest> req)
 {
     return storage.GetProductMetadata(req);
 }
 
-std::shared_ptr<GetProductListResponse> ProductManager::GetListProduct(
-    std::shared_ptr<GetProductListRequest> req)
+std::shared_ptr<GetProductListResponse> ProductManager::GetListProduct(std::shared_ptr<GetProductListRequest> req)
 {
     return storage.GetListStore(req);
 }
@@ -25,7 +25,7 @@ std::shared_ptr<AddProductResponse> ProductManager::AddProduct(std::shared_ptr<A
     return storage.UpdateStoreMetadata(req);
 }
 
-ProductManager::ProductManager(const ProductStorage &storage): storage(storage)
+ProductManager::ProductManager(const ProductStorage &storage) : storage(storage)
 {
 }
 

@@ -17,5 +17,6 @@ target_link_libraries(
         marshaller unmarshaller nlohmann_json::nlohmann_json
         pistache router_setupper request_reader response_writer
         stores_usecase stores_models
+        common_exceptions
         ${Boost_LIBRARIES}
 )

@@ -6,7 +6,6 @@
 #define TECHNO_SEARCH_QUERY_H
 
 #include <memory>
-
 #include <string>
 
 class PostgresQuery
@@ -16,6 +15,5 @@ class PostgresQuery
 
     virtual ~PostgresQuery();
 };
-
 
 #endif // TECHNO_SEARCH_QUERY_H

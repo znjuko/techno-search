@@ -5,6 +5,7 @@
 #ifndef TECHNO_SEARCH_PRODUCT_MODELS_H
 #define TECHNO_SEARCH_PRODUCT_MODELS_H
 
+#include "common_exceptions.h"
 #include "marshaller.h"
 #include "unmarshaller.h"
 
