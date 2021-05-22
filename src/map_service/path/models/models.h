@@ -20,7 +20,7 @@ class StoreModel
 
     int ID;
     int Size;
-    std::vector<int> Adjacency;
+    std::vector<double> Adjacency;
     std::vector<int> Counters;
 };
 

@@ -14,7 +14,7 @@ class Adapter
   public:
     Adapter() = default;
 
-    std::vector<std::vector<int>> AdaptAdjacency(std::shared_ptr<StoreModel> model);
+    std::vector<std::vector<double>> AdaptAdjacency(std::shared_ptr<StoreModel> model);
 
     ~Adapter() = default;
 };

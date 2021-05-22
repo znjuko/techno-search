@@ -1,7 +1,7 @@
 #include "finder.h"
 
 std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, const size_t &size,
-                                         const std::vector<std::vector<int>> &AdjacencyTable)
+                                         const std::vector<std::vector<double>> &AdjacencyTable)
 {
     auto distance = std::vector<size_t>(size);
     auto vizited = std::vector<size_t>(size);
