@@ -4,11 +4,10 @@
 
 #include "models.h"
 
-#include "struct_mapping/struct_mapping.h"
-
 #include <iomanip>
 
 using namespace Pistache;
+using json = nlohmann::json;
 
 GetStoreMetadataRequest::GetStoreMetadataRequest() : StoreID(0)
 {
@@ -36,11 +35,11 @@ void GetStoreListRequest::Marshall(const Http::Uri::Query &query)
     Search = *searchParam;
 
     auto limitParam = query.get("limit");
-    if (limitPatam->empty())
+    if (limitParam->empty())
     {
         throw EmptyValue("limit");
     }
-    Limit = boost::lexical_cast<int>(*limitPatam);
+    Limit = boost::lexical_cast<int>(*limitParam);
 
     auto skipParam = query.get("skip");
     if (skipParam->empty())
@@ -54,21 +53,27 @@ UpdateStoreRequest::UpdateStoreRequest() : Store(0, "", 0.0, 0.0, ""){};
 
 void UpdateStoreRequest::Marshall(const std::string &body)
 {
-    // TODO:: check regular is it
-    auto jsonData = std::istringstream(R"json(\n" + body + "\n)json");
-    nlohmann::json d;
+    json j = json::parse(body);
+    json object = j["storeToUpdate"];
 
-    struct_mapping::map_json_to_struct(Store, jsonData);
+    Store.StoreID = object[0]["storeID"];
+    Store.Name  = object[0]["name"];
+    Store.OpenAt = object[0]["openAt"];
+    Store.CloseAt = object[0]["closeAt"];
+    Store.Address  = object[0]["address"];
 };
 
 AddStoreRequest::AddStoreRequest() : Store(0, "", 0.0, 0.0, ""){};
 
 void AddStoreRequest::Marshall(const std::string &body)
 {
-    // TODO:: check regular is it
-    auto jsonData = std::istringstream(R"(json)" + body + R"(json)");
+    json j = json::parse(body);
+    json object = j["storeToAdd"];
 
-    struct_mapping::map_json_to_struct(Store, jsonData);
+    Store.Name  = object[0]["name"];
+    Store.OpenAt = object[0]["openAt"];
+    Store.CloseAt = object[0]["closeAt"];
+    Store.Address  = object[0]["address"];
 };
 
 StoreMetadata::StoreMetadata() : Store(0, "", 0.0, 0.0, ""){};

@@ -14,6 +14,7 @@
 #include <boost/exception/exception.hpp>
 #include <boost/lexical_cast.hpp>
 #include <pistache/endpoint.h>
+#include <product_usecase.h>
 
 using namespace Pistache;
 
@@ -43,5 +44,6 @@ class ProductService : public IRouterSetupper
     std::shared_ptr<ErrorResponseWriter> errorWriter;
     std::shared_ptr<RequestQueryReader> queryReader;
     std::shared_ptr<ProductManager> manager;
+
 };
 #endif

@@ -3,11 +3,13 @@
 //
 
 #include "product_models.h"
-#include "struct_mapping/struct_mapping.h"
+
+#include "common_exceptions.h"
 
 #include <iomanip>
 
 using namespace Pistache;
+using json = nlohmann::json;
 
 GetProductMetadataRequest::GetProductMetadataRequest() : ProductID(0)
 {
@@ -35,11 +37,11 @@ void GetProductListRequest::Marshall(const Http::Uri::Query &query)
     Search = *searchParam;
 
     auto limitParam = query.get("limit");
-    if (limitPatam->empty())
+    if (limitParam->empty())
     {
         throw EmptyValue("limit");
     }
-    Limit = boost::lexical_cast<int>(*limitPatam);
+    Limit = boost::lexical_cast<int>(*limitParam);
 
     auto skipParam = query.get("skip");
     if (skipParam->empty())
@@ -53,21 +55,31 @@ UpdateProductRequest::UpdateProductRequest() : Product(0, 0, "", "", 0, 0, 0){};
 
 void UpdateProductRequest::Marshall(const std::string &body)
 {
-    // TODO:: check regular is it
-    auto jsonData = std::istringstream(R"json(\n" + body + "\n)json");
-    nlohmann::json d;
+    json j = json::parse(body);
+    json object = j["productToUpdate"];
 
-    struct_mapping::map_json_to_struct(Product, jsonData);
+    Product.ProductID = object[0]["productID"];
+    Product.StoreID = object[0]["storeID"];
+    Product.Name = object[0]["name"];
+    Product.Category = object[0]["category"];
+    Product.Price = object[0]["price"];
+    Product.Quantity = object[0]["quantity"];
+    Product.CounterID = object[0]["counterID"];
 };
 
 AddProductRequest::AddProductRequest() : Product(0, 0, "", "", 0, 0, 0){};
 
 void AddProductRequest::Marshall(const std::string &body)
 {
-    // TODO:: check regular is it
-    auto jsonData = std::istringstream(R"(json)" + body + R"(json)");
+    json j = json::parse(body);
+    json object = j["productToAdd"];//нет поля продакт айди
 
-    struct_mapping::map_json_to_struct(Product, jsonData);
+    Product.StoreID = object[0]["storeID"];
+    Product.Name = object[0]["name"];
+    Product.Category = object[0]["category"];
+    Product.Price = object[0]["price"];
+    Product.Quantity = object[0]["quantity"];
+    Product.CounterID = object[0]["counterID"];
 };
 
 ProductMetadata::ProductMetadata() : Product(0, 0, "", "", 0, 0, 0){};

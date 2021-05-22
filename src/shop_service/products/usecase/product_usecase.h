@@ -2,11 +2,11 @@
 // Created by fillinmar on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_PRODUCTS_MANAGER_H
-#define TECHNO_SEARCH_PRODUCTS_MANAGER_H
+#ifndef TECHNO_SEARCH_PRODUCT_USECASE_H
+#define TECHNO_SEARCH_PRODUCT_USECASE_H
 
 #include "product_models.h"
-#include "products_storage.h"
+#include "product_storage.h"
 
 class ProductManager
 {

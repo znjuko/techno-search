@@ -2,7 +2,7 @@
 // Created by fillinmar on 15.04.2021.
 //
 
-#include "products_reader.h"
+#include "product_reader.h"
 
 void ProductMetadataReader::Execute(const pqxx::result R)
 {

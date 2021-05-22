@@ -2,8 +2,8 @@
 // Created by fillinmar on 17.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_PRODUCTS_READER_H
-#define TECHNO_SEARCH_PRODUCTS_READER_H
+#ifndef TECHNO_SEARCH_PRODUCT_READER_H
+#define TECHNO_SEARCH_PRODUCT_READER_H
 
 #include "product_models.h"
 #include "reader.h"
