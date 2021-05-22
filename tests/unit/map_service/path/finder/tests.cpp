@@ -17,7 +17,8 @@ const size_t size = 5
 
 TEST(find_path, standalone1)
 {
-int *A = FindPath(10, 95, graphmatrix, counters, size);
+F = PathFinder()
+int *A = F.FindPath(10, 95, graphmatrix, counters, size);
 EXPECT_EQ(A[0], 0);
 EXPECT_EQ(A[1], 1);
 EXPECT_EQ(A[2], 2);

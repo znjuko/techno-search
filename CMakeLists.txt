@@ -25,7 +25,8 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(src)
 add_subdirectory(include)
-add_subdirectory(vendor)
+add_subdirectory(tests)
+##add_subdirectory(vendor)
 
 
 set(MAIN_SRCS main.cpp)
