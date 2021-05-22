@@ -5,6 +5,10 @@
 #include <vector>
 #include <iostream>
 
+#include "marshaller.h"
+
+using json = nlohmann::json;
+
 class Point {
 
 public:
@@ -12,12 +16,12 @@ public:
 
     void Show() const;
 
-    Point(double _x, double  _y);
+    Point(double _x, double _y);
 
     ~Point() = default;
 
-    bool operator== (const Point p) const {
-        if(this->x == p.x && this->y == p.y) {
+    bool operator==(const Point p) const {
+        if (this->x == p.x && this->y == p.y) {
             return true;
         }
         return false;
@@ -38,7 +42,7 @@ public:
 
     Point GetMiddleOfLine() const;
 
-    Point * LineIntersectionWithLine(Line l);
+    Point *LineIntersectionWithLine(Line l);
 
     bool LineIntersectionWithPoint(Point p);
 
@@ -68,7 +72,7 @@ public:
 
     std::vector<Point> GetVertices();
 
-    std::vector<Point*> IntersectionWithVerticalLine(Line l);
+    std::vector<Point *> IntersectionWithVerticalLine(Line l);
 
     bool IsPointOnPolygon(Point p);
 
@@ -76,8 +80,21 @@ private:
 
     std::vector<Point> vertices;
     std::vector<Line> lines;
-    size_t count;
-    
+    size_t count; // количество точек
+    size_t id; // id прилавка
+};
+
+
+class StoreMap : IMarshaller {
+public:
+    StoreMap() = default;
+
+    void Marshall(const std::string &body) override;
+
+    ~StoreMap() = default;
+    Polygon StoreGeometry;
+    std::vector<Polygon> InheritObjects;
+    size_t StoreID;
 };
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H

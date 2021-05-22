@@ -159,3 +159,7 @@ bool Line::LineIntersectionWithPoint(Point p) {
 void Point::Show() const {
     std::cout << '(' << this->x << ", " << this->y << ')';
 }
+
+void StoreMap::Marshall(const std::string &body) {
+    auto jsonBody = json::parse(body);
+}
