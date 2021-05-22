@@ -12,7 +12,7 @@ PathManager::PathManager(std::shared_ptr<Adapter> mapAdapter, std::shared_ptr<St
 
 std::shared_ptr<GetStorePathResponse> PathManager::GetShopPath(std::shared_ptr<GetStorePathRequest> req)
 {
-    auto storeData = mapStorage->GetStoreData(req->ShopID);
+    auto storeData = mapStorage->GetStoreData(req->StoreID);
     auto path =
         pathFinder->FindPath(req->FromNode, req->ToNode, storeData->Size, mapAdapter->AdaptAdjacency(storeData));
     auto resp = std::make_shared<GetStorePathResponse>(path);

@@ -1,17 +1,19 @@
 #ifndef TECHNO_SEARCH_MAP_MODELS_H
 #define TECHNO_SEARCH_MAP_MODELS_H
 
+#include "common_exceptions.h"
+#include "marshaller.h"
+
+#include <iostream>
 #include <nlohmann/json.hpp>
 #include <vector>
-#include <iostream>
-
-#include "marshaller.h"
 
 using json = nlohmann::json;
 
-class Point {
+class Point
+{
 
-public:
+  public:
     double x, y;
 
     void Show() const;
@@ -20,18 +22,20 @@ public:
 
     ~Point() = default;
 
-    bool operator==(const Point p) const {
-        if (this->x == p.x && this->y == p.y) {
+    bool operator==(const Point p) const
+    {
+        if (this->x == p.x && this->y == p.y)
+        {
             return true;
         }
         return false;
     }
-
 };
 
-class Line {
+class Line
+{
 
-public:
+  public:
     Point p1, p2;
 
     void Show() const;
@@ -45,13 +49,12 @@ public:
     Point *LineIntersectionWithLine(Line l);
 
     bool LineIntersectionWithPoint(Point p);
-
 };
 
+class Polygon
+{
 
-class Polygon {
-
-public:
+  public:
     Polygon();
 
     ~Polygon() = default;
@@ -76,25 +79,51 @@ public:
 
     bool IsPointOnPolygon(Point p);
 
-private:
+    void SetID(const size_t &id);
 
+  private:
     std::vector<Point> vertices;
     std::vector<Line> lines;
     size_t count; // количество точек
-    size_t id; // id прилавка
+    size_t id;    // id прилавка
 };
 
-
-class StoreMap : IMarshaller {
-public:
-    StoreMap() = default;
+class StoreMap : public IMarshaller
+{
+  public:
+    StoreMap();
 
     void Marshall(const std::string &body) override;
 
-    ~StoreMap() = default;
+    ~StoreMap() override = default;
+
     Polygon StoreGeometry;
     std::vector<Polygon> InheritObjects;
-    size_t StoreID;
+    size_t StoreID{};
+};
+
+class RawStoreMap : public IMarshaller
+{
+  public:
+    RawStoreMap() = default;
+
+    void Marshall(const std::string &body) override;
+
+    ~RawStoreMap() override = default;
+
+    std::string RawMap;
+};
+
+class StoreMapActionRequest : public IRequestMarshaller
+{
+  public:
+    StoreMapActionRequest();
+
+    void Marshall(const Rest::Request &req) override;
+
+    ~StoreMapActionRequest() override = default;
+
+    int StoreID;
 };
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H

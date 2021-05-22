@@ -3,14 +3,15 @@
 #include <gtest/gtest.h>
 #include <iostream>
 
-TEST(LINE, INTERSECTION_WITH_LINE) {
+TEST(LINE, INTERSECTION_WITH_LINE)
+{
 
-    Point p1(0,0),  p2(2,2);
-    Point p3(0,1),  p4(3,0);
+    Point p1(0, 0), p2(2, 2);
+    Point p3(0, 1), p4(3, 0);
 
-    Line l1(p1,p2), l2(p3,p4);
+    Line l1(p1, p2), l2(p3, p4);
 
-    Point* p = l1.LineIntersectionWithLine(l2);
+    Point *p = l1.LineIntersectionWithLine(l2);
 
     ASSERT_EQ(p->x, 0.75);
     ASSERT_EQ(p->y, 0.75);
@@ -18,23 +19,23 @@ TEST(LINE, INTERSECTION_WITH_LINE) {
     delete p;
 }
 
-TEST(LINE, INTERSECTION_WITH_POINT) {
+TEST(LINE, INTERSECTION_WITH_POINT)
+{
 
-    Point p1(0,0),  p2(2,2);
-    Point p(9,9);
+    Point p1(0, 0), p2(2, 2);
+    Point p(9, 9);
 
-    Line l(p1,p2);
+    Line l(p1, p2);
 
     bool res = l.LineIntersectionWithPoint(p);
 
     ASSERT_EQ(res, true);
-
 }
 
+TEST(POLYGON, INITLINES)
+{
 
-TEST(POLYGON, INITLINES) {
-
-    Point p1(0,0),  p2(2,0), p3(2,2),  p4(0, 2);
+    Point p1(0, 0), p2(2, 0), p3(2, 2), p4(0, 2);
 
     Polygon p;
     p.AddPoint(p1);
@@ -47,7 +48,7 @@ TEST(POLYGON, INITLINES) {
     std::vector<Line> v = p.GetLines();
     std::vector<Line> _v;
 
-    Line temp = Line(p1,p2);
+    Line temp = Line(p1, p2);
     _v.push_back(temp);
     temp = Line(p2, p3);
     _v.push_back(temp);
@@ -58,19 +59,21 @@ TEST(POLYGON, INITLINES) {
 
     ASSERT_EQ(v.size(), _v.size());
 
-    for(size_t i = 0; i < v.size(); ++i) {
+    for (size_t i = 0; i < v.size(); ++i)
+    {
         ASSERT_EQ(v[i].p1.x, _v[i].p1.x);
         ASSERT_EQ(v[i].p1.y, _v[i].p1.y);
         ASSERT_EQ(v[i].p2.x, _v[i].p2.x);
         ASSERT_EQ(v[i].p2.y, _v[i].p2.y);
-        std::cout << "Line: " << '(' << v[i].p1.x << ' ' << v[i].p1.y <<  "), (" << v[i].p2.x << ' ' << v[i].p2.y << ')' << std::endl;
+        std::cout << "Line: " << '(' << v[i].p1.x << ' ' << v[i].p1.y << "), (" << v[i].p2.x << ' ' << v[i].p2.y << ')'
+                  << std::endl;
     }
-
 }
 
-TEST(POLYGON, POINT_INSIDE_POLYGON) {
-    Point p1(3,7),  p2(3, 14);
-    Point p3(7,14),  p4(7,7);
+TEST(POLYGON, POINT_INSIDE_POLYGON)
+{
+    Point p1(3, 7), p2(3, 14);
+    Point p3(7, 14), p4(7, 7);
     Point point(3, 14.5);
 
     Polygon p;
@@ -79,14 +82,15 @@ TEST(POLYGON, POINT_INSIDE_POLYGON) {
     p.AddPoint(p3);
     p.AddPoint(p4);
     p.InitLines();
-    //p.ShowLines();
+    // p.ShowLines();
 
     ASSERT_EQ(false, p.IsPointInsidePolygon(point));
 }
 
-TEST(POLYGON, INTERSECTIONS_WITH_VERTICAL_LINE) {
-    Point p1(0,0),  p2(2,0);
-    Point p3(2,2),  p4(0,2);
+TEST(POLYGON, INTERSECTIONS_WITH_VERTICAL_LINE)
+{
+    Point p1(0, 0), p2(2, 0);
+    Point p3(2, 2), p4(0, 2);
 
     Polygon p;
     p.AddPoint(p1);
@@ -99,17 +103,19 @@ TEST(POLYGON, INTERSECTIONS_WITH_VERTICAL_LINE) {
     Point pl2(4, 2);
     Line line(pl1, pl2);
 
-    std::vector<Point*> points = p.IntersectionWithVerticalLine(line);
-    for(auto point : points) {
+    std::vector<Point *> points = p.IntersectionWithVerticalLine(line);
+    for (auto point : points)
+    {
         point->Show();
         std::cout << std::endl;
         delete point;
     }
 }
 
-TEST(POLYGON, INTERSECTIONS_WITH_POINT) {
-    Point p1(0,0),  p2(2,0);
-    Point p3(2,2),  p4(0,2);
+TEST(POLYGON, INTERSECTIONS_WITH_POINT)
+{
+    Point p1(0, 0), p2(2, 0);
+    Point p3(2, 2), p4(0, 2);
 
     Polygon p;
     p.AddPoint(p1);
@@ -127,9 +133,10 @@ TEST(POLYGON, INTERSECTIONS_WITH_POINT) {
     ASSERT_EQ(true, p.IsPointOnPolygon(point3));
 }
 
-TEST(POLYGON, IS_POINT_ON_POLYGON) {
-    Point p1(0,5),  p2(5,5);
-    Point p3(7,0),  p4(4,0);
+TEST(POLYGON, IS_POINT_ON_POLYGON)
+{
+    Point p1(0, 5), p2(5, 5);
+    Point p3(7, 0), p4(4, 0);
 
     Polygon p;
     p.AddPoint(p1);
@@ -146,4 +153,3 @@ TEST(POLYGON, IS_POINT_ON_POLYGON) {
     ASSERT_EQ(false, p.IsPointOnPolygon(point2));
     ASSERT_EQ(true, p.IsPointOnPolygon(point3));
 }
-

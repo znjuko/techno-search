@@ -25,7 +25,7 @@ class GetCountersPopularityByStoreRequest : public IQueryMarshaller
   public:
     GetCountersPopularityByStoreRequest();
 
-    void Marshall(const Http::Uri::Query &body) override;
+    void Marshall(const Http::Uri::Query &query) override;
 
     ~GetCountersPopularityByStoreRequest() override = default;
 
@@ -37,7 +37,7 @@ class GetProductsPopularityByStoreRequest : public IQueryMarshaller
   public:
     GetProductsPopularityByStoreRequest();
 
-    void Marshall(const Http::Uri::Query &body) override;
+    void Marshall(const Http::Uri::Query &query) override;
 
     ~GetProductsPopularityByStoreRequest() override = default;
 
@@ -50,7 +50,7 @@ class GetProductsTotalPopularityRequest : public IQueryMarshaller
   public:
     GetProductsTotalPopularityRequest();
 
-    void Marshall(const Http::Uri::Query &body) override;
+    void Marshall(const Http::Uri::Query &query) override;
 
     ~GetProductsTotalPopularityRequest() override = default;
 

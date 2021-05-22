@@ -6,7 +6,7 @@
 
 void GetStorePathRequest::Marshall(const Rest::Request &req)
 {
-    ShopID = req.param(":shopID").as<int>();
+    StoreID = req.param(":shopID").as<int>();
 
     auto fromNodeParam = req.query().get("startNode");
     if (fromNodeParam->empty())
@@ -23,7 +23,7 @@ void GetStorePathRequest::Marshall(const Rest::Request &req)
     ToNode = boost::lexical_cast<int>(*toNodeParam);
 }
 
-GetStorePathRequest::GetStorePathRequest() : ShopID(0), FromNode(0), ToNode(0)
+GetStorePathRequest::GetStorePathRequest() : StoreID(0), FromNode(0), ToNode(0)
 {
 }
 
