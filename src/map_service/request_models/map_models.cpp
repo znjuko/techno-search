@@ -37,14 +37,14 @@ Polygon::Polygon() : vertices(), lines(), count(0) {}
 
 bool Polygon::IsPointInsidePolygon(Point p) {
     Point p1 = p;
-    Point p2(p.x + 1,p.y);
+    Point p2(p.x + 1, p.y);
     Line l(p1, p2);
 
     size_t intersectionsCount = 0;
 
     for(auto line : lines) {
         Point* point = l.LineIntersectionWithLine(line);
-        if(point != nullptr && p.x <= point->x) {
+        if(point != nullptr && point->x >= std::min(line.p1.x, line.p2.x) && point->x <= std::max(line.p1.x, line.p2.x) && point->y >= std::min(line.p1.y, line.p2.y) && point->y <= std::max(line.p1.y, line.p2.y)) {
             ++intersectionsCount;
         }
         delete point;
@@ -118,6 +118,23 @@ void Polygon::ShowLines(){
         l.Show();
     }
 }
+bool Polygon::IsPointOnPolygon(Point p) {
+
+    for(auto v : vertices) {
+        if(v == p) {
+            return true;
+        }
+    }
+
+    for(auto line : lines) {
+        if(line.LineIntersectionWithPoint(p)) {
+            return true;
+        }
+    }
+
+    return false;
+
+}
 
 void Line::Show() const {
     p1.Show();
@@ -132,11 +149,11 @@ bool Line::LineIntersectionWithPoint(Point p) {
     double c = a * (this->p1.x) + b * (this->p1.y);
 
     if(a * p.x + b * p.y == c) {
-        return true;
+        if(p.x <= std::max(this->p1.x, this->p2.x) && p.x >= std::min(this->p1.x, this->p2.x) && p.y <= std::max(this->p1.y, this->p2.y) && p.y >= std::min(this->p1.y, this->p2.y))
+            return true;
     }
-    else {
-        return false;
-    }
+
+    return false;
 
 }
 

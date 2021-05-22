@@ -70,6 +70,8 @@ public:
 
     std::vector<Point*> IntersectionWithVerticalLine(Line l);
 
+    bool IsPointOnPolygon(Point p);
+
 private:
 
     std::vector<Point> vertices;

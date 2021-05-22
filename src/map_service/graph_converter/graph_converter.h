@@ -14,7 +14,8 @@ private:
 
     std::vector<double> getAllx();
     std::vector<Point> getAllIntersectionsWithVerticalLine(Line line);
-    std::vector<Point> getBasePoints(std::vector<Point> points);
+    std::vector<Point> getBasePoints(const std::vector<Point>& leftPoints, const std::vector<Point>& rightPoints);
+    std::vector<Polygon> getFeaturesIntersectedWithPoints(const std::vector<Point>& points);
 
     Map map;
 };
