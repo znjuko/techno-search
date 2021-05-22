@@ -146,8 +146,9 @@ std::vector<Point> GraphConverter::getBasePoints(const std::vector<Point>& leftP
         if(flag) {
             basePoints.push_back(mid);
         }
-
     }
+
+
 
     return basePoints;
 }

@@ -44,10 +44,9 @@ bool Polygon::IsPointInsidePolygon(Point p) {
 
     for(auto line : lines) {
         Point* point = l.LineIntersectionWithLine(line);
-        if(point != nullptr && point->x >= std::min(line.p1.x, line.p2.x) && point->x <= std::max(line.p1.x, line.p2.x) && point->y >= std::min(line.p1.y, line.p2.y) && point->y <= std::max(line.p1.y, line.p2.y)) {
+        if(point != nullptr && point->x >= p.x && point->x >= std::min(line.p1.x, line.p2.x) && point->x <= std::max(line.p1.x, line.p2.x) && point->y >= std::min(line.p1.y, line.p2.y) && point->y <= std::max(line.p1.y, line.p2.y)) {
             ++intersectionsCount;
         }
-        delete point;
     }
 
     if(intersectionsCount % 2 == 1) {
