@@ -9,61 +9,61 @@ void StoreService::GetStoreMetadata(const Http::Request &req, Http::ResponseWrit
     std::shared_ptr<GetStoreMetadataRequest> reqReader;
     try
     {
-        queryReader.ReadRequest(reqReader, req);
+        queryReader->ReadRequest(reqReader, req);
     }
     catch (const EmptyValue &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
     catch (const boost::bad_lexical_cast &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, "wrong storage id", &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong storage id", &res);
         return;
     }
 
     std::shared_ptr<GetStoreMetadataResponse> respWriter;
     try
     {
-        respWriter = manager.GetStoreMetadata(reqReader);
+        respWriter = manager->GetStoreMetadata(reqReader);
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Conflict, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
-    responseWriter.WriteResponse(respWriter, &res);
+    responseWriter->WriteResponse(respWriter, &res);
 }
 
 void StoreService::GetStoreList(const Http::Request &req, Http::ResponseWriter res)
 {
-    std::shared_ptr<GetStoreMetadataRequest> reqReader;
+    std::shared_ptr<GetStoreListRequest> reqReader;
     try
     {
-        queryReader.ReadRequest(reqReader, req);
+        queryReader->ReadRequest(reqReader, req);
     }
     catch (const EmptyValue &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
     catch (const boost::bad_lexical_cast &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, "wrong storages` name", &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong storages` name", &res);
         return;
     }
 
-    std::shared_ptr<GetStoreMetadataResponse> respWriter;
+    std::shared_ptr<GetStoreListResponse> respWriter;
     try
     {
-        respWriter = manager.GetStoreList(reqReader);
+        respWriter = manager->GetStoreList(reqReader);
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Conflict, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
-    responseWriter.WriteResponse(respWriter, &res);
+    responseWriter->WriteResponse(respWriter, &res);
 }
 
 void StoreService::UpdateStore(const Http::Request &req, Http::ResponseWriter res)
@@ -71,30 +71,30 @@ void StoreService::UpdateStore(const Http::Request &req, Http::ResponseWriter re
     std::shared_ptr<UpdateStoreRequest> reqReader;
     try
     {
-        queryReader.ReadRequest(reqReader, req);
+        bodyReader->ReadRequest(reqReader, req);
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
     catch (const boost::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, "wrong store id", &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong store id", &res);
         return;
     }
 
     std::shared_ptr<UpdateStoreResponse> respWriter;
     try
     {
-        respWriter = manager.UpdateStore(reqReader);
+        respWriter = manager->UpdateStore(reqReader);
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Conflict, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
-    responseWriter.WriteResponse(respWriter, &res);
+    responseWriter->WriteResponse(respWriter, &res);
 }
 
 void StoreService::AddStore(const Http::Request &req, Http::ResponseWriter res)
@@ -102,30 +102,30 @@ void StoreService::AddStore(const Http::Request &req, Http::ResponseWriter res)
     std::shared_ptr<AddStoreRequest> reqReader;
     try
     {
-        queryReader.ReadRequest(reqReader, req);
+        bodyReader->ReadRequest(reqReader, req);
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
     catch (const boost::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Bad_Request, "wrong store metadata", &res);
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong store metadata", &res);
         return;
     }
 
     std::shared_ptr<AddStoreResponse> respWriter;
     try
     {
-        respWriter = manager.AddStore(reqReader);
+        respWriter = manager->AddStore(reqReader);
     }
     catch (const std::exception &e)
     {
-        errorWriter.WriteError(Http::Code::Conflict, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
-    responseWriter.WriteResponse(respWriter, &res);
+    responseWriter->WriteResponse(respWriter, &res);
 }
 
 void StoreService::SetupService(Rest::Router router)
@@ -141,8 +141,4 @@ void StoreService::SetupService(Rest::Router router)
     router.addRoute(Http::Method::Put, "api/v1/shop", Pistache::Rest::Routes::bind(&StoreService::UpdateStore, this));
 }
 
-StoreService::StoreService(const JsonResponseWriter &responseWriter, const JsonRequestBodyReader &bodyReader,
-                           const RequestQueryReader &queryReader, const StoreManager &manager)
-    : responseWriter(responseWriter), bodyReader(bodyReader), queryReader(queryReader), manager(manager)
-{
-}
+

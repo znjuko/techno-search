@@ -14,8 +14,8 @@ class StoreManager
     StoreManager() = delete;
     StoreManager(const std::shared_ptr<StoreStorage> &storage);
     std::shared_ptr<GetStoreMetadataResponse> GetStoreMetadata(std::shared_ptr<GetStoreMetadataRequest> req);
-    std::shared_ptr<GetStoreListResponse> GetListStore(std::shared_ptr<GetStoreListRequest> req);
-    std::shared_ptr<UpdateStoreResponse> UpdateStoreMetadata(std::shared_ptr<UpdateStoreRequest> req);
+    std::shared_ptr<GetStoreListResponse> GetStoreList(std::shared_ptr<GetStoreListRequest> req);
+    std::shared_ptr<UpdateStoreResponse> UpdateStore(std::shared_ptr<UpdateStoreRequest> req);
     std::shared_ptr<AddStoreResponse> AddStore(std::shared_ptr<AddStoreRequest> req);
     ~StoreManager();
 

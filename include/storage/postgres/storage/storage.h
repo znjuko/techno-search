@@ -5,8 +5,10 @@
 #ifndef TECHNO_SEARCH_POSTGRES_STORAGE_H
 #define TECHNO_SEARCH_POSTGRES_STORAGE_H
 
-#include "query.h"
-#include "reader.h"
+#include "../query/query.h"
+#include "../reader/reader.h"
+//#include "query.h"
+//#include "reader.h"
 
 #include <pqxx/pqxx>
 

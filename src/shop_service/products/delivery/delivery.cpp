@@ -37,7 +37,7 @@ void ProductService::GetProductMetadata(const Http::Request &req, Http::Response
 
 void ProductService::GetProductList(const Http::Request &req, Http::ResponseWriter res)
 {
-    std::shared_ptr<GetProductMetadataRequest> reqReader;
+    std::shared_ptr<GetProductListRequest> reqReader;
     try
     {
         queryReader->ReadRequest(reqReader, req);
@@ -53,7 +53,7 @@ void ProductService::GetProductList(const Http::Request &req, Http::ResponseWrit
         return;
     }
 
-    std::shared_ptr<GetProductMetadataResponse> respWriter;
+    std::shared_ptr<GetProductListResponse> respWriter;
     try
     {
         respWriter = manager->GetProductList(reqReader);
@@ -118,7 +118,7 @@ void ProductService::AddProduct(const Http::Request &req, Http::ResponseWriter r
     std::shared_ptr<AddProductResponse> respWriter;
     try
     {
-        respWriter = manager.AddProduct(reqReader);
+        respWriter = manager->AddProduct(reqReader);
     }
     catch (const std::exception &e)
     {

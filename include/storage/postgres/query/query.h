@@ -5,7 +5,6 @@
 #ifndef TECHNO_SEARCH_QUERY_H
 #define TECHNO_SEARCH_QUERY_H
 
-#include <memory>
 #include <string>
 
 class PostgresQuery

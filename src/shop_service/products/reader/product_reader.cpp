@@ -6,7 +6,6 @@
 
 void ProductMetadataReader::Execute(const pqxx::result R)
 {
-    // todo check
     for (auto row : R)
     { // in this case only one go to loop
         data[0].Product.ProductID = boost::lexical_cast<int>(row[0].c_str());

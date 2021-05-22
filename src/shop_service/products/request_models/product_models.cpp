@@ -6,8 +6,6 @@
 
 #include "common_exceptions.h"
 
-#include <iomanip>
-
 using namespace Pistache;
 using json = nlohmann::json;
 
@@ -72,7 +70,7 @@ AddProductRequest::AddProductRequest() : Product(0, 0, "", "", 0, 0, 0){};
 void AddProductRequest::Marshall(const std::string &body)
 {
     json j = json::parse(body);
-    json object = j["productToAdd"];//нет поля продакт айди
+    json object = j["productToAdd"]; //нет поля продакт айди
 
     Product.StoreID = object[0]["storeID"];
     Product.Name = object[0]["name"];

@@ -57,10 +57,10 @@ void UpdateStoreRequest::Marshall(const std::string &body)
     json object = j["storeToUpdate"];
 
     Store.StoreID = object[0]["storeID"];
-    Store.Name  = object[0]["name"];
+    Store.Name = object[0]["name"];
     Store.OpenAt = object[0]["openAt"];
     Store.CloseAt = object[0]["closeAt"];
-    Store.Address  = object[0]["address"];
+    Store.Address = object[0]["address"];
 };
 
 AddStoreRequest::AddStoreRequest() : Store(0, "", 0.0, 0.0, ""){};
@@ -70,10 +70,10 @@ void AddStoreRequest::Marshall(const std::string &body)
     json j = json::parse(body);
     json object = j["storeToAdd"];
 
-    Store.Name  = object[0]["name"];
+    Store.Name = object[0]["name"];
     Store.OpenAt = object[0]["openAt"];
     Store.CloseAt = object[0]["closeAt"];
-    Store.Address  = object[0]["address"];
+    Store.Address = object[0]["address"];
 };
 
 StoreMetadata::StoreMetadata() : Store(0, "", 0.0, 0.0, ""){};
