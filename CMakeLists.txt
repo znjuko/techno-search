@@ -9,14 +9,14 @@
 #
 ##add_subdirectory(vendor)
 #
-##if(test)
-##    enable_testing()
-##
-##    find_package(GTest REQUIRED)
-##    find_package(Threads REQUIRED)
-##
-##    add_subdirectory(tests)
-##endif(test)
+if(test)
+    enable_testing()
+
+    find_package(GTest REQUIRED)
+    find_package(Threads REQUIRED)
+
+    add_subdirectory(tests)
+endif(test)
 
 cmake_minimum_required(VERSION 3.19)
 

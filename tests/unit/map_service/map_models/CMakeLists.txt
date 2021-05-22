@@ -1,7 +1,13 @@
-project(models_tests)
+file(GLOB SRCS *.cpp)
 
-add_executable(${PROJECT_NAME}  tests.cpp main.cpp)
+project(map_service_models)
 
-target_link_libraries(${PROJECT_NAME} ${GTEST_LIBRARIES} Threads::Threads map_models)
+ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS})
 
-add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+TARGET_LINK_LIBRARIES(${PROJECT_NAME}
+        product_models
+        gtest
+        )
+
+add_test(NAME ${PROJECT_NAME}
+        COMMAND ${PROJECT_NAME})
