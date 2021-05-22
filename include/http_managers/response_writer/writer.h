@@ -14,7 +14,7 @@ using namespace Pistache;
 class IResponseWriter
 {
   public:
-    virtual void WriteResponse(IUnMarshaller u, Http::ResponseWriter writer) = 0;
+    virtual void WriteResponse(std::shared_ptr<IUnMarshaller> u, Http::ResponseWriter *writer) = 0;
 
     virtual ~IResponseWriter() noexcept = 0;
 };
@@ -24,9 +24,19 @@ class JsonResponseWriter : public IResponseWriter
   public:
     JsonResponseWriter() = default;
 
-    void WriteResponse(IUnMarshaller u, Http::ResponseWriter writer) override;
+    void WriteResponse(std::shared_ptr<IUnMarshaller> u, Http::ResponseWriter *writer) override;
 
     ~JsonResponseWriter() noexcept override;
+};
+
+class ErrorResponseWriter
+{
+  public:
+    ErrorResponseWriter() = default;
+
+    void WriteError(Http::Code code, const std::string &error, Http::ResponseWriter *writer) noexcept;
+
+    ~ErrorResponseWriter() noexcept = default;
 };
 
 #endif // TECHNO_SEARCH_WRITER_H

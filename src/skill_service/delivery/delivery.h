@@ -5,45 +5,42 @@
 #ifndef TECHNO_SEARCH_SKILL_DELIVERY_H
 #define TECHNO_SEARCH_SKILL_DELIVERY_H
 
+#include "common_exceptions.h"
 #include "reader.h"
 #include "router_setupper.h"
 #include "usecase.h"
 #include "writer.h"
 
+#include <boost/exception/exception.hpp>
+#include <boost/lexical_cast.hpp>
 #include <pistache/endpoint.h>
 
 using namespace Pistache;
-
-/* TODO(n.chernyh) : add smart pointers (
-
-   for writers/readers - add shared
-   for usecase - add unique ptr
-
-  ) */
 
 class MetricService : public IRouterSetupper
 {
   public:
     MetricService() = delete;
 
-    MetricService(const JsonResponseWriter &responseWriter, const JsonRequestBodyReader &bodyReader,
-                  const RequestQueryReader &queryReader, const MetricManager &manager);
+    MetricService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader> bodyReader,
+                  std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MetricManager> manager);
 
-    void GetCounterPopularityByShop(Http::Request req, Http::Response res);
+    void GetCounterPopularityByShop(const Http::Request &req, Http::ResponseWriter res);
 
-    void GetProductPopularityByShop(Http::Request req, Http::Response res);
+    void GetProductPopularityByShop(const Http::Request &req, Http::ResponseWriter res);
 
-    void GetProductsTotalPopularity(Http::Request req, Http::Response res);
+    void GetProductsTotalPopularity(const Http::Request &req, Http::ResponseWriter res);
 
-    void SetupService(Rest::Router router) override;
+    void SetupService(Rest::Router *router) override;
 
     ~MetricService() override = default;
 
   private:
-    JsonResponseWriter responseWriter;
-    JsonRequestBodyReader bodyReader;
-    RequestQueryReader queryReader;
-    MetricManager manager;
+    std::shared_ptr<JsonResponseWriter> responseWriter;
+    std::shared_ptr<JsonRequestBodyReader> bodyReader;
+    std::shared_ptr<ErrorResponseWriter> errorWriter;
+    std::shared_ptr<RequestQueryReader> queryReader;
+    std::shared_ptr<MetricManager> manager;
 };
 
 #endif // TECHNO_SEARCH_SKILL_DELIVERY_H

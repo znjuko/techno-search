@@ -4,27 +4,54 @@
 
 #include "storage.h"
 
-CounterPopularityMetricResponse MetricStorage::ResponseGetCounterPopularityByShop(
-    const GetCountersPopularityByShopRequest &req)
+#include <utility>
+
+std::shared_ptr<CountersPopularityMetricResponse> MetricStorage::GetCounterPopularityByShop(
+    std::shared_ptr<GetCountersPopularityByStoreRequest> req)
 {
-    return CounterPopularityMetricResponse();
+    auto q = std::shared_ptr<GetCounterPopularityMetricQuery>();
+    q->SetupQuery(req);
+    std::shared_ptr<CounterPopularityMetricReader> reader;
+
+    storage->Select(q, reader);
+
+    auto res = std::shared_ptr<CountersPopularityMetricResponse>();
+    res->Array = std::move(reader->Get());
+    return res;
 }
 
-ShopProductPopularityMetricResponse MetricStorage::GetProductsPopularityByShop(
-    const GetProductPopularityByShopRequest &req)
+std::shared_ptr<ProductsPopularityByStoreMetricResponse> MetricStorage::GetProductsPopularityByShop(
+    std::shared_ptr<GetProductsPopularityByStoreRequest> req)
 {
-    return ShopProductPopularityMetricResponse();
+    auto q = std::shared_ptr<GetProductPopularityByShopMetricQuery>();
+    q->SetupQuery(req);
+    std::shared_ptr<ShopProductsPopularityMetricReader> reader;
+
+    storage->Select(q, reader);
+
+    auto res = std::shared_ptr<ProductsPopularityByStoreMetricResponse>();
+    res->Array = std::move(reader->Get());
+    return res;
 }
 
-ProductPopularityMetricResponse MetricStorage::GetProductsTotalPopularity(const GetProductsTotalPopularityRequest &req)
+std::shared_ptr<ProductsPopularityMetricResponse> MetricStorage::GetProductsTotalPopularity(
+    std::shared_ptr<GetProductsTotalPopularityRequest> req)
 {
-    return ProductPopularityMetricResponse();
+    auto q = std::shared_ptr<GetProductsTotalPopularityMetricQuery>();
+    q->SetupQuery(req);
+    std::shared_ptr<ProductPopularityMetricReader> reader;
+
+    storage->Select(q, reader);
+
+    auto res = std::shared_ptr<ProductsPopularityMetricResponse>();
+    res->Array = std::move(reader->Get());
+    return res;
 }
 
 MetricStorage::~MetricStorage()
 {
 }
 
-MetricStorage::MetricStorage(ClickStorage *storage) : storage(storage)
+MetricStorage::MetricStorage(std::shared_ptr<ClickStorage> storage) : storage(storage)
 {
 }

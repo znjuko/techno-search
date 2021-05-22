@@ -14,18 +14,21 @@ class MetricStorage
   public:
     MetricStorage() = delete;
 
-    explicit MetricStorage(ClickStorage *storage);
+    explicit MetricStorage(std::shared_ptr<ClickStorage> storage);
 
-    CounterPopularityMetricResponse ResponseGetCounterPopularityByShop(const GetCountersPopularityByShopRequest &req);
+    std::shared_ptr<CountersPopularityMetricResponse> GetCounterPopularityByShop(
+        std::shared_ptr<GetCountersPopularityByStoreRequest> req);
 
-    ShopProductPopularityMetricResponse GetProductsPopularityByShop(const GetProductPopularityByShopRequest &req);
+    std::shared_ptr<ProductsPopularityByStoreMetricResponse> GetProductsPopularityByShop(
+        std::shared_ptr<GetProductsPopularityByStoreRequest> req);
 
-    ProductPopularityMetricResponse GetProductsTotalPopularity(const GetProductsTotalPopularityRequest &req);
+    std::shared_ptr<ProductsPopularityMetricResponse> GetProductsTotalPopularity(
+        std::shared_ptr<GetProductsTotalPopularityRequest> req);
 
     ~MetricStorage();
 
   private:
-    ClickStorage *storage;
+    std::shared_ptr<ClickStorage> storage;
 };
 
 #endif // TECHNO_SEARCH_STORAGE_H

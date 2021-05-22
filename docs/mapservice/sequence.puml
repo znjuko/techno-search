@@ -1,0 +1,22 @@
+@startuml
+
+"Delivery" -> "RequestReader" : Прочитать полученный Request, выбрать из него все необходимые параметры
+"Delivery" <- "RequestReader" : Вернуть полученный запрос
+"Delivery" -> "RequestValidator" : Проверить параметры полученного Request
+"Delivery" <- "RequestValidator" :Вернуть решение валидации (здесь можно использовать конструкцию try catch и кастомные exceptions)
+alt Если был пойман какой-то exception
+"Delivery" -> "ErrorResponseWriter": Записать ошибку и вернуть ответ (можно посмотреть как я это делаю в своей ветке)
+end
+
+"Delivery" -> "UseCase": Передать полученный запрос
+
+"UseCase" -> "GraphConvertor": Сформировать из полученного запроса матрицу смежности
+"UseCase" -> "AdjecencyConvertor": Сформировать матрицу, необходимую для покладки
+"UseCase" -> "Storage" : Реализовать покладку полученной карты для магазина
+"UseCase" -> "Storage": Реализовать покладку полученной матрицы смежности
+
+"UseCase" -> "Delivery": Вернуть ответ покладки
+"Delivery" -> "ResponseWriter": Записать полученный ответ
+
+
+@enduml

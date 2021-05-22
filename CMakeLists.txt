@@ -1,4 +1,5 @@
-project(techno_search)
+project(techno_search CXX)
+set(CMAKE_CXX_STANDARD 20)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.13)
 

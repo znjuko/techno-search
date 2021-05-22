@@ -4,21 +4,22 @@
 
 #include "usecase.h"
 
-CounterPopularityMetricResponse MetricManager::ResponseGetCounterPopularityByShop(
-    const GetCountersPopularityByShopRequest &req)
+std::shared_ptr<CountersPopularityMetricResponse> MetricManager::GetCounterPopularityByShop(
+    std::shared_ptr<GetCountersPopularityByStoreRequest> req)
 {
-    return CounterPopularityMetricResponse();
+    return storage.GetCounterPopularityByShop(req);
 }
 
-ShopProductPopularityMetricResponse MetricManager::GetProductsPopularityByShop(
-    const GetProductPopularityByShopRequest &req)
+std::shared_ptr<ProductsPopularityByStoreMetricResponse> MetricManager::GetProductsPopularityByShop(
+    std::shared_ptr<GetProductsPopularityByStoreRequest> req)
 {
-    return ShopProductPopularityMetricResponse();
+    return storage.GetProductsPopularityByShop(req);
 }
 
-ProductPopularityMetricResponse MetricManager::GetProductsTotalPopularity(const GetProductsTotalPopularityRequest &req)
+std::shared_ptr<ProductsPopularityMetricResponse> MetricManager::GetProductsTotalPopularity(
+    std::shared_ptr<GetProductsTotalPopularityRequest> req)
 {
-    return ProductPopularityMetricResponse();
+    return storage.GetProductsTotalPopularity(req);
 }
 
 MetricManager::MetricManager(const MetricStorage &storage) noexcept : storage(storage)

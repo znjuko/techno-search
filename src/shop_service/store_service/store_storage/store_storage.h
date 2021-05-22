@@ -5,14 +5,16 @@
 #ifndef TECHNO_SEARCH_STORE_STORAGE_H
 #define TECHNO_SEARCH_STORE_STORAGE_H
 
-class StoreStorage{
-private:
-    CommonStorage: store;
-public:
-    GetStoreMetadataResponse GetStoreMetadata( GetStoreMetadataRequest req){};
+class StoreStorage
+{
+  private:
+    CommonStorage : store;
+
+  public:
+    GetStoreMetadataResponse GetStoreMetadata(GetStoreMetadataRequest req){};
     GetListStoreResponse GetListStore(GetListStoreRequest req);
     UpdateStoreMetadataResponse UpdateStoreMetadata(UpdateMetadataRequest req);
     AddListStoreResponse AddStore(AddStoreRequest req);
 };
 
-#endif //TECHNO_SEARCH_STORE_STORAGE_H
+#endif // TECHNO_SEARCH_STORE_STORAGE_H
