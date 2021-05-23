@@ -170,9 +170,9 @@ bool Polygon::operator==(Polygon p) const {
     return true;
 }
 Point Polygon::GetFeaturePoint() {
-    if(count == 4 || count == 3) {
-        return  *this->GetPolygonCenter();
-    }
+//    if(count == 4 || count == 3) {
+//        return  *this->GetPolygonCenter();
+//    }
 
     return vertices[0];
 }
@@ -196,6 +196,9 @@ bool Line::LineIntersectionWithPoint(Point p) {
 
     return false;
 
+}
+double Point::GetDistanceToPoint(const Point& p) {
+    return sqrt(pow(this->x - p.x, 2) + pow(this->y - p.y, 2));
 }
 
 void Point::Show() const {

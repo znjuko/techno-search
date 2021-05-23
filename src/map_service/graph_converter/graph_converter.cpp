@@ -4,6 +4,7 @@
 #include "map_models.h"
 #include "graph_converter.h"
 #include <iostream>
+#include "iomanip"
 
 std::vector<std::vector<double>> GraphConverter::Generate() {
 
@@ -42,15 +43,23 @@ std::vector<std::vector<double>> GraphConverter::Generate() {
         }
     }
 
-    std::sort(points.begin(), points.end(), [](const Point& p1,const Point& p2){return p1.x <= p2.x;});
+    std::vector<Point> featuresPoints  = getFeaturesPoints(features);
 
+    for(auto &p : featuresPoints) {
+        p.Show();
+        points.push_back(p);
+        std::cout << std::endl;
+    }
+
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    std::sort(points.begin(), points.end(), [](const Point& p1,const Point& p2){return p1.x <= p2.x;});
 
     for(auto &p : points) {
         p.Show();
         std::cout << std::endl;
     }
-
-    std::vector<Point> featuresPoints  = getFeaturesPoints(features);
 
     std::vector<std::vector<double>> adjacencyTable = getAdjacencyTableFromPoints(points);
 
@@ -207,14 +216,65 @@ std::vector<Point> GraphConverter::getFeaturesCenters(const double &middleX) {
 
 std::vector<std::vector<double>> GraphConverter::getAdjacencyTableFromPoints(const std::vector<Point> &points) {
 
-    std::vector<std::vector<double>> adjacencyTable = std::vector<std::vector<double>>();
+    std::vector<Polygon> features = map.GetFeatures();
+
+    size_t matrixSize = points.size() + 1;
+    std::vector<std::vector<double>> adjacencyTable(matrixSize);
+
+    for (size_t i = 0 ; i < matrixSize ; ++i)
+        adjacencyTable[i].resize(matrixSize);
+
 
     for(size_t i = 0; i < points.size(); ++i) {
+        Point leftPoint = points[i];
+        double leftX = leftPoint.x, rightX, currentX;
+        size_t leftIndex = i, rightIndex;
 
+
+        for(size_t j = i + 1; j < points.size(); ++j) {
+            if (points[j].x > leftX) {
+                rightX = points[j].x;
+                rightIndex = j;
+                break;
+            }
+        }
+
+        currentX = rightX;
+        while(currentX == rightX && rightIndex < points.size()) {
+            Point rightPoint = points[rightIndex];
+            Line line(leftPoint, rightPoint);
+
+            int flag = 1;
+            for(auto feature : features) {
+                //могут быть траблы с тем что точка пересечения не там и из-за этого путь не будет простроени
+                if(!feature.IntersectionWithVerticalLine(line).empty()) {
+                    flag = 0;
+                    break;
+                }
+            }
+
+            if(flag) {
+                double dist = leftPoint.GetDistanceToPoint(rightPoint);
+                adjacencyTable[leftIndex + 1][rightIndex + 1] = dist;
+                adjacencyTable[rightIndex + 1][leftIndex + 1] = dist;
+            }
+            rightIndex++;
+            rightX = rightPoint.x;
+        }
+
+
+    }
+
+    for (size_t i = 0 ; i < matrixSize ; ++i) {
+        for(size_t j = 0; j < matrixSize; ++j) {
+            std::cout << std::setw(5) << std::setprecision(2) << adjacencyTable[i][j] << ' ';
+        }
+        std::cout << std::endl;
     }
 
     return adjacencyTable;
 }
+
 std::vector<Point> GraphConverter::getFeaturesPoints(const std::vector<Polygon> &features) {
 
     std::vector<Point> featuresPoints = std::vector<Point>();

@@ -23,6 +23,8 @@ public:
 
     bool operator== (Point p) const;
 
+    double GetDistanceToPoint(const Point& p);
+
 };
 
 class Line {
