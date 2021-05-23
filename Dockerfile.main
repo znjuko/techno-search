@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
-WORKDIR techno-search
-COPY . .
+WORKDIR techno-search-dependencies
+
 
 RUN echo "installing dependencies"
 
@@ -10,7 +10,18 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/mast
 RUN apt-get install libboost-all-dev
 RUN apt-get install nlohmann-json3-dev
 RUN apt-get install libpqxx-dev
-RUN brew install mongo-cxx-driver
+
+RUN curl -OL https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.6.3/mongo-cxx-driver-r3.6.3.tar.gz
+RUN tar -xzf mongo-cxx-driver-r3.6.3.tar.gz
+RUN cd mongo-cxx-driver-r3.6.3/build
+
+RUN cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
+RUN sudo cmake --build . --target EP_mnmlstc_core
+RUN cmake --build .
+RUN sudo cmake --build . --target install
+
+WORKDIR techno-search
+COPY . .
 
 RUN echo "all dependecies installed"
 
