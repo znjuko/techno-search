@@ -162,8 +162,8 @@ void ProductService::SetupService(Rest::Router &router)
     using namespace Rest;
 
     Routes::Post(router, "/record/:name/:value?", Routes::bind(&ProductService::AddProduct, this));
-    Routes::Get(router, "/store", Routes::bind(&ProductService::GetProductMetadata, this));
-    Routes::Get(router, "/ready", Routes::bind(&ProductService::GetProductList, this));
+    Routes::Get(router, "/product", Routes::bind(&ProductService::GetProductMetadata, this));
+    Routes::Get(router, "/product/search", Routes::bind(&ProductService::GetProductList, this));
     Routes::Get(router, "/readyy", Routes::bind(&Generic::handleReady));
     Routes::Put(router, "/auth", Routes::bind(&ProductService::UpdateProduct, this));
 }

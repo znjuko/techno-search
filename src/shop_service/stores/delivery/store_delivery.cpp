@@ -151,15 +151,15 @@ void StoreService::SetupService(Rest::Router &router)
     using namespace Rest;
 
     Routes::Post(router, "/records/:name/:value?", Routes::bind(&StoreService::AddStore, this));
-    Routes::Get(router, "/values/:name", Routes::bind(&StoreService::GetStoreMetadata, this));
-    Routes::Get(router, "/readys", Routes::bind(&StoreService::GetStoreList, this));
+    Routes::Get(router, "/store", Routes::bind(&StoreService::GetStoreMetadata, this));
+    Routes::Get(router, "/store/search", Routes::bind(&StoreService::GetStoreList, this));
     Routes::Put(router, "/auths", Routes::bind(&StoreService::UpdateStore, this));
 }
 
-StoreService::StoreService(std::make_shared<JsonResponseWriter> responseWriter,
-                             std::make_shared<JsonRequestBodyReader> bodyReader,
-                             std::make_shared<ErrorResponseWriter> errorWriter,
-                             std::make_shared<RequestQueryReader> queryReader, std::make_shared<StoreManager> manager)
+StoreService::StoreService(std::shared_ptr<JsonResponseWriter> responseWriter,
+                             std::shared_ptr<JsonRequestBodyReader> bodyReader,
+                             std::shared_ptr<ErrorResponseWriter> errorWriter,
+                             std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<StoreManager> manager)
     : responseWriter(responseWriter), bodyReader(bodyReader), queryReader(queryReader), manager(manager),
       errorWriter(errorWriter)
 {

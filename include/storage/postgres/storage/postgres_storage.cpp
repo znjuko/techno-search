@@ -15,7 +15,7 @@ void PostgresStorage::Insert(const PostgresQuery &q)
     Transaction.exec0(q.GetQuery());
 }
 
-void PostgresStorage::Select(std::make_shared<PostgresQuery> q, std::make_shared<PostgresReader> r)
+void PostgresStorage::Select(std::shared_ptr<PostgresQuery> q, std::shared_ptr<PostgresReader> r)
 {
 
     pqxx::work Transaction{C};
@@ -25,8 +25,8 @@ void PostgresStorage::Select(std::make_shared<PostgresQuery> q, std::make_shared
     r->Execute(R);
 }
 
-void PostgresStorage::SelectAndInsert(const PostgresQuery &qIns, std::make_shared<PostgresQuery> qSel,
-                                      std::make_shared<PostgresReader> r)
+void PostgresStorage::SelectAndInsert(const PostgresQuery &qIns, std::shared_ptr<PostgresQuery> qSel,
+                                      std::shared_ptr<PostgresReader> r)
 {
     pqxx::work Transaction{C};
 

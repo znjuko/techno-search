@@ -41,11 +41,11 @@ class StoreService : public IRouterSetupper
     ~StoreService() override = default;
 
   private:
-    std::make_shared<JsonResponseWriter> responseWriter;
-    std::make_shared<JsonRequestBodyReader> bodyReader;
-    std::make_shared<ErrorResponseWriter> errorWriter;
-    std::make_shared<RequestQueryReader> queryReader;
-    std::make_shared<StoreManager> manager;
+    std::shared_ptr<JsonResponseWriter> responseWriter;
+    std::shared_ptr<JsonRequestBodyReader> bodyReader;
+    std::shared_ptr<ErrorResponseWriter> errorWriter;
+    std::shared_ptr<RequestQueryReader> queryReader;
+    std::shared_ptr<StoreManager> manager;
 
 };
 #endif

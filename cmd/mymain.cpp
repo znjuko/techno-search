@@ -106,7 +106,7 @@ int main()
 //             << "wrong thread count value " << threadCountValue << endl;
 //        return 0;
 //    }
-    Port port(7767);
+    Port port(7770);
     auto addr = Address(Ipv4::any(), port);
 
     int thr = 2;
