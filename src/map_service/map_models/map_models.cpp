@@ -56,9 +56,21 @@ bool Polygon::IsPointInsidePolygon(Point p) {
     return false;
 }
 
-Point Polygon::GetPolygonCenter() {
-    Point centroid(0,0);
-    return centroid;
+Point* Polygon::GetPolygonCenter() {
+    if(count == 4) {
+        Line l1 = Line(vertices[0], vertices[2]);
+        Line l2 = Line(vertices[1], vertices[3]);
+        return l1.LineIntersectionWithLine(l2);
+    }
+
+    if(count == 3) {
+        auto p = new Point(0,0);
+        p->x = (vertices[0].x + vertices[1].x + vertices[2].x) / 2.0;
+        p->y = (vertices[0].y + vertices[1].y + vertices[2].y) / 2.0;
+        return p;
+    }
+
+    return nullptr;
 }
 
 Point Polygon::GetPointWithLowestX() {
@@ -69,6 +81,13 @@ Point Polygon::GetPointWithLowestX() {
         }
     }
     return min;
+}
+
+bool Point::operator== (Point p) const {
+    if(this->x == p.x && this->y == p.y) {
+        return true;
+    }
+    return false;
 }
 
 void Polygon::InitLines() {
@@ -104,6 +123,7 @@ std::vector<Point*> Polygon::IntersectionWithVerticalLine(Line l) {
     return points;
 }
 
+
 std::vector<Line> Polygon::GetLines() {
     return lines;
 }
@@ -134,6 +154,22 @@ bool Polygon::IsPointOnPolygon(Point p) {
     return false;
 
 }
+bool Polygon::operator==(Polygon p) const {
+    std::vector<Point> pVertices = p.GetVertices();
+
+    if(pVertices.size() != vertices.size()) {
+        return false;
+    }
+
+    for(size_t i = 0; i < pVertices.size(); ++i) {
+        if(!(pVertices[i] == vertices[i])) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 
 void Line::Show() const {
     p1.Show();

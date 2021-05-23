@@ -7,6 +7,7 @@
 
 std::vector<std::vector<double>> GraphConverter::Generate() {
 
+    std::vector<Point> points = std::vector<Point>();
     std::vector<std::vector<double>> adjacencyTable;
 
     std::vector<Polygon> features = map.GetFeatures();
@@ -14,17 +15,12 @@ std::vector<std::vector<double>> GraphConverter::Generate() {
 
     std::vector<double> xArray = getAllx();
 
-    for(auto t : xArray) {
-        std::cout << t << ' ';
-    }
     std::cout << std::endl;
 
     for(size_t i = 1; i < xArray.size(); ++i) {
 
         double leftX = xArray[i - 1];
         double rightX = xArray[i];
-
-        std::cout << leftX << ' ' << rightX << std::endl;
 
         Line leftLine(Point(leftX, 0), Point(leftX, 1));
         std::vector<Point> leftPoints = getAllIntersectionsWithVerticalLine(leftLine);
@@ -36,22 +32,27 @@ std::vector<std::vector<double>> GraphConverter::Generate() {
         std::sort(rightPoints.begin(), rightPoints.end(), [](const Point& p1,const Point& p2){return p1.y >= p2.y;});
         rightPoints.erase(unique(rightPoints.begin(), rightPoints.end()), rightPoints.end());
 
-//        std::vector<Point> points;
-//        points.insert(points.end(), leftPoints.begin(), leftPoints.end());
-//        points.insert(points.end(), rightPoints.begin(), rightPoints.end());
-//        points.erase(unique(points.begin(), points.end()), points.end());
 
         std::vector<Point> basePoints = getBasePoints(leftPoints, rightPoints);
+        std::vector<Point> featuresCenters = getFeaturesCenters((leftX + rightX) / 2);
 
-        for(auto p : basePoints) {
-            p.Show();
+        for(auto &p : basePoints) {
+            points.push_back(p);
         }
-        std::cout << std::endl;
+
+        for(auto &p : featuresCenters) {
+            points.push_back(p);
+        }
+    }
+
+    std::sort(points.begin(), points.end(), [](const Point& p1,const Point& p2){return p1.x <= p2.x;});
 
 
-
+    for(auto &p : points) {
+        p.Show();
         std::cout << std::endl;
     }
+
 
     return adjacencyTable;
 }
@@ -127,9 +128,6 @@ std::vector<Point> GraphConverter::getBasePoints(const std::vector<Point>& leftP
         rightLines.push_back(line);
     }
 
-    for(auto l : rightLines) {
-        l.Show();
-    }
     std::cout << std::endl;
 
     for(auto line : rightLines) {
@@ -147,8 +145,6 @@ std::vector<Point> GraphConverter::getBasePoints(const std::vector<Point>& leftP
             basePoints.push_back(mid);
         }
     }
-
-
 
     return basePoints;
 }
@@ -169,3 +165,47 @@ std::vector<Polygon> GraphConverter::getFeaturesIntersectedWithPoints(const std:
 
     return intersectedFeatures;
 }
+std::vector<Point> GraphConverter::getFeaturesCenters(const double &middleX) {
+
+    std::vector<Point> featureCenters = std::vector<Point>();
+
+    Line middleLine = Line(Point(middleX, 0), Point(middleX, 1));
+
+    std::vector<Polygon> features = map.GetFeatures();
+
+    std::vector<Point> intersectedPoints = getAllIntersectionsWithVerticalLine(middleLine);
+    std::sort(intersectedPoints.begin(), intersectedPoints.end(), [](const Point& p1,const Point& p2){return p1.y <= p2.y;});
+
+//    std::vector<Polygon> intersectedFeatures = std::vector<Polygon>();
+//    for(auto  feature : features) {
+//        std::vector<Point*> interactions = feature.IntersectionWithVerticalLine(middleLine);
+//
+//        if(interactions.empty()) {
+//            continue;
+//        }
+//        intersectedFeatures.push_back(feature);
+//    }
+
+    std::vector<Line> allPoints = std::vector<Line>();
+
+
+    for(size_t i = 1; i < intersectedPoints.size(); ++i) {
+        Line line = Line(intersectedPoints[i - 1], intersectedPoints[i]);
+        Point p = line.GetMiddleOfLine();
+
+        int flag = 1;
+        for(auto  feature : features) {
+            if(feature.IsPointInsidePolygon(p)) {
+                flag = 0;
+                break;
+            }
+        }
+        if(flag)
+            featureCenters.push_back(p);
+    }
+
+
+    return featureCenters;
+}
+
+

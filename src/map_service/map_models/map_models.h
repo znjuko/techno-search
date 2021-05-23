@@ -16,12 +16,7 @@ public:
 
     ~Point() = default;
 
-    bool operator== (const Point p) const {
-        if(this->x == p.x && this->y == p.y) {
-            return true;
-        }
-        return false;
-    }
+    bool operator== (Point p) const;
 
 };
 
@@ -38,7 +33,7 @@ public:
 
     Point GetMiddleOfLine() const;
 
-    Point * LineIntersectionWithLine(Line l);
+    Point* LineIntersectionWithLine(Line l);
 
     bool LineIntersectionWithPoint(Point p);
 
@@ -56,7 +51,7 @@ public:
 
     void ShowLines();
 
-    Point GetPolygonCenter();
+    Point* GetPolygonCenter();
 
     Point GetPointWithLowestX();
 
@@ -71,6 +66,8 @@ public:
     std::vector<Point*> IntersectionWithVerticalLine(Line l);
 
     bool IsPointOnPolygon(Point p);
+
+    bool operator== (Polygon p) const;
 
 private:
 
