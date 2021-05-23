@@ -4,7 +4,7 @@
 
 #include "product_storage.h"
 
-#include "../query/query.h"
+#include "../query/product_query.h"
 #include "../reader/product_reader.h"
 
 #include <utility>

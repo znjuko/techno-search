@@ -1,6 +1,6 @@
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-set(SRC delivery.h delivery.cpp)
+set(SRC product_delivery.h product_delivery.cpp)
 
 set(LIBRARY_NAME products_delivery)
 
@@ -14,9 +14,9 @@ target_link_libraries(
         ${LIBRARY_NAME} PRIVATE
         marshaller unmarshaller
         nlohmann_json::nlohmann_json
-        pistache router_setupper
-        request_reader response_writer
-        products_usecase products_models
+        pistache router_setupper request_reader response_writer
+        products_usecase products_models products_storage
         common_exceptions
+        postgres_query postgres_reader postgres_storage
         ${Boost_LIBRARIES}
 )

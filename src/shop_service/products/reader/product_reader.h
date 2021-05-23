@@ -5,8 +5,8 @@
 #ifndef TECHNO_SEARCH_PRODUCT_READER_H
 #define TECHNO_SEARCH_PRODUCT_READER_H
 
+#include "postgres_reader.h"
 #include "product_models.h"
-#include "reader.h"
 
 #include <boost/lexical_cast.hpp>
 #include <pqxx/pqxx>

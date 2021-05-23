@@ -5,9 +5,6 @@
 #ifndef TECHNO_SEARCH_STORES_MODELS_H
 #define TECHNO_SEARCH_STORES_MODELS_H
 
-#include "common_exceptions.h"
-#include "marshaller.h"
-#include "unmarshaller.h"
 
 #include <algorithm>
 #include <boost/algorithm/string.hpp>
@@ -16,6 +13,10 @@
 #include <pistache/endpoint.h>
 #include <pistache/http.h>
 #include <string>
+
+#include "marshaller.h"
+#include "unmarshaller.h"
+#include "common_exceptions.h"
 
 using namespace Pistache;
 
@@ -71,7 +72,7 @@ class UpdateStoreRequest : public IMarshaller
     void Marshall(const std::string &body) override;
 
     ~UpdateStoreRequest() override = default;
-    Store Store;
+    Store store;
 };
 
 class AddStoreRequest : public IMarshaller
@@ -80,7 +81,7 @@ class AddStoreRequest : public IMarshaller
     AddStoreRequest();
     void Marshall(const std::string &body) override;
     ~AddStoreRequest() override = default;
-    Store Store;
+    Store store;
 };
 
 class StoreMetadata : public IQueryMarshaller, public IUnMarshaller
@@ -94,7 +95,7 @@ class StoreMetadata : public IQueryMarshaller, public IUnMarshaller
 
     ~StoreMetadata() override = default;
 
-    Store Store;
+    Store store;
 };
 
 class StoreList : public IMarshaller, public IUnMarshaller
@@ -108,7 +109,7 @@ class StoreList : public IMarshaller, public IUnMarshaller
 
     ~StoreList() override = default;
 
-    Store Store;
+    Store store;
 };
 
 class UpdateStore : public IMarshaller, public IUnMarshaller
@@ -122,7 +123,7 @@ class UpdateStore : public IMarshaller, public IUnMarshaller
 
     ~UpdateStore() override = default;
 
-    Store Store;
+    Store store;
 };
 
 class AddStore : public IMarshaller, public IUnMarshaller
@@ -136,7 +137,7 @@ class AddStore : public IMarshaller, public IUnMarshaller
 
     ~AddStore() override = default;
 
-    Store Store;
+    Store store;
 };
 
 class GetStoreMetadataResponse : public IUnMarshaller

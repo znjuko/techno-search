@@ -1,24 +1,31 @@
 //
 // Created by fillinmar on 23.05.2021.
 //
-//
-// Created by paccbet on 13.04.2021.
-//
 
-#include "click_common_storage.h"
+#include "postgres_storage.h"
 #include "request_reader.h"
-#include "skill_delivery.h"
-#include "skill_storage.h"
-#include "skill_usecase.h"
+#include "store_delivery.h"
+#include "store_storage.h"
+#include "store_usecase.h"
+
+//#include "skill_delivery.h"
+//#include "skill_storage.h"
+//#include "skill_usecase.h"
+
+//#include "skill_delivery.h"
+//#include "skill_storage.h"
+//#include "skill_usecase.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 //#include <clickhouse/client.h>
+#include <pqxx/pqxx>
 #include <pistache/endpoint.h>
 #include <pistache/http.h>
 #include <pistache/router.h>
 
 //using namespace clickhouse;
+using json = nlohmann::json;
 
 using namespace Pistache;
 using namespace Rest;

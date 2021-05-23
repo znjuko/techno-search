@@ -17,7 +17,7 @@ std::shared_ptr<GetProductListResponse> ProductManager::GetProductList(std::shar
 
 std::shared_ptr<UpdateProductResponse> ProductManager::UpdateProduct(std::shared_ptr<UpdateProductRequest> req)
 {
-    return storage->UpdateProductMetadata(req);
+    return storage->UpdateProduct(req);
 }
 
 std::shared_ptr<AddProductResponse> ProductManager::AddProduct(std::shared_ptr<AddProductRequest> req)

@@ -78,7 +78,7 @@ class UpdateProductRequest : public IMarshaller
 
     ~UpdateProductRequest() override = default;
 
-    Product Product;
+    Product product;
 };
 
 class AddProductRequest : public IMarshaller
@@ -88,7 +88,7 @@ class AddProductRequest : public IMarshaller
     void Marshall(const std::string &body) override;
     ~AddProductRequest() override = default;
 
-    Product Product;
+    Product product;
 };
 
 class ProductMetadata : public IQueryMarshaller, public IUnMarshaller
@@ -102,7 +102,7 @@ class ProductMetadata : public IQueryMarshaller, public IUnMarshaller
 
     ~ProductMetadata() override = default;
 
-    Product Product;
+    Product product;
 };
 
 class ProductList : public IMarshaller, public IUnMarshaller
@@ -116,7 +116,7 @@ class ProductList : public IMarshaller, public IUnMarshaller
 
     ~ProductList() override = default;
 
-    Product Product;
+    Product product;
 };
 
 class UpdateProduct : public IMarshaller, public IUnMarshaller
@@ -129,7 +129,7 @@ class UpdateProduct : public IMarshaller, public IUnMarshaller
 
     ~UpdateProduct() override = default;
 
-    Product Product;
+    Product product;
 };
 
 class AddProduct : public IMarshaller, public IUnMarshaller
@@ -143,7 +143,7 @@ class AddProduct : public IMarshaller, public IUnMarshaller
 
     ~AddProduct() override = default;
 
-    Product Product;
+    Product product;
 };
 
 class GetProductMetadataResponse : public IUnMarshaller

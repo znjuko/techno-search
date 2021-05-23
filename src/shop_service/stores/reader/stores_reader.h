@@ -6,7 +6,7 @@
 #define TECHNO_SEARCH_STORES_READER_H
 
 #include "models.h"
-#include "reader.h"
+#include "postgres_reader.h"
 
 #include <pqxx/pqxx>
 #include <vector>

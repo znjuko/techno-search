@@ -9,4 +9,9 @@ add_library(${LIBRARY_NAME} STATIC ${SRC})
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(${LIBRARY_NAME} PRIVATE products_models
-        product_storage)
+        products_storage products_models
+        marshaller unmarshaller
+        marshaller
+        common_exceptions
+        postgres_query postgres_reader postgres_storage
+        )

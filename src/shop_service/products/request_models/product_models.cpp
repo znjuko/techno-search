@@ -49,98 +49,98 @@ void GetProductListRequest::Marshall(const Http::Uri::Query &query)
     Skip = boost::lexical_cast<int>(*skipParam);
 };
 
-UpdateProductRequest::UpdateProductRequest() : Product(0, 0, "", "", 0, 0, 0){};
+UpdateProductRequest::UpdateProductRequest() : product(0, 0, "", "", 0, 0, 0){};
 
 void UpdateProductRequest::Marshall(const std::string &body)
 {
     json j = json::parse(body);
     json object = j["productToUpdate"];
 
-    Product.ProductID = object[0]["productID"];
-    Product.StoreID = object[0]["storeID"];
-    Product.Name = object[0]["name"];
-    Product.Category = object[0]["category"];
-    Product.Price = object[0]["price"];
-    Product.Quantity = object[0]["quantity"];
-    Product.CounterID = object[0]["counterID"];
+    product.ProductID = object[0]["productID"];
+    product.StoreID = object[0]["storeID"];
+    product.Name = object[0]["name"];
+    product.Category = object[0]["category"];
+    product.Price = object[0]["price"];
+    product.Quantity = object[0]["quantity"];
+    product.CounterID = object[0]["counterID"];
 };
 
-AddProductRequest::AddProductRequest() : Product(0, 0, "", "", 0, 0, 0){};
+AddProductRequest::AddProductRequest() : product(0, 0, "", "", 0, 0, 0){};
 
 void AddProductRequest::Marshall(const std::string &body)
 {
     json j = json::parse(body);
     json object = j["productToAdd"]; //нет поля продакт айди
 
-    Product.StoreID = object[0]["storeID"];
-    Product.Name = object[0]["name"];
-    Product.Category = object[0]["category"];
-    Product.Price = object[0]["price"];
-    Product.Quantity = object[0]["quantity"];
-    Product.CounterID = object[0]["counterID"];
+    product.StoreID = object[0]["storeID"];
+    product.Name = object[0]["name"];
+    product.Category = object[0]["category"];
+    product.Price = object[0]["price"];
+    product.Quantity = object[0]["quantity"];
+    product.CounterID = object[0]["counterID"];
 };
 
-ProductMetadata::ProductMetadata() : Product(0, 0, "", "", 0, 0, 0){};
+ProductMetadata::ProductMetadata() : product(0, 0, "", "", 0, 0, 0){};
 
 void ProductMetadata::Marshall(const Http::Uri::Query &body){};
 
 nlohmann::json ProductMetadata::UnMarshall()
 {
     nlohmann::json output;
-    output["product"] = Product.ProductID;
-    output["store"] = Product.StoreID;
-    output["name"] = Product.Name;
-    output["category"] = Product.Category;
-    output["price"] = Product.Price;
-    output["quantity"] = Product.Quantity;
-    output["counter"] = Product.CounterID;
+    output["product"] = product.ProductID;
+    output["store"] = product.StoreID;
+    output["name"] = product.Name;
+    output["category"] = product.Category;
+    output["price"] = product.Price;
+    output["quantity"] = product.Quantity;
+    output["counter"] = product.CounterID;
     return output;
 };
 
-ProductList::ProductList() : Product(0, 0, "", "", 0, 0, 0){};
+ProductList::ProductList() : product(0, 0, "", "", 0, 0, 0){};
 void ProductList::Marshall(const std::string &body){};
 nlohmann::json ProductList::UnMarshall()
 {
     nlohmann::json output;
-    output["product"] = Product.ProductID;
-    output["store"] = Product.StoreID;
-    output["name"] = Product.Name;
-    output["category"] = Product.Category;
-    output["price"] = Product.Price;
-    output["quantity"] = Product.Quantity;
-    output["counter"] = Product.CounterID;
+    output["product"] = product.ProductID;
+    output["store"] = product.StoreID;
+    output["name"] = product.Name;
+    output["category"] = product.Category;
+    output["price"] = product.Price;
+    output["quantity"] = product.Quantity;
+    output["counter"] = product.CounterID;
     return output;
 };
 
-UpdateProduct::UpdateProduct() : Product(0, 0, "", "", 0, 0, 0){};
+UpdateProduct::UpdateProduct() : product(0, 0, "", "", 0, 0, 0){};
 void UpdateProduct::Marshall(const std::string &body){};
 nlohmann::json UpdateProduct::UnMarshall()
 {
     nlohmann::json output;
-    output["product"] = Product.ProductID;
-    output["store"] = Product.StoreID;
-    output["name"] = Product.Name;
-    output["category"] = Product.Category;
-    output["price"] = Product.Price;
-    output["quantity"] = Product.Quantity;
-    output["counter"] = Product.CounterID;
+    output["product"] = product.ProductID;
+    output["store"] = product.StoreID;
+    output["name"] = product.Name;
+    output["category"] = product.Category;
+    output["price"] = product.Price;
+    output["quantity"] = product.Quantity;
+    output["counter"] = product.CounterID;
     return output;
 };
 
-AddProduct::AddProduct() : Product(0, 0, "", "", 0, 0, 0){};
+AddProduct::AddProduct() : product(0, 0, "", "", 0, 0, 0){};
 
 void AddProduct::Marshall(const std::string &body){};
 
 nlohmann::json AddProduct::UnMarshall()
 {
     nlohmann::json output;
-    output["product"] = Product.ProductID;
-    output["store"] = Product.StoreID;
-    output["name"] = Product.Name;
-    output["category"] = Product.Category;
-    output["price"] = Product.Price;
-    output["quantity"] = Product.Quantity;
-    output["counter"] = Product.CounterID;
+    output["product"] = product.ProductID;
+    output["store"] = product.StoreID;
+    output["name"] = product.Name;
+    output["category"] = product.Category;
+    output["price"] = product.Price;
+    output["quantity"] = product.Quantity;
+    output["counter"] = product.CounterID;
     return output;
 };
 

@@ -12,4 +12,10 @@ find_package(libpqxx CONFIG REQUIRED)
 
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(${LIBRARY_NAME} PRIVATE products_models libpqxx::pqxx postgres_reader)
+target_link_libraries(${LIBRARY_NAME} PRIVATE
+        marshaller unmarshaller
+        nlohmann_json::nlohmann_json
+        common_exceptions
+        products_models
+        postgres_query postgres_reader postgres_storage
+        )
