@@ -1,14 +1,14 @@
-FROM ubuntu:18.04
+FROM gcc:latest as build
 
 WORKDIR techno-search-dependencies
 
 
 RUN echo "installing dependencies"
 
-RUN apt-get update && apt-get install build-essential curl file git -y
-RUN apt-get install libboost-all-dev
-RUN apt-get install nlohmann-json3-dev
-RUN apt-get install libpqxx-dev
+RUN apt-get update && apt-get install cmake build-essential curl file git -y
+RUN apt-get install libboost-dev -y
+RUN apt-get install nlohmann-json3-dev -y
+RUN apt-get install libpqxx-dev -y
 
 RUN curl -OL https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.6.3/mongo-cxx-driver-r3.6.3.tar.gz
 RUN tar -xzf mongo-cxx-driver-r3.6.3.tar.gz

@@ -20,6 +20,7 @@ services:
       - main
 
   skill_service:
+     mem_limit: 10gb
      build:
         dockerfile: Dockerfile.main
         context: .
