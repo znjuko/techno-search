@@ -6,7 +6,8 @@
 
 void StoreService::GetStoreMetadata(const Rest::Request &req, Http::ResponseWriter res)
 {
-    std::shared_ptr<GetStoreMetadataRequest> reqReader;
+    auto reqReader = std::make_shared<GetStoreMetadataRequest>();
+//    std::shared_ptr<GetStoreMetadataRequest> reqReader;
     try
     {
         queryReader->ReadRequest(reqReader, req);
@@ -37,7 +38,8 @@ void StoreService::GetStoreMetadata(const Rest::Request &req, Http::ResponseWrit
 
 void StoreService::GetStoreList(const Rest::Request &req, Http::ResponseWriter res)
 {
-    std::shared_ptr<GetStoreListRequest> reqReader;
+    auto reqReader = std::make_shared<GetStoreListRequest>();
+//    std::shared_ptr<GetStoreListRequest> reqReader;
     try
     {
         queryReader->ReadRequest(reqReader, req);
@@ -68,7 +70,8 @@ void StoreService::GetStoreList(const Rest::Request &req, Http::ResponseWriter r
 
 void StoreService::UpdateStore(const Rest::Request &req, Http::ResponseWriter res)
 {
-    std::shared_ptr<UpdateStoreRequest> reqReader;
+    auto reqReader = std::make_shared<UpdateStoreRequest>();
+//    std::shared_ptr<UpdateStoreRequest> reqReader;
     try
     {
         bodyReader->ReadRequest(reqReader, req);
@@ -99,7 +102,8 @@ void StoreService::UpdateStore(const Rest::Request &req, Http::ResponseWriter re
 
 void StoreService::AddStore(const Rest::Request &req, Http::ResponseWriter res)
 {
-    std::shared_ptr<AddStoreRequest> reqReader;
+    auto reqReader = std::make_shared<AddStoreRequest>();
+//    std::shared_ptr<AddStoreRequest> reqReader;
     try
     {
         bodyReader->ReadRequest(reqReader, req);
@@ -128,23 +132,34 @@ void StoreService::AddStore(const Rest::Request &req, Http::ResponseWriter res)
     responseWriter->WriteResponse(respWriter, &res);
 }
 
-void StoreService::SetupService(Rest::Router *router)
+//void StoreService::SetupService(std::shared_ptr<Rest::Router> router)
+//{
+////    Routes::Post(router, "/record/:name/:value?", Routes::bind(&StatsEndpoint::doRecordMetric, this));
+//    router->addRoute(Http::Method::Get, "api/v1/store",
+//                    Pistache::Rest::Routes::bind(&StoreService::GetStoreMetadata, this));
+//
+//    router->addRoute(Http::Method::Get, "api/v1/store/search",
+//                    Pistache::Rest::Routes::bind(&StoreService::GetStoreList, this));
+//
+//    router->addRoute(Http::Method::Post, "api/v1/store", Pistache::Rest::Routes::bind(&StoreService::AddStore, this));
+//
+//    router->addRoute(Http::Method::Put, "api/v1/store", Pistache::Rest::Routes::bind(&StoreService::UpdateStore, this));
+//}
+void StoreService::SetupService(Rest::Router &router)
 {
-    router->addRoute(Http::Method::Get, "api/v1/shop/store",
-                    Pistache::Rest::Routes::bind(&StoreService::GetStoreMetadata, this));
+//    Routes::Post(router, "/record/:name/:value?", Routes::bind(&StatsEndpoint::doRecordMetric, this));
+    using namespace Rest;
 
-    router->addRoute(Http::Method::Get, "api/v1/shop/store/search",
-                    Pistache::Rest::Routes::bind(&StoreService::GetStoreList, this));
-
-    router->addRoute(Http::Method::Post, "api/v1/shop", Pistache::Rest::Routes::bind(&StoreService::AddStore, this));
-
-    router->addRoute(Http::Method::Put, "api/v1/shop", Pistache::Rest::Routes::bind(&StoreService::UpdateStore, this));
+    Routes::Post(router, "/records/:name/:value?", Routes::bind(&StoreService::AddStore, this));
+    Routes::Get(router, "/values/:name", Routes::bind(&StoreService::GetStoreMetadata, this));
+    Routes::Get(router, "/readys", Routes::bind(&StoreService::GetStoreList, this));
+    Routes::Put(router, "/auths", Routes::bind(&StoreService::UpdateStore, this));
 }
 
-StoreService::StoreService(std::shared_ptr<JsonResponseWriter> responseWriter,
-                             std::shared_ptr<JsonRequestBodyReader> bodyReader,
-                             std::shared_ptr<ErrorResponseWriter> errorWriter,
-                             std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<StoreManager> manager)
+StoreService::StoreService(std::make_shared<JsonResponseWriter> responseWriter,
+                             std::make_shared<JsonRequestBodyReader> bodyReader,
+                             std::make_shared<ErrorResponseWriter> errorWriter,
+                             std::make_shared<RequestQueryReader> queryReader, std::make_shared<StoreManager> manager)
     : responseWriter(responseWriter), bodyReader(bodyReader), queryReader(queryReader), manager(manager),
       errorWriter(errorWriter)
 {

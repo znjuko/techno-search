@@ -23,8 +23,6 @@ class ProductService : public IRouterSetupper
   public:
     ProductService() = delete;
 
-//    ProductService(const JsonResponseWriter &responseWriter, const JsonRequestBodyReader &bodyReader,
-//                   const RequestQueryReader &queryReader, const ProductManager &manager);
     ProductService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader> bodyReader,
         std::shared_ptr<ErrorResponseWriter> errorWriter, std::shared_ptr<RequestQueryReader> queryReader,
         std::shared_ptr<ProductManager> manager);
@@ -37,7 +35,10 @@ class ProductService : public IRouterSetupper
 
     void AddProduct(const Rest::Request &req, Http::ResponseWriter res);
 
-    void SetupService(Rest::Router *router) override;
+    void handleReady(const Rest::Request&, Http::ResponseWriter response);
+
+//    void SetupService(std::shared_ptr<Rest::Router> router) override;
+    void SetupService(Rest::Router &router) override;
 
     ~ProductService() override = default;
 

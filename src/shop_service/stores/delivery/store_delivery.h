@@ -35,15 +35,17 @@ class StoreService : public IRouterSetupper
 
     void AddStore(const Rest::Request &req, Http::ResponseWriter res);
 
-    void SetupService(Rest::Router *router) override;
+//    void SetupService(std::shared_ptr<Rest::Router> router) override;
+    void SetupService(Rest::Router &router) override;
 
     ~StoreService() override = default;
 
   private:
-    std::shared_ptr<JsonResponseWriter> responseWriter;
-    std::shared_ptr<JsonRequestBodyReader> bodyReader;
-    std::shared_ptr<ErrorResponseWriter> errorWriter;
-    std::shared_ptr<RequestQueryReader> queryReader;
-    std::shared_ptr<StoreManager> manager;
+    std::make_shared<JsonResponseWriter> responseWriter;
+    std::make_shared<JsonRequestBodyReader> bodyReader;
+    std::make_shared<ErrorResponseWriter> errorWriter;
+    std::make_shared<RequestQueryReader> queryReader;
+    std::make_shared<StoreManager> manager;
+
 };
 #endif

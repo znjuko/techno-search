@@ -7,6 +7,7 @@
 
 #include "../query/postgres_query.h"
 #include "../reader/postgres_reader.h"
+#include <memory>
 //#include "query.h"
 //#include "reader.h"
 
@@ -21,10 +22,10 @@ class PostgresStorage
 
     void Insert(const PostgresQuery &q);
 
-    void Select(std::shared_ptr<PostgresQuery> q, std::shared_ptr<PostgresReader> r);
+    void Select(std::make_shared<PostgresQuery> q, std::make_shared<PostgresReader> r);
 
-    void SelectAndInsert(const PostgresQuery &qIns, std::shared_ptr<PostgresQuery> qSel,
-                         std::shared_ptr<PostgresReader> r);
+    void SelectAndInsert(const PostgresQuery &qIns, std::make_shared<PostgresQuery> qSel,
+                         std::make_shared<PostgresReader> r);
 
     ~PostgresStorage() = default;
 
