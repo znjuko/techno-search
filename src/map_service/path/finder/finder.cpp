@@ -8,9 +8,9 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
     auto distance = std::vector<size_t>(size);
     auto vizited = std::vector<size_t>(size);
     const size_t limit = 10000;
-    int A = 0;
-    int B = 0;
-    for (int i = 0; i < size; i++)
+    size_t A = 0;
+    size_t B = 0;
+    for (size_t i = 0; i < size; i++)
     {
         if(CounterArray[i] == from){
             A = i;
@@ -20,7 +20,7 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
         }
     }
     size_t temp, minindex, min, begin_index = A;
-    for (int i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
     {
         distance[i] = limit;
         vizited[i] = 1;
@@ -67,20 +67,16 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
     while (end != begin_index)
     {
         for (int i = 0; i < size; i++)
-        {
-            if (AdjacencyTable[i][B] != 0)
-                continue;
-
-            temp = weight - AdjacencyTable[i][B];
-            if (temp != distance[i])
-                continue;
-
-            weight = temp;
-            end = i;
-            path[k] = i + 1;
-            k++;
-        }
+            if (AdjacencyTable[i][end] != 0) {
+                temp = weight - AdjacencyTable[i][end];
+                if (temp == distance[i]) {
+                    weight = temp;
+                    end = i;
+                    path[k] = i + 1;
+                    k++;
+                }
+            }
     }
-
+    std::reverse(path.begin(), path.end());
     return path;
 };
