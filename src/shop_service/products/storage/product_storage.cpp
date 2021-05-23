@@ -19,7 +19,7 @@ std::shared_ptr<GetProductMetadataResponse> ProductStorage::GetProductMetadata(
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<GetProductMetadataResponse>();
-    res->array = std::move(reader->Get());
+    res->array = reader->Get();
     return res;
 }
 
@@ -32,7 +32,7 @@ std::shared_ptr<GetProductListResponse> ProductStorage::GetProductList(std::shar
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<GetProductListResponse>();
-    res->array = std::move(reader->Get());
+    res->array = reader->Get();
     return res;
 }
 
@@ -45,12 +45,25 @@ std::shared_ptr<AddProductResponse> ProductStorage::AddProduct(std::shared_ptr<A
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<AddProductResponse>();
-    res->array = std::move(reader->Get());
+    res->array = reader->Get();
     return res;
 }
 
 ProductStorage::~ProductStorage()
 {
+}
+
+std::shared_ptr<UpdateProductResponse> ProductStorage::UpdateProduct(std::shared_ptr<UpdateProductRequest> req)
+{
+    auto q = std::shared_ptr<UpdateProductQuery>();
+    q->SetupQuery(req);
+    std::shared_ptr<UpdateProductReader> reader;
+
+    storage->Select(q, reader);
+
+    auto res = std::shared_ptr<UpdateProductResponse>();
+    res->array = reader->Get();
+    return res;
 }
 
 ProductStorage::ProductStorage(std::shared_ptr<PostgresStorage> storage) : storage(storage)

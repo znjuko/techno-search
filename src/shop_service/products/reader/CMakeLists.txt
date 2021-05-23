@@ -16,6 +16,6 @@ target_link_libraries(${LIBRARY_NAME} PRIVATE
         marshaller unmarshaller
         nlohmann_json::nlohmann_json
         common_exceptions
-        products_models
+        products_models products_storage products_delivery
         postgres_query postgres_reader postgres_storage
         )

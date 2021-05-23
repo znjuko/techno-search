@@ -141,3 +141,11 @@ void ProductService::SetupService(Rest::Router *router)
     router->addRoute(Http::Method::Put, "api/v1/product",
                     Pistache::Rest::Routes::bind(&ProductService::UpdateProduct, this));
 }
+ProductService::ProductService(std::shared_ptr<JsonResponseWriter> responseWriter,
+                           std::shared_ptr<JsonRequestBodyReader> bodyReader,
+                           std::shared_ptr<ErrorResponseWriter> errorWriter,
+                           std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<ProductManager> manager)
+    : responseWriter(responseWriter), bodyReader(bodyReader), queryReader(queryReader), manager(manager),
+      errorWriter(errorWriter)
+{
+}

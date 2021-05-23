@@ -9,6 +9,7 @@ add_library(${LIBRARY_NAME} STATIC ${SRC})
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(${LIBRARY_NAME} PRIVATE
+        products_storage products_reader products_delivery
         marshaller unmarshaller
         nlohmann_json::nlohmann_json
         common_exceptions

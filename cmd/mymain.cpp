@@ -33,7 +33,6 @@ using namespace Rest;
 
 using namespace std;
 
-
  struct HelloHandler : public Http::Handler {
   HTTP_PROTOTYPE(HelloHandler)
     void onRequest(const Http::Request&, Http::ResponseWriter writer) override{
@@ -74,7 +73,8 @@ int main()
 //             << "wrong thread count value " << threadCountValue << endl;
 //        return 0;
 //    }
-    Port port(9080);
+    Port port(9081);
+    auto addr = Address(Ipv4::any(), port);
 
     int thr = 2;
 
@@ -82,7 +82,6 @@ int main()
 //    Http::listenAndServe<HelloHandler>(Pistache::Address("*:9080"));
 
     Rest::Router router;
-//    Rest::Router routerStore;
 
     // readers/marshallers and i.e.
     auto jsonRequestBodyReader = std::make_shared<JsonRequestBodyReader>();
@@ -92,25 +91,26 @@ int main()
     auto errorResponseWriter = std::make_shared<ErrorResponseWriter>();
 
     // shop service part only
-    try
-    {
-        pqxx::connection C("host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch");
-        pqxx::work W{C};
 
-        pqxx::result R{W.exec("SELECT * FROM store")};
-
-        std::cout << "Found " << R.size() << " records:\n";
-        for (auto row : R) std::cout << row[0].c_str() << '\n';
-        //            std::cout << row[0].type() << '\n';
-
-
-        std::cout << "OK.\n";
-    }
-    catch (std::exception const &e)
-    {
-        std::cerr << e.what() << '\n';
-        return 1;
-    }
+//    try
+//    {
+//        pqxx::connection C("host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch");
+//        pqxx::work W{C};
+//
+//        pqxx::result R{W.exec("SELECT * FROM store")};
+//
+//        std::cout << "Found " << R.size() << " records:\n";
+//        for (auto row : R) std::cout << row[0].c_str() << '\n';
+//        //            std::cout << row[0].type() << '\n';
+//
+//
+//        std::cout << "OK.\n";
+//    }
+//    catch (std::exception const &e)
+//    {
+//        std::cerr << e.what() << '\n';
+//        return 1;
+//    }
 
 
     const char* options = "host=localhost port= 5432 user=fillinmar password=1234 dbname=test";
@@ -122,20 +122,20 @@ int main()
                                                          requestQueryReader, shopStoreManager);
     shopStoreDelivery->SetupService(&router);
 
-    auto shopProductStorage = std::make_shared<StoreStorage>(commonPostgresStorage);
-    auto shopProductManager = std::make_shared<StoreManager>(shopStoreStorage);
-    auto shopProductDelivery = std::make_shared<StoreService>(jsonResponseWriter, jsonRequestBodyReader, errorResponseWriter,
-                                                            requestQueryReader, shopStoreManager);
+    auto shopProductStorage = std::make_shared<ProductStorage>(commonPostgresStorage);
+    auto shopProductManager = std::make_shared<ProductManager>(shopProductStorage);
+    auto shopProductDelivery = std::make_shared<ProductService>(jsonResponseWriter, jsonRequestBodyReader, errorResponseWriter,
+                                                            requestQueryReader, shopProductManager);
     shopProductDelivery->SetupService(&router);
-//    GetStoreMetadataRequest("1");
+
     // end of shop service part
 
 
-//    auto httpEndpoint = std::make_shared<Http::Endpoint>(addr);
-//    httpEndpoint->setHandler(router.handler());
-//    cout << "starting server on port " << portValue << endl;
-//    httpEndpoint->serve();
-    Http::listenAndServe<HelloHandler>(Pistache::Address("*:9080"));
+    auto httpEndpoint = std::make_shared<Http::Endpoint>(addr);
+    httpEndpoint->setHandler(router.handler());
+    cout << "starting server on port " << port << endl;
+    httpEndpoint->serve();
+//   Http::listenAndServe<HelloHandler>(Pistache::Address("*:9080"));
     return 0;
 
     // skill service part only

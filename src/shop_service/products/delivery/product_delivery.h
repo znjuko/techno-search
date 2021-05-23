@@ -23,8 +23,11 @@ class ProductService : public IRouterSetupper
   public:
     ProductService() = delete;
 
-    ProductService(const JsonResponseWriter &responseWriter, const JsonRequestBodyReader &bodyReader,
-                   const RequestQueryReader &queryReader, const ProductManager &manager);
+//    ProductService(const JsonResponseWriter &responseWriter, const JsonRequestBodyReader &bodyReader,
+//                   const RequestQueryReader &queryReader, const ProductManager &manager);
+    ProductService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader> bodyReader,
+        std::shared_ptr<ErrorResponseWriter> errorWriter, std::shared_ptr<RequestQueryReader> queryReader,
+        std::shared_ptr<ProductManager> manager);
 
     void GetProductMetadata(const Rest::Request &req, Http::ResponseWriter res);
 

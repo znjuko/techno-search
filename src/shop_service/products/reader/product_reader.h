@@ -68,4 +68,23 @@ class AddProductReader : public PostgresReader
   private:
     std::vector<AddProduct> data;
 };
+
+class UpdateProductReader : public PostgresReader
+{
+  public:
+    UpdateProductReader() = default;
+
+    UpdateProductReader(const AddProduct &r) = delete;
+
+    UpdateProductReader(const std::vector<UpdateProduct> &v) = delete;
+
+    void Execute(const pqxx::result R) override;
+
+    std::vector<UpdateProduct> Get();
+
+    ~UpdateProductReader() override = default;
+
+  private:
+    std::vector<UpdateProduct> data;
+};
 #endif

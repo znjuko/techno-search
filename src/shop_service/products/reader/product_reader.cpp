@@ -56,3 +56,16 @@ std::vector<AddProduct> AddProductReader::Get()
 {
     return data;
 }
+
+void UpdateProductReader::Execute(const pqxx::result R)
+{
+    for (auto row : R)
+    {
+        data[0].product.ProductID = boost::lexical_cast<int>(row[0].c_str());
+    }
+}
+
+std::vector<UpdateProduct> UpdateProductReader::Get()
+{
+    return data;
+}
