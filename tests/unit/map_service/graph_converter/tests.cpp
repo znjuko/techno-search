@@ -2,7 +2,6 @@
 #include "shop_map.h"
 
 #include <gtest/gtest.h>
-#include <iostream>
 #include <map>
 
 TEST(GRAPH_CONVERTER, GENERATE)

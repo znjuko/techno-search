@@ -8,14 +8,11 @@
 std::vector<std::vector<double>> GraphConverter::Generate() {
 
     std::vector<Point> points = std::vector<Point>();
-    std::vector<std::vector<double>> adjacencyTable;
 
     std::vector<Polygon> features = map.GetFeatures();
     Polygon shop = map.GetShop();
 
     std::vector<double> xArray = getAllx();
-
-    std::cout << std::endl;
 
     for(size_t i = 1; i < xArray.size(); ++i) {
 
@@ -53,6 +50,9 @@ std::vector<std::vector<double>> GraphConverter::Generate() {
         std::cout << std::endl;
     }
 
+    std::vector<Point> featuresPoints  = getFeaturesPoints(features);
+
+    std::vector<std::vector<double>> adjacencyTable = getAdjacencyTableFromPoints(points);
 
     return adjacencyTable;
 }
@@ -128,8 +128,6 @@ std::vector<Point> GraphConverter::getBasePoints(const std::vector<Point>& leftP
         rightLines.push_back(line);
     }
 
-    std::cout << std::endl;
-
     for(auto line : rightLines) {
         Point mid = line.GetMiddleOfLine();
         int flag = 1;
@@ -204,8 +202,26 @@ std::vector<Point> GraphConverter::getFeaturesCenters(const double &middleX) {
             featureCenters.push_back(p);
     }
 
-
     return featureCenters;
 }
 
+std::vector<std::vector<double>> GraphConverter::getAdjacencyTableFromPoints(const std::vector<Point> &points) {
 
+    std::vector<std::vector<double>> adjacencyTable = std::vector<std::vector<double>>();
+
+    for(size_t i = 0; i < points.size(); ++i) {
+
+    }
+
+    return adjacencyTable;
+}
+std::vector<Point> GraphConverter::getFeaturesPoints(const std::vector<Polygon> &features) {
+
+    std::vector<Point> featuresPoints = std::vector<Point>();
+
+    for(auto feature : features) {
+        featuresPoints.push_back(feature.GetFeaturePoint());
+    }
+
+    return featuresPoints;
+}

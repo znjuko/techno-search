@@ -4,8 +4,8 @@
 #include <nlohmann/json.hpp>
 #include <vector>
 #include <iostream>
-#include "common_exceptions.h"
-#include "marshaller.h"
+//#include "common_exceptions.h"
+//#include "marshaller.h"
 
 
 using json = nlohmann::json;
@@ -74,6 +74,8 @@ public:
 
     bool operator== (Polygon p) const;
 
+    Point GetFeaturePoint();
+
 private:
 
     std::vector<Point> vertices;
@@ -82,42 +84,42 @@ private:
     size_t id;    // id прилавка
 };
 
-class StoreMap : public IMarshaller
-{
-  public:
-    StoreMap();
-
-    void Marshall(const std::string &body) override;
-
-    ~StoreMap() override = default;
-
-    Polygon StoreGeometry;
-    std::vector<Polygon> InheritObjects;
-    size_t StoreID{};
-};
-
-class RawStoreMap : public IMarshaller
-{
-  public:
-    RawStoreMap() = default;
-
-    void Marshall(const std::string &body) override;
-
-    ~RawStoreMap() override = default;
-
-    std::string RawMap;
-};
-
-class StoreMapActionRequest : public IRequestMarshaller
-{
-  public:
-    StoreMapActionRequest();
-
-    void Marshall(const Rest::Request &req) override;
-
-    ~StoreMapActionRequest() override = default;
-
-    int StoreID;
-};
+//class StoreMap : public IMarshaller
+//{
+//  public:
+//    StoreMap();
+//
+//    void Marshall(const std::string &body) override;
+//
+//    ~StoreMap() override = default;
+//
+//    Polygon StoreGeometry;
+//    std::vector<Polygon> InheritObjects;
+//    size_t StoreID{};
+//};
+//
+//class RawStoreMap : public IMarshaller
+//{
+//  public:
+//    RawStoreMap() = default;
+//
+//    void Marshall(const std::string &body) override;
+//
+//    ~RawStoreMap() override = default;
+//
+//    std::string RawMap;
+//};
+//
+//class StoreMapActionRequest : public IRequestMarshaller
+//{
+//  public:
+//    StoreMapActionRequest();
+//
+//    void Marshall(const Rest::Request &req) override;
+//
+//    ~StoreMapActionRequest() override = default;
+//
+//    int StoreID;
+//};
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H
