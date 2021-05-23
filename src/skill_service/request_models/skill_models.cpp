@@ -2,7 +2,7 @@
 // Created by paccbet on 14.04.2021.
 //
 
-#include "models.h"
+#include "skill_models.h"
 
 using namespace Pistache;
 

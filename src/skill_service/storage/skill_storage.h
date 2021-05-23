@@ -6,7 +6,7 @@
 #define TECHNO_SEARCH_STORAGE_H
 
 #include "common_storage.h"
-#include "models.h"
+#include "skill_models.h"
 
 // TODO (n.chernyh) : do we need 5 rule here ?
 class MetricStorage

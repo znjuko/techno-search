@@ -2,7 +2,7 @@
 // Created by paccbet on 14.04.2021.
 //
 
-#include "delivery.h"
+#include "skill_delivery.h"
 
 void MetricService::GetCounterPopularityByShop(const Http::Request &req, Http::ResponseWriter res)
 {

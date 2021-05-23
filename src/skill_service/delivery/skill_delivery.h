@@ -8,7 +8,7 @@
 #include "common_exceptions.h"
 #include "reader.h"
 #include "router_setupper.h"
-#include "usecase.h"
+#include "skill_usecase.h"
 #include "writer.h"
 
 #include <boost/exception/exception.hpp>

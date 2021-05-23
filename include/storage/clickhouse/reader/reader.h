@@ -5,7 +5,7 @@
 #ifndef TECHNO_SEARCH_READER_H
 #define TECHNO_SEARCH_READER_H
 
-#include "models.h"
+#include "skill_models.h"
 
 #include <clickhouse/client.h>
 #include <vector>

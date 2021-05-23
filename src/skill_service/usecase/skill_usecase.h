@@ -5,8 +5,8 @@
 #ifndef TECHNO_SEARCH_USECASE_H
 #define TECHNO_SEARCH_USECASE_H
 
-#include "models.h"
-#include "storage.h"
+#include "skill_models.h"
+#include "skill_storage.h"
 
 // TODO (n.chernyh) : here move all to smart pointers !!!
 // maybe its overpriced. idk. need to look for docs

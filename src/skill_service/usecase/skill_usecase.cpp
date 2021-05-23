@@ -2,7 +2,7 @@
 // Created by paccbet on 14.04.2021.
 //
 
-#include "usecase.h"
+#include "skill_usecase.h"
 
 std::shared_ptr<CountersPopularityMetricResponse> MetricManager::GetCounterPopularityByShop(
     std::shared_ptr<GetCountersPopularityByStoreRequest> req)

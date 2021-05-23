@@ -10,7 +10,7 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(
         ${LIBRARY_NAME} PRIVATE
-        models
+        skill_models
         click_storage
         click_query
         click_reader

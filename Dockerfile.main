@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
 
+WORKDIR techno-search
+COPY . .
+
 RUN echo "installing dependencies"
 
 RUN sudo apt install build-essential git
@@ -14,6 +17,4 @@ RUN echo "all dependecies installed"
 
 RUN echo "compiling project"
 
-WORKDIR techno-search
-COPY . .
 RUN mkdir build && cd build && cmake .. && make

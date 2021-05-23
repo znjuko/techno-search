@@ -2,7 +2,7 @@
 // Created by paccbet on 15.04.2021.
 //
 
-#include "storage.h"
+#include "skill_storage.h"
 
 #include <utility>
 
