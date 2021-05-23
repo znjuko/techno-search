@@ -2,8 +2,8 @@
 // Created by paccbet on 14.04.2021.
 //
 
-#ifndef TECHNO_SEARCH_USECASE_H
-#define TECHNO_SEARCH_USECASE_H
+#ifndef TECHNO_SEARCH_SKILL_USECASE_H
+#define TECHNO_SEARCH_SKILL_USECASE_H
 
 #include "skill_models.h"
 #include "skill_storage.h"
@@ -17,7 +17,7 @@ class MetricManager
   public:
     MetricManager() = delete;
 
-    explicit MetricManager(const MetricStorage &storage) noexcept;
+    MetricManager(std::shared_ptr<MetricStorage> storage) noexcept;
 
     std::shared_ptr<CountersPopularityMetricResponse> GetCounterPopularityByShop(
         std::shared_ptr<GetCountersPopularityByStoreRequest> req);
@@ -31,7 +31,7 @@ class MetricManager
     ~MetricManager();
 
   private:
-    MetricStorage storage;
+    std::shared_ptr<MetricStorage> storage;
 };
 
-#endif // TECHNO_SEARCH_USECASE_H
+#endif // TECHNO_SEARCH_SKILL_USECASE_H

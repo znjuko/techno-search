@@ -23,7 +23,8 @@ class MetricService : public IRouterSetupper
     MetricService() = delete;
 
     MetricService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader> bodyReader,
-                  std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MetricManager> manager);
+                  std::shared_ptr<ErrorResponseWriter> errorWriter, std::shared_ptr<RequestQueryReader> queryReader,
+                  std::shared_ptr<MetricManager> manager);
 
     void GetCounterPopularityByShop(const Http::Request &req, Http::ResponseWriter res);
 

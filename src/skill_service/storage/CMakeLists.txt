@@ -14,4 +14,5 @@ target_link_libraries(
         click_storage
         click_query
         click_reader
+        skill_models
 )

@@ -50,7 +50,7 @@ void GetProductsTotalPopularityRequest::Marshall(const Http::Uri::Query &query)
     auto idsValue = query.get("ids");
     if (idsValue->empty())
     {
-        throw EmptyValue("ids");
+        dddddddd throw EmptyValue("ids");
     }
     boost::split(ProductIDs, *idsValue, boost::is_any_of(","));
 };

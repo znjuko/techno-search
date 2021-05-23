@@ -22,7 +22,7 @@ std::shared_ptr<ProductsPopularityMetricResponse> MetricManager::GetProductsTota
     return storage.GetProductsTotalPopularity(req);
 }
 
-MetricManager::MetricManager(const MetricStorage &storage) noexcept : storage(storage)
+MetricManager::MetricManager(std::shared_ptr<MetricStorage> storage) noexcept : storage(storage)
 {
 }
 

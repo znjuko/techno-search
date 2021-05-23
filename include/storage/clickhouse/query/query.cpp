@@ -56,7 +56,7 @@ void GetProductPopularityByShopMetricQuery::SetupQuery(std::shared_ptr<GetProduc
 
     this->query = "SELECT storage_id, product_id, count(*) as 'popularity' "
                   "FROM storage_product_popularity WHERE storage_id = " +
-                  std::to_string(req.StoreID) + " " + "AND product_id IN (" + inQuery + ") " +
+                  std::to_string(req->StoreID) + " " + "AND product_id IN (" + inQuery + ") " +
                   "GROUP BY storage_id, product_id ORDER BY product_id;";
 }
 

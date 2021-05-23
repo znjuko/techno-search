@@ -14,9 +14,17 @@ target_link_libraries(
         ${Boost_LIBRARIES}
         pistache
         clickhouse-cpp-lib
+
+        request_reader
+        response_writer
+        marshaller
+        unmarshaller
+        common_exceptions
+        router_setupper
         ## skill service only
         skill_delivery
         skill_usecase
         skill_storage
         click_storage
+        skill_models
 )

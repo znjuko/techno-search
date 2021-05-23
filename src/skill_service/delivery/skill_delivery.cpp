@@ -116,7 +116,9 @@ void MetricService::SetupService(Rest::Router *router)
 
 MetricService::MetricService(std::shared_ptr<JsonResponseWriter> responseWriter,
                              std::shared_ptr<JsonRequestBodyReader> bodyReader,
+                             std::shared_ptr<ErrorResponseWriter> errorWriter,
                              std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MetricManager> manager)
-    : responseWriter(responseWriter), bodyReader(bodyReader), queryReader(queryReader), manager(manager)
+    : responseWriter(responseWriter), bodyReader(bodyReader), queryReader(queryReader), manager(manager),
+      errorWriter(errorWriter)
 {
 }
