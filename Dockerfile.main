@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install cmake build-essential curl file git -y
 RUN apt-get install libboost-all-dev -y
 RUN apt-get install nlohmann-json3-dev -y
 RUN apt-get install libpqxx-dev -y
+RUN git init . && git clone https://github.com/ClickHouse/clickhouse-cpp.git && cd clickhouse-cpp  && cmake --configure . && cmake --build . && cmake --install .
+
+RUN git init . &&  git clone https://github.com/abseil/abseil-cpp.git && cd abseil-cpp &&  mkdir build && cd build &&  cmake .. && cmake --build . --target install
 
 WORKDIR techno-search
 COPY . .

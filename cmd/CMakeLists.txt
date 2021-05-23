@@ -13,7 +13,7 @@ target_link_libraries(
         nlohmann_json::nlohmann_json
         ${Boost_LIBRARIES}
         pistache
-        clickhouse-cpp-lib
+        clickhouse-cpp-lib-static
 
         request_reader
         response_writer
