@@ -67,4 +67,23 @@ class AddStoreReader : public PostgresReader
   private:
     std::vector<AddStore> data;
 };
+
+class UpdateStoreReader : public PostgresReader
+{
+  public:
+    UpdateStoreReader() = default;
+
+    UpdateStoreReader(const AddStore &r) = delete;
+
+    UpdateStoreReader(const std::vector<AddStore> &v) = delete;
+
+    void Execute(const pqxx::result R) override;
+
+    std::vector<UpdateStore> Get();
+
+    ~UpdateStoreReader() override = default;
+
+  private:
+    std::vector<UpdateStore> data;
+};
 #endif

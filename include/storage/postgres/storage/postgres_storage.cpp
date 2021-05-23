@@ -4,6 +4,10 @@
 
 #include "postgres_storage.h"
 
+PostgresStorage::PostgresStorage(const char* options) : C(options)
+{
+}
+
 void PostgresStorage::Insert(const PostgresQuery &q)
 {
     pqxx::work Transaction{C};
@@ -32,3 +36,4 @@ void PostgresStorage::SelectAndInsert(const PostgresQuery &qIns, std::shared_ptr
 
     r->Execute(R);
 }
+

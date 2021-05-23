@@ -18,7 +18,7 @@ std::shared_ptr<GetStoreMetadataResponse> StoreStorage::GetStoreMetadata(std::sh
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<GetStoreMetadataResponse>();
-    res->array = std::move(reader->Get());
+    res->array = reader->Get();
     return res;
 }
 
@@ -31,7 +31,20 @@ std::shared_ptr<GetStoreListResponse> StoreStorage::GetStoreList(std::shared_ptr
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<GetStoreListResponse>();
-    res->array = std::move(reader->Get());
+    res->array = reader->Get();
+    return res;
+}
+
+std::shared_ptr<UpdateStoreResponse> StoreStorage::UpdateStore(std::shared_ptr<UpdateStoreRequest> req)
+{
+    auto q = std::shared_ptr<UpdateStoreQuery>();
+    q->SetupQuery(req);
+    std::shared_ptr<StoreListReader> reader;
+
+    storage->Select(q, reader);
+
+    auto res = std::shared_ptr<UpdateStoreResponse>();
+//    res->array = reader->Get();
     return res;
 }
 
@@ -44,7 +57,7 @@ std::shared_ptr<AddStoreResponse> StoreStorage::AddStore(std::shared_ptr<AddStor
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<AddStoreResponse>();
-    res->array = std::move(reader->Get());
+    res->array = reader->Get();
     return res;
 }
 

@@ -21,9 +21,12 @@ class StoreService : public IRouterSetupper
   public:
     StoreService() = delete;
 
-    StoreService(const JsonResponseWriter &responseWriter, const JsonRequestBodyReader &bodyReader,
-                 const RequestQueryReader &queryReader, const StoreManager &manager);
+    StoreService(const JsonResponseWriter responseWriter, const JsonRequestBodyReader bodyReader,
+                 const RequestQueryReader queryReader, const StoreManager manager);
 
+    StoreService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader> bodyReader,
+                 std::shared_ptr<ErrorResponseWriter> errorWriter, std::shared_ptr<RequestQueryReader> queryReader,
+                 std::shared_ptr<StoreManager> manager);
     void GetStoreMetadata(const Rest::Request &req, Http::ResponseWriter res);
 
     void GetStoreList(const Rest::Request &req, Http::ResponseWriter res);

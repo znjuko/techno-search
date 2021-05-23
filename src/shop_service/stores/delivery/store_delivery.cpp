@@ -141,4 +141,13 @@ void StoreService::SetupService(Rest::Router *router)
     router->addRoute(Http::Method::Put, "api/v1/shop", Pistache::Rest::Routes::bind(&StoreService::UpdateStore, this));
 }
 
+StoreService::StoreService(std::shared_ptr<JsonResponseWriter> responseWriter,
+                             std::shared_ptr<JsonRequestBodyReader> bodyReader,
+                             std::shared_ptr<ErrorResponseWriter> errorWriter,
+                             std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<StoreManager> manager)
+    : responseWriter(responseWriter), bodyReader(bodyReader), queryReader(queryReader), manager(manager),
+      errorWriter(errorWriter)
+{
+}
+
 

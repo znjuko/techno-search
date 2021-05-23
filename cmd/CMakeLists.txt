@@ -1,5 +1,6 @@
-set(MAIN_SRCS main.cpp)
+#set(MAIN_SRCS main.cpp)
 set(MAIN_SRCS mymain.cpp)
+#set(MAIN_SRCS pistacho.cpp)
 
 add_executable(${PROJECT_NAME} ${MAIN_SRCS})
 
@@ -44,4 +45,11 @@ target_link_libraries(
         stores_models
         stores_storage
         stores_usecase
+
+        products_delivery
+        products_query
+        products_reader
+        products_models
+        products_storage
+        products_usecase
 )

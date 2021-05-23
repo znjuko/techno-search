@@ -18,7 +18,7 @@ target_link_libraries(${LIBRARY_NAME} PRIVATE libpqxx::pqxx
         marshaller unmarshaller
         nlohmann_json::nlohmann_json
         pistache router_setupper request_reader response_writer
-        stores_usecase stores_models stores_storage
+        stores_usecase stores_models stores_storage stores_reader
         common_exceptions
         postgres_query postgres_reader postgres_storage
         ${Boost_LIBRARIES})

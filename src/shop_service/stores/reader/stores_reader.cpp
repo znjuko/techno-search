@@ -47,8 +47,22 @@ void AddStoreReader::Execute(const pqxx::result R)
         data[0].store.StoreID = boost::lexical_cast<int>(row[0].c_str());
     }
 }
-
 std::vector<AddStore> AddStoreReader::Get()
 {
     return data;
 }
+
+void UpdateStoreReader::Execute(const pqxx::result R)
+{
+    for (auto row : R)
+    {
+        data[0].store.StoreID = boost::lexical_cast<int>(row[0].c_str());
+    }
+}
+
+std::vector<UpdateStore> UpdateStoreReader::Get()
+{
+    return data;
+}
+
+
