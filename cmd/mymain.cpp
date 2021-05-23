@@ -12,10 +12,6 @@
 //#include "skill_storage.h"
 //#include "skill_usecase.h"
 
-//#include "skill_delivery.h"
-//#include "skill_storage.h"
-//#include "skill_usecase.h"
-
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 //#include <clickhouse/client.h>
