@@ -9,15 +9,10 @@ RUN apt-get update && apt-get install cmake build-essential curl file git -y
 RUN apt-get install libboost-dev -y
 RUN apt-get install nlohmann-json3-dev -y
 RUN apt-get install libpqxx-dev -y
+RUN apt-get install libbison-dev -y
 
 RUN curl -OL https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.6.3/mongo-cxx-driver-r3.6.3.tar.gz
-RUN tar -xzf mongo-cxx-driver-r3.6.3.tar.gz
-RUN cd mongo-cxx-driver-r3.6.3/build
-
-RUN cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
-RUN sudo cmake --build . --target EP_mnmlstc_core
-RUN cmake --build .
-RUN sudo cmake --build . --target install
+RUN tar -xzf mongo-cxx-driver-r3.6.3.tar.gz && cd mongo-cxx-driver-r3.6.3/build  && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local && sudo cmake --build . --target EP_mnmlstc_core && cmake --build . && sudo cmake --build . --target install
 
 WORKDIR techno-search
 COPY . .
