@@ -81,8 +81,8 @@ int main()
 //    Address addr(Ipv4::any(), port);
 //    Http::listenAndServe<HelloHandler>(Pistache::Address("*:9080"));
 
-    Rest::Router routerProduct;
-    Rest::Router routerStore;
+    Rest::Router router;
+//    Rest::Router routerStore;
 
     // readers/marshallers and i.e.
     auto jsonRequestBodyReader = std::make_shared<JsonRequestBodyReader>();
@@ -120,13 +120,14 @@ int main()
     auto shopStoreManager = std::make_shared<StoreManager>(shopStoreStorage);
     auto shopStoreDelivery = std::make_shared<StoreService>(jsonResponseWriter, jsonRequestBodyReader, errorResponseWriter,
                                                          requestQueryReader, shopStoreManager);
-    shopStoreDelivery->SetupService(&routerProduct);
+    shopStoreDelivery->SetupService(&router);
 
     auto shopProductStorage = std::make_shared<StoreStorage>(commonPostgresStorage);
     auto shopProductManager = std::make_shared<StoreManager>(shopStoreStorage);
     auto shopProductDelivery = std::make_shared<StoreService>(jsonResponseWriter, jsonRequestBodyReader, errorResponseWriter,
                                                             requestQueryReader, shopStoreManager);
-    shopProductDelivery->SetupService(&routerStore);
+    shopProductDelivery->SetupService(&router);
+//    GetStoreMetadataRequest("1");
     // end of shop service part
 
 

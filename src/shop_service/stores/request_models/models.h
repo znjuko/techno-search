@@ -43,6 +43,7 @@ class GetStoreMetadataRequest : public IQueryMarshaller
   public:
     GetStoreMetadataRequest();
 
+    GetStoreMetadataRequest(const char string[2]);
     ~GetStoreMetadataRequest() override = default;
 
     void Marshall(const Http::Uri::Query &body) override;

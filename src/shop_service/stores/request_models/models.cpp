@@ -21,7 +21,8 @@ void GetStoreMetadataRequest::Marshall(const Http::Uri::Query &query)
         throw EmptyValue("id");
     }
     StoreID = boost::lexical_cast<int>(*storeParam);
-};
+}
+
 
 GetStoreListRequest::GetStoreListRequest() : Search(""), Limit(0), Skip(0){};
 
