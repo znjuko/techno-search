@@ -6,6 +6,7 @@
 #define MARSHALLER_H
 
 #include <pistache/endpoint.h>
+#include <pistache/router.h>
 #include <string>
 
 using namespace Pistache;
@@ -21,9 +22,17 @@ class IMarshaller
 class IQueryMarshaller
 {
   public:
-    virtual void Marshall(const Http::Uri::Query &body) = 0;
+    virtual void Marshall(const Http::Uri::Query &query) = 0;
 
     virtual ~IQueryMarshaller() = default;
+};
+
+class IRequestMarshaller
+{
+  public:
+    virtual void Marshall(const Rest::Request &req) = 0;
+
+    virtual ~IRequestMarshaller() = default;
 };
 
 #endif // MARSHALLER_H

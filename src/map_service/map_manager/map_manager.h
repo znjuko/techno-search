@@ -1,10 +1,12 @@
 #ifndef TECHNO_SEARCH_MAP_MANAGER_H
 #define TECHNO_SEARCH_MAP_MANAGER_H
 
-class MapManager{
-private:
+class MapManager
+{
+  private:
     MapStorage mapStorage;
-public:
+
+  public:
     GetGraphResponse GetGraph(GetGraph req);
     AddGraphResponse AddGraph(AddGraph req);
     UpdateGraphResponse UpdateGraph(UpdateGraph req);
@@ -13,4 +15,4 @@ public:
     UpdateMapResponse UpdateMap(UpdateMap req);
 };
 
-#endif //TECHNO_SEARCH_MAP_MANAGER_H
+#endif // TECHNO_SEARCH_MAP_MANAGER_H

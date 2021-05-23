@@ -7,9 +7,9 @@
 
 #include "marshaller.h"
 #include "unmarshaller.h"
-#include <string>
 
 #include <nlohmann/json.hpp>
+#include <string>
 
 class GetStoreMetadataRequest : public IMarshaller
 {
@@ -38,7 +38,7 @@ class GetStoreListRequest : public IMarshaller
 
 class UpdateStoreRequest : public IMarshaller
 {
-public:
+  public:
     UpdateStoreRequest();
 
     void Marshall(const std::string &body) override;
@@ -53,7 +53,7 @@ public:
 
 class AddStoreRequest : public IMarshaller
 {
-public:
+  public:
     AddStoreRequest();
     void Marshall(const std::string &body) override;
     ~AddStoreRequest() override = default;
@@ -81,7 +81,7 @@ class StoreMetadata : public IMarshaller, public IUnMarshaller
     std::string name;
 };
 
-class StoreList: public IMarshaller, public IUnMarshaller
+class StoreList : public IMarshaller, public IUnMarshaller
 {
   public:
     StoreList();
@@ -92,14 +92,14 @@ class StoreList: public IMarshaller, public IUnMarshaller
 
     ~StoreList() override = default;
 
-    StoreMetadata* storeList;
+    StoreMetadata *storeList;
     int skip;
     int limit;
 };
 
 class UpdateStore : public IMarshaller, public IUnMarshaller
 {
-public:
+  public:
     UpdateStore();
     void Marshall(const std::string &body) override;
 
@@ -113,9 +113,9 @@ public:
     std::string name;
 };
 
-class AddStore: public IMarshaller, public IUnMarshaller
+class AddStore : public IMarshaller, public IUnMarshaller
 {
-public:
+  public:
     AddStore();
 
     void Marshall(const std::string &body) override;
@@ -168,7 +168,7 @@ class UpdateStoreResponse : public IUnMarshaller
 
 class AddStoreResponse : public IUnMarshaller
 {
-public:
+  public:
     AddStoreResponse();
 
     nlohmann::json UnMarshall() override;

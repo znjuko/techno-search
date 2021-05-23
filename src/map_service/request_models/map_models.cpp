@@ -195,3 +195,48 @@ bool Line::LineIntersectionWithPoint(Point p) {
 void Point::Show() const {
     std::cout << '(' << this->x << ", " << this->y << ')';
 }
+
+void StoreMap::Marshall(const std::string &body)
+{
+    auto jsonBody = json::parse(body);
+    StoreID = jsonBody["shopID"];
+
+    for (const auto &geometry : jsonBody["geometry"])
+    {
+        for (const auto &coord : geometry["coordinates"])
+        {
+            StoreGeometry.AddPoint(Point(coord[0], coord[1]));
+        }
+    }
+    StoreGeometry.InitLines();
+
+    for (const auto &geometry : jsonBody["inherit"])
+    {
+        auto poly = Polygon();
+        for (const auto &coord : geometry["coordinates"])
+        {
+            poly.AddPoint(Point(coord[0], coord[1]));
+        }
+        poly.InitLines();
+        poly.SetID(geometry["props"][0]["value"]);
+        InheritObjects.push_back(poly);
+    }
+}
+
+StoreMap::StoreMap()
+{
+}
+
+void RawStoreMap::Marshall(const std::string &body)
+{
+    RawMap = body;
+}
+
+void StoreMapActionRequest::Marshall(const Rest::Request &req)
+{
+    StoreID = req.param(":shopID").as<int>();
+}
+
+StoreMapActionRequest::StoreMapActionRequest()
+{
+}
