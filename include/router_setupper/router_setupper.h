@@ -14,7 +14,7 @@ using namespace Rest;
 class IRouterSetupper
 {
   public:
-    virtual void SetupService(Rest::Router router) = 0;
+    virtual void SetupService(Rest::Router *router) = 0;
 
     virtual ~IRouterSetupper() noexcept = 0;
 };

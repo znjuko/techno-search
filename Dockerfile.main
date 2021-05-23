@@ -1,0 +1,22 @@
+FROM ubuntu:18.04
+
+WORKDIR techno-search-dependencies
+
+
+RUN echo "installing dependencies"
+
+RUN apt-get update && apt-get install cmake build-essential curl file git -y
+RUN apt-get install libboost-all-dev -y
+RUN apt-get install nlohmann-json3-dev -y
+RUN apt-get install libpqxx-dev -y
+RUN apt-get install libbson-1.0-0 -y
+
+WORKDIR techno-search
+COPY . .
+
+RUN echo "all dependecies installed"
+
+RUN echo "compiling project"
+
+RUN make build-project
+RUN make run-server
