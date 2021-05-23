@@ -3,7 +3,7 @@
 //
 
 #include "click_common_storage.h"
-#include "reader.h"
+#include "request_reader.h"
 #include "skill_delivery.h"
 #include "skill_storage.h"
 #include "skill_usecase.h"
@@ -78,7 +78,6 @@ int main()
         return 0;
     }
     clickOpts.SetHost(clickHost);
-
     auto clickPort = std::getenv("CLICK_PORT");
     if (!clickPort)
     {
@@ -94,6 +93,30 @@ int main()
     {
         cout << "ERROR: " << e.what() << endl;
     }
+    auto clickUser = std::getenv("CLICK_USER");
+    if (!clickUser)
+    {
+        cout << "ERROR: "
+             << "empty clickhouse user" << endl;
+        return 0;
+    }
+    clickOpts.SetUser(clickUser);
+    auto clickPassword = std::getenv("CLICK_PASS");
+    if (!clickPassword)
+    {
+        cout << "ERROR: "
+             << "empty clickhouse pass" << endl;
+        return 0;
+    }
+    clickOpts.SetUser(clickPassword);
+    auto clickDB = std::getenv("CLICK_DB");
+    if (!clickDB)
+    {
+        cout << "ERROR: "
+             << "empty clickhouse database" << endl;
+        return 0;
+    }
+    clickOpts.SetDefaultDatabase(clickDB);
 
     auto commonClickStorage = std::make_shared<ClickStorage>(clickOpts);
     auto skillStorage = std::make_shared<MetricStorage>(commonClickStorage);

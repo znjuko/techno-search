@@ -4,7 +4,7 @@
 
 #include "skill_delivery.h"
 
-void MetricService::GetCounterPopularityByShop(const Http::Request &req, Http::ResponseWriter res)
+void MetricService::GetCounterPopularityByShop(const Rest::Request &req, Http::ResponseWriter res)
 {
     std::shared_ptr<GetCountersPopularityByStoreRequest> reqReader;
     try
@@ -35,7 +35,7 @@ void MetricService::GetCounterPopularityByShop(const Http::Request &req, Http::R
     responseWriter->WriteResponse(respWriter, &res);
 }
 
-void MetricService::GetProductPopularityByShop(const Http::Request &req, Http::ResponseWriter res)
+void MetricService::GetProductPopularityByShop(const Rest::Request &req, Http::ResponseWriter res)
 {
     std::shared_ptr<GetProductsPopularityByStoreRequest> reqReader;
     try
@@ -71,7 +71,7 @@ void MetricService::GetProductPopularityByShop(const Http::Request &req, Http::R
     responseWriter->WriteResponse(respWriter, &res);
 }
 
-void MetricService::GetProductsTotalPopularity(const Http::Request &req, Http::ResponseWriter res)
+void MetricService::GetProductsTotalPopularity(const Rest::Request &req, Http::ResponseWriter res)
 {
     std::shared_ptr<GetProductsTotalPopularityRequest> reqReader;
     try

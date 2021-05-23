@@ -6,7 +6,7 @@
 #define TECHNO_SEARCH_SKILL_DELIVERY_H
 
 #include "common_exceptions.h"
-#include "reader.h"
+#include "request_reader.h"
 #include "router_setupper.h"
 #include "skill_usecase.h"
 #include "writer.h"
@@ -26,11 +26,11 @@ class MetricService : public IRouterSetupper
                   std::shared_ptr<ErrorResponseWriter> errorWriter, std::shared_ptr<RequestQueryReader> queryReader,
                   std::shared_ptr<MetricManager> manager);
 
-    void GetCounterPopularityByShop(const Http::Request &req, Http::ResponseWriter res);
+    void GetCounterPopularityByShop(const Rest::Request &req, Http::ResponseWriter res);
 
-    void GetProductPopularityByShop(const Http::Request &req, Http::ResponseWriter res);
+    void GetProductPopularityByShop(const Rest::Request &req, Http::ResponseWriter res);
 
-    void GetProductsTotalPopularity(const Http::Request &req, Http::ResponseWriter res);
+    void GetProductsTotalPopularity(const Rest::Request &req, Http::ResponseWriter res);
 
     void SetupService(Rest::Router *router) override;
 

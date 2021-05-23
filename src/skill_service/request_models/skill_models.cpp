@@ -38,7 +38,13 @@ void GetProductsPopularityByStoreRequest::Marshall(const Http::Uri::Query &query
     {
         throw EmptyValue("ids");
     }
-    boost::split(ProductIDs, *idsValue, boost::is_any_of(","));
+    auto idsValueParsed = std::vector<std::string>();
+    boost::split(idsValueParsed, *idsValue, boost::is_any_of(","));
+    ProductIDs = std::vector<int>(idsValueParsed.size());
+    for (const auto &el : idsValueParsed)
+    {
+        ProductIDs.push_back(boost::lexical_cast<int>(el));
+    }
 };
 
 GetProductsTotalPopularityRequest::GetProductsTotalPopularityRequest() : ProductIDs(std::vector<int>())
@@ -50,9 +56,15 @@ void GetProductsTotalPopularityRequest::Marshall(const Http::Uri::Query &query)
     auto idsValue = query.get("ids");
     if (idsValue->empty())
     {
-        dddddddd throw EmptyValue("ids");
+        throw EmptyValue("ids");
     }
-    boost::split(ProductIDs, *idsValue, boost::is_any_of(","));
+    auto idsValueParsed = std::vector<std::string>();
+    boost::split(idsValueParsed, *idsValue, boost::is_any_of(","));
+    ProductIDs = std::vector<int>(idsValueParsed.size());
+    for (const auto &el : idsValueParsed)
+    {
+        ProductIDs.push_back(boost::lexical_cast<int>(el));
+    }
 };
 
 CounterPopularityMetric::CounterPopularityMetric() : StoreID(0), CounterID(0), Popularity(0){};
@@ -69,11 +81,6 @@ nlohmann::json CounterPopularityMetric::UnMarshall()
     return output;
 }
 
-CounterPopularityMetric::CounterPopularityMetric(const CounterPopularityMetric &&other)
-    : StoreID(other.StoreID), CounterID(other.CounterID), Popularity(other.Popularity){
-
-                                                          };
-
 ProductPopularityByStoreMetric::ProductPopularityByStoreMetric() : StoreID(0), ProductID(0), Popularity(0){};
 
 void ProductPopularityByStoreMetric::Marshall(const std::string &body){};
@@ -88,11 +95,6 @@ nlohmann::json ProductPopularityByStoreMetric::UnMarshall()
     return output;
 }
 
-ProductPopularityByStoreMetric::ProductPopularityByStoreMetric(const ProductPopularityByStoreMetric &&other) noexcept
-    : StoreID(other.StoreID), ProductID(other.ProductID), Popularity(other.Popularity){
-
-                                                          };
-
 ProductPopularityMetric::ProductPopularityMetric() : ProductID(0), Popularity(0){};
 
 void ProductPopularityMetric::Marshall(const std::string &body){};
@@ -105,11 +107,6 @@ nlohmann::json ProductPopularityMetric::UnMarshall()
 
     return output;
 }
-
-ProductPopularityMetric::ProductPopularityMetric(const ProductPopularityMetric &&other) noexcept
-    : ProductID(other.ProductID), Popularity(other.Popularity){
-
-                                  };
 
 CountersPopularityMetricResponse::CountersPopularityMetricResponse() : Array(std::vector<CounterPopularityMetric>()){};
 

@@ -16,7 +16,7 @@ std::shared_ptr<CountersPopularityMetricResponse> MetricStorage::GetCounterPopul
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<CountersPopularityMetricResponse>();
-    res->Array = std::move(reader->Get());
+    res->Array = reader->Get();
     return res;
 }
 
@@ -30,7 +30,7 @@ std::shared_ptr<ProductsPopularityByStoreMetricResponse> MetricStorage::GetProdu
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<ProductsPopularityByStoreMetricResponse>();
-    res->Array = std::move(reader->Get());
+    res->Array = reader->Get();
     return res;
 }
 
@@ -44,7 +44,7 @@ std::shared_ptr<ProductsPopularityMetricResponse> MetricStorage::GetProductsTota
     storage->Select(q, reader);
 
     auto res = std::shared_ptr<ProductsPopularityMetricResponse>();
-    res->Array = std::move(reader->Get());
+    res->Array = reader->Get();
     return res;
 }
 

@@ -12,9 +12,14 @@
 #include <algorithm>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
+#include <iostream>
+#include <iterator>
 #include <nlohmann/json.hpp>
 #include <pistache/endpoint.h>
 #include <pistache/http.h>
+#include <sstream>
+#include <string>
+#include <vector>
 
 using namespace Pistache;
 
@@ -62,7 +67,9 @@ class CounterPopularityMetric : public IMarshaller, public IUnMarshaller
   public:
     CounterPopularityMetric();
 
-    CounterPopularityMetric(const CounterPopularityMetric &&other);
+    CounterPopularityMetric(const CounterPopularityMetric &other) = default;
+
+    CounterPopularityMetric(CounterPopularityMetric &&other) = default;
 
     void Marshall(const std::string &body) override;
 
@@ -79,7 +86,9 @@ class ProductPopularityByStoreMetric : public IMarshaller, public IUnMarshaller
   public:
     ProductPopularityByStoreMetric();
 
-    ProductPopularityByStoreMetric(const ProductPopularityByStoreMetric &&other) noexcept;
+    ProductPopularityByStoreMetric(const ProductPopularityByStoreMetric &other) = default;
+
+    ProductPopularityByStoreMetric(ProductPopularityByStoreMetric &&other) = default;
 
     void Marshall(const std::string &body) override;
 
@@ -96,7 +105,9 @@ class ProductPopularityMetric : public IMarshaller, public IUnMarshaller
   public:
     ProductPopularityMetric();
 
-    ProductPopularityMetric(const ProductPopularityMetric &&other) noexcept;
+    ProductPopularityMetric(const ProductPopularityMetric &other) = default;
+
+    ProductPopularityMetric(ProductPopularityMetric &&other) = default;
 
     void Marshall(const std::string &body) override;
 

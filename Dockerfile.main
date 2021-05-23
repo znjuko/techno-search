@@ -5,16 +5,16 @@ COPY . .
 
 RUN echo "installing dependencies"
 
-RUN sudo apt install build-essential git
 RUN apt-get update && apt-get install build-essential curl file git -y
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-RUN brew install boost
-RUN brew install nlohmann-json
-RUN brew install libpqxx
+RUN apt-get install libboost-all-dev
+RUN apt-get install nlohmann-json3-dev
+RUN apt-get install libpqxx-dev
 RUN brew install mongo-cxx-driver
 
 RUN echo "all dependecies installed"
 
 RUN echo "compiling project"
 
-RUN mkdir build && cd build && cmake .. && make
+RUN make build-project
+RUN make run-server

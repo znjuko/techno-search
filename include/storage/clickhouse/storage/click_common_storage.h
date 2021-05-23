@@ -5,8 +5,8 @@
 #ifndef TECHNO_SEARCH_COMMON_CLICK_STORAGE_H
 #define TECHNO_SEARCH_COMMON_CLICK_STORAGE_H
 
-#include "query.h"
-#include "reader.h"
+#include "click_query.h"
+#include "click_reader.h"
 
 #include <clickhouse/client.h>
 
