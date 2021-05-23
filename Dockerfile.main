@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.10
 
 WORKDIR techno-search-dependencies
 
@@ -6,10 +6,9 @@ WORKDIR techno-search-dependencies
 RUN echo "installing dependencies"
 
 RUN apt-get update && apt-get install cmake build-essential curl file git -y
-RUN apt-get install libboost-all-dev -y
+RUN apt-get install libboost-dev -y
 RUN apt-get install nlohmann-json3-dev -y
 RUN apt-get install libpqxx-dev -y
-RUN apt-get install libbson-1.0-0 -y
 
 WORKDIR techno-search
 COPY . .
