@@ -23,7 +23,9 @@ void StoreService::GetStoreMetadata(const Rest::Request &req, Http::ResponseWrit
         return;
     }
 
-    std::shared_ptr<GetStoreMetadataResponse> respWriter;
+    auto respWriter = std::make_shared<GetStoreMetadataResponse>();
+
+//    std::shared_ptr<GetStoreMetadataResponse> respWriter;
     try
     {
         respWriter = manager->GetStoreMetadata(reqReader);
@@ -55,7 +57,8 @@ void StoreService::GetStoreList(const Rest::Request &req, Http::ResponseWriter r
         return;
     }
 
-    std::shared_ptr<GetStoreListResponse> respWriter;
+//    std::shared_ptr<GetStoreListResponse> respWriter;
+    auto respWriter = std::make_shared<GetStoreListResponse>();
     try
     {
         respWriter = manager->GetStoreList(reqReader);
@@ -87,7 +90,8 @@ void StoreService::UpdateStore(const Rest::Request &req, Http::ResponseWriter re
         return;
     }
 
-    std::shared_ptr<UpdateStoreResponse> respWriter;
+//    std::shared_ptr<UpdateStoreResponse> respWriter;
+    auto respWriter = std::make_shared<UpdateStoreResponse>();
     try
     {
         respWriter = manager->UpdateStore(reqReader);
@@ -119,7 +123,8 @@ void StoreService::AddStore(const Rest::Request &req, Http::ResponseWriter res)
         return;
     }
 
-    std::shared_ptr<AddStoreResponse> respWriter;
+//    std::shared_ptr<AddStoreResponse> respWriter;
+    auto respWriter = std::make_shared<AddStoreResponse>();
     try
     {
         respWriter = manager->AddStore(reqReader);

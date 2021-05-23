@@ -23,7 +23,8 @@ void ProductService::GetProductMetadata(const Rest::Request &req, Http::Response
         return;
     }
 
-    std::shared_ptr<GetProductMetadataResponse> respWriter;
+//    std::shared_ptr<GetProductMetadataResponse> respWriter;
+    auto respWriter = std::make_shared<GetProductMetadataResponse>();
     try
     {
         respWriter = manager->GetProductMetadata(reqReader);
@@ -55,7 +56,8 @@ void ProductService::GetProductList(const Rest::Request &req, Http::ResponseWrit
         return;
     }
 
-    std::shared_ptr<GetProductListResponse> respWriter;
+//    std::shared_ptr<GetProductListResponse> respWriter;
+    auto respWriter = std::make_shared<GetProductListResponse>();
     try
     {
         respWriter = manager->GetProductList(reqReader);
@@ -87,7 +89,8 @@ void ProductService::UpdateProduct(const Rest::Request &req, Http::ResponseWrite
         return;
     }
 
-    std::shared_ptr<UpdateProductResponse> respWriter;
+//    std::shared_ptr<UpdateProductResponse> respWriter;
+    auto respWriter = std::make_shared<UpdateProductResponse>();
     try
     {
         respWriter = manager->UpdateProduct(reqReader);
@@ -119,7 +122,8 @@ void ProductService::AddProduct(const Rest::Request &req, Http::ResponseWriter r
         return;
     }
 
-    std::shared_ptr<AddProductResponse> respWriter;
+//    std::shared_ptr<AddProductResponse> respWriter;
+    auto respWriter = std::make_shared<AddProductResponse>();
     try
     {
         respWriter = manager->AddProduct(reqReader);

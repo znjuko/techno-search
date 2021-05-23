@@ -20,9 +20,10 @@ std::string GetStoreMetadataQuery::GetQuery() const
 
 void GetStoreMetadataQuery::SetupQuery(std::shared_ptr<GetStoreMetadataRequest> req)
 {
-    this->query = "SELECT id, name, open_at, close_at, address"
-                  "FROM store WHERE id=" +
-                  std::to_string(req->StoreID) + ";";
+//    this->query = "SELECT id, name, open_at, close_at, address "
+//                  "FROM store WHERE id=" +
+//                  std::to_string(req->StoreID) + ";";
+    this->query="SELECT * FROM store WHERE id = 1;";
 }
 
 GetStoreListQuery::GetStoreListQuery()

@@ -12,39 +12,39 @@
 std::shared_ptr<GetProductMetadataResponse> ProductStorage::GetProductMetadata(
     std::shared_ptr<GetProductMetadataRequest> req)
 {
-    auto q = std::shared_ptr<GetProductMetadataQuery>();
+    auto q = std::make_shared<GetProductMetadataQuery>();
     q->SetupQuery(req);
     std::shared_ptr<ProductMetadataReader> reader;
 
     storage->Select(q, reader);
 
-    auto res = std::shared_ptr<GetProductMetadataResponse>();
+    auto res = std::make_shared<GetProductMetadataResponse>();
     res->array = reader->Get();
     return res;
 }
 
 std::shared_ptr<GetProductListResponse> ProductStorage::GetProductList(std::shared_ptr<GetProductListRequest> req)
 {
-    auto q = std::shared_ptr<GetProductListQuery>();
+    auto q = std::make_shared<GetProductListQuery>();
     q->SetupQuery(req);
     std::shared_ptr<ProductListReader> reader;
 
     storage->Select(q, reader);
 
-    auto res = std::shared_ptr<GetProductListResponse>();
+    auto res = std::make_shared<GetProductListResponse>();
     res->array = reader->Get();
     return res;
 }
 
 std::shared_ptr<AddProductResponse> ProductStorage::AddProduct(std::shared_ptr<AddProductRequest> req)
 {
-    auto q = std::shared_ptr<AddProductQuery>();
+    auto q = std::make_shared<AddProductQuery>();
     q->SetupQuery(req);
     std::shared_ptr<AddProductReader> reader;
 
     storage->Select(q, reader);
 
-    auto res = std::shared_ptr<AddProductResponse>();
+    auto res = std::make_shared<AddProductResponse>();
     res->array = reader->Get();
     return res;
 }
@@ -55,13 +55,13 @@ ProductStorage::~ProductStorage()
 
 std::shared_ptr<UpdateProductResponse> ProductStorage::UpdateProduct(std::shared_ptr<UpdateProductRequest> req)
 {
-    auto q = std::shared_ptr<UpdateProductQuery>();
+    auto q = std::make_shared<UpdateProductQuery>();
     q->SetupQuery(req);
     std::shared_ptr<UpdateProductReader> reader;
 
     storage->Select(q, reader);
 
-    auto res = std::shared_ptr<UpdateProductResponse>();
+    auto res = std::make_shared<UpdateProductResponse>();
     res->array = reader->Get();
     return res;
 }

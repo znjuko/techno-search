@@ -20,7 +20,7 @@ std::string GetProductMetadataQuery::GetQuery() const
 
 void GetProductMetadataQuery::SetupQuery(std::shared_ptr<GetProductMetadataRequest> req)
 {
-    this->query = "SELECT id, name, category, price, quantity, id_store, id_counter"
+    this->query = "SELECT id, name, category, price, quantity, id_store, id_counter "
                   "FROM product WHERE id=" +
                   std::to_string(req->ProductID) + ";";
 }
