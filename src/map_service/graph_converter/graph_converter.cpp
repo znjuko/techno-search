@@ -224,10 +224,16 @@ std::vector<std::vector<double>> GraphConverter::getAdjacencyTableFromPoints(con
     for (size_t i = 0 ; i < matrixSize ; ++i)
         adjacencyTable[i].resize(matrixSize);
 
+    for (size_t i = 0 ; i < matrixSize ; ++i)
+        adjacencyTable[0][i] = double(i);
+
+    for (size_t i = 0 ; i < matrixSize ; ++i)
+        adjacencyTable[i][0] = double(i);
+
 
     for(size_t i = 0; i < points.size(); ++i) {
         Point leftPoint = points[i];
-        double leftX = leftPoint.x, rightX, currentX;
+        double leftX = leftPoint.x, rightX = leftPoint.x, currentX;
         size_t leftIndex = i, rightIndex;
 
 
@@ -250,7 +256,7 @@ std::vector<std::vector<double>> GraphConverter::getAdjacencyTableFromPoints(con
                 std::vector<Point*> interactions = feature.IntersectionWithVerticalLine(line);
                 if(!interactions.empty()) {
                     for(auto point : interactions) {
-                        if(!(point->x <= std::max(rightPoint.x, leftPoint.x) && point->x >= std::min(rightPoint.x, leftPoint.x) && point->y <= std::max(rightPoint.y, leftPoint.y) && point->y >= std::min(rightPoint.y, leftPoint.y))) {
+                        if((point->x <= std::max(rightPoint.x, leftPoint.x) && point->x >= std::min(rightPoint.x, leftPoint.x) && point->y <= std::max(rightPoint.y, leftPoint.y) && point->y >= std::min(rightPoint.y, leftPoint.y))) {
                             flag = 0;
                             break;
                         }
@@ -265,7 +271,7 @@ std::vector<std::vector<double>> GraphConverter::getAdjacencyTableFromPoints(con
                 adjacencyTable[rightIndex + 1][leftIndex + 1] = dist;
             }
             rightIndex++;
-            rightX = rightPoint.x;
+            currentX = points[rightIndex].x;
         }
 
 
