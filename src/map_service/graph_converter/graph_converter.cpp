@@ -246,10 +246,16 @@ std::vector<std::vector<double>> GraphConverter::getAdjacencyTableFromPoints(con
 
             int flag = 1;
             for(auto feature : features) {
-                //могут быть траблы с тем что точка пересечения не там и из-за этого путь не будет простроени
-                if(!feature.IntersectionWithVerticalLine(line).empty()) {
-                    flag = 0;
-                    break;
+
+                std::vector<Point*> interactions = feature.IntersectionWithVerticalLine(line);
+                if(!interactions.empty()) {
+                    for(auto point : interactions) {
+                        if(!(point->x <= std::max(rightPoint.x, leftPoint.x) && point->x >= std::min(rightPoint.x, leftPoint.x) && point->y <= std::max(rightPoint.y, leftPoint.y) && point->y >= std::min(rightPoint.y, leftPoint.y))) {
+                            flag = 0;
+                            break;
+                        }
+
+                    }
                 }
             }
 
