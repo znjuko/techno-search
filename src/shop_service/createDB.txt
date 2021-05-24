@@ -92,6 +92,10 @@ WHERE id = 1;
 INSERT INTO store(name, open_at, close_at, address)
 VALUES ('Victoriaы', 9.0, 23.0, 'Arbat, 50');
 
+#поиск counter
+SELECT id
+FROM store WHERE name = 'Victoriaы' AND address = 'Arbat, 50';
+
 
 #Заполнение таблиц
 INSERT INTO store(name, open_at, close_at, address) 

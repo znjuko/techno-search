@@ -9,21 +9,19 @@
 
 PostgresStorage::PostgresStorage(const char* options) : C(options)
 {
-    std::cout << "Connected to " << C.dbname() << std::endl;
 }
 
-void PostgresStorage::Insert(const PostgresQuery &q)
+void PostgresStorage::Insert(std::shared_ptr<PostgresQuery> q)
 {
     pqxx::work Transaction{C};
-    std::cout << "Connected to " << C.dbname() << std::endl;
 
-    Transaction.exec0(q.GetQuery());
+    Transaction.exec0(q->GetQuery());
+
+    Transaction.commit();
 }
 
 void PostgresStorage::Select(std::shared_ptr<PostgresQuery> q, std::shared_ptr<PostgresReader> r)
 {
-//    pqxx::connection C("host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch");
-
     pqxx::work Transaction{C};
 
     pqxx::result R{Transaction.exec(q->GetQuery())};
@@ -31,14 +29,15 @@ void PostgresStorage::Select(std::shared_ptr<PostgresQuery> q, std::shared_ptr<P
     r->Execute(R);
 }
 
-void PostgresStorage::SelectAndInsert(const PostgresQuery &qIns, std::shared_ptr<PostgresQuery> qSel,
-                                      std::shared_ptr<PostgresReader> r)
+void PostgresStorage::InsertAndSelect(std::shared_ptr<PostgresQuery> q,std::shared_ptr<PostgresQuery> forSelect, std::shared_ptr<PostgresReader> r)
 {
     pqxx::work Transaction{C};
 
-    Transaction.exec0(qIns.GetQuery()); //добавила или обновила
+    Transaction.exec0(q->GetQuery());
 
-    pqxx::result R{Transaction.exec(qSel->GetQuery())}; //получила данные
+    Transaction.commit();
+
+    pqxx::result R{Transaction.exec(forSelect->GetQuery())};
 
     r->Execute(R);
 }

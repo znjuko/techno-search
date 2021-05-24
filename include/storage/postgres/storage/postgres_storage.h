@@ -19,12 +19,11 @@ class PostgresStorage
 
     explicit PostgresStorage(const char* options);
 
-    void Insert(const PostgresQuery &q);
+    void Insert(std::shared_ptr<PostgresQuery> q);
 
     void Select(std::shared_ptr<PostgresQuery> q, std::shared_ptr<PostgresReader> r);
 
-    void SelectAndInsert(const PostgresQuery &qIns, std::shared_ptr<PostgresQuery> qSel,
-                         std::shared_ptr<PostgresReader> r);
+    void InsertAndSelect(std::shared_ptr<PostgresQuery> q, std::shared_ptr<PostgresQuery> forSelect,  std::shared_ptr<PostgresReader> r);
 
     ~PostgresStorage() = default;
 

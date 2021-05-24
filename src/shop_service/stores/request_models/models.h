@@ -28,13 +28,8 @@ class Store
     float OpenAt;
     float CloseAt;
     std::string Address;
-    Store(int StoreID, std::string Name, float OpenAt, float CloseAt, std::string Address)
+    Store( int StoreID,  std::string Name,  float OpenAt,  float CloseAt,  std::string Address)
     {
-        this->StoreID = StoreID;
-        this->Name = Name;
-        this->OpenAt = OpenAt;
-        this->CloseAt = CloseAt;
-        this->Address = Address;
     }
 };
 

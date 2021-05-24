@@ -20,10 +20,9 @@ std::string GetStoreMetadataQuery::GetQuery() const
 
 void GetStoreMetadataQuery::SetupQuery(std::shared_ptr<GetStoreMetadataRequest> req)
 {
-//    this->query = "SELECT id, name, open_at, close_at, address "
-//                  "FROM store WHERE id=" +
-//                  std::to_string(req->StoreID) + ";";
-    this->query="SELECT * FROM store WHERE id = 1;";
+    this->query = "SELECT id, name, open_at, close_at, address "
+                  "FROM store WHERE id=" +
+                  std::to_string(req->StoreID) + ";";
 }
 
 GetStoreListQuery::GetStoreListQuery()
@@ -37,7 +36,7 @@ std::string GetStoreListQuery::GetQuery() const
 
 void GetStoreListQuery::SetupQuery(std::shared_ptr<GetStoreListRequest> req)
 {
-    this->query = "SELECT id, name, open_at, close_at, address"
+    this->query = "SELECT id, name, open_at, close_at, address "
                   "FROM store WHERE name LIKE '" +
                   (req->Search) + "%';";
 }
@@ -57,12 +56,20 @@ std::string UpdateStoreQuery::GetQuery() const
 
 void UpdateStoreQuery::SetupQuery(std::shared_ptr<UpdateStoreRequest> req)
 {
+    this->query = "UPDATE store "
+                  "SET name = '" +
+                  (req->store.Name) + "', open_at = " + std::to_string(req->store.OpenAt) +
+                  ", close_at = " + std::to_string(req->store.CloseAt) + ", address = '" + (req->store.Address) +
+                  "'"
+                  " WHERE id = " +
+                  std::to_string(req->store.StoreID) + ";";
+}
 
-    this->query = "UPDATE store"
-                  "SET name = " +
-                  (req->store.Name) + ", open_at = " + std::to_string(req->store.OpenAt) +
-                  ", close_at = " + std::to_string(req->store.CloseAt) + ", address = " + (req->store.Address) +
-                  "WHERE id = " + std::to_string(req->store.StoreID) + ";";
+void UpdateStoreQuery::SetapQuery2(std::shared_ptr<UpdateStoreRequest> req)
+{
+    this->query = "SELECT id, name, open_at, close_at, address "
+                  "FROM store WHERE id=" +
+                  std::to_string(req->store.StoreID) + ";";
 }
 
 UpdateStoreQuery::~UpdateStoreQuery()
@@ -81,9 +88,15 @@ std::string AddStoreQuery::GetQuery() const
 void AddStoreQuery::SetupQuery(std::shared_ptr<AddStoreRequest> req)
 {
     this->query = "INSERT INTO store(name, open_at, close_at, address)"
-                  "VALUES (" +
-                  (req->store.Name) + ", " + std::to_string(req->store.OpenAt) + ", " +
-                  std::to_string(req->store.CloseAt) + ", " + (req->store.Address);
+                  "VALUES ('" +
+                  (req->store.Name) + "', " + std::to_string(req->store.OpenAt) + ", " +
+                  std::to_string(req->store.CloseAt) + ", '" + (req->store.Address) + "' );";
+}
+void AddStoreQuery::SetupQueryForId(std::shared_ptr<AddStoreRequest> req)
+{
+    this->query = "SELECT id "
+                  "FROM store WHERE name = '" +
+                  (req->store.Name) + "' AND address = '" + (req->store.Address) + "';";
 }
 
 AddStoreQuery::~AddStoreQuery()

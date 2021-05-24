@@ -6,6 +6,7 @@
 
 std::shared_ptr<GetStoreMetadataResponse> StoreManager::GetStoreMetadata(std::shared_ptr<GetStoreMetadataRequest> req)
 {
+
     return storage->GetStoreMetadata(req);
 }
 
@@ -14,14 +15,14 @@ std::shared_ptr<GetStoreListResponse> StoreManager::GetStoreList(std::shared_ptr
     return storage->GetStoreList(req);
 }
 
-std::shared_ptr<UpdateStoreResponse> StoreManager::UpdateStore(std::shared_ptr<UpdateStoreRequest> req)
+std::shared_ptr<UpdateStoreResponse> StoreManager::UpdateStore(std::shared_ptr<UpdateStoreRequest> req, std::shared_ptr<UpdateStoreRequest> req2)
 {
-    return storage->UpdateStore(req);
+    return storage->UpdateStore(req, req2);
 }
 
-std::shared_ptr<AddStoreResponse> StoreManager::AddStore(std::shared_ptr<AddStoreRequest> req)
+std::shared_ptr<AddStoreResponse> StoreManager::AddStore(std::shared_ptr<AddStoreRequest> req, std::shared_ptr<AddStoreRequest> req2)
 {
-    return storage->AddStore(req);
+    return storage->AddStore(req, req2);
 }
 
 StoreManager::StoreManager(const std::shared_ptr<StoreStorage> &storage) : storage(storage)

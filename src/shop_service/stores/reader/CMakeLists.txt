@@ -13,7 +13,7 @@ find_package(libpqxx CONFIG REQUIRED)
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(${LIBRARY_NAME} PRIVATE
-        stores_models stores_storage
+        stores_models stores_storage stores_query
         marshaller unmarshaller
         common_exceptions
         libpqxx::pqxx
