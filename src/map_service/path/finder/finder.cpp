@@ -4,8 +4,8 @@
 #include <iostream>
 
 std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, const size_t &size,
-                                         const std::vector<std::vector<int>> &AdjacencyTable,
-                                         const std::vector<int> &CounterArray)
+                                         const std::vector<std::vector<size_t>> &AdjacencyTable,
+                                         const std::vector<size_t> &CounterArray)
 {
     auto distance = std::vector<size_t>(size);
     auto vizited = std::vector<size_t>(size);
