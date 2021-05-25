@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpath_usecase.a CMakeFiles/path_usecase.dir/path_usecase.cpp.o
+/usr/bin/ranlib libpath_usecase.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libclick_query.a CMakeFiles/click_query.dir/query.cpp.o
+/usr/bin/ranlib libclick_query.a

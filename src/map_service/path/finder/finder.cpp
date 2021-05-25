@@ -1,5 +1,6 @@
 #include "finder.h"
 #include <queue>
+#include <limits>
 #include <iostream>
 
 std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, const size_t &size,
@@ -8,7 +9,7 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
 {
     auto distance = std::vector<size_t>(size);
     auto vizited = std::vector<size_t>(size);
-    const size_t limit = 10000;
+    const size_t limit = std::numeric_limits<size_t>::max();
     size_t A = 0;
     size_t B = 0;
     for (size_t i = 0; i < size; i++)

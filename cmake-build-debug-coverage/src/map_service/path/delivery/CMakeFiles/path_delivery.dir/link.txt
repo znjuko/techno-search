@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpath_delivery.a CMakeFiles/path_delivery.dir/path_delivery.cpp.o
+/usr/bin/ranlib libpath_delivery.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libresponse_writer.a CMakeFiles/response_writer.dir/writer.cpp.o
+/usr/bin/ranlib libresponse_writer.a

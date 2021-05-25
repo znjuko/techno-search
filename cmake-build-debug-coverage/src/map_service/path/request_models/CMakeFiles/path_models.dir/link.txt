@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpath_models.a CMakeFiles/path_models.dir/path_models.cpp.o
+/usr/bin/ranlib libpath_models.a

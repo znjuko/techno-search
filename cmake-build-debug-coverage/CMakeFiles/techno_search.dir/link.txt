@@ -1,0 +1,1 @@
+/usr/bin/g++ --coverage -g -rdynamic CMakeFiles/techno_search.dir/main.cpp.o -o techno_search  src/skill_service/request_models/libmodels.a -lpistache -lboost_program_options include/exceptions/libcommon_exceptions.a 

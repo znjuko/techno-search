@@ -1,0 +1,2 @@
+/usr/bin/ar qc librequest_reader.a CMakeFiles/request_reader.dir/reader.cpp.o
+/usr/bin/ranlib librequest_reader.a
