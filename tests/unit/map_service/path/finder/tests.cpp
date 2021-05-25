@@ -4,7 +4,7 @@
 #include "finder.h"
 #include <vector>
 
-const std::vector<std::vector<int>> graphmatrix = {
+const std::vector<std::vector<size_t>> graphmatrix = {
         {0, 1, 0, 0, 0},
         {1, 0, 3, 0, 0},
         {0, 3, 0, 1, 6},
@@ -12,7 +12,7 @@ const std::vector<std::vector<int>> graphmatrix = {
         {0, 0, 6, 0, 0}
 };
 
-const std::vector<std::vector<int>> graphmatrix2 = {
+const std::vector<std::vector<size_t>> graphmatrix2 = {
         {0, 5, 3, 0, 0, 0, 0},
         {5, 0, 0, 2, 0, 0, 0},
         {3, 0, 0, 0, 0, 0, 0},
@@ -22,8 +22,8 @@ const std::vector<std::vector<int>> graphmatrix2 = {
         {0, 0, 0, 0, 5, 3, 0},
 };
 
-const std::vector<int> counters = {10, 11, 2, 95, 5};
-const std::vector<int> counters2 = {101, 1, 13, 0, 5, 8, 21};
+const std::vector<size_t> counters = {10, 11, 2, 95, 5};
+const std::vector<size_t> counters2 = {101, 1, 13, 0, 5, 8, 21};
 
 const size_t size = 5;
 const size_t size2 = 7;
