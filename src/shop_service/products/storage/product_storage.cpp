@@ -56,14 +56,19 @@ ProductStorage::~ProductStorage()
 {
 }
 
-std::shared_ptr<UpdateProductResponse> ProductStorage::UpdateProduct(std::shared_ptr<UpdateProductRequest> req)
+std::shared_ptr<UpdateProductResponse> ProductStorage::UpdateProduct(std::shared_ptr<UpdateProductRequest> req, std::shared_ptr<UpdateProductRequest> req2)
 {
     auto q = std::make_shared<UpdateProductQuery>();
     q->SetupQuery(req);
-
     storage->Insert(q);
 
+    auto q2 = std::make_shared<UpdateProductQuery>();
+    q2->SetupQueryForUpdatedProduct(req2);
+    auto reader = std::make_shared<UpdateProductReader>();
+    storage->Select(q2, reader);
+
     auto res = std::make_shared<UpdateProductResponse>();
+    res->array = reader->Get();
     return res;
 }
 

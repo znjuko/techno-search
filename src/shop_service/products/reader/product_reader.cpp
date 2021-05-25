@@ -71,13 +71,24 @@ std::vector<AddProduct> AddProductReader::Get()
     return data;
 }
 
-//?nothing return?
 void UpdateProductReader::Execute(const pqxx::result R)
 {
-//    for (auto row : R)
-//    {
-//        data[0].product.ProductID = boost::lexical_cast<int>(row[0].c_str());
-//    }
+    auto lastSize = data.size();
+    auto rowCount = R.size();
+    data.resize(lastSize + rowCount);
+
+    for (auto row : R)
+    { // in this case only one go to loop
+        std::string name(row[1].c_str());
+        std::string category(row[2].c_str());
+        data[0].product.ProductID = boost::lexical_cast<int>(row[0].c_str());
+        data[0].product.Name = name;
+        data[0].product.Category = category;
+        data[0].product.Price = boost::lexical_cast<int>(row[3].c_str());
+        data[0].product.Quantity = boost::lexical_cast<int>(row[4].c_str());
+        data[0].product.StoreID = boost::lexical_cast<int>(row[5].c_str());
+        data[0].product.CounterID = boost::lexical_cast<int>(row[6].c_str());
+    }
 }
 
 std::vector<UpdateProduct> UpdateProductReader::Get()

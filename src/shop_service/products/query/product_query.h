@@ -62,6 +62,8 @@ class UpdateProductQuery : public PostgresQuery
 
     void SetupQuery(std::shared_ptr<UpdateProductRequest> req);
 
+    void SetupQueryForUpdatedProduct(std::shared_ptr<UpdateProductRequest> req);
+
     ~UpdateProductQuery() override;
 
   private:

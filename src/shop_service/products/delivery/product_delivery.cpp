@@ -6,10 +6,6 @@
 
 #include <utility>
 
-#include <utility>
-
-#include <utility>
-
 void ProductService::GetProductMetadata(const Rest::Request &req, Http::ResponseWriter res)
 {
     auto reqReader = std::make_shared<GetProductMetadataRequest>();
@@ -90,10 +86,26 @@ void ProductService::UpdateProduct(const Rest::Request &req, Http::ResponseWrite
         return;
     }
 
+    auto reqReaderForMetadata = std::make_shared<UpdateProductRequest>();
+    try
+    {
+        bodyReader->ReadRequest(reqReaderForMetadata, req);
+    }
+    catch (const std::exception &e)
+    {
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
+    }
+    catch (const boost::exception &e)
+    {
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong updated metadata", &res);
+        return;
+    }
+
     std::shared_ptr<UpdateProductResponse> respWriter;
     try
     {
-        respWriter = manager->UpdateProduct(reqReader);
+        respWriter = manager->UpdateProduct(reqReader, reqReaderForMetadata);
     }
     catch (const std::exception &e)
     {

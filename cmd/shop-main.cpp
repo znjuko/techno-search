@@ -3,28 +3,21 @@
 //
 
 #include "postgres_storage.h"
+#include "request_reader.h"
 #include "product_delivery.h"
 #include "product_storage.h"
 #include "product_usecase.h"
-#include "request_reader.h"
+
 #include "store_delivery.h"
 #include "store_storage.h"
 #include "store_usecase.h"
 
-//#include "skill_delivery.h"
-//#include "skill_storage.h"
-//#include "skill_usecase.h"
-
-#include <boost/algorithm/string.hpp>
-#include <boost/lexical_cast.hpp>
-//#include <clickhouse/client.h>
 #include <pistache/endpoint.h>
 #include <pistache/http.h>
 #include <pistache/router.h>
 #include <pqxx/pqxx>
 #include <signal.h>
 
-// using namespace clickhouse;
 using json = nlohmann::json;
 
 using namespace Pistache;
@@ -34,44 +27,41 @@ using namespace std;
 
 int main()
 {
-    sigset_t signals;
-    if (sigemptyset(&signals) != 0 || sigaddset(&signals, SIGTERM) != 0 || sigaddset(&signals, SIGINT) != 0 ||
-        sigaddset(&signals, SIGHUP) != 0 || pthread_sigmask(SIG_BLOCK, &signals, nullptr) != 0)
-    {
-        perror("install signal handler failed");
-        return 1;
-    }
-    //    auto portValue = std::getenv("PORT");
-    //    Port port;
-    //    try
-    //    {
-    //        port = Port(portValue);
-    //    }
-    //    catch (const std::exception &e)
-    //    {
-    //        cout << "ERROR: " << e.what() << endl;
-    //        return 0;
-    //    }
-    //    auto addr = Address(Ipv4::any(), port);
-    //
-    //    auto threadCountValue = std::getenv("THREADS");
-    //    if (!threadCountValue)
-    //    {
-    //        cout << "ERROR: "
-    //             << "empty thread number" << endl;
-    //        return 0;
-    //    }
-    //    int threadCount = 0;
-    //    try
-    //    {
-    //        threadCount = boost::lexical_cast<int>(threadCountValue);
-    //    }
-    //    catch (const std::exception &e)
-    //    {
-    //        cout << "ERROR: "
-    //             << "wrong thread count value " << threadCountValue << endl;
-    //        return 0;
-    //    }
+//    auto portValue = std::getenv("PORT");
+//    Port port;
+//    try
+//    {
+//        port = Port(portValue);
+//    }
+//    catch (const std::exception &e)
+//    {
+//        cout << "ERROR: " << e.what() << endl;
+//        return 0;
+//    }
+//    auto addr = Address(Ipv4::any(), port);
+//
+//    auto threadCountValue = std::getenv("THREADS");
+//    if (!threadCountValue)
+//    {
+//        cout << "ERROR: "
+//             << "empty thread number" << endl;
+//        return 0;
+//    }
+//    int threadCount = 0;
+//    try
+//    {
+//        threadCount = boost::lexical_cast<int>(threadCountValue);
+//    }
+//    catch (const std::exception &e)
+//    {
+//        cout << "ERROR: "
+//             << "wrong thread count value " << threadCountValue << endl;
+//        return 0;
+//    }
+//
+//    Rest::Router router;
+
+
     Port port(7781);
     auto addr = Address(Ipv4::any(), port);
 
@@ -91,7 +81,7 @@ int main()
 
     try
     {
-        pqxx::connection C("host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch");
+        pqxx::connection C(options);
         std::cout << "Connected to " << C.dbname() << std::endl;
     }
     catch (std::exception const &e)
@@ -106,7 +96,6 @@ int main()
     auto shopStoreDelivery = std::make_shared<StoreService>(jsonResponseWriter, jsonRequestBodyReader,
                                                             errorResponseWriter, requestQueryReader, shopStoreManager);
     shopStoreDelivery->SetupService(router);
-
 
     auto shopProductStorage = std::make_shared<ProductStorage>(commonPostgresStorage);
     auto shopProductManager = std::make_shared<ProductManager>(shopProductStorage);
@@ -132,7 +121,6 @@ int main()
     }
 
     httpEndpoint->shutdown();
-    //   Http::listenAndServe<HelloHandler>(Pistache::Address("*:9080"));
     return 0;
 
     // skill service part only

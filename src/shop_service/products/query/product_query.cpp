@@ -71,6 +71,15 @@ UpdateProductQuery::~UpdateProductQuery()
 {
 }
 
+void UpdateProductQuery::SetupQueryForUpdatedProduct(std::shared_ptr<UpdateProductRequest> req)
+{
+
+    this->query = "SELECT id, name, category, price, quantity, id_store, id_counter "
+                  "FROM product WHERE id=" +
+                  std::to_string(req->product.ProductID) + ";";
+}
+
+
 AddProductQuery::AddProductQuery()
 {
 }

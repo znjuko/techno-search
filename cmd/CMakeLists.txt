@@ -1,5 +1,5 @@
 #set(MAIN_SRCS main.cpp)
-set(MAIN_SRCS mymain.cpp)
+set(MAIN_SRCS shop-main.cpp)
 #set(MAIN_SRCS pistacho.cpp)
 
 add_executable(${PROJECT_NAME} ${MAIN_SRCS})
