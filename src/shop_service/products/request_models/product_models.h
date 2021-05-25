@@ -143,6 +143,7 @@ class AddProduct : public IMarshaller, public IUnMarshaller
 
     ~AddProduct() override = default;
 
+    //TODO: think about return only id
     Product product;
 };
 

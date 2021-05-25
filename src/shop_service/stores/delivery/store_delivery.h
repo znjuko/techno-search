@@ -33,10 +33,9 @@ class StoreService : public IRouterSetupper
 
     void AddStore(const Rest::Request &req, Http::ResponseWriter res);
 
-//    void SetupService(std::shared_ptr<Rest::Router> router) override;
     void SetupService(Rest::Router &router) override;
 
-//    ~StoreService() override = default;
+    ~StoreService() override = default;
 
   private:
     std::shared_ptr<JsonResponseWriter> responseWriter;

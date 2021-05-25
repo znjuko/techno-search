@@ -56,7 +56,7 @@ void UpdateProductRequest::Marshall(const std::string &body)
     json j = json::parse(body);
     json object = j["productToUpdate"];
 
-    product.ProductID = object[0]["productID"];
+    product.ProductID = object[0]["id"];
     product.StoreID = object[0]["storeID"];
     product.Name = object[0]["name"];
     product.Category = object[0]["category"];
@@ -70,7 +70,7 @@ AddProductRequest::AddProductRequest() : product(0, 0, "", "", 0, 0, 0){};
 void AddProductRequest::Marshall(const std::string &body)
 {
     json j = json::parse(body);
-    json object = j["productToAdd"]; //нет поля продакт айди
+    json object = j["productToAdd"];
 
     product.StoreID = object[0]["storeID"];
     product.Name = object[0]["name"];
@@ -88,42 +88,40 @@ nlohmann::json ProductMetadata::UnMarshall()
 {
     nlohmann::json output;
     output["product"] = product.ProductID;
-    output["store"] = product.StoreID;
+    output["storeID"] = product.StoreID;
     output["name"] = product.Name;
     output["category"] = product.Category;
     output["price"] = product.Price;
     output["quantity"] = product.Quantity;
-    output["counter"] = product.CounterID;
+    output["counterID"] = product.CounterID;
     return output;
 };
 
 ProductList::ProductList() : product(0, 0, "", "", 0, 0, 0){};
+
 void ProductList::Marshall(const std::string &body){};
+
 nlohmann::json ProductList::UnMarshall()
 {
     nlohmann::json output;
-    output["product"] = product.ProductID;
-    output["store"] = product.StoreID;
+    output["productID"] = product.ProductID;
+    //TODO: think about show name of shop
+    output["storeID"] = product.StoreID;
     output["name"] = product.Name;
     output["category"] = product.Category;
     output["price"] = product.Price;
     output["quantity"] = product.Quantity;
-    output["counter"] = product.CounterID;
+    output["counterID"] = product.CounterID;
     return output;
 };
 
 UpdateProduct::UpdateProduct() : product(0, 0, "", "", 0, 0, 0){};
+
 void UpdateProduct::Marshall(const std::string &body){};
+
 nlohmann::json UpdateProduct::UnMarshall()
 {
     nlohmann::json output;
-    output["product"] = product.ProductID;
-    output["store"] = product.StoreID;
-    output["name"] = product.Name;
-    output["category"] = product.Category;
-    output["price"] = product.Price;
-    output["quantity"] = product.Quantity;
-    output["counter"] = product.CounterID;
     return output;
 };
 
@@ -134,21 +132,21 @@ void AddProduct::Marshall(const std::string &body){};
 nlohmann::json AddProduct::UnMarshall()
 {
     nlohmann::json output;
-    output["product"] = product.ProductID;
-    output["store"] = product.StoreID;
-    output["name"] = product.Name;
-    output["category"] = product.Category;
-    output["price"] = product.Price;
-    output["quantity"] = product.Quantity;
-    output["counter"] = product.CounterID;
+    output["productID"] = product.ProductID;
     return output;
 };
 
 GetProductMetadataResponse::GetProductMetadataResponse() : array(std::vector<ProductMetadata>()){};
+
 nlohmann::json GetProductMetadataResponse::UnMarshall()
 {
     nlohmann::json output;
-    output["value"] = output;
+    nlohmann::json outputArray = nlohmann::json::array();
+    for (auto item = array.begin(); item != array.end(); ++item)
+    {
+        outputArray.push_back(item->UnMarshall());
+    }
+    output["productById"] = outputArray;
 
     return output;
 };
@@ -162,7 +160,7 @@ nlohmann::json GetProductListResponse::UnMarshall()
     {
         outputArray.push_back(item->UnMarshall());
     }
-    output["values"] = outputArray;
+    output["productSearch"] = outputArray;
 
     return output;
 };
@@ -171,12 +169,12 @@ UpdateProductResponse::UpdateProductResponse() : array(std::vector<UpdateProduct
 nlohmann::json UpdateProductResponse::UnMarshall()
 {
     nlohmann::json output;
-    nlohmann::json outputArray = nlohmann::json::array();
-    for (auto item = array.begin(); item != array.end(); ++item)
-    {
-        outputArray.push_back(item->UnMarshall());
-    }
-    output["values"] = outputArray;
+//    nlohmann::json outputArray = nlohmann::json::array();
+//    for (auto item = array.begin(); item != array.end(); ++item)
+//    {
+//        outputArray.push_back(item->UnMarshall());
+//    }
+//    output["values"] = outputArray;
 
     return output;
 };
@@ -185,7 +183,13 @@ AddProductResponse::AddProductResponse() : array(std::vector<AddProduct>()){};
 nlohmann::json AddProductResponse::UnMarshall()
 {
     nlohmann::json output;
-    output["value"] = output;
+    //    output["addedStore"] = "succesfully";
+    nlohmann::json outputArray = nlohmann::json::array();
+    for (auto item = array.begin(); item != array.end(); ++item)
+    {
+        outputArray.push_back(item->UnMarshall());
+    }
+    output["addedProduct"] = outputArray;
 
     return output;
 };

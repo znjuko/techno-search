@@ -25,8 +25,6 @@ void StoreService::GetStoreMetadata(const Rest::Request &req, Http::ResponseWrit
         return;
     }
 
-//    auto respWriter = std::make_shared<GetStoreMetadataResponse>();
-
     std::shared_ptr<GetStoreMetadataResponse> respWriter;
     try
     {

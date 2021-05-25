@@ -35,9 +35,6 @@ class ProductService : public IRouterSetupper
 
     void AddProduct(const Rest::Request &req, Http::ResponseWriter res);
 
-    void handleReady(const Rest::Request&, Http::ResponseWriter response);
-
-//    void SetupService(std::shared_ptr<Rest::Router> router) override;
     void SetupService(Rest::Router &router) override;
 
     ~ProductService() override = default;

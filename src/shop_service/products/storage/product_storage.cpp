@@ -14,8 +14,8 @@ std::shared_ptr<GetProductMetadataResponse> ProductStorage::GetProductMetadata(
 {
     auto q = std::make_shared<GetProductMetadataQuery>();
     q->SetupQuery(req);
-    std::shared_ptr<ProductMetadataReader> reader;
 
+    auto reader = std::make_shared<ProductMetadataReader>();
     storage->Select(q, reader);
 
     auto res = std::make_shared<GetProductMetadataResponse>();
@@ -27,8 +27,8 @@ std::shared_ptr<GetProductListResponse> ProductStorage::GetProductList(std::shar
 {
     auto q = std::make_shared<GetProductListQuery>();
     q->SetupQuery(req);
-    std::shared_ptr<ProductListReader> reader;
 
+    auto reader = std::make_shared<ProductListReader>();
     storage->Select(q, reader);
 
     auto res = std::make_shared<GetProductListResponse>();
@@ -36,13 +36,16 @@ std::shared_ptr<GetProductListResponse> ProductStorage::GetProductList(std::shar
     return res;
 }
 
-std::shared_ptr<AddProductResponse> ProductStorage::AddProduct(std::shared_ptr<AddProductRequest> req)
+std::shared_ptr<AddProductResponse> ProductStorage::AddProduct(std::shared_ptr<AddProductRequest> req, std::shared_ptr<AddProductRequest> req2)
 {
     auto q = std::make_shared<AddProductQuery>();
     q->SetupQuery(req);
-    std::shared_ptr<AddProductReader> reader;
+    storage->Insert(q);
 
-    storage->Select(q, reader);
+    auto q2 = std::make_shared<AddProductQuery>();
+    q2->SetupQueryForId(req2); //translate to postgres request
+    auto reader = std::make_shared<AddProductReader>();
+    storage->Select(q2, reader);//return Id
 
     auto res = std::make_shared<AddProductResponse>();
     res->array = reader->Get();
@@ -57,12 +60,10 @@ std::shared_ptr<UpdateProductResponse> ProductStorage::UpdateProduct(std::shared
 {
     auto q = std::make_shared<UpdateProductQuery>();
     q->SetupQuery(req);
-    std::shared_ptr<UpdateProductReader> reader;
 
-    storage->Select(q, reader);
+    storage->Insert(q);
 
     auto res = std::make_shared<UpdateProductResponse>();
-    res->array = reader->Get();
     return res;
 }
 

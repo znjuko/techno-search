@@ -23,7 +23,6 @@ void GetStoreMetadataRequest::Marshall(const Http::Uri::Query &query)
     StoreID = boost::lexical_cast<int>(*storeParam);
 }
 
-
 GetStoreListRequest::GetStoreListRequest() : Search(""), Limit(0), Skip(0){};
 
 void GetStoreListRequest::Marshall(const Http::Uri::Query &query)
@@ -176,7 +175,7 @@ AddStoreResponse::AddStoreResponse() : array(std::vector<AddStore>()){};
 nlohmann::json AddStoreResponse::UnMarshall()
 {
     nlohmann::json output;
-//    output["addedStore"] = "succesfully";
+    //    output["addedStore"] = "succesfully";
     nlohmann::json outputArray = nlohmann::json::array();
     for (auto item = array.begin(); item != array.end(); ++item)
     {
@@ -186,4 +185,3 @@ nlohmann::json AddStoreResponse::UnMarshall()
 
     return output;
 };
-

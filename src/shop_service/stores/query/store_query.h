@@ -82,6 +82,7 @@ class AddStoreQuery : public PostgresQuery
     std::string GetQuery() const override;
 
     void SetupQuery(std::shared_ptr<AddStoreRequest> req);
+
     void SetupQueryForId(std::shared_ptr<AddStoreRequest> req);
 
     ~AddStoreQuery() override;

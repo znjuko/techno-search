@@ -9,6 +9,7 @@ void StoreMetadataReader::Execute(const pqxx::result R)
     auto lastSize = data.size();
     auto rowCount = R.size();
     data.resize(lastSize + rowCount);
+
     for (auto row : R)
     { // in this case only one go to loop
         std::string name(row[1].c_str());
@@ -28,10 +29,11 @@ std::vector<StoreMetadata> StoreMetadataReader::Get()
 
 void StoreListReader::Execute(const pqxx::result R)
 {
-    int i = 0;
     auto lastSize = data.size();
     auto rowCount = R.size();
     data.resize(lastSize + rowCount);
+
+    int i = 0;
     for (auto row : R)
     {
         std::string name(row[1].c_str());
@@ -55,6 +57,7 @@ void AddStoreReader::Execute(const pqxx::result R)
     auto lastSize = data.size();
     auto rowCount = R.size();
     data.resize(lastSize + rowCount);
+
     for (auto row : R)
     {
         data[0].store.StoreID = boost::lexical_cast<int>(row[0].c_str());

@@ -4,10 +4,15 @@
 
 #include "product_delivery.h"
 
+#include <utility>
+
+#include <utility>
+
+#include <utility>
+
 void ProductService::GetProductMetadata(const Rest::Request &req, Http::ResponseWriter res)
 {
     auto reqReader = std::make_shared<GetProductMetadataRequest>();
-    //    std::shared_ptr<GetProductMetadataRequest> reqReader;
     try
     {
         queryReader->ReadRequest(reqReader, req);
@@ -23,8 +28,7 @@ void ProductService::GetProductMetadata(const Rest::Request &req, Http::Response
         return;
     }
 
-//    std::shared_ptr<GetProductMetadataResponse> respWriter;
-    auto respWriter = std::make_shared<GetProductMetadataResponse>();
+    std::shared_ptr<GetProductMetadataResponse> respWriter;
     try
     {
         respWriter = manager->GetProductMetadata(reqReader);
@@ -39,7 +43,6 @@ void ProductService::GetProductMetadata(const Rest::Request &req, Http::Response
 
 void ProductService::GetProductList(const Rest::Request &req, Http::ResponseWriter res)
 {
-    //    std::shared_ptr<GetProductListRequest> reqReader;
     auto reqReader = std::make_shared<GetProductListRequest>();
     try
     {
@@ -56,8 +59,7 @@ void ProductService::GetProductList(const Rest::Request &req, Http::ResponseWrit
         return;
     }
 
-//    std::shared_ptr<GetProductListResponse> respWriter;
-    auto respWriter = std::make_shared<GetProductListResponse>();
+    std::shared_ptr<GetProductListResponse> respWriter;
     try
     {
         respWriter = manager->GetProductList(reqReader);
@@ -72,7 +74,6 @@ void ProductService::GetProductList(const Rest::Request &req, Http::ResponseWrit
 
 void ProductService::UpdateProduct(const Rest::Request &req, Http::ResponseWriter res)
 {
-    //    std::shared_ptr<UpdateProductRequest> reqReader;
     auto reqReader = std::make_shared<UpdateProductRequest>();
     try
     {
@@ -89,8 +90,7 @@ void ProductService::UpdateProduct(const Rest::Request &req, Http::ResponseWrite
         return;
     }
 
-//    std::shared_ptr<UpdateProductResponse> respWriter;
-    auto respWriter = std::make_shared<UpdateProductResponse>();
+    std::shared_ptr<UpdateProductResponse> respWriter;
     try
     {
         respWriter = manager->UpdateProduct(reqReader);
@@ -106,7 +106,6 @@ void ProductService::UpdateProduct(const Rest::Request &req, Http::ResponseWrite
 void ProductService::AddProduct(const Rest::Request &req, Http::ResponseWriter res)
 {
     auto reqReader = std::make_shared<AddProductRequest>();
-    //    std::shared_ptr<AddProductRequest> reqReader;
     try
     {
         bodyReader->ReadRequest(reqReader, req);
@@ -122,11 +121,26 @@ void ProductService::AddProduct(const Rest::Request &req, Http::ResponseWriter r
         return;
     }
 
-//    std::shared_ptr<AddProductResponse> respWriter;
-    auto respWriter = std::make_shared<AddProductResponse>();
+    auto reqReaderForId = std::make_shared<AddProductRequest>();
     try
     {
-        respWriter = manager->AddProduct(reqReader);
+        bodyReader->ReadRequest(reqReaderForId, req);
+    }
+    catch (const std::exception &e)
+    {
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
+    }
+    catch (const boost::exception &e)
+    {
+        errorWriter->WriteError(Http::Code::Bad_Request, "wrong metadata", &res);
+        return;
+    }
+
+    std::shared_ptr<AddProductResponse> respWriter;
+    try
+    {
+        respWriter = manager->AddProduct(reqReader, reqReaderForId);
     }
     catch (const std::exception &e)
     {
@@ -135,47 +149,22 @@ void ProductService::AddProduct(const Rest::Request &req, Http::ResponseWriter r
     }
     responseWriter->WriteResponse(respWriter, &res);
 }
-// void ProductService::SetupService(std::shared_ptr<Rest::Router> router)
-//{
-//     router->addRoute(Http::Method::Get, "api/v1/product",
-//                     Pistache::Rest::Routes::bind(&ProductService::GetProductMetadata, this));
-//
-//     router->addRoute(Http::Method::Get, "api/v1/product/search",
-//                     Pistache::Rest::Routes::bind(&ProductService::GetProductList, this));
-//
-//     router->addRoute(Http::Method::Post, "api/v1/product",
-//                     Pistache::Rest::Routes::bind(&ProductService::AddProduct, this));
-//
-//     router->addRoute(Http::Method::Put, "api/v1/product",
-//                     Pistache::Rest::Routes::bind(&ProductService::UpdateProduct, this));
-// }
-//
-namespace Generic
-{
-
-void handleReady(const Rest::Request &, Http::ResponseWriter response)
-{
-    response.send(Http::Code::Ok, "1");
-}
-
-} // namespace Generic
 
 void ProductService::SetupService(Rest::Router &router)
 {
-    //    Routes::Post(router, "/record/:name/:value?", Routes::bind(&StatsEndpoint::doRecordMetric, this));
+
     using namespace Rest;
 
-    Routes::Post(router, "/record/:name/:value?", Routes::bind(&ProductService::AddProduct, this));
+    Routes::Post(router, "/product", Routes::bind(&ProductService::AddProduct, this));
     Routes::Get(router, "/product", Routes::bind(&ProductService::GetProductMetadata, this));
     Routes::Get(router, "/product/search", Routes::bind(&ProductService::GetProductList, this));
-    Routes::Get(router, "/readyy", Routes::bind(&Generic::handleReady));
-    Routes::Put(router, "/auth", Routes::bind(&ProductService::UpdateProduct, this));
+    Routes::Put(router, "/product", Routes::bind(&ProductService::UpdateProduct, this));
 }
 ProductService::ProductService(std::shared_ptr<JsonResponseWriter> responseWriter,
                                std::shared_ptr<JsonRequestBodyReader> bodyReader,
                                std::shared_ptr<ErrorResponseWriter> errorWriter,
                                std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<ProductManager> manager)
-    : responseWriter(responseWriter), bodyReader(bodyReader), queryReader(queryReader), manager(manager),
-      errorWriter(errorWriter)
+    : responseWriter(std::move(std::move(std::move(responseWriter)))), bodyReader(std::move(bodyReader)), queryReader(std::move(queryReader)), manager(std::move(manager)),
+      errorWriter(std::move(errorWriter))
 {
 }

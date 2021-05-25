@@ -81,6 +81,8 @@ class AddProductQuery : public PostgresQuery
 
     void SetupQuery(std::shared_ptr<AddProductRequest> req);
 
+    void SetupQueryForId(std::shared_ptr<AddProductRequest> req);
+
     ~AddProductQuery() override;
 
   private:

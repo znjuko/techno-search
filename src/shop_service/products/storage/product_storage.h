@@ -14,11 +14,15 @@ class ProductStorage
 {
   public:
     explicit ProductStorage(std::shared_ptr<PostgresStorage> storage);
+
     std::shared_ptr<GetProductMetadataResponse> GetProductMetadata(std::shared_ptr<GetProductMetadataRequest> req);
+
     std::shared_ptr<GetProductListResponse> GetProductList(std::shared_ptr<GetProductListRequest> req);
+
     std::shared_ptr<UpdateProductResponse> UpdateProduct(std::shared_ptr<UpdateProductRequest>
-        req);//because нет ридера для апдейт
-    std::shared_ptr<AddProductResponse> AddProduct(std::shared_ptr<AddProductRequest> req);
+        req);
+
+    std::shared_ptr<AddProductResponse> AddProduct(std::shared_ptr<AddProductRequest> req, std::shared_ptr<AddProductRequest> req2);
 
     ~ProductStorage();
 
