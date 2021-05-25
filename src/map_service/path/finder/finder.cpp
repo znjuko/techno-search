@@ -1,10 +1,11 @@
 #include "finder.h"
+#include <queue>
+#include <iostream>
 
 std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, const size_t &size,
                                          const std::vector<std::vector<int>> &AdjacencyTable,
                                          const std::vector<int> &CounterArray)
 {
-
     auto distance = std::vector<size_t>(size);
     auto vizited = std::vector<size_t>(size);
     const size_t limit = 10000;
@@ -77,6 +78,5 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
                 }
             }
     }
-    std::reverse(path.begin(), path.end());
     return path;
 };
