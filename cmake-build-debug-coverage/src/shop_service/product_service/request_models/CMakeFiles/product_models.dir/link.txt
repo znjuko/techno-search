@@ -1,2 +1,0 @@
-/usr/bin/ar qc libproduct_models.a CMakeFiles/product_models.dir/models.cpp.o
-/usr/bin/ranlib libproduct_models.a

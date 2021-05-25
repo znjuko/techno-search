@@ -1,2 +1,0 @@
-/usr/bin/ar qc libstore_manager.a CMakeFiles/store_manager.dir/store_manager.cpp.o
-/usr/bin/ranlib libstore_manager.a

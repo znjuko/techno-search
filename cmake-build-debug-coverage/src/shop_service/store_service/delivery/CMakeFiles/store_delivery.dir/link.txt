@@ -1,2 +1,0 @@
-/usr/bin/ar qc libstore_delivery.a CMakeFiles/store_delivery.dir/store_service.cpp.o
-/usr/bin/ranlib libstore_delivery.a

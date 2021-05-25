@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmap_models.a CMakeFiles/map_models.dir/map_models.cpp.o
-/usr/bin/ranlib libmap_models.a

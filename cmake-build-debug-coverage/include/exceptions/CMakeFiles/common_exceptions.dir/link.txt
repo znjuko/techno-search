@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcommon_exceptions.a CMakeFiles/common_exceptions.dir/common_exceptions.cpp.o
-/usr/bin/ranlib libcommon_exceptions.a

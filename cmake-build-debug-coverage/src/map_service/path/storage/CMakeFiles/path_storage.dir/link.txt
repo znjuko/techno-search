@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpath_storage.a CMakeFiles/path_storage.dir/storage.cpp.o
-/usr/bin/ranlib libpath_storage.a

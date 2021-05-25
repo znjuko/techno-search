@@ -1,2 +1,0 @@
-/usr/bin/ar qc libskill_delivery.a CMakeFiles/skill_delivery.dir/delivery.cpp.o
-/usr/bin/ranlib libskill_delivery.a

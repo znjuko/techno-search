@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpath_storage_models.a CMakeFiles/path_storage_models.dir/models.cpp.o
-/usr/bin/ranlib libpath_storage_models.a

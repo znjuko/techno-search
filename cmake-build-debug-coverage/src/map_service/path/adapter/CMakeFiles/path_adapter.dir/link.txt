@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpath_adapter.a CMakeFiles/path_adapter.dir/adapter.cpp.o
-/usr/bin/ranlib libpath_adapter.a

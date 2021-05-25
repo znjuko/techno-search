@@ -1,2 +1,0 @@
-/usr/bin/ar qc libproduct_manager.a CMakeFiles/product_manager.dir/product_manager.cpp.o
-/usr/bin/ranlib libproduct_manager.a

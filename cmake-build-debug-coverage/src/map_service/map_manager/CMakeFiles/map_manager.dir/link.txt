@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmap_manager.a CMakeFiles/map_manager.dir/map_manager.cpp.o
-/usr/bin/ranlib libmap_manager.a

@@ -1,2 +1,0 @@
-/usr/bin/ar qc librouter_setupper.a CMakeFiles/router_setupper.dir/router_setupper.cpp.o
-/usr/bin/ranlib librouter_setupper.a

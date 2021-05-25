@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpath_finder.a CMakeFiles/path_finder.dir/finder.cpp.o
-/usr/bin/ranlib libpath_finder.a

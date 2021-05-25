@@ -1,2 +1,0 @@
-/usr/bin/ar qc libskill_usecase.a CMakeFiles/skill_usecase.dir/usecase.cpp.o
-/usr/bin/ranlib libskill_usecase.a

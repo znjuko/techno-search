@@ -1,2 +1,0 @@
-/usr/bin/ar qc libskill_storage.a CMakeFiles/skill_storage.dir/storage.cpp.o
-/usr/bin/ranlib libskill_storage.a
