@@ -83,3 +83,10 @@ TEST(find_path, to_the_start_and_back_different_ways)
     EXPECT_EQ(A[1], 7);
     EXPECT_EQ(A[0], 5);
 }
+
+TEST(find_path, to_yourself)
+{
+    PathFinder F;
+    std::vector<size_t> A = F.FindPath(8, 8, size2, graphmatrix2, counters2);
+    EXPECT_EQ(A[0], 6);
+}
