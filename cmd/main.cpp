@@ -14,6 +14,7 @@
 #include <pistache/endpoint.h>
 #include <pistache/http.h>
 #include <pistache/router.h>
+#include <signal.h>
 
  using namespace clickhouse;
 
@@ -24,6 +25,17 @@
 
  int main()
 {
+    sigset_t signals;
+    if (sigemptyset(&signals) != 0
+        || sigaddset(&signals, SIGTERM) != 0
+        || sigaddset(&signals, SIGINT) != 0
+        || sigaddset(&signals, SIGHUP) != 0
+        || pthread_sigmask(SIG_BLOCK, &signals, nullptr) != 0)
+    {
+        perror("install signal handler failed");
+        return 1;
+    }
+
     auto portValue = std::getenv("PORT");
     Port port;
     try
@@ -101,22 +113,22 @@
         return 0;
     }
     clickOpts.SetUser(clickUser);
-    auto clickPassword = std::getenv("CLICK_PASS");
-    if (!clickPassword)
-    {
-        cout << "ERROR: "
-             << "empty clickhouse pass" << endl;
-        return 0;
-    }
-    clickOpts.SetUser(clickPassword);
-    auto clickDB = std::getenv("CLICK_DB");
-    if (!clickDB)
-    {
-        cout << "ERROR: "
-             << "empty clickhouse database" << endl;
-        return 0;
-    }
-    clickOpts.SetDefaultDatabase(clickDB);
+//    auto clickPassword = std::getenv("CLICK_PASS");
+//    if (!clickPassword)
+//    {
+//        cout << "ERROR: "
+//             << "empty clickhouse pass" << endl;
+//        return 0;
+//    }
+//    clickOpts.SetUser(clickPassword);
+//    auto clickDB = std::getenv("CLICK_DB");
+//    if (!clickDB)
+//    {
+//        cout << "ERROR: "
+//             << "empty clickhouse database" << endl;
+//        return 0;
+//    }
+//    clickOpts.SetDefaultDatabase(clickDB);
 
     auto commonClickStorage = std::make_shared<ClickStorage>(clickOpts);
     auto skillStorage = std::make_shared<MetricStorage>(commonClickStorage);
@@ -124,13 +136,26 @@
     auto skillDelivery = std::make_shared<MetricService>(jsonResponseWriter, jsonRequestBodyReader,
     errorResponseWriter,
                                                          requestQueryReader, skillManager);
-    skillDelivery->SetupService(&router);
+    skillDelivery->SetupService(router);
     // end of skill service part
 
     auto httpEndpoint = std::make_shared<Http::Endpoint>(addr);
     httpEndpoint->setHandler(router.handler());
     cout << "starting server on port " << portValue << endl;
-    httpEndpoint->serve();
+    httpEndpoint->serveThreaded();
+
+    int signal = 0;
+    int status = sigwait(&signals, &signal);
+    if (status == 0)
+    {
+        std::cout << "received signal " << signal << std::endl;
+    }
+    else
+    {
+        std::cerr << "sigwait returns " << status << std::endl;
+    }
+
+    httpEndpoint->shutdown();
 
     return 0;
 }

@@ -1,6 +1,5 @@
-#set(MAIN_SRCS main.cpp)
-set(MAIN_SRCS shop-main.cpp)
-#set(MAIN_SRCS pistacho.cpp)
+set(MAIN_SRCS main.cpp)
+#set(MAIN_SRCS shop-main.cpp)
 
 add_executable(${PROJECT_NAME} ${MAIN_SRCS})
 
@@ -15,7 +14,7 @@ target_link_libraries(
         nlohmann_json::nlohmann_json
         ${Boost_LIBRARIES}
         pistache
-#        clickhouse-cpp-lib
+        clickhouse-cpp-lib
 
         request_reader
         response_writer
@@ -27,13 +26,13 @@ target_link_libraries(
         pthread
         Threads::Threads
         ## skill service only
-#        skill_delivery
-#        skill_usecase
-#        skill_storage
-#        click_storage
-#        skill_models
-#        click_query
-#        click_reader
+        skill_delivery
+        skill_usecase
+        skill_storage
+        click_storage
+        skill_models
+        click_query
+        click_reader
 
         ## shop service only
         postgres_storage

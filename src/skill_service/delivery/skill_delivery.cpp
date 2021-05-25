@@ -6,7 +6,7 @@
 
 void MetricService::GetCounterPopularityByShop(const Rest::Request &req, Http::ResponseWriter res)
 {
-    std::shared_ptr<GetCountersPopularityByStoreRequest> reqReader;
+    auto reqReader = std::make_shared<GetCountersPopularityByStoreRequest>();
     try
     {
         queryReader->ReadRequest(reqReader, req);
@@ -37,7 +37,7 @@ void MetricService::GetCounterPopularityByShop(const Rest::Request &req, Http::R
 
 void MetricService::GetProductPopularityByShop(const Rest::Request &req, Http::ResponseWriter res)
 {
-    std::shared_ptr<GetProductsPopularityByStoreRequest> reqReader;
+    auto reqReader = std::make_shared<GetProductsPopularityByStoreRequest>();
     try
     {
         queryReader->ReadRequest(reqReader, req);
@@ -73,7 +73,7 @@ void MetricService::GetProductPopularityByShop(const Rest::Request &req, Http::R
 
 void MetricService::GetProductsTotalPopularity(const Rest::Request &req, Http::ResponseWriter res)
 {
-    std::shared_ptr<GetProductsTotalPopularityRequest> reqReader;
+    auto reqReader = std::make_shared<GetProductsTotalPopularityRequest>();
     try
     {
         queryReader->ReadRequest(reqReader, req);
@@ -102,16 +102,14 @@ void MetricService::GetProductsTotalPopularity(const Rest::Request &req, Http::R
     responseWriter->WriteResponse(respWriter, &res);
 }
 
-void MetricService::SetupService(Rest::Router *router)
+void MetricService::SetupService(Rest::Router &router)
 {
-    router->addRoute(Http::Method::Get, "api/v1/metrics/shop/counters",
-                     Pistache::Rest::Routes::bind(&MetricService::GetCounterPopularityByShop, this));
-
-    router->addRoute(Http::Method::Get, "api/v1/metrics/shop/products",
-                     Pistache::Rest::Routes::bind(&MetricService::GetProductPopularityByShop, this));
-
-    router->addRoute(Http::Method::Get, "api/v1/metrics/products",
-                     Pistache::Rest::Routes::bind(&MetricService::GetProductsTotalPopularity, this));
+    Routes::Get(router, "/api/v1/metrics/products",
+                Pistache::Rest::Routes::bind(&MetricService::GetProductsTotalPopularity, this));
+    Routes::Get(router, "/api/v1/metrics/shop/products",
+                Pistache::Rest::Routes::bind(&MetricService::GetProductPopularityByShop, this));
+    Routes::Get(router, "/api/v1/metrics/shop/counters",
+                Pistache::Rest::Routes::bind(&MetricService::GetCounterPopularityByShop, this));
 }
 
 MetricService::MetricService(std::shared_ptr<JsonResponseWriter> responseWriter,
