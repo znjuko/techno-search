@@ -78,49 +78,7 @@ int main()
 
     // shop service part only
 
-    auto postgresHost = std::getenv("POSTG_HOST");
-    if (!postgresHost)
-    {
-        cout << "ERROR: "
-             << "empty postgres hostname" << endl;
-        return 0;
-    }
-//    std::string a = postgresHost;
-
-    auto postgresPort = std::getenv("POSTG_PORT");
-    if (!postgresPort)
-    {
-        cout << "ERROR: "
-             << "empty postgres port" << endl;
-        return 0;
-    }
-
-    auto postgresUser = std::getenv("POSTG_USER");
-    if (!postgresUser)
-    {
-        cout << "ERROR: "
-             << "empty postgres user" << endl;
-        return 0;
-    }
-
-    auto postgresPassword = std::getenv("POSTG_PASS");
-    if (!postgresPassword)
-    {
-        cout << "ERROR: "
-             << "empty postgres pass" << endl;
-        return 0;
-    }
-
-    auto postgresDB = std::getenv("POSTG_DB");
-    if (!postgresDB)
-    {
-        cout << "ERROR: "
-             << "empty postgres database" << endl;
-        return 0;
-    }
-
    const char *options = "host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch";
-//    const char *options = "host=" + postgresHost + "port= " +postgresPort+ " user= " +postgresUser+ " password=" + postgresPassword + " dbname= "+postgresDB;
 
     try
     {
