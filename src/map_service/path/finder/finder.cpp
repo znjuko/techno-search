@@ -4,12 +4,13 @@
 #include <iostream>
 
 std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, const size_t &size,
-                                         const std::vector<std::vector<size_t>> &AdjacencyTable,
+                                         const std::vector<std::vector<double>> &AdjacencyTable,
                                          const std::vector<size_t> &CounterArray)
 {
-    auto distance = std::vector<size_t>(size);
+    auto distance = std::vector<double>(size);
     auto vizited = std::vector<size_t>(size);
-    const size_t limit = std::numeric_limits<size_t>::max();
+    const double limit = std::numeric_limits<double>::max();
+    const size_t limit_index = std::numeric_limits<size_t>::max();
     size_t A = 0;
     size_t B = 0;
     for (size_t i = 0; i < size; i++)
@@ -21,7 +22,8 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
             B = i;
         }
     }
-    size_t temp, minindex, min, begin_index = A;
+    double temp, min;
+    size_t minindex, begin_index = A;
     for (size_t i = 0; i < size; i++)
     {
         distance[i] = limit;
@@ -31,7 +33,7 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
 
     do
     {
-        minindex = limit;
+        minindex = limit_index;
         min = limit;
 
         for (size_t i = 0; i < size; i++)
@@ -43,7 +45,7 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
             minindex = i;
         }
 
-        if (minindex == limit)
+        if (minindex == limit_index)
             continue;
 
         for (size_t i = 0; i < size; i++)
@@ -58,13 +60,13 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
             }
         }
         vizited[minindex] = 0;
-    } while (minindex < limit);
+    } while (minindex < limit_index);
 
     auto path = std::vector<size_t>(size);
     auto end = B;
     path[0] = B + 1;
     int k = 1;
-    size_t weight = distance[B];
+    double weight = distance[B];
 
     while (end != begin_index)
     {

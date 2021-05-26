@@ -14,7 +14,7 @@ StoreModel::StoreModel(const std::string &data)
     auto adj = jsonData["adjacency_table"];
     for (const auto &item : adj)
     {
-        Adjacency.push_back(boost::lexical_cast<int>(item));
+        Adjacency.push_back(boost::lexical_cast<double>(item));
     }
 
     auto cntrs = jsonData["counters"];

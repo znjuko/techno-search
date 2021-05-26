@@ -4,11 +4,11 @@
 
 #include "adapter.h"
 
-std::vector<std::vector<int>> Adapter::AdaptAdjacency(std::shared_ptr<StoreModel> model)
+std::vector<std::vector<double>> Adapter::AdaptAdjacency(std::shared_ptr<StoreModel> model)
 {
     auto currSize = model->Size + 1;
-    auto resp = std::vector<std::vector<int>>(currSize);
-    for (auto &el : resp) el = std::vector<int>(currSize);
+    auto resp = std::vector<std::vector<double>>(currSize);
+    for (auto &el : resp) el = std::vector<double>(currSize);
 
     size_t got = 0;
     for (size_t i = 0; i < model->Size; ++i)
