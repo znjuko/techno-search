@@ -2,10 +2,9 @@
 #include "shop_map.h"
 
 #include <gtest/gtest.h>
-#include <iostream>
 #include <map>
 
-TEST(GRAPH_CONVERTER, GENERATE)
+TEST(GRAPH_CONVERTER, GENERATE_1)
 {
     Map map;
 
@@ -38,6 +37,36 @@ TEST(GRAPH_CONVERTER, GENERATE)
     features.push_back(p1);
     features.push_back(p2);
     features.push_back(p3);
+    map.SetFeatures(features);
+    map.SetShop(shop);
+
+    GraphConverter converter;
+    converter.SetMap(map);
+    converter.Generate();
+}
+
+
+TEST(GRAPH_CONVERTER, GENERATE_2)
+{
+    Map map;
+
+    Polygon shop;
+    shop.AddPoint(Point(0, 0));
+    shop.AddPoint(Point(0, 10));
+    shop.AddPoint(Point(10, 10));
+    shop.AddPoint(Point(10, 0));
+    shop.InitLines();
+
+    Polygon p1;
+    p1.AddPoint(Point(3, 3));
+    p1.AddPoint(Point(3, 6));
+    p1.AddPoint(Point(6, 6));
+    p1.AddPoint(Point(6, 3));
+    p1.InitLines();
+
+
+    std::vector<Polygon> features;
+    features.push_back(p1);
     map.SetFeatures(features);
     map.SetShop(shop);
 
