@@ -1,0 +1,6 @@
+add_subdirectory(request_models)
+add_subdirectory(storage)
+add_subdirectory(delivery)
+add_subdirectory(query)
+add_subdirectory(reader)
+add_subdirectory(usecase)

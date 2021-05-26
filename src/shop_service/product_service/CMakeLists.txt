@@ -1,4 +1,0 @@
-add_subdirectory(request_models)
-add_subdirectory(product_manager)
-add_subdirectory(product_storage)
-add_subdirectory(delivery)
