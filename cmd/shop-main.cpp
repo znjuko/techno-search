@@ -3,11 +3,10 @@
 //
 
 #include "postgres_storage.h"
-#include "request_reader.h"
 #include "product_delivery.h"
 #include "product_storage.h"
 #include "product_usecase.h"
-
+#include "request_reader.h"
 #include "store_delivery.h"
 #include "store_storage.h"
 #include "store_usecase.h"
@@ -35,7 +34,7 @@ int main()
         return 1;
     }
 
-    const char* portValue = std::getenv("PORT");
+    const char *portValue = std::getenv("PORT");
     Port port;
     try
     {
@@ -78,7 +77,7 @@ int main()
 
     // shop service part only
 
-   const char *options = "host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch";
+    const char *options = "host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch";
 
     try
     {
