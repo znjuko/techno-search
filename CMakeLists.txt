@@ -6,7 +6,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.19.2)
 option(test "Build all tests." ON)
 
 add_subdirectory(src)
-#add_subdirectory(include)
+add_subdirectory(include)
 #add_subdirectory(vendor)
 
 add_executable(techno_search main.cpp)
