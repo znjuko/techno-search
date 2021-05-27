@@ -13,7 +13,6 @@ RUN git init . && git clone https://github.com/ClickHouse/clickhouse-cpp.git && 
 
 RUN git init . &&  git clone https://github.com/abseil/abseil-cpp.git && cd abseil-cpp &&  mkdir build && cd build &&  cmake .. && cmake --build . --target install
 
-
 WORKDIR techno-search
 COPY . .
 
