@@ -1,0 +1,64 @@
+The CXX compiler identification could not be found in "/home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/3.19.2/CompilerIdCXX/CMakeCXXCompilerId.gcno"
+
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/CMakeTmp
+
+Run Build Command(s):make cmTC_53888/fast && make  -f CMakeFiles/cmTC_53888.dir/build.make CMakeFiles/cmTC_53888.dir/build
+make[1]: вход в каталог «/home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/CMakeTmp»
+Building CXX object CMakeFiles/cmTC_53888.dir/src.cxx.o
+/usr/bin/g++ -DCMAKE_HAVE_LIBC_PTHREAD  --coverage  -std=gnu++2a -o CMakeFiles/cmTC_53888.dir/src.cxx.o -c /home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_53888
+/snap/clion/151/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_53888.dir/link.txt --verbose=1
+/usr/bin/g++ --coverage  CMakeFiles/cmTC_53888.dir/src.cxx.o -o cmTC_53888 
+/usr/bin/ld: CMakeFiles/cmTC_53888.dir/src.cxx.o: in function `main':
+src.cxx:(.text+0x53): undefined reference to `pthread_create'
+/usr/bin/ld: src.cxx:(.text+0x71): undefined reference to `pthread_detach'
+/usr/bin/ld: src.cxx:(.text+0x8f): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.cxx:(.text+0xb2): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_53888.dir/build.make:106: cmTC_53888] Ошибка 1
+make[1]: выход из каталога «/home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/CMakeTmp»
+make: *** [Makefile:140: cmTC_53888/fast] Ошибка 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/CMakeTmp
+
+Run Build Command(s):make cmTC_3eb93/fast && make  -f CMakeFiles/cmTC_3eb93.dir/build.make CMakeFiles/cmTC_3eb93.dir/build
+make[1]: вход в каталог «/home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/CMakeTmp»
+Building CXX object CMakeFiles/cmTC_3eb93.dir/CheckFunctionExists.cxx.o
+/usr/bin/g++   --coverage -DCHECK_FUNCTION_EXISTS=pthread_create -std=gnu++2a -o CMakeFiles/cmTC_3eb93.dir/CheckFunctionExists.cxx.o -c /home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_3eb93
+/snap/clion/151/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3eb93.dir/link.txt --verbose=1
+/usr/bin/g++ --coverage -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_3eb93.dir/CheckFunctionExists.cxx.o -o cmTC_3eb93  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_3eb93.dir/build.make:106: cmTC_3eb93] Ошибка 1
+make[1]: выход из каталога «/home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/CMakeTmp»
+make: *** [Makefile:140: cmTC_3eb93/fast] Ошибка 2
+
+
+
+The C compiler identification could not be found in "/home/foxers/techno-search/cmake-build-debug-coverage/CMakeFiles/3.19.2/CompilerIdC/CMakeCCompilerId.gcno"
+

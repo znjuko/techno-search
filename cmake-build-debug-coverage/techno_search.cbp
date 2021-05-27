@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="techno_search"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\tests\;CMake Files\tests\unit\;CMake Files\tests\unit\map_service\;CMake Files\tests\unit\map_service\graph_converter\;CMake Files\tests\unit\map_service\map_models\;CMake Files\src\;CMake Files\src\map_service\;CMake Files\src\map_service\graph_converter\;CMake Files\src\map_service\map\;CMake Files\src\map_service\map_models\;CMake Files\src\map_service\storage\;CMake Files\src\map_service\models\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\linuxbrew\;CMake Files\..\..\linuxbrew\.linuxbrew\;CMake Files\..\..\linuxbrew\.linuxbrew\lib\;CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\;CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\nlohmann_json\;CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\mongocxx-3.6.3\;CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\bsoncxx-3.6.3\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="techno_search">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/techno_search" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 techno_search"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="techno_search/fast">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/techno_search" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 techno_search/fast"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="graph_converter">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/libgraph_converter.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/graph_converter"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/Makefile&quot;  VERBOSE=1 graph_converter"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="graph_converter/fast">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/libgraph_converter.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/graph_converter"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/Makefile&quot;  VERBOSE=1 graph_converter/fast"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/graph_converter/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="shop_map">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/libshop_map.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/map"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/Makefile&quot;  VERBOSE=1 shop_map"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="shop_map/fast">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/libshop_map.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/map"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/Makefile&quot;  VERBOSE=1 shop_map/fast"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="map_models">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/libmap_models.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/Makefile&quot;  VERBOSE=1 map_models"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="map_models/fast">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/libmap_models.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/Makefile&quot;  VERBOSE=1 map_models/fast"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/map_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="map_storage">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/libmap_storage.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/storage"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/models"/>
+					<Add directory="/home/linuxbrew/.linuxbrew/include/bsoncxx/v_noabi"/>
+					<Add directory="/home/linuxbrew/.linuxbrew/include/mongocxx/v_noabi"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/Makefile&quot;  VERBOSE=1 map_storage"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="map_storage/fast">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/libmap_storage.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/storage"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/models"/>
+					<Add directory="/home/linuxbrew/.linuxbrew/include/bsoncxx/v_noabi"/>
+					<Add directory="/home/linuxbrew/.linuxbrew/include/mongocxx/v_noabi"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/Makefile&quot;  VERBOSE=1 map_storage/fast"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/storage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="map_storage_models">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/libmap_storage_models.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DJSON_USE_IMPLICIT_CONVERSIONS=1"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/models"/>
+					<Add directory="/home/linuxbrew/.linuxbrew/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/Makefile&quot;  VERBOSE=1 map_storage_models"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="map_storage_models/fast">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/libmap_storage_models.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DJSON_USE_IMPLICIT_CONVERSIONS=1"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/models"/>
+					<Add directory="/home/linuxbrew/.linuxbrew/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/Makefile&quot;  VERBOSE=1 map_storage_models/fast"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/src/map_service/models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="models_tests">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/models_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/Makefile&quot;  VERBOSE=1 models_tests"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="models_tests/fast">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/models_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/Makefile&quot;  VERBOSE=1 models_tests/fast"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/map_models/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="graph_converter_tests">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/graph_converter_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/map"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/graph_converter"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/Makefile&quot;  VERBOSE=1 graph_converter_tests"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="graph_converter_tests/fast">
+				<Option output="/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/graph_converter_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/foxers/techno-search/src/map_service/map"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/map_models"/>
+					<Add directory="/home/foxers/techno-search/src/map_service/graph_converter"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/Makefile&quot;  VERBOSE=1 graph_converter_tests/fast"/>
+					<CompileFile command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/foxers/techno-search/cmake-build-debug-coverage/tests/unit/map_service/graph_converter/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/foxers/techno-search/main.cpp">
+			<Option target="techno_search"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/graph_converter/graph_converter.cpp">
+			<Option target="graph_converter"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/graph_converter/graph_converter.h">
+			<Option target="graph_converter"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/map/shop_map.cpp">
+			<Option target="shop_map"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/map/shop_map.h">
+			<Option target="shop_map"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/map_models/map_models.cpp">
+			<Option target="map_models"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/map_models/map_models.h">
+			<Option target="map_models"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/models/models.cpp">
+			<Option target="map_storage_models"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/models/models.h">
+			<Option target="map_storage_models"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/storage/storage.cpp">
+			<Option target="map_storage"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/storage/storage.h">
+			<Option target="map_storage"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/tests/unit/map_service/graph_converter/main.cpp">
+			<Option target="graph_converter_tests"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/tests/unit/map_service/graph_converter/tests.cpp">
+			<Option target="graph_converter_tests"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/tests/unit/map_service/map_models/main.cpp">
+			<Option target="models_tests"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/tests/unit/map_service/map_models/tests.cpp">
+			<Option target="models_tests"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/tests/unit/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/tests/unit/map_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\map_service\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/tests/unit/map_service/graph_converter/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\map_service\graph_converter\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/tests/unit/map_service/map_models/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\unit\map_service\map_models\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\map_service\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/graph_converter/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\map_service\graph_converter\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/map/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\map_service\map\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/map_models/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\map_service\map_models\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/storage/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\map_service\storage\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/src/map_service/models/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\map_service\models\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/nlohmann_json/nlohmann_jsonTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/mongocxx-3.6.3/mongocxx-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\mongocxx-3.6.3\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/mongocxx-3.6.3/mongocxx-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\mongocxx-3.6.3\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/mongocxx-3.6.3/mongocxx_targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\mongocxx-3.6.3\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/mongocxx-3.6.3/mongocxx_targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\mongocxx-3.6.3\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/bsoncxx-3.6.3/bsoncxx-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\bsoncxx-3.6.3\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/bsoncxx-3.6.3/bsoncxx-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\bsoncxx-3.6.3\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/bsoncxx-3.6.3/bsoncxx_targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\bsoncxx-3.6.3\"/>
+		</Unit>
+		<Unit filename="/home/foxers/techno-search/../../linuxbrew/.linuxbrew/lib/cmake/bsoncxx-3.6.3/bsoncxx_targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\linuxbrew\.linuxbrew\lib\cmake\bsoncxx-3.6.3\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

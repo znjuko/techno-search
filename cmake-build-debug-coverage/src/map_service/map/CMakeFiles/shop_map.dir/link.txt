@@ -1,0 +1,2 @@
+/usr/bin/ar qc libshop_map.a CMakeFiles/shop_map.dir/shop_map.cpp.o
+/usr/bin/ranlib libshop_map.a

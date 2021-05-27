@@ -4,36 +4,28 @@
 
 #include "storage.h"
 
-Storage::Storage(std::shared_ptr<mongocxx::database> database) : database(database){};
+MapStorage::MapStorage(std::shared_ptr<mongocxx::database> database) : database(database){};
 
-std::shared_ptr<StoreModel> MapStorage::GetMapData(const int &ID)
+std::shared_ptr<InsertMapResponse> MapStorage::InsertMap(const string data)
 {
-    auto storeCollection = database->collection("store_graph");
+    auto mapCollection = database->collection("map");
 
-    auto selectStoreResult = storeCollection.find_one(make_document(kvp("ID", ID)));
-    if (!selectStoreResult)
+    bsoncxx::stdx::optional<mongocxx::result::insert_one> result = mapCollection.insert(data);
+
+    return std::make_shared<InsertMapResponse>(result);
+}
+
+std::shared_ptr<MapModel> MapStorage::GetMapData(const int &ShopID)
+{
+    auto mapCollection = database->collection("map");
+
+    auto selectMapResult = mapCollection.find_one(make_document(kvp("ShopID", ShopID)));
+    if (!selectMapResult)
     {
-        throw StoreGraphNotFound(ID);
+        throw MapNotFound(ID);
     }
 
-    auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
-    return std::make_shared<StoreModel>(selectStoreOutput);
+    auto selectMapOutput = bsoncxx::to_json(*selectMapResult);
+    return std::make_shared<MapModel>(selectMapOutput);
 }
 
-std::shared_ptr<AddMapResponse> MapStorage::AddMap(std::shared_ptr<AddProductRequest> req,
-                                                   std::shared_ptr<AddProductRequest> req2,
-                                                   std::shared_ptr<AddProductRequest> req3)
-{
-    auto q = std::make_shared<AddMapQuery>();
-    q->SetupQuery(req);
-    storage->Insert(q);
-
-    auto q2 = std::make_shared<AddProductQuery>();
-    q2->SetupQueryForId(req2); //translate to postgres request
-    auto reader = std::make_shared<AddProductReader>();
-    storage->Select(q2, reader);//return Id
-
-    auto res = std::make_shared<AddProductResponse>();
-    res->array = reader->Get();
-    return res;
-}

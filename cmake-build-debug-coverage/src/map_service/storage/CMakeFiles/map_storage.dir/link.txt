@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmap_storage.a CMakeFiles/map_storage.dir/storage.cpp.o
+/usr/bin/ranlib libmap_storage.a
