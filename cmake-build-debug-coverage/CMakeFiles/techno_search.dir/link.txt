@@ -1,1 +1,0 @@
-/usr/bin/g++ --coverage -g CMakeFiles/techno_search.dir/main.cpp.o -o techno_search  -lmodels 
