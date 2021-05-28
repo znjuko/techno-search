@@ -13,42 +13,51 @@
 
 using json = nlohmann::json;
 
-struct figure{
+struct figure {
     std::string type;
     std::vector<std::vector<int>> coordinates;
 };
 
-struct properties{
+struct properties {
     std::string id;
     int value;
 };
 
-struct heir{
+struct heir {
     std::string type;
     properties props;
     std::vector<std::vector<int>> coordinates;
 };
 
-struct point{
+struct point {
     std::vector<int> counterID;
     std::vector<int> pointID;
 };
 
-class MapModel
-{
+class MapModel {
 public:
     MapModel(const std::string &data);
+
     int shopID;
     figure *geometry;
     heir *inherit;
 };
 
-class MapCounter
-{
+class MapCounter {
 public:
     MapCounter(const std::string &data);
+
     int ID;
-    point* conform;
+    point *conform;
+};
+
+struct CounterToAdjecency {
+    int CounterID;
+    int AdjecencyID;
+};
+
+class CounterAdjecencyHolder {
+    std::vector<CounterToAdjecency> holder;
 };
 
 #endif //TECHNO_SEARCH_MODELS_H

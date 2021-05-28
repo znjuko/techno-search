@@ -22,7 +22,7 @@ using bsoncxx::builder::basic::make_array;
 using bsoncxx::builder::basic::make_document;
 
 #include "exceptions.h"
-#include "models.h"
+#include "path_storage_models.h"
 
 class Storage
 {

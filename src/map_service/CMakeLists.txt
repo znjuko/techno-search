@@ -1,4 +1,4 @@
-#add_subdirectory(path)
+add_subdirectory(path)
 add_subdirectory(storage)
 add_subdirectory(models)
 add_subdirectory(graph_converter)

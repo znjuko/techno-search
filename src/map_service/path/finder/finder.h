@@ -1,7 +1,7 @@
 #ifndef TECHNO_SEARCH_PATH_H
 #define TECHNO_SEARCH_PATH_H
 
-#include "models.h"
+#include "path_storage_models.h"
 
 #include <vector>
 

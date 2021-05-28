@@ -4,41 +4,67 @@
 #include <iostream>
 #include "storage.h"
 
-MapStorage::MapStorage(std::shared_ptr<mongocxx::database> database) : database(database){};
+MapStorage::MapStorage(std::shared_ptr<mongocxx::database> database) : database(database) {};
 
-void MapStorage::InsertMap(const std::string data)
-{
-    auto mapCollection = database->collection("map");
 
-    auto doc = bsoncxx::from_json(data);
-
-    bsoncxx::stdx::optional<mongocxx::result::insert_one> result = mapCollection.insert_one(std::move(doc));
+void MapStorage::InsertStoreMap(std::shared_ptr<RawStoreMap> map) {
+    database->collection("store_map").insert_one(make_document(
+            kvp("ID", map->StoreID),
+            kvp("inherit", map->Inherit),
+            kvp("geometry", map->Geometry)));
 }
 
-std::shared_ptr<MapModel> MapStorage::GetMapData(const int &ShopID)
-{
-    auto mapCollection = database->collection("map");
+std::shared_ptr<RawStoreMap> MapStorage::GetStoreMap(const int &ID) {
+    auto storeCollection = database->collection("store_graph");
 
-    auto selectMapResult = mapCollection.find_one(make_document(kvp("ShopID", ShopID)));
-    /*if (!selectMapResult)
-    {
-        throw MapNotFound(ShopID);
-    }*/
+    auto selectStoreResult = storeCollection.find_one(make_document(kvp("ID", ID)));
 
-    auto selectMapOutput = bsoncxx::to_json(*selectMapResult);
-    return std::make_shared<MapModel>(selectMapOutput);
+    auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
+    if (!selectStoreResult) {
+        throw StoreGraphNotFound(ID);
+    }
+
+    return std::make_shared<RawStoreMap>(selectStoreOutput);
 }
 
-std::shared_ptr<MapCounterStorage> MapCounterStorage::GetMapCounterData(const int &ID)
-{
-    auto MapCounterCollection = database->collection("MapCounter");
+std::shared_ptr<StoreModel> MapStorage::GetStoreAdjecency(const int &ID) {
+    auto adjCollection = database->collection("store_adj");
 
-    auto selectMapCounterResult = MapCounterCollection.find_one(make_document(kvp("ID", ID)));
-    /*if (!selectMapResult)
-    {
-        throw MapNotFound(ShopID);
-    }*/
+    auto selectStoreResult = adjCollection.find_one(make_document(kvp("ID", ID)));
+    if (!selectStoreResult) {
+        throw StoreGraphNotFound(ID);
+    }
 
-    auto selectMapCounterOutput = bsoncxx::to_json(*selectMapCounterResult);
-    return std::make_shared<MapCounterStorage>(selectMapCounterOutput);
+    auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
+    return std::make_shared<StoreModel>(selectStoreOutput);
+}
+
+void MapStorage::CreateStoreAdjecencyCoords(const int &storeID, const std::vector<Point> &points) {
+    auto adjCoordCollection = database->collection("store_adj_coords");
+
+    document doc_builder{};
+    doc_builder << "ID" << storeID;
+    doc_builder << "size" << int(points.size());
+    auto array_builder = doc_builder << "adjacency_table" << open_array;
+    for (int i = 0; i < points.size(); ++i) {
+        array_builder << make_document(
+                kvp("pointID", i),
+                kvp("X", points[i].x),
+                kvp("Y", points[i].y));
+    }
+    array_builder << close_array;
+    auto doc = doc_builder << finalize;
+    adjCoordCollection.insert_one(doc.view());
+}
+
+std::shared_ptr<AdjecencyPoints> MapStorage::GetStoreAdjecencyCoords(const int &storeID) {
+    auto adjCoordCollection = database->collection("store_adj_coords");
+
+    auto selectStoreResult = adjCoordCollection.find_one(make_document(kvp("ID", storeID)));
+    if (!selectStoreResult) {
+        throw StoreGraphNotFound(storeID);
+    }
+
+    auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
+    return std::make_shared<AdjecencyPoints>(selectStoreOutput);
 }

@@ -21,7 +21,6 @@ class StoreModel
     int ID;
     int Size;
     std::vector<double> Adjacency;
-    std::vector<int> Counters;
 };
 
 #endif // RENAMEIT_MODELS_H

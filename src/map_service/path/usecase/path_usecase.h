@@ -7,7 +7,7 @@
 
 #include "adapter.h"
 #include "finder.h"
-#include "models.h"
+#include "path_storage_models.h"
 #include "path_models.h"
 #include "storage.h"
 

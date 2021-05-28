@@ -4,8 +4,9 @@
 #include <nlohmann/json.hpp>
 #include <vector>
 #include <iostream>
-//#include "common_exceptions.h"
-//#include "marshaller.h"
+#include "common_exceptions.h"
+#include "marshaller.h"
+#include "unmarshaller.h"
 
 
 using json = nlohmann::json;
@@ -17,13 +18,15 @@ public:
 
     void Show() const;
 
-    Point(double _x, double  _y);
+    Point() = default;
+
+    Point(double _x, double _y);
 
     ~Point() = default;
 
-    bool operator== (Point p) const;
+    bool operator==(Point p) const;
 
-    double GetDistanceToPoint(const Point& p);
+    double GetDistanceToPoint(const Point &p);
 
 };
 
@@ -40,7 +43,7 @@ public:
 
     Point GetMiddleOfLine() const;
 
-    Point* LineIntersectionWithLine(Line l);
+    Point *LineIntersectionWithLine(Line l);
 
     bool LineIntersectionWithPoint(Point p);
 
@@ -58,7 +61,7 @@ public:
 
     void ShowLines();
 
-    Point* GetPolygonCenter();
+    Point *GetPolygonCenter();
 
     Point GetPointWithLowestX();
 
@@ -70,11 +73,13 @@ public:
 
     std::vector<Point> GetVertices();
 
-    std::vector<Point*> IntersectionWithVerticalLine(Line l);
+    std::vector<Point *> IntersectionWithVerticalLine(Line l);
 
     bool IsPointOnPolygon(Point p);
 
-    bool operator== (Polygon p) const;
+    void SetID(const int &id);
+
+    bool operator==(Polygon p) const;
 
     Point GetFeaturePoint();
 
@@ -83,34 +88,52 @@ private:
     std::vector<Point> vertices;
     std::vector<Line> lines;
     size_t count;
-    size_t id;    // id прилавка
+    int id;    // id прилавка
 };
 
-//class StoreMap : public IMarshaller
-//{
-//  public:
-//    StoreMap();
-//
-//    void Marshall(const std::string &body) override;
-//
-//    ~StoreMap() override = default;
-//
-//    Polygon StoreGeometry;
-//    std::vector<Polygon> InheritObjects;
-//    size_t StoreID{};
-//};
-//
-//class RawStoreMap : public IMarshaller
-//{
-//  public:
-//    RawStoreMap() = default;
-//
-//    void Marshall(const std::string &body) override;
-//
-//    ~RawStoreMap() override = default;
-//
-//    std::string RawMap;
-//};
+class StoreMap : public IMarshaller {
+public:
+    StoreMap();
+
+    void Marshall(const std::string &body) override;
+
+    ~StoreMap() override = default;
+
+    Polygon StoreGeometry;
+    std::vector<Polygon> InheritObjects;
+    size_t StoreID{};
+};
+
+class RawStoreMap : public IMarshaller, public IUnMarshaller {
+public:
+    RawStoreMap() = default;
+
+    RawStoreMap(const std::string &body);
+
+    void Marshall(const std::string &body) override;
+
+    nlohmann::json UnMarshall() override;
+
+    ~RawStoreMap() override = default;
+
+    int StoreID;
+    std::string Inherit;
+    std::string Geometry;
+};
+
+class AdjecencyPoints: public IUnMarshaller {
+    AdjecencyPoints() = default;
+
+    AdjecencyPoints(const std::string &body);
+
+    nlohmann::json UnMarshall() override;
+
+    ~AdjecencyPoints() override = default;
+
+    int StoreID;
+    std::vector<Point> Points;
+};
+
 //
 //class StoreMapActionRequest : public IRequestMarshaller
 //{

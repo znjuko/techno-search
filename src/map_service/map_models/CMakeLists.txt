@@ -11,8 +11,8 @@ add_library(${LIBRARY_NAME} STATIC ${SRC})
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(${LIBRARY_NAME} PRIVATE
-        #nlohmann_json::nlohmann_json
-        #marshaller unmarshaller
-        #common_exceptions pistache
-        #${Boost_LIBRARIES}
+        nlohmann_json::nlohmann_json
+        marshaller unmarshaller
+        common_exceptions pistache
+        ${Boost_LIBRARIES}
         )
