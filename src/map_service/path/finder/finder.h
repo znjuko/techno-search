@@ -12,8 +12,7 @@ public:
     PathFinder() = default;
 
     std::vector<size_t> FindPath(const size_t &from, const size_t &to, const size_t &size,
-                                 const std::vector<std::vector<double>> &AdjacencyTable,
-                                 const std::vector<size_t> &CounterArray);
+                                 const std::vector<std::vector<double>> &AdjacencyTable);
 
     ~PathFinder() = default;
 };

@@ -4,24 +4,14 @@
 #include <iostream>
 
 std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, const size_t &size,
-                                         const std::vector<std::vector<double>> &AdjacencyTable,
-                                         const std::vector<size_t> &CounterArray)
+                                         const std::vector<std::vector<double>> &AdjacencyTable)
 {
     auto distance = std::vector<double>(size);
     auto vizited = std::vector<size_t>(size);
     const double limit = std::numeric_limits<double>::max();
     const size_t limit_index = std::numeric_limits<size_t>::max();
-    size_t A = 0;
-    size_t B = 0;
-    for (size_t i = 0; i < size; i++)
-    {
-        if(CounterArray[i] == from){
-            A = i;
-        }
-        if(CounterArray[i] == to){
-            B = i;
-        }
-    }
+    size_t A = from - 1;
+    size_t B = to - 1;
     double temp, min;
     size_t minindex, begin_index = A;
     for (size_t i = 0; i < size; i++)
