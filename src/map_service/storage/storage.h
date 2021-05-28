@@ -33,7 +33,22 @@ public:
 
     std::shared_ptr<MapModel> GetMapData(const int &ShopID);
 
-    std::shared_ptr<InsertMapResponse> InsertMap(const int &ID);
+    void InsertMap(const std::string data);
+
+private:
+    std::shared_ptr<mongocxx::database> database;
+};
+
+class MapCounterStorage
+{
+public:
+    MapCounterStorage() = delete;
+
+    MapCounterStorage(const MapStorage &str) = delete;
+
+    MapCounterStorage(std::shared_ptr<mongocxx::database> database);
+
+    std::shared_ptr<MapCounterStorage> GetMapCounterData(const int &ID);
 
 private:
     std::shared_ptr<mongocxx::database> database;
