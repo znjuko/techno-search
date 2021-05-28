@@ -66,5 +66,5 @@ std::shared_ptr<AdjecencyPoints> MapStorage::GetStoreAdjecencyCoords(const int &
     }
 
     auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
-    return std::make_shared<AdjecencyPoints>(selectStoreOutput);
+    return std::make_shared<AdjecencyPoints>(AdjecencyPoints(selectStoreOutput));
 }

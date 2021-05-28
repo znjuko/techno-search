@@ -122,9 +122,10 @@ public:
 };
 
 class AdjecencyPoints: public IUnMarshaller {
+public:
     AdjecencyPoints() = default;
 
-    AdjecencyPoints(const std::string &body);
+    explicit AdjecencyPoints(const std::string &body);
 
     nlohmann::json UnMarshall() override;
 
