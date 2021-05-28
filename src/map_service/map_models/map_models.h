@@ -8,8 +8,75 @@
 #include "marshaller.h"
 #include "unmarshaller.h"
 
+#include <bsoncxx/builder/stream/array.hpp>
+#include <bsoncxx/builder/stream/document.hpp>
+#include <bsoncxx/builder/stream/helpers.hpp>
+#include <bsoncxx/json.hpp>
+#include <cstdint>
+#include <iostream>
+#include <mongocxx/client.hpp>
+#include <mongocxx/instance.hpp>
+#include <mongocxx/stdx.hpp>
+#include <mongocxx/uri.hpp>
+
 
 using json = nlohmann::json;
+using bsoncxx::builder::basic::kvp;
+using bsoncxx::builder::basic::make_array;
+using bsoncxx::builder::basic::make_document;
+
+class CounterWithPoints{
+  public:
+    int CounterID;
+    int PointID;
+    CounterWithPoints(int CounterID, int PointID)
+    {
+        this->CounterID = CounterID;
+        this->PointID = PointID;
+    }
+};
+class ShopWithCountersAndPointsModel
+{
+  public:
+
+    ShopWithCountersAndPointsModel(const std::string &data);
+
+    int ShopID;
+    std::vector<CounterWithPoints> counterWithPoints;
+};
+class StorageForCounterWithPoints
+{
+  public:
+    StorageForCounterWithPoints() = delete;
+
+    StorageForCounterWithPoints(const StorageForCounterWithPoints &str) = delete;
+
+    StorageForCounterWithPoints(std::shared_ptr<mongocxx::database> database);
+
+    std::shared_ptr<ShopWithCountersAndPointsModel> GetCountersWithPointsByShopID(const int &shopID);
+
+    void AddCountersWithPoints(std::shared_ptr<ShopWithCountersAndPointsModel> req);
+
+  private:
+    std::shared_ptr<mongocxx::database> database;
+};
+
+class StoreCountersNotFound : public std::exception
+{
+  public:
+    explicit StoreCountersNotFound(const int &ID)
+    {
+        msg = "store with ID:" + std::to_string(ID) + " not found";
+    };
+
+    [[nodiscard]] const char *what() const noexcept override
+    {
+        return msg.c_str();
+    }
+
+  private:
+    std::string msg;
+};
 
 class Point {
 

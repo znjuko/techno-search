@@ -1,6 +1,55 @@
 #include "map_models.h"
 #include <cmath>
-#include <nlohmann/json.hpp>
+
+
+ShopWithCountersAndPointsModel::ShopWithCountersAndPointsModel(const std::string &data) {
+    auto jsonData = json::parse(data);
+
+    ShopID = jsonData["ID"];
+
+    auto adj = jsonData["counters_with_points_table"];
+    for (const auto &item : adj) {
+        int counterID = jsonData["CounterID"];
+        int pointID = jsonData["PointID"];
+        CounterWithPoints a (counterID, pointID);
+        counterWithPoints.push_back(a);
+    }
+}
+
+StorageForCounterWithPoints::StorageForCounterWithPoints(std::shared_ptr<mongocxx::database> database) : database(database){};
+
+
+std::shared_ptr<ShopWithCountersAndPointsModel> StorageForCounterWithPoints::GetCountersWithPointsByShopID(const int &shopID)
+{
+    auto storeCollection = database->collection("counters_with_points");
+
+    auto selectCountersWithPointsResult = storeCollection.find_one(make_document(kvp("ID", shopID)));
+
+    if (!selectCountersWithPointsResult)
+    {
+        throw StoreCountersNotFound(shopID);
+    }
+
+    auto selectCountersWithPointsOutput = bsoncxx::to_json(*selectCountersWithPointsResult);
+    return std::make_shared<ShopWithCountersAndPointsModel>(selectCountersWithPointsOutput);
+}
+
+void StorageForCounterWithPoints::AddCountersWithPoints(std::shared_ptr<ShopWithCountersAndPointsModel> data)
+{
+    auto storeCollection = database->collection("counters_with_points");
+    auto builder = bsoncxx::builder::stream::document{};
+    builder << "ShopID" << data->ShopID;
+    auto array_builder = builder << "objects" << bsoncxx::builder::stream::open_array;
+    for (auto & counterWithPoint : data->counterWithPoints) {
+        array_builder << make_document(
+            kvp("CounterID", counterWithPoint.CounterID),
+            kvp("PointID", counterWithPoint.PointID));
+    }
+    array_builder << bsoncxx::builder::stream::close_array;
+    auto doc = builder << bsoncxx::builder::stream::finalize;
+    storeCollection.insert_one(doc.view());
+}
+
 
 Point::Point(double _x, double _y) : x(_x), y(_y) {}
 
