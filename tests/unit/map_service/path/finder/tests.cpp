@@ -22,9 +22,6 @@ const std::vector<std::vector<double>> graphmatrix2 = {
         {0, 0, 0, 0, 5, 3, 0},
 };
 
-const std::vector<size_t> counters = {10, 11, 2, 95, 5};
-const std::vector<size_t> counters2 = {101, 1, 13, 0, 5, 8, 21};
-
 const size_t size = 5;
 const size_t size2 = 7;
 
