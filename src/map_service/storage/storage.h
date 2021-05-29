@@ -20,18 +20,19 @@
 using bsoncxx::builder::basic::kvp;
 using bsoncxx::builder::basic::make_array;
 using bsoncxx::builder::basic::make_document;
-using bsoncxx::builder::stream::document;
-using bsoncxx::builder::stream::open_array;
 using bsoncxx::builder::stream::close_array;
+using bsoncxx::builder::stream::document;
 using bsoncxx::builder::stream::finalize;
+using bsoncxx::builder::stream::open_array;
 
+#include "exceptions.h"
 #include "map_models.h"
 #include "models.h"
-#include "exceptions.h"
 #include "path_storage_models.h"
 
-class MapStorage {
-public:
+class MapStorage
+{
+  public:
     MapStorage() = delete;
 
     MapStorage(const MapStorage &str) = delete;
@@ -42,32 +43,23 @@ public:
 
     std::shared_ptr<RawStoreMap> GetStoreMap(const int &ID);
 
-
-
     void AddStoreAdjacency(std::shared_ptr<StoreModel> data);
 
     void CreateStoreAdjacencyCoords(const int &storeID, const std::vector<Point> &points);
 
     std::shared_ptr<AdjacencyPoints> GetStoreAdjacencyCoords(const int &storeID);
 
-
-
-
     std::shared_ptr<StoreCountersAdjacency> GetStoreCountersAdjacency(const int &shopID);
 
     void AddStoreCountersAdjacency(std::shared_ptr<StoreCountersAdjacency> data);
 
-
-
-
     std::shared_ptr<StoreModel> GetStoreAdjacency(const int &ID);
 
-
-    //TODO: add create adjecency && merge this shit
+    // TODO: add create adjecency && merge this shit
     // TODO: add counter to adj !!1
 
-private:
+  private:
     std::shared_ptr<mongocxx::database> database;
 };
 
-#endif //TECHNO_SEARCH_STORAGE_H
+#endif // TECHNO_SEARCH_STORAGE_H

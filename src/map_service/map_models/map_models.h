@@ -1,9 +1,6 @@
 #ifndef TECHNO_SEARCH_MAP_MODELS_H
 #define TECHNO_SEARCH_MAP_MODELS_H
 
-#include <nlohmann/json.hpp>
-#include <vector>
-#include <iostream>
 #include "common_exceptions.h"
 #include "marshaller.h"
 #include "unmarshaller.h"
@@ -15,11 +12,13 @@
 #include <mongocxx/instance.hpp>
 #include <mongocxx/stdx.hpp>
 #include <mongocxx/uri.hpp>
-
+#include <nlohmann/json.hpp>
+#include <vector>
 
 using json = nlohmann::json;
 
-class CounterWithPoints{
+class CounterWithPoints
+{
   public:
     int CounterID;
     int PointID;
@@ -38,9 +37,10 @@ class StoreCountersAdjacency
     std::vector<CounterWithPoints> counterWithPoints;
 };
 
-class Point {
+class Point
+{
 
-public:
+  public:
     double x, y;
 
     void Show() const;
@@ -54,12 +54,12 @@ public:
     bool operator==(Point p) const;
 
     double GetDistanceToPoint(const Point &p);
-
 };
 
-class Line {
+class Line
+{
 
-public:
+  public:
     Point p1, p2;
 
     void Show() const;
@@ -73,13 +73,12 @@ public:
     Point *LineIntersectionWithLine(Line l);
 
     bool LineIntersectionWithPoint(Point p);
-
 };
 
+class Polygon
+{
 
-class Polygon {
-
-public:
+  public:
     Polygon();
 
     ~Polygon() = default;
@@ -110,16 +109,16 @@ public:
 
     Point GetFeaturePoint();
 
-private:
-
+  private:
     std::vector<Point> vertices;
     std::vector<Line> lines;
     size_t count;
-    int id;    // id прилавка
+    int id; // id прилавка
 };
 
-class StoreMap : public IMarshaller {
-public:
+class StoreMap : public IMarshaller
+{
+  public:
     StoreMap();
 
     void Marshall(const std::string &body) override;
@@ -131,8 +130,9 @@ public:
     size_t StoreID{};
 };
 
-class RawStoreMap : public IMarshaller, public IUnMarshaller {
-public:
+class RawStoreMap : public IMarshaller, public IUnMarshaller
+{
+  public:
     RawStoreMap() = default;
 
     RawStoreMap(const std::string &body);
@@ -148,8 +148,9 @@ public:
     std::string Geometry;
 };
 
-class AdjacencyPoints: public IUnMarshaller {
-public:
+class AdjacencyPoints : public IUnMarshaller
+{
+  public:
     AdjacencyPoints() = default;
 
     explicit AdjacencyPoints(const std::string &body);
@@ -163,7 +164,7 @@ public:
 };
 
 //
-//class StoreMapActionRequest : public IRequestMarshaller
+// class StoreMapActionRequest : public IRequestMarshaller
 //{
 //  public:
 //    StoreMapActionRequest();

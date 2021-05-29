@@ -18,7 +18,7 @@ class StoreModel
   public:
     StoreModel(const std::string &data);
 
-    int ID; // store ID
+    int ID;   // store ID
     int Size; // size X adjacency
     std::vector<double> Adjacency;
 };

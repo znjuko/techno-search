@@ -7,8 +7,8 @@
 
 #include "adapter.h"
 #include "finder.h"
-#include "path_storage_models.h"
 #include "path_models.h"
+#include "path_storage_models.h"
 #include "storage.h"
 
 class PathManager

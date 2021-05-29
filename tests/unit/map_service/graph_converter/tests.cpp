@@ -45,7 +45,6 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
     converter.Generate();
 }
 
-
 TEST(GRAPH_CONVERTER, GENERATE_2)
 {
     Map map;
@@ -63,7 +62,6 @@ TEST(GRAPH_CONVERTER, GENERATE_2)
     p1.AddPoint(Point(6, 6));
     p1.AddPoint(Point(6, 3));
     p1.InitLines();
-
 
     std::vector<Polygon> features;
     features.push_back(p1);
