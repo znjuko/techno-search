@@ -68,3 +68,37 @@ std::shared_ptr<AdjecencyPoints> MapStorage::GetStoreAdjecencyCoords(const int &
     auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
     return std::make_shared<AdjecencyPoints>(AdjecencyPoints(selectStoreOutput));
 }
+
+StorageForCounterWithPoints::StorageForCounterWithPoints(std::shared_ptr<mongocxx::database> database) : database(database){};
+
+
+std::shared_ptr<ShopWithCountersAndPointsModel> StorageForCounterWithPoints::GetCountersWithPointsByShopID(const int &shopID)
+{
+    auto storeCollection = database->collection("counters_with_points");
+
+    auto selectCountersWithPointsResult = storeCollection.find_one(make_document(kvp("ID", shopID)));
+
+    if (!selectCountersWithPointsResult)
+    {
+        throw StoreGraphNotFound(shopID);
+    }
+
+    auto selectCountersWithPointsOutput = bsoncxx::to_json(*selectCountersWithPointsResult);
+    return std::make_shared<ShopWithCountersAndPointsModel>(selectCountersWithPointsOutput);
+}
+
+void StorageForCounterWithPoints::AddCountersWithPoints(std::shared_ptr<ShopWithCountersAndPointsModel> data)
+{
+    auto storeCollection = database->collection("counters_with_points");
+    auto builder = bsoncxx::builder::stream::document{};
+    builder << "ShopID" << data->ShopID;
+    auto array_builder = builder << "objects" << bsoncxx::builder::stream::open_array;
+    for (auto & counterWithPoint : data->counterWithPoints) {
+        array_builder << make_document(
+            kvp("CounterID", counterWithPoint.CounterID),
+            kvp("PointID", counterWithPoint.PointID));
+    }
+    array_builder << bsoncxx::builder::stream::close_array;
+    auto doc = builder << bsoncxx::builder::stream::finalize;
+    storeCollection.insert_one(doc.view());
+}
