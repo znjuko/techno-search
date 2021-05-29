@@ -1,8 +1,8 @@
 #include "graph_converter.h"
 #include "shop_map.h"
-
 #include <gtest/gtest.h>
 #include <map>
+#include <time.h>
 
 TEST(GRAPH_CONVERTER, GENERATE_1)
 {
@@ -42,7 +42,17 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
 
     GraphConverter converter;
     converter.SetMap(map);
-    converter.Generate();
+
+    clock_t start = clock();
+
+    map.InitPointsAdjTable();
+
+
+    clock_t end = clock();
+    double elapsed = double(end - start)/CLOCKS_PER_SEC;
+
+    std::cout << std::endl << elapsed << std::endl;
+
 }
 
 
@@ -62,6 +72,7 @@ TEST(GRAPH_CONVERTER, GENERATE_2)
     p1.AddPoint(Point(3, 6));
     p1.AddPoint(Point(6, 6));
     p1.AddPoint(Point(6, 3));
+    p1.SetID(13);
     p1.InitLines();
 
 
@@ -72,5 +83,5 @@ TEST(GRAPH_CONVERTER, GENERATE_2)
 
     GraphConverter converter;
     converter.SetMap(map);
-    converter.Generate();
+    map.InitPointsAdjTable();
 }

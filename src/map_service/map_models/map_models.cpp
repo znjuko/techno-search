@@ -2,7 +2,7 @@
 #include <cmath>
 #include <nlohmann/json.hpp>
 
-Point::Point(double _x, double _y) : x(_x), y(_y) {}
+Point::Point(double _x, double _y) : x(_x), y(_y), counterID(-1) {}
 
 Point Line::GetMiddleOfLine() const {
     Point p((p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
@@ -33,7 +33,7 @@ Point* Line::LineIntersectionWithLine(Line l) {
 
 Line::Line(Point _p1, Point _p2) : p1(_p1), p2(_p2) {}
 
-Polygon::Polygon() : vertices(), lines(), count(0) {}
+Polygon::Polygon() : vertices(), lines(), count(0), id(-1) {}
 
 bool Polygon::IsPointInsidePolygon(Point p) {
     Point p1 = p;
@@ -172,9 +172,18 @@ bool Polygon::operator==(Polygon p) const {
 Point Polygon::GetFeaturePoint() {
 //    if(count == 4 || count == 3) {
 //        return  *this->GetPolygonCenter();
-//    }
+//
+    Point p = vertices[0];
+    p.counterID = 1;
 
-    return vertices[0];
+    return p;
+}
+void Polygon::SetID(int _id) {
+    id = _id;
+}
+int Polygon::GetID()
+{
+    return id;
 }
 
 void Line::Show() const {
@@ -203,6 +212,13 @@ double Point::GetDistanceToPoint(const Point& p) {
 
 void Point::Show() const {
     std::cout << '(' << this->x << ", " << this->y << ')';
+}
+
+Point::Point()
+{
+    x = 0;
+    y = 0;
+    counterID = -1;
 }
 
 //void StoreMap::Marshall(const std::string &body)

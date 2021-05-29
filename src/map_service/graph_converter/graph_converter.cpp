@@ -6,7 +6,7 @@
 #include <iostream>
 #include "iomanip"
 
-std::vector<std::vector<double>> GraphConverter::Generate() {
+std::vector<Point> GraphConverter::GetPoints() {
 
     std::vector<Point> points = std::vector<Point>();
 
@@ -61,9 +61,7 @@ std::vector<std::vector<double>> GraphConverter::Generate() {
         std::cout << std::endl;
     }
 
-    std::vector<std::vector<double>> adjacencyTable = getAdjacencyTableFromPoints(points);
-
-    return adjacencyTable;
+    return points;
 }
 
 void GraphConverter::SetMap(Map m) {
@@ -183,16 +181,6 @@ std::vector<Point> GraphConverter::getFeaturesCenters(const double &middleX) {
     std::vector<Point> intersectedPoints = getAllIntersectionsWithVerticalLine(middleLine);
     std::sort(intersectedPoints.begin(), intersectedPoints.end(), [](const Point& p1,const Point& p2){return p1.y <= p2.y;});
 
-//    std::vector<Polygon> intersectedFeatures = std::vector<Polygon>();
-//    for(auto  feature : features) {
-//        std::vector<Point*> interactions = feature.IntersectionWithVerticalLine(middleLine);
-//
-//        if(interactions.empty()) {
-//            continue;
-//        }
-//        intersectedFeatures.push_back(feature);
-//    }
-
     std::vector<Line> allPoints = std::vector<Line>();
 
 
@@ -214,7 +202,7 @@ std::vector<Point> GraphConverter::getFeaturesCenters(const double &middleX) {
     return featureCenters;
 }
 
-std::vector<std::vector<double>> GraphConverter::getAdjacencyTableFromPoints(const std::vector<Point> &points) {
+std::vector<std::vector<double>> GraphConverter::GetAdjacencyTableFromPoints(const std::vector<Point> &points) {
 
     std::vector<Polygon> features = map.GetFeatures();
 
@@ -253,14 +241,22 @@ std::vector<std::vector<double>> GraphConverter::getAdjacencyTableFromPoints(con
             int flag = 1;
             for(auto feature : features) {
 
+                if(flag == 0){
+                    break;
+                }
+
                 std::vector<Point*> interactions = feature.IntersectionWithVerticalLine(line);
                 if(!interactions.empty()) {
                     for(auto point : interactions) {
                         if((point->x <= std::max(rightPoint.x, leftPoint.x) && point->x >= std::min(rightPoint.x, leftPoint.x) && point->y <= std::max(rightPoint.y, leftPoint.y) && point->y >= std::min(rightPoint.y, leftPoint.y))) {
-                            flag = 0;
-                            break;
+                            if(rightPoint.counterID != -1 && *point == rightPoint) {
+                                flag = 1;
+                            }
+                            else {
+                                flag = 0;
+                                break;
+                            }
                         }
-
                     }
                 }
             }

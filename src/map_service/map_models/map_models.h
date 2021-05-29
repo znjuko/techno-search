@@ -13,6 +13,7 @@ using json = nlohmann::json;
 class Point {
 
 public:
+    Point();
     double x, y;
 
     void Show() const;
@@ -24,6 +25,8 @@ public:
     bool operator== (Point p) const;
 
     double GetDistanceToPoint(const Point& p);
+
+    int counterID;
 
 };
 
@@ -78,12 +81,16 @@ public:
 
     Point GetFeaturePoint();
 
+    void SetID(int _id);
+
+    int GetID();
+
 private:
 
     std::vector<Point> vertices;
     std::vector<Line> lines;
     size_t count;
-    size_t id;    // id прилавка
+    int id;
 };
 
 //class StoreMap : public IMarshaller

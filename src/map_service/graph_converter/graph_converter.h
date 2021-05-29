@@ -9,7 +9,8 @@ class GraphConverter{
 
 public:
     void SetMap(Map m);
-    std::vector<std::vector<double>> Generate();
+    std::vector<Point> GetPoints();
+    std::vector<std::vector<double>> GetAdjacencyTableFromPoints(const std::vector<Point>& points);
 private:
 
     std::vector<double> getAllx();
@@ -17,7 +18,6 @@ private:
     std::vector<Point> getBasePoints(const std::vector<Point>& leftPoints, const std::vector<Point>& rightPoints);
     std::vector<Polygon> getFeaturesIntersectedWithPoints(const std::vector<Point>& points);
     std::vector<Point> getFeaturesCenters(const double &middleX);
-    std::vector<std::vector<double>> getAdjacencyTableFromPoints(const std::vector<Point>& points);
     std::vector<Point> getFeaturesPoints(const std::vector<Polygon>& features);
     Map map;
 };
