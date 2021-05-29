@@ -1,8 +1,7 @@
 #ifndef TECHNO_SEARCH_PATH_H
 #define TECHNO_SEARCH_PATH_H
 
-#include "models.h"
-
+#include <algorithm>
 #include <vector>
 
 class PathFinder

@@ -5,7 +5,7 @@
 #ifndef TECHNO_ALGO_ADAPTER_H
 #define TECHNO_ALGO_ADAPTER_H
 
-#include "models.h"
+#include "map_request_models.h"
 
 #include <vector>
 

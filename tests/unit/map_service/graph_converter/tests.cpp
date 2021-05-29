@@ -1,5 +1,6 @@
 #include "graph_converter.h"
 #include "shop_map.h"
+
 #include <gtest/gtest.h>
 #include <map>
 #include <time.h>
@@ -50,9 +51,8 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
 
     map.InitPointsAdjTable();
 
-
     clock_t end = clock();
-    double elapsed = double(end - start)/CLOCKS_PER_SEC;
+    double elapsed = double(end - start) / CLOCKS_PER_SEC;
 
     std::cout << std::endl << elapsed << std::endl;
 
@@ -63,10 +63,7 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
     {
         std::cout << it->first << ' ' << it->second << std::endl;
     }
-
-
 }
-
 
 TEST(GRAPH_CONVERTER, GENERATE_2)
 {
@@ -87,12 +84,10 @@ TEST(GRAPH_CONVERTER, GENERATE_2)
     p1.SetID(13);
     p1.InitLines();
 
-
     std::vector<Polygon> features;
     features.push_back(p1);
     map.SetFeatures(features);
     map.SetShop(shop);
-
 
     GraphConverter converter;
     converter.SetMap(map);
@@ -105,6 +100,32 @@ TEST(GRAPH_CONVERTER, GENERATE_2)
     {
         std::cout << it->first << ' ' << it->second << std::endl;
     }
+}
 
+TEST(GRAPH_CONVERTER, GENERATE_2)
+{
+    Map map;
 
+    Polygon shop;
+    shop.AddPoint(Point(0, 0));
+    shop.AddPoint(Point(0, 10));
+    shop.AddPoint(Point(10, 10));
+    shop.AddPoint(Point(10, 0));
+    shop.InitLines();
+
+    Polygon p1;
+    p1.AddPoint(Point(3, 3));
+    p1.AddPoint(Point(3, 6));
+    p1.AddPoint(Point(6, 6));
+    p1.AddPoint(Point(6, 3));
+    p1.InitLines();
+
+    std::vector<Polygon> features;
+    features.push_back(p1);
+    map.SetFeatures(features);
+    map.SetShop(shop);
+
+    GraphConverter converter;
+    converter.SetMap(map);
+    converter.Generate();
 }

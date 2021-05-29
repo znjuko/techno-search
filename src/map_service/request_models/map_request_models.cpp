@@ -1,9 +1,86 @@
-#include "map_models.h"
+#include "map_request_models.h"
 
 #include <cmath>
-#include <nlohmann/json.hpp>
+nlohmann::json AdjacencyPoints::UnMarshall()
+{
+    auto output = nlohmann::json();
 
-Point::Point(double _x, double _y) : x(_x), y(_y), counterID(-1)
+    output["storeID"] = StoreID;
+
+    auto points = nlohmann::json::array();
+    for (int i = 0; i < Points.size(); ++i)
+    {
+        auto p = nlohmann::json();
+        p["pointID"] = i;
+        p["X"] = Points[i].x;
+        p["Y"] = Points[i].y;
+        points.push_back(p);
+    }
+    output["points"] = points;
+
+    return output;
+}
+
+AdjacencyPoints::AdjacencyPoints(const std::string &body)
+{
+    auto jsonBody = json::parse(body);
+
+    StoreID = jsonBody["storeID"];
+    int size = jsonBody["size"];
+    Points = std::vector<Point>(size, Point());
+
+    auto points = jsonBody["adjacency_table"];
+    for (auto p : points)
+    {
+        int pos = p["pointID"];
+        Points[pos] = Point(p["X"], p["Y"]);
+    }
+}
+
+void StoreActionRequest::Marshall(const Http::Uri::Query &query)
+{
+    auto storeParam = query.get("storeID");
+    if (storeParam->empty())
+    {
+        throw EmptyValue("storeID");
+    }
+    StoreID = boost::lexical_cast<int>(*storeParam);
+}
+
+StoreActionRequest::StoreActionRequest(){
+
+};
+
+nlohmann::json StoreAdjacencyPointsResponse::UnMarshall()
+{
+    nlohmann::json output;
+    nlohmann::json outputArray = nlohmann::json::array();
+    for (auto item = array.begin(); item != array.end(); ++item)
+    {
+        outputArray.push_back(item->UnMarshall());
+    }
+    output["adjacency"] = outputArray;
+
+    return output;
+};
+
+StoreCountersAdjacency::StoreCountersAdjacency(const std::string &data)
+{
+    auto jsonData = json::parse(data);
+
+    ShopID = jsonData["storeID"];
+
+    auto adj = jsonData["objects"];
+    for (const auto &item : adj)
+    {
+        int counterID = jsonData["CounterID"];
+        int pointID = jsonData["PointID"];
+        auto countAdj = CounterWithPoints(counterID, pointID);
+        counterWithPoints.push_back(countAdj);
+    }
+}
+
+Point::Point(double _x, double _y) : x(_x), y(_y)
 {
 }
 
@@ -41,7 +118,7 @@ Line::Line(Point _p1, Point _p2) : p1(_p1), p2(_p2)
 {
 }
 
-Polygon::Polygon() : vertices(), lines(), count(0), id(-1)
+Polygon::Polygon() : vertices(), lines(), count(0)
 {
 }
 
@@ -172,6 +249,7 @@ void Polygon::ShowLines()
         l.Show();
     }
 }
+
 bool Polygon::IsPointOnPolygon(Point p)
 {
 
@@ -193,6 +271,7 @@ bool Polygon::IsPointOnPolygon(Point p)
 
     return false;
 }
+
 bool Polygon::operator==(Polygon p) const
 {
     std::vector<Point> pVertices = p.GetVertices();
@@ -212,23 +291,19 @@ bool Polygon::operator==(Polygon p) const
 
     return true;
 }
+
 Point Polygon::GetFeaturePoint()
 {
     //    if(count == 4 || count == 3) {
     //        return  *this->GetPolygonCenter();
-    //
-    Point p = vertices[0];
-    p.counterID = 1;
+    //    }
 
-    return p;
+    return vertices[0];
 }
-void Polygon::SetID(int _id)
+
+void Polygon::SetID(const int &id)
 {
-    id = _id;
-}
-int Polygon::GetID()
-{
-    return id;
+    this->id = id;
 }
 
 void Line::Show() const
@@ -254,6 +329,7 @@ bool Line::LineIntersectionWithPoint(Point p)
 
     return false;
 }
+
 double Point::GetDistanceToPoint(const Point &p)
 {
     return sqrt(pow(this->x - p.x, 2) + pow(this->y - p.y, 2));
@@ -264,9 +340,123 @@ void Point::Show() const
     std::cout << '(' << this->x << ", " << this->y << ')';
 }
 
-Point::Point()
+void StoreMap::Marshall(const std::string &body)
 {
-    x = 0;
-    y = 0;
-    counterID = -1;
+    auto jsonBody = json::parse(body);
+    StoreID = jsonBody["shopID"];
+
+    for (const auto &geometry : jsonBody["geometry"])
+    {
+        for (const auto &coord : geometry["coordinates"])
+        {
+            StoreGeometry.AddPoint(Point(coord[0], coord[1]));
+        }
+    }
+    StoreGeometry.InitLines();
+
+    for (const auto &geometry : jsonBody["inherit"])
+    {
+        auto poly = Polygon();
+        for (const auto &coord : geometry["coordinates"])
+        {
+            poly.AddPoint(Point(coord[0], coord[1]));
+        }
+        poly.InitLines();
+        poly.SetID(geometry["props"][0]["value"]);
+        InheritObjects.push_back(poly);
+    }
 }
+
+StoreMap::StoreMap()
+{
+}
+
+void RawStoreMap::Marshall(const std::string &body)
+{
+    auto jsonBody = json::parse(body);
+    StoreID = jsonBody["storeID"];
+    Inherit = jsonBody["inherit"];
+    Geometry = jsonBody["geometry"];
+}
+
+nlohmann::json RawStoreMap::UnMarshall()
+{
+    auto output = nlohmann::json();
+
+    output["storeID"] = StoreID;
+    output["inherit"] = Inherit;
+    output["geometry"] = Geometry;
+
+    return nlohmann::json();
+}
+
+RawStoreMap::RawStoreMap(const std::string &body)
+{
+    auto jsonBody = json::parse(body);
+    StoreID = jsonBody["ID"];
+    Inherit = jsonBody["inherit"];
+    Geometry = jsonBody["geometry"];
+}
+
+void GetStorePathRequest::Marshall(const Rest::Request &req)
+{
+    StoreID = req.param(":shopID").as<int>();
+
+    auto fromNodeParam = req.query().get("startNode");
+    if (fromNodeParam->empty())
+    {
+        throw EmptyValue("startNode");
+    }
+    FromNode = boost::lexical_cast<int>(*fromNodeParam);
+
+    auto toNodeParam = req.query().get("endNode");
+    if (toNodeParam->empty())
+    {
+        throw EmptyValue("endNode");
+    }
+    ToNode = boost::lexical_cast<int>(*toNodeParam);
+}
+
+GetStorePathRequest::GetStorePathRequest() : StoreID(0), FromNode(0), ToNode(0)
+{
+}
+
+GetStorePathResponse::GetStorePathResponse(std::vector<size_t> Path) : Array(std::move(Path))
+{
+}
+
+nlohmann::json GetStorePathResponse::UnMarshall()
+{
+    nlohmann::json output;
+    nlohmann::json outputArray = nlohmann::json::array();
+    for (size_t &item : Array)
+    {
+        outputArray.push_back(item);
+    }
+    output["path"] = outputArray;
+
+    return output;
+}
+
+StoreModel::StoreModel(const std::string &data)
+{
+    auto jsonData = json::parse(data);
+
+    ID = jsonData["ID"];
+    Size = jsonData["size"];
+
+    auto adj = jsonData["adjacency_table"];
+    for (const auto &item : adj)
+    {
+        Adjacency.push_back(boost::lexical_cast<double>(item));
+    }
+}
+
+// void StoreActionRequest::Marshall(const Rest::Request &req)
+//{
+//    StoreID = req.param(":shopID").as<int>();
+//}
+//
+// StoreActionRequest::StoreActionRequest()
+//{
+//}

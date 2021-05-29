@@ -1,38 +1,41 @@
+//
+// Created by Никита Черных on 29.05.2021.
+//
+
 #ifndef TECHNO_SEARCH_MAP_MODELS_H
 #define TECHNO_SEARCH_MAP_MODELS_H
 
+#include <iostream>
 #include <nlohmann/json.hpp>
 #include <vector>
-#include <iostream>
-//#include "common_exceptions.h"
-//#include "marshaller.h"
-
 
 using json = nlohmann::json;
 
-class Point {
+class Point
+{
 
-public:
+  public:
     Point();
+
     double x, y;
 
     void Show() const;
 
-    Point(double _x, double  _y);
+    Point(double _x, double _y);
 
     ~Point() = default;
 
-    bool operator== (Point p) const;
+    bool operator==(Point p) const;
 
-    double GetDistanceToPoint(const Point& p);
+    double GetDistanceToPoint(const Point &p);
 
     int counterID;
-
 };
 
-class Line {
+class Line
+{
 
-public:
+  public:
     Point p1, p2;
 
     void Show() const;
@@ -43,16 +46,15 @@ public:
 
     Point GetMiddleOfLine() const;
 
-    Point* LineIntersectionWithLine(Line l);
+    Point *LineIntersectionWithLine(Line l);
 
     bool LineIntersectionWithPoint(Point p);
-
 };
 
+class Polygon
+{
 
-class Polygon {
-
-public:
+  public:
     Polygon();
 
     ~Polygon() = default;
@@ -61,7 +63,7 @@ public:
 
     void ShowLines();
 
-    Point* GetPolygonCenter();
+    Point *GetPolygonCenter();
 
     Point GetPointWithLowestX();
 
@@ -73,11 +75,11 @@ public:
 
     std::vector<Point> GetVertices();
 
-    std::vector<Point*> IntersectionWithVerticalLine(Line l);
+    std::vector<Point *> IntersectionWithVerticalLine(Line l);
 
     bool IsPointOnPolygon(Point p);
 
-    bool operator== (Polygon p) const;
+    bool operator==(Polygon p) const;
 
     Point GetFeaturePoint();
 
@@ -85,50 +87,11 @@ public:
 
     int GetID();
 
-private:
-
+  private:
     std::vector<Point> vertices;
     std::vector<Line> lines;
     size_t count;
     int id;
 };
-
-//class StoreMap : public IMarshaller
-//{
-//  public:
-//    StoreMap();
-//
-//    void Marshall(const std::string &body) override;
-//
-//    ~StoreMap() override = default;
-//
-//    Polygon StoreGeometry;
-//    std::vector<Polygon> InheritObjects;
-//    size_t StoreID{};
-//};
-//
-//class RawStoreMap : public IMarshaller
-//{
-//  public:
-//    RawStoreMap() = default;
-//
-//    void Marshall(const std::string &body) override;
-//
-//    ~RawStoreMap() override = default;
-//
-//    std::string RawMap;
-//};
-//
-//class StoreMapActionRequest : public IRequestMarshaller
-//{
-//  public:
-//    StoreMapActionRequest();
-//
-//    void Marshall(const Rest::Request &req) override;
-//
-//    ~StoreMapActionRequest() override = default;
-//
-//    int StoreID;
-//};
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H

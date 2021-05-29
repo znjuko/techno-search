@@ -1,2 +1,2 @@
 format-code:
-	./formatter.sh  .
+	./formatter.sh src && ./formatter.sh include && ./formatter.sh tests

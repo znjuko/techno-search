@@ -1,4 +1,4 @@
-set(LIBRARY_NAME path_storage)
+set(LIBRARY_NAME map_storage)
 
 file(GLOB SRC *.h *.cpp)
 
@@ -13,7 +13,8 @@ include_directories(${LIBBSONCXX_INCLUDE_DIR})
 
 target_link_libraries(
         ${LIBRARY_NAME} PRIVATE
-        mongo::bsoncxx_shared mongo::mongocxx_shared
-        path_storage_models
+        mongo::bsoncxx_shared
+        mongo::mongocxx_shared
+        map_request_models
         path_exceptions
 )

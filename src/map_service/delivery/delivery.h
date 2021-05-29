@@ -5,10 +5,11 @@
 #ifndef TECHNO_SEARCH_DELIVERY_H
 #define TECHNO_SEARCH_DELIVERY_H
 
-#include "map_models.h"
+#include "map_request_models.h"
 #include "map_usecase.h"
 #include "reader.h"
 #include "router_setupper.h"
+#include "storage.h"
 #include "writer.h"
 
 #include <pistache/endpoint.h>
@@ -29,7 +30,11 @@ class MapService : IRouterSetupper
 
     void GetShopMap(const Rest::Request &req, Http::ResponseWriter res);
 
+    void GetCounterAdjacency(const Rest::Request &req, Http::ResponseWriter res);
+
     void DeleteShopMap(const Rest::Request &req, Http::ResponseWriter res);
+
+    void GetStorePath(const Rest::Request &req, Http::ResponseWriter res);
 
     void SetupService(Rest::Router *router) override;
 

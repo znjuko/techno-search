@@ -2,7 +2,7 @@ find_package(nlohmann_json 3.2.0 REQUIRED)
 FIND_PACKAGE(Boost 1.40 COMPONENTS program_options REQUIRED)
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 
-set(LIBRARY_NAME path_models)
+set(LIBRARY_NAME map_request_models)
 
 file(GLOB SRC *.h *.cpp)
 
@@ -10,10 +10,9 @@ add_library(${LIBRARY_NAME} STATIC ${SRC})
 
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-#find_package(PkgConfig)
-#pkg_check_modules(Pistache REQUIRED IMPORTED_TARGET libpistache)
-
 target_link_libraries(${LIBRARY_NAME} PRIVATE
+        nlohmann_json::nlohmann_json
         marshaller unmarshaller
-        nlohmann_json::nlohmann_json pistache
-        ${Boost_LIBRARIES} common_exceptions)
+        common_exceptions pistache
+        ${Boost_LIBRARIES}
+        )

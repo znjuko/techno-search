@@ -1,7 +1,8 @@
 #include "shop_map.h"
 
-#include "map_models.h"
 #include "graph_converter.h"
+#include "map_models.h"
+
 #include <map>
 #include <utility>
 #include <vector>
@@ -32,22 +33,26 @@ void Map::SetFeatures(std::vector<Polygon> f)
 {
     this->features = std::move(f);
 }
-std::vector<Polygon> Map::GetFeatures() {
+std::vector<Polygon> Map::GetFeatures()
+{
     return features;
 }
 
-void Map::InitPointsAdjTable() {
+void Map::InitPointsAdjTable()
+{
     GraphConverter converter;
     converter.SetMap(*this);
     this->basePoints = converter.GetPoints();
     this->adjTable = converter.GetAdjacencyTableFromPoints(this->basePoints);
 }
 
-std::map<int, int> Map::GetCountersPosition() {
+std::map<int, int> Map::GetCountersPosition()
+{
     std::map<int, Point> counterPointID;
     std::map<int, int> counterPositionID;
 
-    for(auto f : features) {
+    for (auto f : features)
+    {
         int _id = f.GetID();
         counterPointID[_id] = f.GetFeaturePoint();
     }
@@ -60,8 +65,10 @@ std::map<int, int> Map::GetCountersPosition() {
         int pos = -1;
         Point p = it->second;
 
-        for(int i = 0; i < basePoints.size(); ++i) {
-            if(p == basePoints[i]) {
+        for (int i = 0; i < basePoints.size(); ++i)
+        {
+            if (p == basePoints[i])
+            {
                 pos = i + 1;
             }
         }
@@ -69,14 +76,16 @@ std::map<int, int> Map::GetCountersPosition() {
         counterPositionID[counterID] = pos;
     }
 
-    //id counter/ point position
+    // id counter/ point position
     return counterPositionID;
 }
 
-void Map::SetID(int _id) {
+void Map::SetID(int _id)
+{
     id = _id;
 }
 
-std::vector<Point> Map::GetBasePoints() {
+std::vector<Point> Map::GetBasePoints()
+{
     return basePoints;
 }

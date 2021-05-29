@@ -1,6 +1,6 @@
 find_package(nlohmann_json 3.2.0 REQUIRED)
-FIND_PACKAGE( Boost 1.40 COMPONENTS program_options REQUIRED )
-INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
+FIND_PACKAGE(Boost 1.40 COMPONENTS program_options REQUIRED)
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 
 set(LIBRARY_NAME map_delivery)
 
@@ -16,7 +16,9 @@ target_link_libraries(
         nlohmann_json::nlohmann_json
         pistache router_setupper
         request_reader response_writer
-        map_models
+        map_request_models
+        map_storage
+        map_usecase
         common_exceptions
         ${Boost_LIBRARIES}
 )
