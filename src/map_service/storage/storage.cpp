@@ -57,7 +57,7 @@ void MapStorage::CreateStoreAdjacencyCoords(const int &storeID, const std::vecto
     adjCoordCollection.insert_one(doc.view());
 }
 
-std::shared_ptr<AdjecencyPoints> MapStorage::GetStoreAdjacencyCoords(const int &storeID) {
+std::shared_ptr<AdjacencyPoints> MapStorage::GetStoreAdjacencyCoords(const int &storeID) {
     auto adjCoordCollection = database->collection("store_adj_coords");
 
     auto selectStoreResult = adjCoordCollection.find_one(make_document(kvp("ID", storeID)));
@@ -66,7 +66,7 @@ std::shared_ptr<AdjecencyPoints> MapStorage::GetStoreAdjacencyCoords(const int &
     }
 
     auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
-    return std::make_shared<AdjecencyPoints>(AdjecencyPoints(selectStoreOutput));
+    return std::make_shared<AdjacencyPoints>(AdjacencyPoints(selectStoreOutput));
 }
 
 std::shared_ptr<StoreCountersAdjacency> MapStorage::GetStoreCountersAdjacency(const int &shopID)

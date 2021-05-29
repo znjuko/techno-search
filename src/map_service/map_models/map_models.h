@@ -148,15 +148,15 @@ public:
     std::string Geometry;
 };
 
-class AdjecencyPoints: public IUnMarshaller {
+class AdjacencyPoints: public IUnMarshaller {
 public:
-    AdjecencyPoints() = default;
+    AdjacencyPoints() = default;
 
-    explicit AdjecencyPoints(const std::string &body);
+    explicit AdjacencyPoints(const std::string &body);
 
     nlohmann::json UnMarshall() override;
 
-    ~AdjecencyPoints() override = default;
+    ~AdjacencyPoints() override = default;
 
     int StoreID;
     std::vector<Point> Points;

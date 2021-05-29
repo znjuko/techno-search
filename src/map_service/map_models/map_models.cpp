@@ -10,8 +10,8 @@ StoreCountersAdjacency::StoreCountersAdjacency(const std::string &data) {
     for (const auto &item : adj) {
         int counterID = jsonData["CounterID"];
         int pointID = jsonData["PointID"];
-        CounterWithPoints a (counterID, pointID);
-        counterWithPoints.push_back(a);
+        auto countAdj = CounterWithPoints(counterID, pointID);
+        counterWithPoints.push_back(countAdj);
     }
 }
 
@@ -288,7 +288,7 @@ RawStoreMap::RawStoreMap(const std::string &body) {
 //{
 //}
 
-nlohmann::json AdjecencyPoints::UnMarshall() {
+nlohmann::json AdjacencyPoints::UnMarshall() {
     auto output = nlohmann::json();
 
     output["storeID"] = StoreID;
@@ -306,7 +306,7 @@ nlohmann::json AdjecencyPoints::UnMarshall() {
     return output;
 }
 
-AdjecencyPoints::AdjecencyPoints(const std::string &body) {
+AdjacencyPoints::AdjacencyPoints(const std::string &body) {
     auto jsonBody = json::parse(body);
 
     StoreID = jsonBody["ID"];
