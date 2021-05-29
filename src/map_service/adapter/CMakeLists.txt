@@ -11,5 +11,5 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(
         ${LIBRARY_NAME}
         PRIVATE
-        map_models
+        map_request_models
 )

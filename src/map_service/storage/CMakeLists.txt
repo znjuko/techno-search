@@ -15,6 +15,6 @@ target_link_libraries(
         ${LIBRARY_NAME} PRIVATE
         mongo::bsoncxx_shared
         mongo::mongocxx_shared
-        map_models
+        map_request_models
         path_exceptions
 )

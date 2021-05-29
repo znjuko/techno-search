@@ -26,7 +26,7 @@ using bsoncxx::builder::stream::finalize;
 using bsoncxx::builder::stream::open_array;
 
 #include "exceptions.h"
-#include "map_models.h"
+#include "map_request_models.h"
 
 class MapStorage
 {

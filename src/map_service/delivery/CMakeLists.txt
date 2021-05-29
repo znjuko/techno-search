@@ -16,7 +16,7 @@ target_link_libraries(
         nlohmann_json::nlohmann_json
         pistache router_setupper
         request_reader response_writer
-        map_models
+        map_request_models
         map_storage
         map_usecase
         common_exceptions
