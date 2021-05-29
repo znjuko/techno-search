@@ -5,7 +5,7 @@
 #ifndef TECHNO_ALGO_ADAPTER_H
 #define TECHNO_ALGO_ADAPTER_H
 
-#include "path_storage_models.h"
+#include "models.h"
 
 #include <vector>
 

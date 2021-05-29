@@ -1,9 +1,9 @@
 #include "shop_map.h"
 
+#include "graph_converter.h"
 #include "map_models.h"
 
 #include <map>
-#include <utility>
 #include <vector>
 
 std::vector<Polygon> Map::GetCounters()
@@ -20,19 +20,11 @@ Polygon Map::GetShop()
     return shop;
 }
 
-void Map::SetCounters(std::map<Polygon, int> c)
+void Map::SetCounters(std::map<Polygon, int> counters)
 {
-    this->counters = std::move(c);
+    this->counters = counters;
 }
-void Map::SetShop(const Polygon &s)
+void Map::SetShop(Polygon shop)
 {
-    this->shop = s;
-}
-void Map::SetFeatures(std::vector<Polygon> f)
-{
-    this->features = std::move(f);
-}
-std::vector<Polygon> Map::GetFeatures()
-{
-    return features;
+    this->shop = shop;
 }

@@ -22,7 +22,7 @@ class IMarshaller
 class IQueryMarshaller
 {
   public:
-    virtual void Marshall(const Http::Uri::Query &query) = 0;
+    virtual void Marshall(const Http::Uri::Query &body) = 0;
 
     virtual ~IQueryMarshaller() = default;
 };

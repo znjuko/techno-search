@@ -1,5 +1,5 @@
-find_package(nlohmann_json 3.9.0 REQUIRED)
-find_package(Boost 1.40 COMPONENTS program_options REQUIRED )
+find_package(nlohmann_json 3.9.1 REQUIRED)
+find_package(Boost 1.54.0 COMPONENTS program_options REQUIRED )
 include_directories( ${Boost_INCLUDE_DIR} )
 
 set(LIBRARY_NAME path_storage_models)

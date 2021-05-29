@@ -10,18 +10,9 @@ class GraphConverter
 {
 
   public:
-    void SetMap(Map m);
-    std::vector<std::vector<double>> Generate();
+    std::vector<std::vector<double>> Generate(Map map);
 
   private:
-    std::vector<double> getAllx();
-    std::vector<Point> getAllIntersectionsWithVerticalLine(Line line);
-    std::vector<Point> getBasePoints(const std::vector<Point> &leftPoints, const std::vector<Point> &rightPoints);
-    std::vector<Polygon> getFeaturesIntersectedWithPoints(const std::vector<Point> &points);
-    std::vector<Point> getFeaturesCenters(const double &middleX);
-    std::vector<std::vector<double>> getAdjacencyTableFromPoints(const std::vector<Point> &points);
-    std::vector<Point> getFeaturesPoints(const std::vector<Polygon> &features);
-    Map map;
 };
 
 #endif // TECHNO_SEARCH_GRAPH_CONVERTER_H

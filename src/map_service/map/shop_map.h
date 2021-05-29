@@ -5,6 +5,7 @@
 
 #include <map>
 #include <vector>
+//#include "graph_converter.h"
 
 class Map
 {
@@ -12,15 +13,12 @@ class Map
   public:
     std::vector<Polygon> GetCounters();
     Polygon GetShop();
-    std::vector<Polygon> GetFeatures();
     void SetCounters(std::map<Polygon, int> counters);
-    void SetShop(const Polygon &shop);
-    void SetFeatures(std::vector<Polygon> features);
+    void SetShop(Polygon shop);
 
   private:
     int id;
     std::map<Polygon, int> counters;
-    std::vector<Polygon> features;
     Polygon shop;
 };
 

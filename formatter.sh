@@ -51,7 +51,10 @@ find-dominating-file() {
 
 # Run clang-format -i on all of the things
 for dir in "$@"; do
-    pushd "${dir}" &>/dev/null
+    if ! [[ "${dir}" = "vendor" ]]; then
+        echo "${dir}"
+        pushd "${dir}" &>/dev/null
+    fi
     if ! find-dominating-file . .clang-format; then
         echo "Failed to find dominating .clang-format starting at $PWD"
         continue

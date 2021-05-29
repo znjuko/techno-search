@@ -2,8 +2,8 @@
 // Created by Никита Черных on 21.05.2021.
 //
 
-#ifndef TECHNO_ALGO_COMMON_EXCEPTIONS_H
-#define TECHNO_ALGO_COMMON_EXCEPTIONS_H
+#ifndef TECHNO_SEARCH_COMMON_EXCEPTIONS_H
+#define TECHNO_SEARCH_COMMON_EXCEPTIONS_H
 
 #include <exception>
 #include <string>
@@ -59,4 +59,4 @@ class WrongFieldValue : public std::exception
     std::string msg;
 };
 
-#endif // TECHNO_ALGO_COMMON_EXCEPTIONS_H
+#endif

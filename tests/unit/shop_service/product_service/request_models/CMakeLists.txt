@@ -1,13 +1,39 @@
-file(GLOB SRCS *.cpp)
+project(shop-service-delivery)
 
-project(store_service_models)
+add_executable(${PROJECT_NAME}  models.cpp main.cpp)
 
-ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS})
+find_package(nlohmann_json 3.2.0 REQUIRED)
+FIND_PACKAGE( Boost 1.54.0 COMPONENTS program_options REQUIRED )
+INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 
-TARGET_LINK_LIBRARIES(${PROJECT_NAME}
-        product_models
+target_link_libraries(
+        ${PROJECT_NAME}
+        PRIVATE
+        ## common
+        nlohmann_json::nlohmann_json
+        ${Boost_LIBRARIES}
+        pistache
+        #        clickhouse-cpp-lib
+
+        request_reader
+        response_writer
+        marshaller
+        unmarshaller
+        common_exceptions
+        router_setupper
+
+        pthread
+        Threads::Threads
         gtest
-        )
+        ## shop service only
+        postgres_storage
+        postgres_reader
+        postgres_query
 
-add_test(NAME ${PROJECT_NAME}
-        COMMAND ${PROJECT_NAME})
+        products_delivery
+        products_query
+        products_reader
+        products_models
+        products_storage
+        products_usecase
+)

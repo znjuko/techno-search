@@ -29,7 +29,7 @@ class GetStorePathRequest : public IRequestMarshaller
 
     ~GetStorePathRequest() override = default;
 
-    int StoreID, FromNode, ToNode;
+    int ShopID, FromNode, ToNode;
 };
 
 class GetStorePathResponse : public IUnMarshaller
