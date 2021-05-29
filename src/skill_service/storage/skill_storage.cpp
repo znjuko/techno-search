@@ -23,7 +23,7 @@ std::shared_ptr<CountersPopularityMetricResponse> MetricStorage::GetCounterPopul
 std::shared_ptr<ProductsPopularityByStoreMetricResponse> MetricStorage::GetProductsPopularityByShop(
     std::shared_ptr<GetProductsPopularityByStoreRequest> req)
 {
-    auto q = std::shared_ptr<GetProductPopularityByShopMetricQuery>();
+    auto q = std::make_shared<GetProductPopularityByShopMetricQuery>();
     q->SetupQuery(req);
     auto reader = std::make_shared<ShopProductsPopularityMetricReader>();
 
@@ -37,7 +37,7 @@ std::shared_ptr<ProductsPopularityByStoreMetricResponse> MetricStorage::GetProdu
 std::shared_ptr<ProductsPopularityMetricResponse> MetricStorage::GetProductsTotalPopularity(
     std::shared_ptr<GetProductsTotalPopularityRequest> req)
 {
-    auto q = std::shared_ptr<GetProductsTotalPopularityMetricQuery>();
+    auto q = std::make_shared<GetProductsTotalPopularityMetricQuery>();
     q->SetupQuery(req);
     auto reader = std::make_shared<ProductPopularityMetricReader>();
 
