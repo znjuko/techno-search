@@ -20,17 +20,20 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
     p1.AddPoint(Point(3, 14));
     p1.AddPoint(Point(7, 14));
     p1.AddPoint(Point(7, 7));
+    p1.SetID(1);
     p1.InitLines();
     p2.AddPoint(Point(8, 13));
     p2.AddPoint(Point(13, 13));
     p2.AddPoint(Point(15, 8));
     p2.AddPoint(Point(12, 8));
+    p2.SetID(2);
     p2.InitLines();
     p3.AddPoint(Point(12, 6));
     p3.AddPoint(Point(15, 6));
     p3.AddPoint(Point(17, 2));
     p3.AddPoint(Point(17, 1));
     p3.AddPoint(Point(12, 1));
+    p3.SetID(3);
     p3.InitLines();
 
     std::vector<Polygon> features;
@@ -52,6 +55,15 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
     double elapsed = double(end - start)/CLOCKS_PER_SEC;
 
     std::cout << std::endl << elapsed << std::endl;
+
+    std::cout << std::endl;
+    std::map<int, int> counterPosID = map.GetCountersPosition();
+    std::map<int, int>::iterator it;
+    for (it = counterPosID.begin(); it != counterPosID.end(); it++)
+    {
+        std::cout << it->first << ' ' << it->second << std::endl;
+    }
+
 
 }
 
@@ -81,7 +93,18 @@ TEST(GRAPH_CONVERTER, GENERATE_2)
     map.SetFeatures(features);
     map.SetShop(shop);
 
+
     GraphConverter converter;
     converter.SetMap(map);
     map.InitPointsAdjTable();
+
+    std::cout << std::endl;
+    std::map<int, int> counterPosID = map.GetCountersPosition();
+    std::map<int, int>::iterator it;
+    for (it = counterPosID.begin(); it != counterPosID.end(); it++)
+    {
+        std::cout << it->first << ' ' << it->second << std::endl;
+    }
+
+
 }
