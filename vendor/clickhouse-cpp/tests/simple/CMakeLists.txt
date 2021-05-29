@@ -1,5 +1,5 @@
 ADD_EXECUTABLE (simple-test
-	main.cpp
+        main.cpp
 )
 
 TARGET_LINK_LIBRARIES (simple-test

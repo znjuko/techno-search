@@ -1,34 +1,34 @@
 SET ( clickhouse-cpp-lib-src
-    base/coded.cpp
-    base/compressed.cpp
-    base/input.cpp
-    base/output.cpp
-    base/platform.cpp
-    base/socket.cpp
+        base/coded.cpp
+        base/compressed.cpp
+        base/input.cpp
+        base/output.cpp
+        base/platform.cpp
+        base/socket.cpp
 
-    columns/array.cpp
-    columns/date.cpp
-    columns/decimal.cpp
-    columns/enum.cpp
-    columns/factory.cpp
-    columns/ip4.cpp
-    columns/ip6.cpp
-    columns/lowcardinality.cpp
-    columns/lowcardinalityadaptor.h
-    columns/nullable.cpp
-    columns/numeric.cpp
-    columns/string.cpp
-    columns/tuple.cpp
-    columns/uuid.cpp
+        columns/array.cpp
+        columns/date.cpp
+        columns/decimal.cpp
+        columns/enum.cpp
+        columns/factory.cpp
+        columns/ip4.cpp
+        columns/ip6.cpp
+        columns/lowcardinality.cpp
+        columns/lowcardinalityadaptor.h
+        columns/nullable.cpp
+        columns/numeric.cpp
+        columns/string.cpp
+        columns/tuple.cpp
+        columns/uuid.cpp
 
-    columns/itemview.cpp
+        columns/itemview.cpp
 
-    types/type_parser.cpp
-    types/types.cpp
+        types/type_parser.cpp
+        types/types.cpp
 
-    block.cpp
-    client.cpp
-    query.cpp
+        block.cpp
+        client.cpp
+        query.cpp
 )
 
 ADD_LIBRARY (clickhouse-cpp-lib SHARED ${clickhouse-cpp-lib-src})

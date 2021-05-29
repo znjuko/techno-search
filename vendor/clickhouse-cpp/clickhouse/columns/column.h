@@ -3,7 +3,7 @@
 #include "../base/coded.h"
 #include "../base/input.h"
 #include "../types/types.h"
-#include "../columns/itemview.h"
+#include "itemview.h"
 
 #include <memory>
 

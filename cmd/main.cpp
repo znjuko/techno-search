@@ -16,21 +16,18 @@
 #include <pistache/router.h>
 #include <signal.h>
 
- using namespace clickhouse;
+using namespace clickhouse;
 
- using namespace Pistache;
- using namespace Rest;
+using namespace Pistache;
+using namespace Rest;
 
- using namespace std;
+using namespace std;
 
- int main()
+int main()
 {
     sigset_t signals;
-    if (sigemptyset(&signals) != 0
-        || sigaddset(&signals, SIGTERM) != 0
-        || sigaddset(&signals, SIGINT) != 0
-        || sigaddset(&signals, SIGHUP) != 0
-        || pthread_sigmask(SIG_BLOCK, &signals, nullptr) != 0)
+    if (sigemptyset(&signals) != 0 || sigaddset(&signals, SIGTERM) != 0 || sigaddset(&signals, SIGINT) != 0 ||
+        sigaddset(&signals, SIGHUP) != 0 || pthread_sigmask(SIG_BLOCK, &signals, nullptr) != 0)
     {
         perror("install signal handler failed");
         return 1;
@@ -113,28 +110,27 @@
         return 0;
     }
     clickOpts.SetUser(clickUser);
-//    auto clickPassword = std::getenv("CLICK_PASS");
-//    if (!clickPassword)
-//    {
-//        cout << "ERROR: "
-//             << "empty clickhouse pass" << endl;
-//        return 0;
-//    }
-//    clickOpts.SetUser(clickPassword);
-//    auto clickDB = std::getenv("CLICK_DB");
-//    if (!clickDB)
-//    {
-//        cout << "ERROR: "
-//             << "empty clickhouse database" << endl;
-//        return 0;
-//    }
-//    clickOpts.SetDefaultDatabase(clickDB);
+    //    auto clickPassword = std::getenv("CLICK_PASS");
+    //    if (!clickPassword)
+    //    {
+    //        cout << "ERROR: "
+    //             << "empty clickhouse pass" << endl;
+    //        return 0;
+    //    }
+    //    clickOpts.SetUser(clickPassword);
+    //    auto clickDB = std::getenv("CLICK_DB");
+    //    if (!clickDB)
+    //    {
+    //        cout << "ERROR: "
+    //             << "empty clickhouse database" << endl;
+    //        return 0;
+    //    }
+    //    clickOpts.SetDefaultDatabase(clickDB);
 
     auto commonClickStorage = std::make_shared<ClickStorage>(clickOpts);
     auto skillStorage = std::make_shared<MetricStorage>(commonClickStorage);
     auto skillManager = std::make_shared<MetricManager>(skillStorage);
-    auto skillDelivery = std::make_shared<MetricService>(jsonResponseWriter, jsonRequestBodyReader,
-    errorResponseWriter,
+    auto skillDelivery = std::make_shared<MetricService>(jsonResponseWriter, jsonRequestBodyReader, errorResponseWriter,
                                                          requestQueryReader, skillManager);
     skillDelivery->SetupService(router);
     // end of skill service part

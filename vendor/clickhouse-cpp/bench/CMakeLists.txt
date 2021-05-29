@@ -1,5 +1,5 @@
 ADD_EXECUTABLE (bench
-    bench.cpp
+        bench.cpp
 )
 
 TARGET_LINK_LIBRARIES (bench

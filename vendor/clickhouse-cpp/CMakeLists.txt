@@ -27,10 +27,10 @@ PROJECT (CLICKHOUSE-CLIENT)
     INCLUDE_DIRECTORIES(contrib)
 
     SUBDIRS (
-        clickhouse
-        contrib/absl
-        contrib/cityhash
-        contrib/lz4
+            clickhouse
+            contrib/absl
+            contrib/cityhash
+            contrib/lz4
     )
 
     IF (BUILD_BENCHMARK)
@@ -39,8 +39,8 @@ PROJECT (CLICKHOUSE-CLIENT)
 
     IF (BUILD_TESTS)
         SUBDIRS(
-            contrib/gtest
-            tests/simple
-            ut
+                contrib/gtest
+                tests/simple
+                ut
         )
 	ENDIF (BUILD_TESTS)

@@ -1,5 +1,5 @@
 ADD_LIBRARY (cityhash-lib STATIC
-    city.cc
+        city.cc
 )
 
 set_property(TARGET cityhash-lib PROPERTY POSITION_INDEPENDENT_CODE ON)
