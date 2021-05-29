@@ -42,16 +42,15 @@ public:
 
     std::shared_ptr<RawStoreMap> GetStoreMap(const int &ID);
 
-    std::shared_ptr<StoreModel> GetStoreAdjecency(const int &ID);
+    std::shared_ptr<StoreModel> GetStoreAdjacency(const int &ID);
 
-    void CreateStoreAdjecencyCoords(const int &storeID, const std::vector<Point> &points);
+    void CreateStoreAdjacencyCoords(const int &storeID, const std::vector<Point> &points);
 
-    std::shared_ptr<AdjecencyPoints> GetStoreAdjecencyCoords(const int &storeID);
+    std::shared_ptr<AdjecencyPoints> GetStoreAdjacencyCoords(const int &storeID);
 
+    std::shared_ptr<StoreCountersAdjacency> GetStoreCountersAdjacency(const int &shopID);
 
-    std::shared_ptr<ShopWithCountersAndPointsModel> GetCountersWithPointsByShopID(const int &shopID);
-
-    void AddCountersWithPoints(std::shared_ptr<ShopWithCountersAndPointsModel> req);
+    void AddStoreCountersAdjacency(std::shared_ptr<StoreCountersAdjacency> req);
 
     //TODO: add create adjecency && merge this shit
     // TODO: add counter to adj !!1

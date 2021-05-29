@@ -1,13 +1,12 @@
 #include "map_models.h"
 #include <cmath>
 
-
-ShopWithCountersAndPointsModel::ShopWithCountersAndPointsModel(const std::string &data) {
+StoreCountersAdjacency::StoreCountersAdjacency(const std::string &data) {
     auto jsonData = json::parse(data);
 
-    ShopID = jsonData["ID"];
+    ShopID = jsonData["ShopID"];
 
-    auto adj = jsonData["counters_with_points_table"];
+    auto adj = jsonData["objects"];
     for (const auto &item : adj) {
         int counterID = jsonData["CounterID"];
         int pointID = jsonData["PointID"];

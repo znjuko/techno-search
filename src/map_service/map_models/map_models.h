@@ -29,11 +29,10 @@ class CounterWithPoints{
         this->PointID = PointID;
     }
 };
-class ShopWithCountersAndPointsModel
+class StoreCountersAdjacency
 {
   public:
-
-    ShopWithCountersAndPointsModel(const std::string &data);
+    StoreCountersAdjacency(const std::string &data);
 
     int ShopID;
     std::vector<CounterWithPoints> counterWithPoints;

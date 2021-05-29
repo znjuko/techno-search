@@ -27,7 +27,7 @@ std::shared_ptr<RawStoreMap> MapStorage::GetStoreMap(const int &ID) {
     return std::make_shared<RawStoreMap>(selectStoreOutput);
 }
 
-std::shared_ptr<StoreModel> MapStorage::GetStoreAdjecency(const int &ID) {
+std::shared_ptr<StoreModel> MapStorage::GetStoreAdjacency(const int &ID) {
     auto adjCollection = database->collection("store_adj");
 
     auto selectStoreResult = adjCollection.find_one(make_document(kvp("ID", ID)));
@@ -39,7 +39,7 @@ std::shared_ptr<StoreModel> MapStorage::GetStoreAdjecency(const int &ID) {
     return std::make_shared<StoreModel>(selectStoreOutput);
 }
 
-void MapStorage::CreateStoreAdjecencyCoords(const int &storeID, const std::vector<Point> &points) {
+void MapStorage::CreateStoreAdjacencyCoords(const int &storeID, const std::vector<Point> &points) {
     auto adjCoordCollection = database->collection("store_adj_coords");
 
     document doc_builder{};
@@ -57,7 +57,7 @@ void MapStorage::CreateStoreAdjecencyCoords(const int &storeID, const std::vecto
     adjCoordCollection.insert_one(doc.view());
 }
 
-std::shared_ptr<AdjecencyPoints> MapStorage::GetStoreAdjecencyCoords(const int &storeID) {
+std::shared_ptr<AdjecencyPoints> MapStorage::GetStoreAdjacencyCoords(const int &storeID) {
     auto adjCoordCollection = database->collection("store_adj_coords");
 
     auto selectStoreResult = adjCoordCollection.find_one(make_document(kvp("ID", storeID)));
@@ -69,7 +69,7 @@ std::shared_ptr<AdjecencyPoints> MapStorage::GetStoreAdjecencyCoords(const int &
     return std::make_shared<AdjecencyPoints>(AdjecencyPoints(selectStoreOutput));
 }
 
-std::shared_ptr<ShopWithCountersAndPointsModel> MapStorage::GetCountersWithPointsByShopID(const int &shopID)
+std::shared_ptr<StoreCountersAdjacency> MapStorage::GetStoreCountersAdjacency(const int &shopID)
 {
     auto storeCollection = database->collection("counters_with_points");
 
@@ -81,16 +81,16 @@ std::shared_ptr<ShopWithCountersAndPointsModel> MapStorage::GetCountersWithPoint
     }
 
     auto selectCountersWithPointsOutput = bsoncxx::to_json(*selectCountersWithPointsResult);
-    return std::make_shared<ShopWithCountersAndPointsModel>(selectCountersWithPointsOutput);
+    return std::make_shared<StoreCountersAdjacency>(selectCountersWithPointsOutput);
 }
 
-void MapStorage::AddCountersWithPoints(std::shared_ptr<ShopWithCountersAndPointsModel> data)
+void MapStorage::AddStoreCountersAdjacency(std::shared_ptr<StoreCountersAdjacency> req)
 {
     auto storeCollection = database->collection("counters_with_points");
     auto builder = bsoncxx::builder::stream::document{};
-    builder << "ShopID" << data->ShopID;
+    builder << "ShopID" << req->ShopID;
     auto array_builder = builder << "objects" << bsoncxx::builder::stream::open_array;
-    for (auto & counterWithPoint : data->counterWithPoints) {
+    for (auto & counterWithPoint : req->counterWithPoints) {
         array_builder << make_document(
             kvp("CounterID", counterWithPoint.CounterID),
             kvp("PointID", counterWithPoint.PointID));
