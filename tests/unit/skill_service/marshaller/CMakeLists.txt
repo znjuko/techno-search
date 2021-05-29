@@ -4,13 +4,12 @@ file(GLOB SRCS *.cpp)
 
 project(skill_service_marshaller_test)
 
-ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS} marshaller.cpp)
+ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS})
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}
         models
         marshaller unmarshaller nlohmann_json::nlohmann_json
-        ${GTEST_LIBRARIES}
-        Threads::Threads
+        gtest
         )
 
 add_test(NAME ${PROJECT_NAME}

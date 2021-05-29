@@ -1,5 +1,5 @@
 //
-// Created by Никита Черных on 20.05.2021.
+// Created by Черных Никита Александрович on 23.05.2021.
 //
 
 #ifndef TECHNO_SEARCH_MAP_USECASE_H
@@ -7,25 +7,24 @@
 
 #include "adapter.h"
 #include "finder.h"
-#include "path_models.h"
-#include "path_storage_models.h"
+#include "map_models.h"
 #include "storage.h"
 
-class PathManager
+class MapManager
 {
   public:
-    PathManager() = delete;
+    MapManager() = delete;
 
-    PathManager(std::shared_ptr<Adapter> mapAdapter, std::shared_ptr<Storage> mapStorage,
-                std::shared_ptr<PathFinder> pathFinder);
+    MapManager(std::shared_ptr<Adapter> mapAdapter, std::shared_ptr<MapStorage> mapStorage,
+               std::shared_ptr<PathFinder> pathFinder);
 
     std::shared_ptr<GetStorePathResponse> GetShopPath(std::shared_ptr<GetStorePathRequest> req);
 
-    ~PathManager() = default;
+    ~MapManager() = default;
 
   private:
     std::shared_ptr<Adapter> mapAdapter;
-    std::shared_ptr<Storage> mapStorage;
+    std::shared_ptr<MapStorage> mapStorage;
     std::shared_ptr<PathFinder> pathFinder;
 };
 

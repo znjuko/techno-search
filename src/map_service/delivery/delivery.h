@@ -6,10 +6,10 @@
 #define TECHNO_SEARCH_DELIVERY_H
 
 #include "map_models.h"
-#include "storage.h"
-//#include "map_usecase.h"
+#include "map_usecase.h"
 #include "reader.h"
 #include "router_setupper.h"
+#include "storage.h"
 #include "writer.h"
 
 #include <pistache/endpoint.h>
@@ -22,10 +22,9 @@ class MapService : IRouterSetupper
   public:
     MapService() = delete;
 
-    //    MapService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader>
-    //    bodyReader,
-    //               std::shared_ptr<RequestReader> requestReader, std::shared_ptr<RequestQueryReader> queryReader,
-    //               std::shared_ptr<MapManager> manager);
+    MapService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader> bodyReader,
+               std::shared_ptr<RequestReader> requestReader, std::shared_ptr<RequestQueryReader> queryReader,
+               std::shared_ptr<MapManager> manager);
 
     void CreateShopMap(const Rest::Request &req, Http::ResponseWriter res);
 
@@ -34,6 +33,8 @@ class MapService : IRouterSetupper
     void GetCounterAdjacency(const Rest::Request &req, Http::ResponseWriter res);
 
     void DeleteShopMap(const Rest::Request &req, Http::ResponseWriter res);
+
+    void GetStorePath(const Rest::Request &req, Http::ResponseWriter res);
 
     void SetupService(Rest::Router *router) override;
 
@@ -45,8 +46,7 @@ class MapService : IRouterSetupper
     std::shared_ptr<RequestReader> requestReader;
     std::shared_ptr<ErrorResponseWriter> errorWriter;
     std::shared_ptr<RequestQueryReader> queryReader;
-    std::shared_ptr<MapStorage> storage;
-    //    std::shared_ptr<MapManager> manager;
+    std::shared_ptr<MapManager> manager;
 };
 
 #endif // TECHNO_SEARCH_DELIVERY_H

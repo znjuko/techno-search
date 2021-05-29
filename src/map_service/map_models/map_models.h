@@ -187,7 +187,7 @@ class StoreAdjacencyPointsResponse : public IUnMarshaller
 
 class GetStorePathRequest : public IRequestMarshaller
 {
-public:
+  public:
     GetStorePathRequest();
 
     void Marshall(const Rest::Request &req) override;
@@ -199,7 +199,7 @@ public:
 
 class GetStorePathResponse : public IUnMarshaller
 {
-public:
+  public:
     explicit GetStorePathResponse(std::vector<size_t> Path);
 
     nlohmann::json UnMarshall() override;
@@ -209,8 +209,9 @@ public:
     std::vector<size_t> Array;
 };
 
-class StoreModel {
-public:
+class StoreModel
+{
+  public:
     StoreModel(const std::string &data);
 
     int ID;

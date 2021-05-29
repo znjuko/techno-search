@@ -452,7 +452,6 @@ StoreModel::StoreModel(const std::string &data)
     }
 }
 
-
 // void StoreActionRequest::Marshall(const Rest::Request &req)
 //{
 //    StoreID = req.param(":shopID").as<int>();

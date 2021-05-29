@@ -18,6 +18,7 @@ target_link_libraries(
         request_reader response_writer
         map_models
         map_storage
+        map_usecase
         common_exceptions
         ${Boost_LIBRARIES}
 )
