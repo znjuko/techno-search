@@ -5,17 +5,16 @@
 #ifndef TECHNO_SEARCH_MAP_MODELS_H
 #define TECHNO_SEARCH_MAP_MODELS_H
 
-#include <vector>
 #include <iostream>
 #include <nlohmann/json.hpp>
 #include <vector>
 
 using json = nlohmann::json;
 
+class Point
+{
 
-class Point {
-
-public:
+  public:
     Point();
 
     double x, y;
@@ -31,12 +30,12 @@ public:
     double GetDistanceToPoint(const Point &p);
 
     int counterID;
-
 };
 
-class Line {
+class Line
+{
 
-public:
+  public:
     Point p1, p2;
 
     void Show() const;
@@ -50,13 +49,12 @@ public:
     Point *LineIntersectionWithLine(Line l);
 
     bool LineIntersectionWithPoint(Point p);
-
 };
 
+class Polygon
+{
 
-class Polygon {
-
-public:
+  public:
     Polygon();
 
     ~Polygon() = default;
@@ -89,13 +87,11 @@ public:
 
     int GetID();
 
-private:
-
+  private:
     std::vector<Point> vertices;
     std::vector<Line> lines;
     size_t count;
     int id;
 };
 
-
-#endif //TECHNO_SEARCH_MAP_MODELS_H
+#endif // TECHNO_SEARCH_MAP_MODELS_H
