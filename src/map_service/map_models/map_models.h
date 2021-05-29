@@ -5,6 +5,7 @@
 #include "marshaller.h"
 #include "unmarshaller.h"
 
+#include <boost/lexical_cast.hpp>
 #include <bsoncxx/json.hpp>
 #include <cstdint>
 #include <iostream>
@@ -39,7 +40,6 @@ class StoreCountersAdjacency
 
 class Point
 {
-
   public:
     double x, y;
 
@@ -58,7 +58,6 @@ class Point
 
 class Line
 {
-
   public:
     Point p1, p2;
 
@@ -77,7 +76,6 @@ class Line
 
 class Polygon
 {
-
   public:
     Polygon();
 
@@ -163,17 +161,28 @@ class AdjacencyPoints : public IUnMarshaller
     std::vector<Point> Points;
 };
 
-//
-// class StoreMapActionRequest : public IRequestMarshaller
-//{
-//  public:
-//    StoreMapActionRequest();
-//
-//    void Marshall(const Rest::Request &req) override;
-//
-//    ~StoreMapActionRequest() override = default;
-//
-//    int StoreID;
-//};
+class StoreAdjacencyPointsRequest : public IQueryMarshaller
+{
+  public:
+    StoreAdjacencyPointsRequest();
+
+    void Marshall(const Http::Uri::Query &body) override;
+
+    ~StoreAdjacencyPointsRequest() override = default;
+
+    int StoreID;
+};
+
+class StoreAdjacencyPointsResponse : public IUnMarshaller
+{
+  public:
+    StoreAdjacencyPointsResponse();
+
+    nlohmann::json UnMarshall() override;
+
+    ~StoreAdjacencyPointsResponse() override = default;
+
+    std::vector<AdjacencyPoints> array;
+};
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H

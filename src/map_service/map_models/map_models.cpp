@@ -1,12 +1,71 @@
 #include "map_models.h"
 
 #include <cmath>
+nlohmann::json AdjacencyPoints::UnMarshall()
+{
+    auto output = nlohmann::json();
+
+    output["storeID"] = StoreID;
+
+    auto points = nlohmann::json::array();
+    for (int i = 0; i < Points.size(); ++i)
+    {
+        auto p = nlohmann::json();
+        p["pointID"] = i;
+        p["X"] = Points[i].x;
+        p["Y"] = Points[i].y;
+        points.push_back(p);
+    }
+    output["points"] = points;
+
+    return output;
+}
+
+AdjacencyPoints::AdjacencyPoints(const std::string &body)
+{
+    auto jsonBody = json::parse(body);
+
+    StoreID = jsonBody["storeID"];
+    int size = jsonBody["size"];
+    Points = std::vector<Point>(size, Point());
+
+    auto points = jsonBody["adjacency_table"];
+    for (auto p : points)
+    {
+        int pos = p["pointID"];
+        Points[pos] = Point(p["X"], p["Y"]);
+    }
+}
+
+void StoreAdjacencyPointsRequest::Marshall(const Http::Uri::Query &query)
+{
+    auto storeParam = query.get("storeID");
+    if (storeParam->empty())
+    {
+        throw EmptyValue("storeID");
+    }
+    StoreID = boost::lexical_cast<int>(*storeParam);
+};
+
+nlohmann::json StoreAdjacencyPointsResponse::UnMarshall()
+{
+    nlohmann::json output;
+    nlohmann::json outputArray = nlohmann::json::array();
+    for (auto item = array.begin(); item != array.end(); ++item)
+    {
+        outputArray.push_back(item->UnMarshall());
+    }
+    //TODO name please right
+    output["store"] = outputArray;
+
+    return output;
+};
 
 StoreCountersAdjacency::StoreCountersAdjacency(const std::string &data)
 {
     auto jsonData = json::parse(data);
 
-    ShopID = jsonData["ShopID"];
+    ShopID = jsonData["storeID"];
 
     auto adj = jsonData["objects"];
     for (const auto &item : adj)
@@ -336,47 +395,13 @@ RawStoreMap::RawStoreMap(const std::string &body)
     Geometry = jsonBody["geometry"];
 }
 
-// void StoreMapActionRequest::Marshall(const Rest::Request &req)
+// void StoreAdjacencyPointsRequest::Marshall(const Rest::Request &req)
 //{
 //    StoreID = req.param(":shopID").as<int>();
 //}
 //
-// StoreMapActionRequest::StoreMapActionRequest()
+// StoreAdjacencyPointsRequest::StoreAdjacencyPointsRequest()
 //{
 //}
 
-nlohmann::json AdjacencyPoints::UnMarshall()
-{
-    auto output = nlohmann::json();
 
-    output["storeID"] = StoreID;
-
-    auto points = nlohmann::json::array();
-    for (int i = 0; i < Points.size(); ++i)
-    {
-        auto p = nlohmann::json();
-        p["pointID"] = i;
-        p["X"] = Points[i].x;
-        p["Y"] = Points[i].y;
-        points.push_back(p);
-    }
-    output["points"] = points;
-
-    return output;
-}
-
-AdjacencyPoints::AdjacencyPoints(const std::string &body)
-{
-    auto jsonBody = json::parse(body);
-
-    StoreID = jsonBody["ID"];
-    int size = jsonBody["size"];
-    Points = std::vector<Point>(size, Point());
-
-    auto points = jsonBody["adjacency_table"];
-    for (auto p : points)
-    {
-        int pos = p["pointID"];
-        Points[pos] = Point(p["X"], p["Y"]);
-    }
-}

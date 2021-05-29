@@ -17,6 +17,7 @@ target_link_libraries(
         pistache router_setupper
         request_reader response_writer
         map_models
+        map_storage
         common_exceptions
         ${Boost_LIBRARIES}
 )

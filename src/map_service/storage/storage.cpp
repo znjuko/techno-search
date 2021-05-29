@@ -46,7 +46,7 @@ void MapStorage::AddStoreAdjacency(std::shared_ptr<StoreModel> data)
     auto storeCollection = database->collection("store_adj");
 
     auto builder = bsoncxx::builder::stream::document{};
-    builder << "ID" << data->ID << "size" << data->Size;
+    builder << "storeID" << data->ID << "size" << data->Size;
     auto array_builder = builder << "adjacency_table" << bsoncxx::builder::stream::open_array;
     for (int i = 0; i < data->Adjacency.size(); ++i)
     {
@@ -62,7 +62,7 @@ void MapStorage::CreateStoreAdjacencyCoords(const int &storeID, const std::vecto
     auto adjCoordCollection = database->collection("store_adj_coords");
 
     document doc_builder{};
-    doc_builder << "ID" << storeID;
+    doc_builder << "storeID" << storeID;
     doc_builder << "size" << int(points.size());
     auto array_builder = doc_builder << "adjacency_table" << open_array;
     for (int i = 0; i < points.size(); ++i)
