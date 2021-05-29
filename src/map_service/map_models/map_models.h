@@ -161,14 +161,14 @@ class AdjacencyPoints : public IUnMarshaller
     std::vector<Point> Points;
 };
 
-class StoreAdjacencyPointsRequest : public IQueryMarshaller
+class StoreActionRequest : public IQueryMarshaller
 {
   public:
-    StoreAdjacencyPointsRequest();
+    StoreActionRequest();
 
     void Marshall(const Http::Uri::Query &body) override;
 
-    ~StoreAdjacencyPointsRequest() override = default;
+    ~StoreActionRequest() override = default;
 
     int StoreID;
 };
@@ -183,6 +183,39 @@ class StoreAdjacencyPointsResponse : public IUnMarshaller
     ~StoreAdjacencyPointsResponse() override = default;
 
     std::vector<AdjacencyPoints> array;
+};
+
+class GetStorePathRequest : public IRequestMarshaller
+{
+public:
+    GetStorePathRequest();
+
+    void Marshall(const Rest::Request &req) override;
+
+    ~GetStorePathRequest() override = default;
+
+    int StoreID, FromNode, ToNode;
+};
+
+class GetStorePathResponse : public IUnMarshaller
+{
+public:
+    explicit GetStorePathResponse(std::vector<size_t> Path);
+
+    nlohmann::json UnMarshall() override;
+
+    ~GetStorePathResponse() override = default;
+
+    std::vector<size_t> Array;
+};
+
+class StoreModel {
+public:
+    StoreModel(const std::string &data);
+
+    int ID;
+    int Size;
+    std::vector<double> Adjacency;
 };
 
 #endif // TECHNO_SEARCH_MAP_MODELS_H

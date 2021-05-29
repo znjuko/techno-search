@@ -13,9 +13,8 @@ include_directories(${LIBBSONCXX_INCLUDE_DIR})
 
 target_link_libraries(
         ${LIBRARY_NAME} PRIVATE
-        mongo::bsoncxx_shared mongo::mongocxx_shared
-        map_storage_models
+        mongo::bsoncxx_shared
+        mongo::mongocxx_shared
         map_models
-        path_storage_models
         path_exceptions
 )

@@ -7,7 +7,7 @@ option(test "Build all tests." ON)
 
 add_subdirectory(src)
 add_subdirectory(include)
-#add_subdirectory(vendor)
+add_subdirectory(vendor)
 
 add_executable(techno_search main.cpp)
 find_package(Threads REQUIRED)

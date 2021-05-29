@@ -4,9 +4,10 @@
 
 #include "delivery.h"
 
-//MapService::MapService(std::shared_ptr<JsonResponseWriter> responseWriter,
-//                       std::shared_ptr<JsonRequestBodyReader> bodyReader, std::shared_ptr<RequestReader> requestReader,
-//                       std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MapManager> manager)
+// MapService::MapService(std::shared_ptr<JsonResponseWriter> responseWriter,
+//                       std::shared_ptr<JsonRequestBodyReader> bodyReader, std::shared_ptr<RequestReader>
+//                       requestReader, std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MapManager>
+//                       manager)
 //    : responseWriter(responseWriter), bodyReader(bodyReader), errorWriter(errorWriter), queryReader(queryReader),
 //      manager(manager), requestReader(requestReader)
 //{
@@ -52,10 +53,10 @@ void MapService::CreateShopMap(const Request &req, Http::ResponseWriter res)
 
 void MapService::GetShopMap(const Request &req, Http::ResponseWriter res)
 {
-    auto reqReader = std::make_shared<StoreAdjacencyPointsRequest>();
+    auto reqReader = std::make_shared<StoreActionRequest>();
     try
     {
-        requestReader->ReadRequest(reqReader, req);
+        queryReader->ReadRequest(reqReader, req);
     }
     catch (const std::exception &e)
     {
@@ -67,10 +68,10 @@ void MapService::GetShopMap(const Request &req, Http::ResponseWriter res)
 
 void MapService::DeleteShopMap(const Request &req, Http::ResponseWriter res)
 {
-    auto reqReader = std::make_shared<StoreAdjacencyPointsRequest>();
+    auto reqReader = std::make_shared<StoreActionRequest>();
     try
     {
-        requestReader->ReadRequest(reqReader, req);
+        queryReader->ReadRequest(reqReader, req);
     }
     catch (const std::exception &e)
     {
@@ -83,7 +84,7 @@ void MapService::DeleteShopMap(const Request &req, Http::ResponseWriter res)
 void MapService::GetCounterAdjacency(const Request &req, Http::ResponseWriter res)
 {
 
-    auto reqReader = std::make_shared<StoreAdjacencyPointsRequest>();
+    auto reqReader = std::make_shared<StoreActionRequest>();
     try
     {
         queryReader->ReadRequest(reqReader, req);
@@ -111,6 +112,4 @@ void MapService::GetCounterAdjacency(const Request &req, Http::ResponseWriter re
     }
 
     responseWriter->WriteResponse(respWriter, &res);
-
-    // some logic ...
 }

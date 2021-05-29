@@ -1,8 +1,3 @@
-add_subdirectory(storage)
-add_subdirectory(models)
-add_subdirectory(exceptions)
 add_subdirectory(finder)
-add_subdirectory(request_models)
-add_subdirectory(adapter)
 add_subdirectory(usecase)
 add_subdirectory(delivery)
