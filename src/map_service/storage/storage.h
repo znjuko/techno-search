@@ -44,13 +44,15 @@ public:
 
     std::shared_ptr<StoreModel> GetStoreAdjacency(const int &ID);
 
+    void AddStoreAdjacency(std::shared_ptr<StoreModel> data);
+
     void CreateStoreAdjacencyCoords(const int &storeID, const std::vector<Point> &points);
 
     std::shared_ptr<AdjecencyPoints> GetStoreAdjacencyCoords(const int &storeID);
 
     std::shared_ptr<StoreCountersAdjacency> GetStoreCountersAdjacency(const int &shopID);
 
-    void AddStoreCountersAdjacency(std::shared_ptr<StoreCountersAdjacency> req);
+    void AddStoreCountersAdjacency(std::shared_ptr<StoreCountersAdjacency> data);
 
     //TODO: add create adjecency && merge this shit
     // TODO: add counter to adj !!1

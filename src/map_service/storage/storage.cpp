@@ -1,7 +1,6 @@
 //
 // Created by foxers on 27.05.2021.
 //
-#include <iostream>
 #include "storage.h"
 
 MapStorage::MapStorage(std::shared_ptr<mongocxx::database> database) : database(database) {};
@@ -37,6 +36,20 @@ std::shared_ptr<StoreModel> MapStorage::GetStoreAdjacency(const int &ID) {
 
     auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
     return std::make_shared<StoreModel>(selectStoreOutput);
+}
+
+void MapStorage::AddStoreAdjacency(std::shared_ptr<StoreModel> data){
+    auto storeCollection = database->collection("store_adj");
+
+    auto builder = bsoncxx::builder::stream::document{};
+    builder << "ID" << data->ID <<"size"<<data->Size;
+    auto array_builder = builder << "adjacency_table" << bsoncxx::builder::stream::open_array;
+    for (int i = 0; i < data->Adjacency.size(); ++i) {
+            array_builder<<data->Adjacency[i];
+    }
+    array_builder << bsoncxx::builder::stream::close_array;
+    auto doc = builder << bsoncxx::builder::stream::finalize;
+    storeCollection.insert_one(doc.view());
 }
 
 void MapStorage::CreateStoreAdjacencyCoords(const int &storeID, const std::vector<Point> &points) {
@@ -84,13 +97,13 @@ std::shared_ptr<StoreCountersAdjacency> MapStorage::GetStoreCountersAdjacency(co
     return std::make_shared<StoreCountersAdjacency>(selectCountersWithPointsOutput);
 }
 
-void MapStorage::AddStoreCountersAdjacency(std::shared_ptr<StoreCountersAdjacency> req)
+void MapStorage::AddStoreCountersAdjacency(std::shared_ptr<StoreCountersAdjacency> data)
 {
     auto storeCollection = database->collection("counters_with_points");
     auto builder = bsoncxx::builder::stream::document{};
-    builder << "ShopID" << req->ShopID;
+    builder << "ShopID" << data->ShopID;
     auto array_builder = builder << "objects" << bsoncxx::builder::stream::open_array;
-    for (auto & counterWithPoint : req->counterWithPoints) {
+    for (auto & counterWithPoint : data->counterWithPoints) {
         array_builder << make_document(
             kvp("CounterID", counterWithPoint.CounterID),
             kvp("PointID", counterWithPoint.PointID));
