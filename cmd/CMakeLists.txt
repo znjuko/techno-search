@@ -32,4 +32,22 @@ target_link_libraries(
         skill_models
         click_query
         click_reader
+
+        ## shop service only
+        postgres_storage
+        postgres_reader
+        postgres_query
+        stores_delivery
+        stores_query
+        stores_reader
+        stores_models
+        stores_storage
+        stores_usecase
+
+        products_delivery
+        products_query
+        products_reader
+        products_models
+        products_storage
+        products_usecase
 )
