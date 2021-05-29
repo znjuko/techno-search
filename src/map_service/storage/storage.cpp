@@ -69,10 +69,7 @@ std::shared_ptr<AdjecencyPoints> MapStorage::GetStoreAdjecencyCoords(const int &
     return std::make_shared<AdjecencyPoints>(AdjecencyPoints(selectStoreOutput));
 }
 
-StorageForCounterWithPoints::StorageForCounterWithPoints(std::shared_ptr<mongocxx::database> database) : database(database){};
-
-
-std::shared_ptr<ShopWithCountersAndPointsModel> StorageForCounterWithPoints::GetCountersWithPointsByShopID(const int &shopID)
+std::shared_ptr<ShopWithCountersAndPointsModel> MapStorage::GetCountersWithPointsByShopID(const int &shopID)
 {
     auto storeCollection = database->collection("counters_with_points");
 
@@ -87,7 +84,7 @@ std::shared_ptr<ShopWithCountersAndPointsModel> StorageForCounterWithPoints::Get
     return std::make_shared<ShopWithCountersAndPointsModel>(selectCountersWithPointsOutput);
 }
 
-void StorageForCounterWithPoints::AddCountersWithPoints(std::shared_ptr<ShopWithCountersAndPointsModel> data)
+void MapStorage::AddCountersWithPoints(std::shared_ptr<ShopWithCountersAndPointsModel> data)
 {
     auto storeCollection = database->collection("counters_with_points");
     auto builder = bsoncxx::builder::stream::document{};

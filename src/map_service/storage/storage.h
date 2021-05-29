@@ -48,29 +48,16 @@ public:
 
     std::shared_ptr<AdjecencyPoints> GetStoreAdjecencyCoords(const int &storeID);
 
+
+    std::shared_ptr<ShopWithCountersAndPointsModel> GetCountersWithPointsByShopID(const int &shopID);
+
+    void AddCountersWithPoints(std::shared_ptr<ShopWithCountersAndPointsModel> req);
+
     //TODO: add create adjecency && merge this shit
     // TODO: add counter to adj !!1
 
 private:
     std::shared_ptr<mongocxx::database> database;
 };
-
-class StorageForCounterWithPoints
-{
-  public:
-    StorageForCounterWithPoints() = delete;
-
-    StorageForCounterWithPoints(const StorageForCounterWithPoints &str) = delete;
-
-    StorageForCounterWithPoints(std::shared_ptr<mongocxx::database> database);
-
-    std::shared_ptr<ShopWithCountersAndPointsModel> GetCountersWithPointsByShopID(const int &shopID);
-
-    void AddCountersWithPoints(std::shared_ptr<ShopWithCountersAndPointsModel> req);
-
-  private:
-    std::shared_ptr<mongocxx::database> database;
-};
-
 
 #endif //TECHNO_SEARCH_STORAGE_H
