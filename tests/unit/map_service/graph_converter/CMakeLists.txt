@@ -1,13 +1,9 @@
-file(GLOB SRCS *.cpp)
+project(graph_converter_tests)
 
-project(graph_service_converter)
 
-ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS})
+add_executable(${PROJECT_NAME}  tests.cpp main.cpp)
 
-TARGET_LINK_LIBRARIES(${PROJECT_NAME}
-        product_models
-        gtest
-        )
+find_package(Threads REQUIRED)
+target_link_libraries(${PROJECT_NAME} ${GTEST_LIBRARIES} Threads::Threads shop_map map_models graph_converter)
 
-add_test(NAME ${PROJECT_NAME}
-        COMMAND ${PROJECT_NAME})
+add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME}) 
