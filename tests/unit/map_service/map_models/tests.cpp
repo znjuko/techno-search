@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
 
-TEST(LINE, INTERSECTION_WITH_LINE)
+TEST(LINE, INTERSECTION)
 {
 
     Point p1(0, 0), p2(2, 2);
@@ -17,19 +17,6 @@ TEST(LINE, INTERSECTION_WITH_LINE)
     ASSERT_EQ(p->y, 0.75);
 
     delete p;
-}
-
-TEST(LINE, INTERSECTION_WITH_POINT)
-{
-
-    Point p1(0, 0), p2(2, 2);
-    Point p(9, 9);
-
-    Line l(p1, p2);
-
-    bool res = l.LineIntersectionWithPoint(p);
-
-    ASSERT_EQ(res, true);
 }
 
 TEST(POLYGON, INITLINES)
@@ -72,9 +59,9 @@ TEST(POLYGON, INITLINES)
 
 TEST(POLYGON, POINT_INSIDE_POLYGON)
 {
-    Point p1(3, 7), p2(3, 14);
-    Point p3(7, 14), p4(7, 7);
-    Point point(3, 14.5);
+    Point p1(0, 0), p2(2, 0);
+    Point p3(2, 2), p4(0, 2);
+    Point point(1, 1);
 
     Polygon p;
     p.AddPoint(p1);
@@ -84,7 +71,7 @@ TEST(POLYGON, POINT_INSIDE_POLYGON)
     p.InitLines();
     // p.ShowLines();
 
-    ASSERT_EQ(false, p.IsPointInsidePolygon(point));
+    ASSERT_EQ(true, p.IsPointInsidePolygon(point));
 }
 
 TEST(POLYGON, INTERSECTIONS_WITH_VERTICAL_LINE)
@@ -99,57 +86,14 @@ TEST(POLYGON, INTERSECTIONS_WITH_VERTICAL_LINE)
     p.AddPoint(p4);
     p.InitLines();
 
-    Point pl1(3, 1);
-    Point pl2(4, 2);
-    Line line(pl1, pl2);
+    Point pl1(1, 1);
+    Point pl2(1, 2);
 
+    Line line(pl1, pl2);
     std::vector<Point *> points = p.IntersectionWithVerticalLine(line);
     for (auto point : points)
     {
         point->Show();
         std::cout << std::endl;
-        delete point;
     }
-}
-
-TEST(POLYGON, INTERSECTIONS_WITH_POINT)
-{
-    Point p1(0, 0), p2(2, 0);
-    Point p3(2, 2), p4(0, 2);
-
-    Polygon p;
-    p.AddPoint(p1);
-    p.AddPoint(p2);
-    p.AddPoint(p3);
-    p.AddPoint(p4);
-    p.InitLines();
-
-    Point point1(3, 1);
-    Point point2(3, 0);
-    Point point3(2, 1);
-
-    ASSERT_EQ(false, p.IsPointOnPolygon(point1));
-    ASSERT_EQ(false, p.IsPointOnPolygon(point2));
-    ASSERT_EQ(true, p.IsPointOnPolygon(point3));
-}
-
-TEST(POLYGON, IS_POINT_ON_POLYGON)
-{
-    Point p1(0, 5), p2(5, 5);
-    Point p3(7, 0), p4(4, 0);
-
-    Polygon p;
-    p.AddPoint(p1);
-    p.AddPoint(p2);
-    p.AddPoint(p3);
-    p.AddPoint(p4);
-    p.InitLines();
-
-    Point point1(0, 5);
-    Point point2(3, 0);
-    Point point3(5, 0);
-
-    ASSERT_EQ(true, p.IsPointOnPolygon(point1));
-    ASSERT_EQ(false, p.IsPointOnPolygon(point2));
-    ASSERT_EQ(true, p.IsPointOnPolygon(point3));
 }

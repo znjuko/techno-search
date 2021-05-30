@@ -3,10 +3,11 @@
 //
 
 #include "postgres_storage.h"
+#include "request_reader.h"
 #include "product_delivery.h"
 #include "product_storage.h"
 #include "product_usecase.h"
-#include "request_reader.h"
+
 #include "store_delivery.h"
 #include "store_storage.h"
 #include "store_usecase.h"
@@ -34,37 +35,10 @@ int main()
         return 1;
     }
 
-    const char *portValue = std::getenv("PORT");
-    Port port;
-    try
-    {
-        port = Port(portValue);
-    }
-    catch (const std::exception &e)
-    {
-        cout << "ERROR: " << e.what() << endl;
-        return 0;
-    }
+    Port port(7781);
     auto addr = Address(Ipv4::any(), port);
 
-    auto threadCountValue = std::getenv("THREADS");
-    if (!threadCountValue)
-    {
-        cout << "ERROR: "
-             << "empty thread number" << endl;
-        return 0;
-    }
-    int threadCount = 0;
-    try
-    {
-        threadCount = boost::lexical_cast<int>(threadCountValue);
-    }
-    catch (const std::exception &e)
-    {
-        cout << "ERROR: "
-             << "wrong thread count value " << threadCountValue << endl;
-        return 0;
-    }
+    int thr = 2;
 
     Rest::Router router;
 
@@ -76,7 +50,6 @@ int main()
     auto errorResponseWriter = std::make_shared<ErrorResponseWriter>();
 
     // shop service part only
-
     const char *options = "host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch";
 
     try
@@ -121,5 +94,6 @@ int main()
     }
 
     httpEndpoint->shutdown();
+
     return 0;
 }
