@@ -10,6 +10,7 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(
         ${LIBRARY_NAME} PRIVATE
+        shop_map
         map_request_models
         map_models
         map_storage

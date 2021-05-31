@@ -20,6 +20,8 @@ class Map
     void SetID(int _id);
     std::map<int, int> GetCountersPosition();
     std::vector<Point> GetBasePoints();
+    int GetID();
+    std::vector<std::vector<double>> GetAdj();
 
   private:
     int id;

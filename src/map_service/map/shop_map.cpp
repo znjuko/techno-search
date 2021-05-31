@@ -89,3 +89,11 @@ std::vector<Point> Map::GetBasePoints()
 {
     return basePoints;
 }
+
+int Map::GetID() {
+    return this->id;
+}
+
+std::vector<std::vector<double>> Map::GetAdj() {
+    return adjTable;
+}
