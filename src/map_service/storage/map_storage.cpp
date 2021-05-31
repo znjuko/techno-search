@@ -1,4 +1,4 @@
-#include "storage.h"
+#include "map_storage.h"
 
 MapStorage::MapStorage(std::shared_ptr<mongocxx::database> database) : database(database){};
 

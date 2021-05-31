@@ -3,7 +3,7 @@ set(LIBRARY_NAME map_storage)
 
 file(GLOB SRC *.h *.cpp)
 
-add_library(${LIBRARY_NAME} STATIC ${SRC} storage.cpp)
+add_library(${LIBRARY_NAME} STATIC ${SRC} map_storage.cpp)
 
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

@@ -2,16 +2,20 @@
 // Created by paccbet on 13.04.2021.
 //
 
+#include "adapter.h"
 #include "click_common_storage.h"
-#include "request_reader.h"
-#include "skill_delivery.h"
-#include "skill_storage.h"
-#include "skill_usecase.h"
+#include "finder.h"
+#include "map_delivery.h"
+#include "map_storage.h"
+#include "map_usecase.h"
 #include "postgres_storage.h"
 #include "product_delivery.h"
 #include "product_storage.h"
 #include "product_usecase.h"
 #include "request_reader.h"
+#include "skill_delivery.h"
+#include "skill_storage.h"
+#include "skill_usecase.h"
 #include "store_delivery.h"
 #include "store_storage.h"
 #include "store_usecase.h"
@@ -154,6 +158,35 @@ int main()
         jsonResponseWriter, jsonRequestBodyReader, errorResponseWriter, requestQueryReader, shopProductManager);
     shopProductDelivery->SetupService(router);
 
+    // map service only
+    auto mongoURI = std::getenv("MONGO_URI");
+    if (!mongoURI)
+    {
+        cout << "ERROR: "
+             << "empty mongo uri" << endl;
+        return 0;
+    }
+    auto mongoDB = std::getenv("MONGO_DB");
+    if (!mongoURI)
+    {
+        cout << "ERROR: "
+             << "empty mongo db" << endl;
+        return 0;
+    }
+    mongocxx::instance instance{}; // This should be done only once.
+    // "mongodb://localhost:27017"
+    mongocxx::uri uri(mongoURI);
+    mongocxx::client client(uri);
+    mongocxx::database db = client[mongoDB];
+    auto dbShared = std::make_shared<mongocxx::database>(db);
+
+    auto mapStorage = std::make_shared<MapStorage>(dbShared);
+    auto mapManager =
+        std::make_shared<MapManager>(std::make_shared<Adapter>(), mapStorage, std::make_shared<PathFinder>());
+    auto mapDelivery = std::make_shared<MapService>(
+        jsonResponseWriter, jsonRequestBodyReader, errorResponseWriter,
+        std::make_shared<RequestReader>(),requestQueryReader,  mapManager);
+    mapDelivery->SetupService(router);
     // starting service
     auto httpEndpoint = std::make_shared<Http::Endpoint>(addr);
     httpEndpoint->setHandler(router.handler());

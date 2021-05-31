@@ -5,7 +5,7 @@
 #include "finder.h"
 #include "map_models.h"
 #include "map_request_models.h"
-#include "storage.h"
+#include "map_storage.h"
 
 class MapManager
 {

@@ -6,10 +6,10 @@
 #define TECHNO_SEARCH_MAP_DELIVERY_H
 
 #include "map_request_models.h"
+#include "map_storage.h"
 #include "map_usecase.h"
 #include "request_reader.h"
 #include "router_setupper.h"
-#include "storage.h"
 #include "writer.h"
 
 #include <pistache/endpoint.h>
@@ -23,7 +23,7 @@ class MapService : IRouterSetupper
     MapService() = delete;
 
     MapService(std::shared_ptr<JsonResponseWriter> responseWriter, std::shared_ptr<JsonRequestBodyReader> bodyReader,
-               std::shared_ptr<RequestReader> requestReader, std::shared_ptr<RequestQueryReader> queryReader,
+               std::shared_ptr<ErrorResponseWriter> errorWriter, std::shared_ptr<RequestReader> requestReader, std::shared_ptr<RequestQueryReader> queryReader,
                std::shared_ptr<MapManager> manager);
 
     void CreateStoreMap(const Rest::Request &req, Http::ResponseWriter res);

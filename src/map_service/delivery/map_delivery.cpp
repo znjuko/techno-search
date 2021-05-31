@@ -145,7 +145,7 @@ void MapService::SetupService(Router &router)
 }
 
 MapService::MapService(std::shared_ptr<JsonResponseWriter> responseWriter,
-                       std::shared_ptr<JsonRequestBodyReader> bodyReader, std::shared_ptr<RequestReader> requestReader,
+                       std::shared_ptr<JsonRequestBodyReader> bodyReader, std::shared_ptr<ErrorResponseWriter> errorWriter, std::shared_ptr<RequestReader> requestReader,
                        std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MapManager> manager)
     : responseWriter(responseWriter), bodyReader(bodyReader), errorWriter(errorWriter), queryReader(queryReader),
       manager(manager), requestReader(requestReader)

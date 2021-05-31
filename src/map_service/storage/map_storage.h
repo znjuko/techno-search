@@ -1,5 +1,5 @@
-#ifndef TECHNO_SEARCH_STORAGE_H
-#define TECHNO_SEARCH_STORAGE_H
+#ifndef TECHNO_SEARCH_MAP_STORAGE_H
+#define TECHNO_SEARCH_MAP_STORAGE_H
 
 #include <bsoncxx/builder/stream/array.hpp>
 #include <bsoncxx/builder/stream/document.hpp>
@@ -56,4 +56,4 @@ class MapStorage
     std::shared_ptr<mongocxx::database> database;
 };
 
-#endif // TECHNO_SEARCH_STORAGE_H
+#endif // TECHNO_SEARCH_MAP_STORAGE_H
