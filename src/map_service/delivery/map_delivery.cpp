@@ -2,34 +2,11 @@
 // Created by Никита Черных on 22.05.2021.
 //
 
-#include "delivery.h"
+#include "map_delivery.h"
 
-// MapService::MapService(std::shared_ptr<JsonResponseWriter> responseWriter,
-//                       std::shared_ptr<JsonRequestBodyReader> bodyReader, std::shared_ptr<RequestReader>
-//                       requestReader, std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MapManager>
-//                       manager)
-//    : responseWriter(responseWriter), bodyReader(bodyReader), errorWriter(errorWriter), queryReader(queryReader),
-//      manager(manager), requestReader(requestReader)
-//{
-//}
-
-void MapService::SetupService(Rest::Router *router)
+void MapService::CreateStoreMap(const Request &req, Http::ResponseWriter res)
 {
-    router->addRoute(Http::Method::Get, "api/v1/shop/:shopID/map",
-                     Pistache::Rest::Routes::bind(&MapService::GetShopMap, this));
-
-    router->addRoute(Http::Method::Post, "api/v1/shop/:shopID/map",
-                     Pistache::Rest::Routes::bind(&MapService::CreateShopMap, this));
-
-    router->addRoute(Http::Method::Delete, "api/v1/shop/:shopID/map",
-                     Pistache::Rest::Routes::bind(&MapService::DeleteShopMap, this));
-    router->addRoute(Http::Method::Get, "api/v1/shop/:shopID/map/find",
-                     Pistache::Rest::Routes::bind(&PathService::GetStorePath, this));
-}
-
-void MapService::CreateShopMap(const Request &req, Http::ResponseWriter res)
-{
-    std::shared_ptr<IMarshaller> mapReader = std::make_shared<StoreMap>();
+    auto mapReader = std::make_shared<StoreMap>();
     try
     {
         bodyReader->ReadRequest(mapReader, req);
@@ -50,10 +27,21 @@ void MapService::CreateShopMap(const Request &req, Http::ResponseWriter res)
         errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
-    // some logic ...
+
+    try
+    {
+        manager->CreateStoreMap(mapReader, rawMapReader);
+    }
+    catch (const std::exception &e)
+    {
+        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
+        return;
+    }
+
+    res.send(Http::Code::Ok, "map created");
 }
 
-void MapService::GetShopMap(const Request &req, Http::ResponseWriter res)
+void MapService::GetStoreMap(const Request &req, Http::ResponseWriter res)
 {
     auto reqReader = std::make_shared<StoreActionRequest>();
     try
@@ -65,25 +53,21 @@ void MapService::GetShopMap(const Request &req, Http::ResponseWriter res)
         errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
-    // some logic ...
-}
 
-void MapService::DeleteShopMap(const Request &req, Http::ResponseWriter res)
-{
-    auto reqReader = std::make_shared<StoreActionRequest>();
+    std::shared_ptr<RawStoreMap> respWriter;
     try
     {
-        queryReader->ReadRequest(reqReader, req);
+        respWriter = manager->GetStoreMap(reqReader->StoreID);
     }
     catch (const std::exception &e)
     {
         errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
         return;
     }
-    // some logic ...
+    responseWriter->WriteResponse(respWriter, &res);
 }
 
-void MapService::GetCounterAdjacency(const Request &req, Http::ResponseWriter res)
+void MapService::GetAdjacency(const Request &req, Http::ResponseWriter res)
 {
 
     auto reqReader = std::make_shared<StoreActionRequest>();
@@ -102,10 +86,10 @@ void MapService::GetCounterAdjacency(const Request &req, Http::ResponseWriter re
         return;
     }
 
-    std::shared_ptr<StoreAdjacencyPointsResponse> respWriter;
+    std::shared_ptr<AdjacencyPoints> respWriter;
     try
     {
-        respWriter = storage->GetStoreAdjacency(req);
+        respWriter = manager->GetStoreAdjacencyCoords(reqReader->StoreID);
     }
     catch (const std::exception &e)
     {
@@ -114,14 +98,6 @@ void MapService::GetCounterAdjacency(const Request &req, Http::ResponseWriter re
     }
 
     responseWriter->WriteResponse(respWriter, &res);
-}
-
-MapService::MapService(std::shared_ptr<JsonResponseWriter> responseWriter,
-                       std::shared_ptr<JsonRequestBodyReader> bodyReader, std::shared_ptr<RequestReader> requestReader,
-                       std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MapManager> manager)
-    : responseWriter(responseWriter), bodyReader(bodyReader), errorWriter(errorWriter), queryReader(queryReader),
-      manager(manager), requestReader(requestReader)
-{
 }
 
 void MapService::GetStorePath(const Request &req, Http::ResponseWriter res)
@@ -153,4 +129,25 @@ void MapService::GetStorePath(const Request &req, Http::ResponseWriter res)
         return;
     }
     responseWriter->WriteResponse(respWriter, &res);
+}
+
+void MapService::SetupService(Router &router)
+{
+    router.addRoute(Http::Method::Get, "api/v1/shop/:shopID/map",
+                    Pistache::Rest::Routes::bind(&MapService::GetStoreMap, this));
+    router.addRoute(Http::Method::Get, "api/v1/shop/:shopID/map/adj",
+                    Pistache::Rest::Routes::bind(&MapService::GetAdjacency, this));
+    router.addRoute(Http::Method::Get, "api/v1/shop/:shopID/map/find",
+                    Pistache::Rest::Routes::bind(&MapService::GetStorePath, this));
+
+    router.addRoute(Http::Method::Post, "api/v1/shop/:shopID/map",
+                    Pistache::Rest::Routes::bind(&MapService::CreateStoreMap, this));
+}
+
+MapService::MapService(std::shared_ptr<JsonResponseWriter> responseWriter,
+                       std::shared_ptr<JsonRequestBodyReader> bodyReader, std::shared_ptr<RequestReader> requestReader,
+                       std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<MapManager> manager)
+    : responseWriter(responseWriter), bodyReader(bodyReader), errorWriter(errorWriter), queryReader(queryReader),
+      manager(manager), requestReader(requestReader)
+{
 }

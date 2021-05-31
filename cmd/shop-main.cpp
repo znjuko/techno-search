@@ -3,11 +3,10 @@
 //
 
 #include "postgres_storage.h"
-#include "request_reader.h"
 #include "product_delivery.h"
 #include "product_storage.h"
 #include "product_usecase.h"
-
+#include "request_reader.h"
 #include "store_delivery.h"
 #include "store_storage.h"
 #include "store_usecase.h"

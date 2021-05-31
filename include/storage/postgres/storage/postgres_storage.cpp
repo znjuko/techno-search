@@ -2,10 +2,11 @@
 // Created by fillinmar on 15.04.2021.
 //
 
-#include <iostream>
 #include "postgres_storage.h"
 
-PostgresStorage::PostgresStorage(const char* options) : C(options)
+#include <iostream>
+
+PostgresStorage::PostgresStorage(const char *options) : C(options)
 {
 }
 
@@ -27,7 +28,8 @@ void PostgresStorage::Select(std::shared_ptr<PostgresQuery> q, std::shared_ptr<P
     r->Execute(R);
 }
 
-void PostgresStorage::InsertAndSelect(std::shared_ptr<PostgresQuery> q,std::shared_ptr<PostgresQuery> forSelect, std::shared_ptr<PostgresReader> r)
+void PostgresStorage::InsertAndSelect(std::shared_ptr<PostgresQuery> q, std::shared_ptr<PostgresQuery> forSelect,
+                                      std::shared_ptr<PostgresReader> r)
 {
     pqxx::work Transaction{C};
 
@@ -39,4 +41,3 @@ void PostgresStorage::InsertAndSelect(std::shared_ptr<PostgresQuery> q,std::shar
 
     r->Execute(R);
 }
-

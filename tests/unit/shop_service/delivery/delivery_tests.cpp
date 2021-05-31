@@ -1,21 +1,21 @@
 //
 // Created by fillinmar on 31.03.2021.
 //
-#include "store_delivery.h"
 #include "product_delivery.h"
+#include "store_delivery.h"
 
 #include <fstream>
 #include <gtest/gtest.h>
-const int a =5;
-const int b =5;
+const int a = 5;
+const int b = 5;
 
-
-TEST(DATE_CHECK, GET_NEXT_MONTH) {
+TEST(DATE_CHECK, GET_NEXT_MONTH)
+{
     ASSERT_EQ(a, b);
-//    GetProductMetadata(req, res)
+    //    GetProductMetadata(req, res)
 }
 
-//void ProductService::GetProductMetadata(const Rest::Request &req, Http::ResponseWriter res)
+// void ProductService::GetProductMetadata(const Rest::Request &req, Http::ResponseWriter res)
 //{
 //    auto reqReader = std::make_shared<GetProductMetadataRequest>();
 //    try
@@ -47,7 +47,7 @@ TEST(DATE_CHECK, GET_NEXT_MONTH) {
 //    responseWriter->WriteResponse(respWriter, &res);
 //}
 //
-//void ProductService::GetProductList(const Rest::Request &req, Http::ResponseWriter res)
+// void ProductService::GetProductList(const Rest::Request &req, Http::ResponseWriter res)
 //{
 //    auto reqReader = std::make_shared<GetProductListRequest>();
 //    try
@@ -73,7 +73,7 @@ TEST(DATE_CHECK, GET_NEXT_MONTH) {
 //    responseWriter->WriteResponse(respWriter, &res);
 //}
 //
-//void ProductService::UpdateProduct(const Rest::Request &req, Http::ResponseWriter res)
+// void ProductService::UpdateProduct(const Rest::Request &req, Http::ResponseWriter res)
 //{
 //    auto reqReader = std::make_shared<UpdateProductRequest>();
 //    try
@@ -111,7 +111,7 @@ TEST(DATE_CHECK, GET_NEXT_MONTH) {
 //    responseWriter->WriteResponse(respWriter, &res);
 //}
 //
-//void ProductService::AddProduct(const Rest::Request &req, Http::ResponseWriter res)
+// void ProductService::AddProduct(const Rest::Request &req, Http::ResponseWriter res)
 //{
 //    auto reqReader = std::make_shared<AddProductRequest>();
 //    try
@@ -149,7 +149,7 @@ TEST(DATE_CHECK, GET_NEXT_MONTH) {
 //    responseWriter->WriteResponse(respWriter, &res);
 //}
 //
-//void ProductService::SetupService(Rest::Router &router)
+// void ProductService::SetupService(Rest::Router &router)
 //{
 //
 //    using namespace Rest;
@@ -159,11 +159,13 @@ TEST(DATE_CHECK, GET_NEXT_MONTH) {
 //    Routes::Get(router, "/product/search", Routes::bind(&ProductService::GetProductList, this));
 //    Routes::Put(router, "/product", Routes::bind(&ProductService::UpdateProduct, this));
 //}
-//ProductService::ProductService(std::shared_ptr<JsonResponseWriter> responseWriter,
+// ProductService::ProductService(std::shared_ptr<JsonResponseWriter> responseWriter,
 //                               std::shared_ptr<JsonRequestBodyReader> bodyReader,
 //                               std::shared_ptr<ErrorResponseWriter> errorWriter,
-//                               std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<ProductManager> manager)
-//    : responseWriter(std::move(std::move(std::move(responseWriter)))), bodyReader(std::move(bodyReader)), queryReader(std::move(queryReader)), manager(std::move(manager)),
+//                               std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<ProductManager>
+//                               manager)
+//    : responseWriter(std::move(std::move(std::move(responseWriter)))), bodyReader(std::move(bodyReader)),
+//    queryReader(std::move(queryReader)), manager(std::move(manager)),
 //      errorWriter(std::move(errorWriter))
 //{
 //}

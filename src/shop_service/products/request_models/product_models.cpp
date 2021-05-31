@@ -105,7 +105,7 @@ nlohmann::json ProductList::UnMarshall()
 {
     nlohmann::json output;
     output["productID"] = product.ProductID;
-    //TODO: think about show name of shop
+    // TODO: think about show name of shop
     output["storeID"] = product.StoreID;
     output["name"] = product.Name;
     output["category"] = product.Category;

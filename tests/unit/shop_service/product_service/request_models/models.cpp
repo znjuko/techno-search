@@ -106,6 +106,4 @@ TEST(get_list_product_test_request, basic_test)
     ASSERT_EQ(reqReader->Limit, 5);
     ASSERT_EQ(reqReader->Skip, 2);
 }
-Product productToTest(1,1,"Cola","Drinks", 50, 3, 2);
-
-
+Product productToTest(1, 1, "Cola", "Drinks", 50, 3, 2);

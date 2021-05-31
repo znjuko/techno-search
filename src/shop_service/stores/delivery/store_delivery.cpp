@@ -131,7 +131,6 @@ void StoreService::AddStore(const Rest::Request &req, Http::ResponseWriter res)
         return;
     }
 
-
     auto reqReader2 = reqReader;
 
     std::shared_ptr<AddStoreResponse> respWriter;
@@ -158,13 +157,10 @@ void StoreService::SetupService(Rest::Router &router)
 }
 
 StoreService::StoreService(std::shared_ptr<JsonResponseWriter> responseWriter,
-                             std::shared_ptr<JsonRequestBodyReader> bodyReader,
-                             std::shared_ptr<ErrorResponseWriter> errorWriter,
-                             std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<StoreManager> manager)
-    : responseWriter(std::move(responseWriter)), bodyReader(std::move(bodyReader)), queryReader(std::move(queryReader)), manager(std::move(manager)),
-      errorWriter(std::move(errorWriter))
+                           std::shared_ptr<JsonRequestBodyReader> bodyReader,
+                           std::shared_ptr<ErrorResponseWriter> errorWriter,
+                           std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<StoreManager> manager)
+    : responseWriter(std::move(responseWriter)), bodyReader(std::move(bodyReader)), queryReader(std::move(queryReader)),
+      manager(std::move(manager)), errorWriter(std::move(errorWriter))
 {
 }
-
-
-

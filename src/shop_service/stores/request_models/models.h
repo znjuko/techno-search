@@ -5,6 +5,9 @@
 #ifndef TECHNO_SEARCH_STORES_MODELS_H
 #define TECHNO_SEARCH_STORES_MODELS_H
 
+#include "common_exceptions.h"
+#include "marshaller.h"
+#include "unmarshaller.h"
 
 #include <algorithm>
 #include <boost/algorithm/string.hpp>
@@ -13,10 +16,6 @@
 #include <pistache/endpoint.h>
 #include <pistache/http.h>
 #include <string>
-
-#include "marshaller.h"
-#include "unmarshaller.h"
-#include "common_exceptions.h"
 
 using namespace Pistache;
 
@@ -28,7 +27,7 @@ class Store
     float OpenAt;
     float CloseAt;
     std::string Address;
-    Store( int StoreID,  std::string Name,  float OpenAt,  float CloseAt,  std::string Address)
+    Store(int StoreID, std::string Name, float OpenAt, float CloseAt, std::string Address)
     {
     }
 };

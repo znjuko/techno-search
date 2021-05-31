@@ -7,7 +7,6 @@
 #include "../reader/stores_reader.h"
 #include "store_query.h"
 
-
 std::shared_ptr<GetStoreMetadataResponse> StoreStorage::GetStoreMetadata(std::shared_ptr<GetStoreMetadataRequest> req)
 {
     auto q = std::make_shared<GetStoreMetadataQuery>();
@@ -33,14 +32,15 @@ std::shared_ptr<GetStoreListResponse> StoreStorage::GetStoreList(std::shared_ptr
     res->array = reader->Get();
     return res;
 }
-std::shared_ptr<UpdateStoreResponse> StoreStorage::UpdateStore(std::shared_ptr<UpdateStoreRequest> req, std::shared_ptr<UpdateStoreRequest> req2)
+std::shared_ptr<UpdateStoreResponse> StoreStorage::UpdateStore(std::shared_ptr<UpdateStoreRequest> req,
+                                                               std::shared_ptr<UpdateStoreRequest> req2)
 {
     auto q = std::make_shared<UpdateStoreQuery>();
     q->SetupQuery(req);
     storage->Insert(q);
 
     auto q2 = std::make_shared<UpdateStoreQuery>();
-    q2->SetapQuery2(req2); //translate to postgres request
+    q2->SetapQuery2(req2); // translate to postgres request
     auto reader = std::make_shared<UpdateStoreReader>();
     storage->Select(q2, reader);
 
@@ -48,7 +48,7 @@ std::shared_ptr<UpdateStoreResponse> StoreStorage::UpdateStore(std::shared_ptr<U
     res->array = reader->Get();
     return res;
 }
-//std::shared_ptr<UpdateStoreResponse> StoreStorage::UpdateStore(std::shared_ptr<UpdateStoreRequest> req)
+// std::shared_ptr<UpdateStoreResponse> StoreStorage::UpdateStore(std::shared_ptr<UpdateStoreRequest> req)
 //{
 //    auto q = std::make_shared<UpdateStoreQuery>();
 //    q->SetupQuery(req);
@@ -64,16 +64,17 @@ std::shared_ptr<UpdateStoreResponse> StoreStorage::UpdateStore(std::shared_ptr<U
 //    return res;
 //}
 
-std::shared_ptr<AddStoreResponse> StoreStorage::AddStore(std::shared_ptr<AddStoreRequest> req, std::shared_ptr<AddStoreRequest> req2)
+std::shared_ptr<AddStoreResponse> StoreStorage::AddStore(std::shared_ptr<AddStoreRequest> req,
+                                                         std::shared_ptr<AddStoreRequest> req2)
 {
     auto q = std::make_shared<AddStoreQuery>();
     q->SetupQuery(req);
     storage->Insert(q);
 
     auto q2 = std::make_shared<AddStoreQuery>();
-    q2->SetupQueryForId(req2); //translate to postgres request
+    q2->SetupQueryForId(req2); // translate to postgres request
     auto reader = std::make_shared<AddStoreReader>();
-    storage->Select(q2, reader);//return Id
+    storage->Select(q2, reader); // return Id
 
     auto res = std::make_shared<AddStoreResponse>();
     res->array = reader->Get();

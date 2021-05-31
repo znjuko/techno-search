@@ -38,7 +38,8 @@ void GetProductListQuery::SetupQuery(std::shared_ptr<GetProductListRequest> req)
 {
     this->query = "SELECT id, name, category, price, quantity, id_store, id_counter "
                   "FROM product WHERE name LIKE '" +
-        (req->Search) + "%' LIMIT "+ std::to_string(req->Limit) + " OFFSET " + std::to_string(req->Skip) + ";";
+                  (req->Search) + "%' LIMIT " + std::to_string(req->Limit) + " OFFSET " + std::to_string(req->Skip) +
+                  ";";
 }
 
 GetProductListQuery::~GetProductListQuery()
@@ -79,7 +80,6 @@ void UpdateProductQuery::SetupQueryForUpdatedProduct(std::shared_ptr<UpdateProdu
                   std::to_string(req->product.ProductID) + ";";
 }
 
-
 AddProductQuery::AddProductQuery()
 {
 }
@@ -95,7 +95,7 @@ void AddProductQuery::SetupQuery(std::shared_ptr<AddProductRequest> req)
                   "VALUES ('" +
                   (req->product.Name) + "', '" + (req->product.Category) + "', " + std::to_string(req->product.Price) +
                   ", " + std::to_string(req->product.Quantity) + ", " + std::to_string(req->product.StoreID) + ", " +
-                  std::to_string(req->product.CounterID)+ ");";
+                  std::to_string(req->product.CounterID) + ");";
 }
 
 void AddProductQuery::SetupQueryForId(std::shared_ptr<AddProductRequest> req)

@@ -1,8 +1,9 @@
+
 set(LIBRARY_NAME map_storage)
 
 file(GLOB SRC *.h *.cpp)
 
-add_library(${LIBRARY_NAME} STATIC ${SRC})
+add_library(${LIBRARY_NAME} STATIC ${SRC} storage.cpp)
 
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -16,5 +17,6 @@ target_link_libraries(
         mongo::bsoncxx_shared
         mongo::mongocxx_shared
         map_request_models
+        map_models
         path_exceptions
 )

@@ -1,7 +1,3 @@
-//
-// Created by foxers on 27.05.2021.
-//
-
 #ifndef TECHNO_SEARCH_STORAGE_H
 #define TECHNO_SEARCH_STORAGE_H
 
@@ -26,6 +22,7 @@ using bsoncxx::builder::stream::finalize;
 using bsoncxx::builder::stream::open_array;
 
 #include "exceptions.h"
+#include "map_models.h"
 #include "map_request_models.h"
 
 class MapStorage
@@ -37,11 +34,9 @@ class MapStorage
 
     MapStorage(std::shared_ptr<mongocxx::database> database);
 
-    void InsertStoreMap(std::shared_ptr<RawStoreMap> map);
+    void CreateStoreMap(std::shared_ptr<RawStoreMap> map);
 
     std::shared_ptr<RawStoreMap> GetStoreMap(const int &ID);
-
-    void AddStoreAdjacency(std::shared_ptr<StoreModel> data);
 
     void CreateStoreAdjacencyCoords(const int &storeID, const std::vector<Point> &points);
 
@@ -51,10 +46,11 @@ class MapStorage
 
     void AddStoreCountersAdjacency(std::shared_ptr<StoreCountersAdjacency> data);
 
-    std::shared_ptr<StoreModel> GetStoreAdjacency(const int &ID);
+    // create ??????
 
-    // TODO: add create adjecency && merge this shit
-    // TODO: add counter to adj !!1
+    void AddStoreAdjacency(std::shared_ptr<StoreModel> data);
+
+    std::shared_ptr<StoreModel> GetStoreAdjacency(const int &ID);
 
   private:
     std::shared_ptr<mongocxx::database> database;

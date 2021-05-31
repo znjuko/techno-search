@@ -155,7 +155,7 @@ ProductService::ProductService(std::shared_ptr<JsonResponseWriter> responseWrite
                                std::shared_ptr<JsonRequestBodyReader> bodyReader,
                                std::shared_ptr<ErrorResponseWriter> errorWriter,
                                std::shared_ptr<RequestQueryReader> queryReader, std::shared_ptr<ProductManager> manager)
-    : responseWriter(std::move(std::move(std::move(responseWriter)))), bodyReader(std::move(bodyReader)), queryReader(std::move(queryReader)), manager(std::move(manager)),
-      errorWriter(std::move(errorWriter))
+    : responseWriter(std::move(std::move(std::move(responseWriter)))), bodyReader(std::move(bodyReader)),
+      queryReader(std::move(queryReader)), manager(std::move(manager)), errorWriter(std::move(errorWriter))
 {
 }

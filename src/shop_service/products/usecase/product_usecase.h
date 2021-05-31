@@ -19,9 +19,11 @@ class ProductManager
 
     std::shared_ptr<GetProductListResponse> GetProductList(std::shared_ptr<GetProductListRequest> req);
 
-    std::shared_ptr<UpdateProductResponse> UpdateProduct(std::shared_ptr<UpdateProductRequest> req, std::shared_ptr<UpdateProductRequest> req2);
+    std::shared_ptr<UpdateProductResponse> UpdateProduct(std::shared_ptr<UpdateProductRequest> req,
+                                                         std::shared_ptr<UpdateProductRequest> req2);
 
-    std::shared_ptr<AddProductResponse> AddProduct(std::shared_ptr<AddProductRequest> req, std::shared_ptr<AddProductRequest> req2);
+    std::shared_ptr<AddProductResponse> AddProduct(std::shared_ptr<AddProductRequest> req,
+                                                   std::shared_ptr<AddProductRequest> req2);
 
     ~ProductManager();
 

@@ -11,7 +11,7 @@ class PostgresReader
 {
   public:
     virtual void Execute(const pqxx::result R) = 0;
-//    virtual void Execute(const pqxx::result R, std::shared_ptr<UpdateStoreRequest> req)
+    //    virtual void Execute(const pqxx::result R, std::shared_ptr<UpdateStoreRequest> req)
 
     virtual ~PostgresReader() = default;
 };
