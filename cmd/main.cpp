@@ -124,14 +124,14 @@ int main()
         return 0;
     }
     clickOpts.SetUser(clickUser);
-    auto clickPass = std::getenv("CLICK_PASS");
-    if (!clickPass)
-    {
-        cout << "ERROR: "
-             << "empty clickhouse pass" << endl;
-        return 0;
-    }
-    clickOpts.SetPassword(clickPass);
+//    auto clickPass = std::getenv("CLICK_PASS");
+//    if (!clickPass)
+//    {
+//        cout << "ERROR: "
+//             << "empty clickhouse pass" << endl;
+//        return 0;
+//    }
+//    clickOpts.SetPassword(clickPass);
 
     auto commonClickStorage = std::make_shared<ClickStorage>(clickOpts);
     auto skillStorage = std::make_shared<MetricStorage>(commonClickStorage);
