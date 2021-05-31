@@ -124,6 +124,14 @@ int main()
         return 0;
     }
     clickOpts.SetUser(clickUser);
+    auto clickPass = std::getenv("CLICK_PASS");
+    if (!clickPass)
+    {
+        cout << "ERROR: "
+             << "empty clickhouse pass" << endl;
+        return 0;
+    }
+    clickOpts.SetPassword(clickPass);
 
     auto commonClickStorage = std::make_shared<ClickStorage>(clickOpts);
     auto skillStorage = std::make_shared<MetricStorage>(commonClickStorage);
@@ -132,7 +140,8 @@ int main()
                                                          requestQueryReader, skillManager);
     skillDelivery->SetupService(router);
 
-    // "host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch"
+    // "host=localhost port= 5432 user=postgres password=1234 dbname=technosearch"
+
     auto options = std::getenv("DB_OPTIONS");
     try
     {
@@ -167,7 +176,7 @@ int main()
         return 0;
     }
     auto mongoDB = std::getenv("MONGO_DB");
-    if (!mongoURI)
+    if (!mongoDB)
     {
         cout << "ERROR: "
              << "empty mongo db" << endl;

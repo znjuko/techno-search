@@ -6,12 +6,12 @@ void MapStorage::CreateStoreMap(std::shared_ptr<RawStoreMap> map)
 {
     database->collection("store_map")
         .insert_one(
-            make_document(kvp("ID", map->StoreID), kvp("inherit", map->Inherit), kvp("geometry", map->Geometry)));
+            make_document(kvp("storeID", map->StoreID), kvp("inherit", map->Inherit), kvp("geometry", map->Geometry)));
 }
 
 std::shared_ptr<RawStoreMap> MapStorage::GetStoreMap(const int &ID)
 {
-    auto storeCollection = database->collection("store_graph");
+    auto storeCollection = database->collection("store_map");
 
     auto selectStoreResult = storeCollection.find_one(make_document(kvp("storeID", ID)));
 
