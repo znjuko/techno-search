@@ -26,11 +26,12 @@ void MapManager::CreateStoreMap(std::shared_ptr<StoreMap> map, std::shared_ptr<R
     shopMap.SetFeatures(features);
     shopMap.SetShop(map->StoreGeometry);
 
+    Adapter adapter;
 
     auto strAdj = std::make_shared<StoreModel>();
     strAdj->ID = shopMap.GetID();
-    strAdj->Adjacency = shopMap.GetAdj();
-
+    strAdj->Adjacency = adapter.AdaptAdjacencyVERSION2(shopMap.GetAdj()).first;
+    strAdj->Size = adapter.AdaptAdjacencyVERSION2(shopMap.GetAdj()).second;
     mapStorage->AddStoreAdjacency(strAdj);
 
     auto strCntrAdj = std::make_shared<StoreCountersAdjacency>();

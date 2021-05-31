@@ -26,3 +26,19 @@ std::vector<std::vector<double>> Adapter::AdaptAdjacency(std::shared_ptr<StoreMo
 
     return resp;
 }
+
+std::pair<std::vector<double>, int> Adapter::AdaptAdjacencyVERSION2(std::vector<std::vector<double>> v) {
+
+    std::vector<double> adj = std::vector<double>();
+
+    for(size_t i = 0; i < v.size(); ++i) {
+        for(size_t j = i + 1; j < v.size(); ++j) {
+            adj.push_back(v[i][j]);
+        }
+    }
+    std::pair<std::vector<double>, int> pair;
+    pair.first = adj;
+    pair.second = v.size() - 1;
+
+    return pair;
+}

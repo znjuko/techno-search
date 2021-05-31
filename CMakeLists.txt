@@ -10,18 +10,18 @@ find_package(Threads REQUIRED)
 list(APPEND CMAKE_PREFIX_PATH "/home/linuxbrew/.linuxbrew/lib/cmake")
 
 add_subdirectory(vendor)
-#add_subdirectory(include)
+add_subdirectory(include)
 add_subdirectory(src)
 #add_subdirectory(cmd)
 
 
-#if(test)
-#    enable_testing()
-#
-#    find_package(GTest REQUIRED)
-#    find_package(Threads REQUIRED)
-#
-#    add_subdirectory(tests)
-#endif(test)
+if(test)
+    enable_testing()
+
+    find_package(GTest REQUIRED)
+    find_package(Threads REQUIRED)
+
+    add_subdirectory(tests)
+endif(test)
 
 
