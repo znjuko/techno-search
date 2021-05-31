@@ -13,7 +13,7 @@ include_directories(${LIBMONGOCXX_INCLUDE_DIR})
 include_directories(${LIBBSONCXX_INCLUDE_DIR})
 
 target_link_libraries(
-        ${LIBRARY_NAME} PRIVATE
+        ${LIBRARY_NAME} PUBLIC
         mongo::bsoncxx_shared
         mongo::mongocxx_shared
         map_request_models
