@@ -1,5 +1,5 @@
 #include "finder.h"
-
+#include <cmath>
 #include <limits>
 
 std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, const size_t &size,
@@ -9,8 +9,8 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
     auto vizited = std::vector<size_t>(size);
     const double limit = std::numeric_limits<double>::max();
     const size_t limit_index = std::numeric_limits<size_t>::max();
-    size_t A = from - 1;
-    size_t B = to - 1;
+    size_t A = from;
+    size_t B = to;
     double temp, min;
     size_t minindex, begin_index = A;
     for (size_t i = 0; i < size; i++)
@@ -53,7 +53,7 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
 
     auto path = std::vector<size_t>(size);
     auto end = B;
-    path[0] = B + 1;
+    path[0] = B;
     int k = 1;
     double weight = distance[B];
 
@@ -63,11 +63,15 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
             if (AdjacencyTable[i][end] != 0)
             {
                 temp = weight - AdjacencyTable[i][end];
+                temp = round(temp*10)/10;
+
+                distance[i] = round(distance[i]*10)/10;
+
                 if (temp == distance[i])
                 {
                     weight = temp;
                     end = i;
-                    path[k] = i + 1;
+                    path[k] = i;
                     k++;
                 }
             }

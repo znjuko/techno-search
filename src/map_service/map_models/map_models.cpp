@@ -256,7 +256,9 @@ bool Line::LineIntersectionWithPoint(Point p)
 }
 double Point::GetDistanceToPoint(const Point &p)
 {
-    return sqrt(pow(this->x - p.x, 2) + pow(this->y - p.y, 2));
+    double dist = sqrt(pow(this->x - p.x, 2) + pow(this->y - p.y, 2));
+    double rounded = round(dist*10)/10;
+    return rounded;
 }
 
 void Point::Show() const

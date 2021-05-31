@@ -51,11 +51,14 @@ std::vector<Point> GraphConverter::GetPoints()
 
     std::vector<Point> featuresPoints = getFeaturesPoints(features);
 
+    for(size_t i = 0; i < featuresPoints.size(); ++i) {
+        std::cout << i << ' ';
+        featuresPoints[i].Show();
+    }
+
     for (auto &p : featuresPoints)
     {
-        p.Show();
         points.push_back(p);
-        std::cout << std::endl;
     }
 
     std::cout << std::endl;
@@ -63,9 +66,9 @@ std::vector<Point> GraphConverter::GetPoints()
 
     std::sort(points.begin(), points.end(), [](const Point &p1, const Point &p2) { return p1.x <= p2.x; });
 
-    for (auto &p : points)
-    {
-        p.Show();
+    for(size_t i = 0; i < points.size(); ++i) {
+        std::cout << i << ' ';
+        points[i].Show();
         std::cout << std::endl;
     }
 
@@ -251,7 +254,8 @@ std::vector<std::vector<double>> GraphConverter::GetAdjacencyTableFromPoints(con
     {
         Point leftPoint = points[i];
         double leftX = leftPoint.x, rightX = leftPoint.x, currentX;
-        size_t leftIndex = i, rightIndex;
+        size_t leftIndex = i, rightIndex = i;
+        bool lastX = false;
 
         for (size_t j = i + 1; j < points.size(); ++j)
         {
@@ -264,7 +268,7 @@ std::vector<std::vector<double>> GraphConverter::GetAdjacencyTableFromPoints(con
         }
 
         currentX = rightX;
-        while (currentX == rightX && rightIndex < points.size())
+        while ((currentX == rightX && rightIndex < points.size()) || (lastX && rightIndex < points.size()))
         {
             Point rightPoint = points[rightIndex];
             Line line(leftPoint, rightPoint);
@@ -276,6 +280,10 @@ std::vector<std::vector<double>> GraphConverter::GetAdjacencyTableFromPoints(con
                 if (flag == 0)
                 {
                     break;
+                }
+
+                if(feature.GetFeaturePoint() == rightPoint) {
+                    continue;
                 }
 
                 std::vector<Point *> interactions = feature.IntersectionWithVerticalLine(line);
@@ -301,7 +309,6 @@ std::vector<std::vector<double>> GraphConverter::GetAdjacencyTableFromPoints(con
                     }
                 }
             }
-
             if (flag)
             {
                 double dist = leftPoint.GetDistanceToPoint(rightPoint);

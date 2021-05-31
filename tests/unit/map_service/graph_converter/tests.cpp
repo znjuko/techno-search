@@ -5,6 +5,9 @@
 #include <map>
 #include <time.h>
 
+#include "finder.h"
+#include "map_request_models.h"
+
 TEST(GRAPH_CONVERTER, GENERATE_1)
 {
     Map map;
@@ -51,18 +54,25 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
 
     map.InitPointsAdjTable();
 
+    PathFinder pf;
+    std::vector<size_t> path = pf.FindPath(9, 14, map.GetAdj().size() - 1, map.GetAdj());
+
+    for(auto point : path) {
+        std::cout << point << ' ';
+    }
+
     clock_t end = clock();
     double elapsed = double(end - start) / CLOCKS_PER_SEC;
 
     std::cout << std::endl << elapsed << std::endl;
 
-    std::cout << std::endl;
-    std::map<int, int> counterPosID = map.GetCountersPosition();
-    std::map<int, int>::iterator it;
-    for (it = counterPosID.begin(); it != counterPosID.end(); it++)
-    {
-        std::cout << it->first << ' ' << it->second << std::endl;
-    }
+//    std::cout << std::endl;
+//    std::map<int, int> counterPosID = map.GetCountersPosition();
+//    std::map<int, int>::iterator it;
+//    for (it = counterPosID.begin(); it != counterPosID.end(); it++)
+//    {
+//        std::cout << it->first << ' ' << it->second << std::endl;
+//    }
 }
 
 TEST(GRAPH_CONVERTER, GENERATE_2)
@@ -101,29 +111,28 @@ TEST(GRAPH_CONVERTER, GENERATE_2)
 //        std::cout << it->first << ' ' << it->second << std::endl;
 //    }
 
-    std::vector<std::vector<double>> v = map.GetAdj();
-
-    Adapter ad;
-    std::pair<std::vector<double>, int> p = ad.AdaptAdjacencyVERSION2(v);
-
-    for(auto t : p.first) {
-        std::cout << t << ' ';
-    }
-    std::cout << std::endl;
-
-    auto model = std::make_shared<StoreModel>();
-    model->Adjacency = p.first;
-    model->Size = p.second;
-    std::vector<std::vector<double>> adj = ad.AdaptAdjacency(model);
-
-    for (size_t i = 0; i < adj.size(); ++i)
-    {
-        for (size_t j = 0; j < adj.size(); ++j)
-        {
-            std::cout << std::setw(5) << std::setprecision(2) << adj[i][j] << ' ';
-        }
-        std::cout << std::endl;
-    }
-
+//    std::vector<std::vector<double>> v = map.GetAdj();
+//
+//    Adapter ad;
+//    std::pair<std::vector<double>, int> p = ad.AdaptAdjacencyVERSION2(v);
+//
+//    for(auto t : p.first) {
+//        std::cout << t << ' ';
+//    }
+//    std::cout << std::endl;
+//
+//    auto model = std::make_shared<StoreModel>();
+//    model->Adjacency = p.first;
+//    model->Size = p.second;
+//    std::vector<std::vector<double>> adj = ad.AdaptAdjacency(model);
+//
+//    for (size_t i = 0; i < adj.size(); ++i)
+//    {
+//        for (size_t j = 0; j < adj.size(); ++j)
+//        {
+//            std::cout << std::setw(5) << std::setprecision(2) << adj[i][j] << ' ';
+//        }
+//        std::cout << std::endl;
+//    }
 
 }
