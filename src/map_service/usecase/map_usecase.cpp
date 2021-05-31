@@ -3,6 +3,9 @@
 //
 
 #include "map_usecase.h"
+#include "shop_map.h"
+#include "vector"
+#include "map_models.h"
 
 MapManager::MapManager(std::shared_ptr<Adapter> mapAdapter, std::shared_ptr<MapStorage> mapStorage,
                        std::shared_ptr<PathFinder> pathFinder)
@@ -14,12 +17,21 @@ void MapManager::CreateStoreMap(std::shared_ptr<StoreMap> map, std::shared_ptr<R
 {
     mapStorage->CreateStoreMap(rawMap);
 
-    // some map logic ????
+    std::vector<Polygon> features = map->InheritObjects;
+    for(auto f : features) {
+        f.InitLines();
+    }
+    Map shopMap;
+    shopMap.SetID(map->StoreID);
+    shopMap.SetFeatures(features);
+    shopMap.SetShop(map->StoreGeometry);
 
-    // expected to save in db :
-    // TODO :!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Adapter adapter;
+
     auto strAdj = std::make_shared<StoreModel>();
-    strAdj->ID = map->StoreID;
+    strAdj->ID = shopMap.GetID();
+    strAdj->Adjacency = adapter.AdaptAdjacencyVERSION2(shopMap.GetAdj()).first;
+    strAdj->Size = adapter.AdaptAdjacencyVERSION2(shopMap.GetAdj()).second;
     mapStorage->AddStoreAdjacency(strAdj);
 
     auto strCntrAdj = std::make_shared<StoreCountersAdjacency>();

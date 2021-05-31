@@ -50,7 +50,7 @@ class StoreMap : public IMarshaller
 
     Polygon StoreGeometry;
     std::vector<Polygon> InheritObjects;
-    size_t StoreID;
+    int StoreID;
 };
 
 class RawStoreMap : public IMarshaller, public IUnMarshaller

@@ -1,6 +1,6 @@
 #include "graph_converter.h"
 #include "shop_map.h"
-
+#include "adapter.h"
 #include <gtest/gtest.h>
 #include <map>
 #include <time.h>
@@ -96,36 +96,34 @@ TEST(GRAPH_CONVERTER, GENERATE_2)
     std::cout << std::endl;
     std::map<int, int> counterPosID = map.GetCountersPosition();
     std::map<int, int>::iterator it;
-    for (it = counterPosID.begin(); it != counterPosID.end(); it++)
-    {
-        std::cout << it->first << ' ' << it->second << std::endl;
+//    for (it = counterPosID.begin(); it != counterPosID.end(); it++)
+//    {
+//        std::cout << it->first << ' ' << it->second << std::endl;
+//    }
+
+    std::vector<std::vector<double>> v = map.GetAdj();
+
+    Adapter ad;
+    std::pair<std::vector<double>, int> p = ad.AdaptAdjacencyVERSION2(v);
+
+    for(auto t : p.first) {
+        std::cout << t << ' ';
     }
-}
+    std::cout << std::endl;
 
-TEST(GRAPH_CONVERTER, GENERATE_2)
-{
-    Map map;
+    auto model = std::make_shared<StoreModel>();
+    model->Adjacency = p.first;
+    model->Size = p.second;
+    std::vector<std::vector<double>> adj = ad.AdaptAdjacency(model);
 
-    Polygon shop;
-    shop.AddPoint(Point(0, 0));
-    shop.AddPoint(Point(0, 10));
-    shop.AddPoint(Point(10, 10));
-    shop.AddPoint(Point(10, 0));
-    shop.InitLines();
+    for (size_t i = 0; i < adj.size(); ++i)
+    {
+        for (size_t j = 0; j < adj.size(); ++j)
+        {
+            std::cout << std::setw(5) << std::setprecision(2) << adj[i][j] << ' ';
+        }
+        std::cout << std::endl;
+    }
 
-    Polygon p1;
-    p1.AddPoint(Point(3, 3));
-    p1.AddPoint(Point(3, 6));
-    p1.AddPoint(Point(6, 6));
-    p1.AddPoint(Point(6, 3));
-    p1.InitLines();
 
-    std::vector<Polygon> features;
-    features.push_back(p1);
-    map.SetFeatures(features);
-    map.SetShop(shop);
-
-    GraphConverter converter;
-    converter.SetMap(map);
-    converter.Generate();
 }
