@@ -1,5 +1,5 @@
-# Prerequisites
-*.d
+# Build files
+/*build*/
 
 # Compiled Object files
 *.slo
@@ -18,7 +18,6 @@
 
 # Fortran module files
 *.mod
-*.smod
 
 # Compiled Static libraries
 *.lai
@@ -31,6 +30,14 @@
 *.out
 *.app
 
-build
-cmake-build-debug
+# Ignoring IDE files
+
+.vscode
 .idea
+
+# Clangd cache
+.cache
+
+# Meson Wrap DB cache
+/subprojects/*
+!/subprojects/*.wrap
