@@ -9,6 +9,7 @@ set(CMAKE_CXX_FLAGS_DEBUG   "-O0 -g")
 find_package(Threads REQUIRED)
 list(APPEND CMAKE_PREFIX_PATH "/home/linuxbrew/.linuxbrew/lib/cmake")
 
+add_subdirectory(vendor)
 add_subdirectory(include)
 add_subdirectory(src)
 add_subdirectory(cmd)
