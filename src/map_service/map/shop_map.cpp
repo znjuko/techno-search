@@ -69,7 +69,7 @@ std::map<int, int> Map::GetCountersPosition()
         {
             if (p == basePoints[i])
             {
-                pos = i + 1;
+                pos = i;
             }
         }
 

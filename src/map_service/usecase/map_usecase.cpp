@@ -4,8 +4,10 @@
 
 #include "map_usecase.h"
 #include "shop_map.h"
-#include "vector"
+#include <vector>
 #include "map_models.h"
+#include <map>
+#include "graph_converter.h"
 
 MapManager::MapManager(std::shared_ptr<Adapter> mapAdapter, std::shared_ptr<MapStorage> mapStorage,
                        std::shared_ptr<PathFinder> pathFinder)
@@ -25,9 +27,9 @@ void MapManager::CreateStoreMap(std::shared_ptr<StoreMap> map, std::shared_ptr<R
     shopMap.SetID(map->StoreID);
     shopMap.SetFeatures(features);
     shopMap.SetShop(map->StoreGeometry);
+    shopMap.InitPointsAdjTable();
 
     Adapter adapter;
-
     auto strAdj = std::make_shared<StoreModel>();
     strAdj->ID = shopMap.GetID();
     strAdj->Adjacency = adapter.AdaptAdjacencyVERSION2(shopMap.GetAdj()).first;
@@ -35,10 +37,19 @@ void MapManager::CreateStoreMap(std::shared_ptr<StoreMap> map, std::shared_ptr<R
     mapStorage->AddStoreAdjacency(strAdj);
 
     auto strCntrAdj = std::make_shared<StoreCountersAdjacency>();
-    strCntrAdj->StoreID = map->StoreID;
+    std::map<int, int> countersPos = shopMap.GetCountersPosition();
+    std::map<int, int>::iterator it;
+    for (it = countersPos.begin(); it != countersPos.end(); it++)
+    {
+        int counterID = it->first;
+        int pos = it->second;
+        auto temp = CounterWithPoints(counterID, pos);
+        strCntrAdj->counterWithPoints.push_back(temp);
+    }
+    strCntrAdj->StoreID = shopMap.GetID();
     mapStorage->AddStoreCountersAdjacency(strCntrAdj);
 
-    auto points = std::vector<Point>();
+    auto points = shopMap.GetBasePoints();
     mapStorage->CreateStoreAdjacencyCoords(map->StoreID, points);
 }
 

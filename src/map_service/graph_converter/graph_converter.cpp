@@ -51,23 +51,23 @@ std::vector<Point> GraphConverter::GetPoints()
 
     std::vector<Point> featuresPoints = getFeaturesPoints(features);
 
-//    for (auto &p : featuresPoints)
-//    {
-//        p.Show();
-//        points.push_back(p);
-//        std::cout << std::endl;
-//    }
+    for (auto &p : featuresPoints)
+    {
+        p.Show();
+        points.push_back(p);
+        std::cout << std::endl;
+    }
 
     std::cout << std::endl;
     std::cout << std::endl;
 
     std::sort(points.begin(), points.end(), [](const Point &p1, const Point &p2) { return p1.x <= p2.x; });
 
-//    for (auto &p : points)
-//    {
-//        p.Show();
-//        std::cout << std::endl;
-//    }
+    for (auto &p : points)
+    {
+        p.Show();
+        std::cout << std::endl;
+    }
 
     return points;
 }
@@ -324,14 +324,14 @@ std::vector<std::vector<double>> GraphConverter::GetAdjacencyTableFromPoints(con
         }
     }
 
-//    for (size_t i = 0; i < matrixSize - 1; ++i)
-//    {
-//        for (size_t j = 0; j < matrixSize - 1; ++j)
-//        {
-//            std::cout << std::setw(5) << std::setprecision(2) << adj[i][j] << ' ';
-//        }
-//        std::cout << std::endl;
-//    }
+    for (size_t i = 0; i < matrixSize - 1; ++i)
+    {
+        for (size_t j = 0; j < matrixSize - 1; ++j)
+        {
+            std::cout << std::setw(5) << std::setprecision(2) << adj[i][j] << ' ';
+        }
+        std::cout << std::endl;
+    }
 
     return adj;
 }
