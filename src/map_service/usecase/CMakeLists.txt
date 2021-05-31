@@ -16,4 +16,5 @@ target_link_libraries(
         map_storage
         map_adapter
         map_finder
+        graph_converter
 )

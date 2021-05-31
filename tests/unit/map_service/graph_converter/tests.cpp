@@ -44,8 +44,8 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
     map.SetFeatures(features);
     map.SetShop(shop);
 
-    GraphConverter converter;
-    converter.SetMap(map);
+//    GraphConverter converter;
+//    converter.SetMap(map);
 
     clock_t start = clock();
 
