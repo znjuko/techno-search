@@ -125,13 +125,13 @@ class GetStorePathRequest : public IRequestMarshaller
 class GetStorePathResponse : public IUnMarshaller
 {
   public:
-    explicit GetStorePathResponse(std::vector<size_t> Path);
+    explicit GetStorePathResponse(std::vector<int> Path);
 
     nlohmann::json UnMarshall() override;
 
     ~GetStorePathResponse() override = default;
 
-    std::vector<size_t> Array;
+    std::vector<int> Array;
 };
 
 class StoreModel

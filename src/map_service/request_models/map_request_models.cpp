@@ -76,8 +76,8 @@ StoreCountersAdjacency::StoreCountersAdjacency(const std::string &data)
     auto adj = jsonData["objects"];
     for (const auto &item : adj)
     {
-        int counterID = jsonData["counterID"];
-        int pointID = jsonData["pointID"];
+        int counterID = item["counterID"];
+        int pointID = item["pointID"];
         auto countAdj = CounterWithPoints(counterID, pointID);
         counterWithPoints.push_back(countAdj);
     }
@@ -114,17 +114,17 @@ void StoreMap::Marshall(const std::string &body)
     }
 }
 
-StoreMap::StoreMap(): StoreGeometry(), InheritObjects(), StoreID()
+StoreMap::StoreMap() : StoreGeometry(), InheritObjects(), StoreID()
 {
 }
-
 
 void RawStoreMap::Marshall(const std::string &body)
 {
     auto jsonBody = json::parse(body);
     StoreID = jsonBody["storeID"];
-    Inherit = jsonBody["inherit"];
-    Geometry = jsonBody["geometry"];
+    Inherit = jsonBody["inherit"].dump();
+
+    Geometry = jsonBody["geometry"].dump();
 }
 
 nlohmann::json RawStoreMap::UnMarshall()
@@ -135,7 +135,7 @@ nlohmann::json RawStoreMap::UnMarshall()
     output["inherit"] = Inherit;
     output["geometry"] = Geometry;
 
-    return nlohmann::json();
+    return output;
 }
 
 RawStoreMap::RawStoreMap(const std::string &body)
@@ -169,7 +169,7 @@ GetStorePathRequest::GetStorePathRequest() : StoreID(0), FromCounter(0), ToCount
 {
 }
 
-GetStorePathResponse::GetStorePathResponse(std::vector<size_t> Path) : Array(std::move(Path))
+GetStorePathResponse::GetStorePathResponse(std::vector<int> Path) : Array(std::move(Path))
 {
 }
 
@@ -177,8 +177,11 @@ nlohmann::json GetStorePathResponse::UnMarshall()
 {
     nlohmann::json output;
     nlohmann::json outputArray = nlohmann::json::array();
-    for (size_t &item : Array)
+    for (auto item : Array)
     {
+        if (item == -1) {
+            continue;
+        }
         outputArray.push_back(item);
     }
     output["path"] = outputArray;

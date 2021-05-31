@@ -4,13 +4,14 @@ to setup default user:
 https://stackoverflow.com/questions/64166492/how-to-setup-an-admin-account-for-clickhouse
 
 used env:
-THREADS=2;CLICK_HOST=localhost;CLICK_PORT=9000;CLICK_USER=znju;CLICK_PASS=1234;DB_OPTIONS=host=localhost port=5432 user=postgres password=1234 dbname=technosearch;PORT=8089;MONGO_DB=technosearch;MONGO_URI=mongodb://localhost:27017
+THREADS=2;CLICK_HOST=localhost;CLICK_PORT=9000;CLICK_USER=default;DB_OPTIONS=host=localhost port=5432 user=postgres password=1234 dbname=technosearch;PORT=8089;MONGO_DB=technosearch;MONGO_URI=mongodb://localhost:27017
 
 to start docker clickhouse server:
 docker run -d --name clickhouse-server -p 9000:9000 --ulimit nofile=262144:262144 yandex/clickhouse-server
 
 to start docker clickhouse client:
-docker run -it --rm --link clickhouse-server:clickhouse-server yandex/clickhouse-client --host clickhouse-server
+docker run -it -docker run -it --rm --link clickhouse-server:clickhouse-server yandex/clickhouse-client --host clickhouse-server
+-rm --link clickhouse-server:clickhouse-server yandex/clickhouse-client --host clickhouse-server
 
 to connect to clickhouse server as bash:
 docker exec -it clickhouse-server bash

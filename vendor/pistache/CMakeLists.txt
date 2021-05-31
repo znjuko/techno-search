@@ -114,7 +114,7 @@ endif()
 
 add_custom_target(format
     COMMAND
-        ./tools/format.sh
+        tools/format.sh
     WORKING_DIRECTORY
-        ${CMAKE_CURRENT_SOURCE_DIR}
+        .
 )
