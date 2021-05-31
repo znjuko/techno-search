@@ -7,16 +7,26 @@
 #include "skill_delivery.h"
 #include "skill_storage.h"
 #include "skill_usecase.h"
+#include "postgres_storage.h"
+#include "product_delivery.h"
+#include "product_storage.h"
+#include "product_usecase.h"
+#include "request_reader.h"
+#include "store_delivery.h"
+#include "store_storage.h"
+#include "store_usecase.h"
 
-#include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <clickhouse/client.h>
 #include <pistache/endpoint.h>
 #include <pistache/http.h>
 #include <pistache/router.h>
+#include <pqxx/pqxx>
 #include <signal.h>
 
 using namespace clickhouse;
+
+using json = nlohmann::json;
 
 using namespace Pistache;
 using namespace Rest;
@@ -110,22 +120,6 @@ int main()
         return 0;
     }
     clickOpts.SetUser(clickUser);
-    //    auto clickPassword = std::getenv("CLICK_PASS");
-    //    if (!clickPassword)
-    //    {
-    //        cout << "ERROR: "
-    //             << "empty clickhouse pass" << endl;
-    //        return 0;
-    //    }
-    //    clickOpts.SetUser(clickPassword);
-    //    auto clickDB = std::getenv("CLICK_DB");
-    //    if (!clickDB)
-    //    {
-    //        cout << "ERROR: "
-    //             << "empty clickhouse database" << endl;
-    //        return 0;
-    //    }
-    //    clickOpts.SetDefaultDatabase(clickDB);
 
     auto commonClickStorage = std::make_shared<ClickStorage>(clickOpts);
     auto skillStorage = std::make_shared<MetricStorage>(commonClickStorage);
@@ -133,8 +127,34 @@ int main()
     auto skillDelivery = std::make_shared<MetricService>(jsonResponseWriter, jsonRequestBodyReader, errorResponseWriter,
                                                          requestQueryReader, skillManager);
     skillDelivery->SetupService(router);
-    // end of skill service part
 
+    // "host=localhost port= 5432 user=fillinmar password=1234 dbname=technosearch"
+    auto options = std::getenv("DB_OPTIONS");
+    try
+    {
+        pqxx::connection C(options);
+        std::cout << "Connected to " << C.dbname() << std::endl;
+    }
+    catch (std::exception const &e)
+    {
+        std::cerr << e.what() << '\n';
+        return 1;
+    }
+
+    auto commonPostgresStorage = std::make_shared<PostgresStorage>(options);
+    auto shopStoreStorage = std::make_shared<StoreStorage>(commonPostgresStorage);
+    auto shopStoreManager = std::make_shared<StoreManager>(shopStoreStorage);
+    auto shopStoreDelivery = std::make_shared<StoreService>(jsonResponseWriter, jsonRequestBodyReader,
+                                                            errorResponseWriter, requestQueryReader, shopStoreManager);
+    shopStoreDelivery->SetupService(router);
+
+    auto shopProductStorage = std::make_shared<ProductStorage>(commonPostgresStorage);
+    auto shopProductManager = std::make_shared<ProductManager>(shopProductStorage);
+    auto shopProductDelivery = std::make_shared<ProductService>(
+        jsonResponseWriter, jsonRequestBodyReader, errorResponseWriter, requestQueryReader, shopProductManager);
+    shopProductDelivery->SetupService(router);
+
+    // starting service
     auto httpEndpoint = std::make_shared<Http::Endpoint>(addr);
     httpEndpoint->setHandler(router.handler());
     cout << "starting server on port " << portValue << endl;
