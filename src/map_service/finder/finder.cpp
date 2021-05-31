@@ -51,7 +51,7 @@ std::vector<size_t> PathFinder::FindPath(const size_t &from, const size_t &to, c
         vizited[minindex] = 0;
     } while (minindex < limit_index);
 
-    auto path = std::vector<size_t>(size);
+    auto path = std::vector<size_t>(size,-1);
     auto end = B;
     path[0] = B + 1;
     int k = 1;

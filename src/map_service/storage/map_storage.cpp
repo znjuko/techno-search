@@ -14,12 +14,12 @@ std::shared_ptr<RawStoreMap> MapStorage::GetStoreMap(const int &ID)
     auto storeCollection = database->collection("store_map");
 
     auto selectStoreResult = storeCollection.find_one(make_document(kvp("storeID", ID)));
-
-    auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
     if (!selectStoreResult)
     {
         throw StoreGraphNotFound(ID);
     }
+
+    auto selectStoreOutput = bsoncxx::to_json(*selectStoreResult);
 
     return std::make_shared<RawStoreMap>(selectStoreOutput);
 }

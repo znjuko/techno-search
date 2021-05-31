@@ -24,7 +24,7 @@ void MapService::CreateStoreMap(const Request &req, Http::ResponseWriter res)
     }
     catch (const std::exception &e)
     {
-        errorWriter->WriteError(Http::Code::Bad_Request, e.what(), &res);
+        errorWriter->WriteError(Http::Code::Conflict, e.what(), &res);
         return;
     }
 
@@ -133,14 +133,14 @@ void MapService::GetStorePath(const Request &req, Http::ResponseWriter res)
 
 void MapService::SetupService(Router &router)
 {
-    router.addRoute(Http::Method::Get, "/api/v1/shop/:shopID/map",
+    router.addRoute(Http::Method::Get, "/api/v1/shop/:storeID/map",
                     Pistache::Rest::Routes::bind(&MapService::GetStoreMap, this));
-    router.addRoute(Http::Method::Get, "/api/v1/shop/:shopID/map/adj",
+    router.addRoute(Http::Method::Get, "/api/v1/shop/:storeID/map/adj",
                     Pistache::Rest::Routes::bind(&MapService::GetAdjacency, this));
-    router.addRoute(Http::Method::Get, "/api/v1/shop/:shopID/map/find",
+    router.addRoute(Http::Method::Get, "/api/v1/shop/:storeID/map/find",
                     Pistache::Rest::Routes::bind(&MapService::GetStorePath, this));
 
-    router.addRoute(Http::Method::Post, "/api/v1/shop/:shopID/map",
+    router.addRoute(Http::Method::Post, "/api/v1/shop/:storeID/map",
                     Pistache::Rest::Routes::bind(&MapService::CreateStoreMap, this));
 }
 
