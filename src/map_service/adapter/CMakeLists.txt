@@ -12,4 +12,11 @@ target_link_libraries(
         ${LIBRARY_NAME}
         PRIVATE
         map_request_models
+        common_exceptions
+
+        nlohmann_json::nlohmann_json
+        marshaller
+        unmarshaller
+        map_models
+        pistache
 )

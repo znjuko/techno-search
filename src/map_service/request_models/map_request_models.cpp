@@ -114,9 +114,10 @@ void StoreMap::Marshall(const std::string &body)
     }
 }
 
-StoreMap::StoreMap()
+StoreMap::StoreMap(): StoreGeometry(), InheritObjects(), StoreID()
 {
 }
+
 
 void RawStoreMap::Marshall(const std::string &body)
 {

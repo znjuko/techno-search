@@ -14,6 +14,7 @@ target_link_libraries(${LIBRARY_NAME} PRIVATE
         nlohmann_json::nlohmann_json
         marshaller unmarshaller
         map_models
-        common_exceptions pistache
+        common_exceptions
+        pistache
         ${Boost_LIBRARIES}
         )

@@ -17,11 +17,13 @@ using json = nlohmann::json;
 class CounterWithPoints
 {
   public:
+    CounterWithPoints(): CounterID(0), PointID(0) {};
+
     CounterWithPoints(int CounterID, int PointID)
     {
         this->CounterID = CounterID;
         this->PointID = PointID;
-    }
+    };
 
     int CounterID;
     int PointID;
