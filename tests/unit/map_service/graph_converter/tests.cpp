@@ -52,7 +52,7 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
     map.InitPointsAdjTable();
 
     PathFinder pf;
-    std::vector<int> path = pf.FindPath(5, 13, map.GetAdj().size() - 1, map.GetAdj());
+    std::vector<int> path = pf.FindPath(34, 0, map.GetAdj().size(), map.GetAdj());
 
     for(auto point : path) {
         std::cout << point << ' ';
