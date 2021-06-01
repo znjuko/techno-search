@@ -28,10 +28,6 @@ GetStoreListRequest::GetStoreListRequest() : Search(""), Limit(0), Skip(0){};
 void GetStoreListRequest::Marshall(const Http::Uri::Query &query)
 {
     auto searchParam = query.get("name");
-    if (searchParam->empty())
-    {
-        throw EmptyValue("name");
-    }
     Search = *searchParam;
 
     auto limitParam = query.get("limit");
