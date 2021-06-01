@@ -10,19 +10,19 @@ std::shared_ptr<GetProductMetadataResponse> ProductManager::GetProductMetadata(
     return storage->GetProductMetadata(req);
 }
 
-std::shared_ptr<GetProductListResponse> ProductManager::GetProductList(std::shared_ptr<GetProductListRequest> req)
+std::shared_ptr<GetProductListResponse> ProductManager::GetProductList(
+    std::shared_ptr<GetProductListRequest> req)
 {
     return storage->GetProductList(req);
 }
 
-std::shared_ptr<UpdateProductResponse> ProductManager::UpdateProduct(std::shared_ptr<UpdateProductRequest> req,
-                                                                     std::shared_ptr<UpdateProductRequest> req2)
+std::shared_ptr<UpdateProductResponse> ProductManager::UpdateProduct(
+    std::shared_ptr<UpdateProductRequest> req, std::shared_ptr<UpdateProductRequest> req2)
 {
     return storage->UpdateProduct(req, req2);
 }
 
-std::shared_ptr<AddProductResponse> ProductManager::AddProduct(std::shared_ptr<AddProductRequest> req,
-                                                               std::shared_ptr<AddProductRequest> req2)
+std::shared_ptr<AddProductResponse> ProductManager::AddProduct(std::shared_ptr<AddProductRequest> req, std::shared_ptr<AddProductRequest> req2)
 {
     return storage->AddProduct(req, req2);
 }

@@ -47,6 +47,13 @@ void GetProductListRequest::Marshall(const Http::Uri::Query &query)
         throw EmptyValue("skip");
     }
     Skip = boost::lexical_cast<int>(*skipParam);
+
+    auto storeParam = query.get("storeID");
+    if (skipParam->empty())
+    {
+        throw EmptyValue("storeID");
+    }
+    StoreID = boost::lexical_cast<int>(*storeParam);
 };
 
 UpdateProductRequest::UpdateProductRequest() : product(0, 0, "", "", 0, 0, 0){};
@@ -105,7 +112,7 @@ nlohmann::json ProductList::UnMarshall()
 {
     nlohmann::json output;
     output["productID"] = product.ProductID;
-    // TODO: think about show name of shop
+    //TODO: think about show name of shop
     output["storeID"] = product.StoreID;
     output["name"] = product.Name;
     output["category"] = product.Category;

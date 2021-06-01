@@ -88,7 +88,7 @@ nlohmann::json StoreMetadata::UnMarshall()
     output["closeAt"] = store.CloseAt;
     output["openAt"] = store.OpenAt;
     output["name"] = store.Name;
-    output["storageID"] = store.StoreID;
+    output["storeID"] = store.StoreID;
     return output;
 };
 
@@ -101,7 +101,7 @@ nlohmann::json StoreList::UnMarshall()
     output["closeAt"] = store.CloseAt;
     output["openAt"] = store.OpenAt;
     output["name"] = store.Name;
-    output["storageID"] = store.StoreID;
+    output["storeID"] = store.StoreID;
     return output;
 };
 
@@ -114,7 +114,7 @@ nlohmann::json UpdateStore::UnMarshall()
     output["closeAt"] = store.CloseAt;
     output["openAt"] = store.OpenAt;
     output["name"] = store.Name;
-    output["storageID"] = store.StoreID;
+    output["storeID"] = store.StoreID;
     return output;
 };
 
@@ -125,7 +125,7 @@ void AddStore::Marshall(const std::string &body){};
 nlohmann::json AddStore::UnMarshall()
 {
     nlohmann::json output;
-    output["storageID"] = store.StoreID;
+    output["storeID"] = store.StoreID;
     return output;
 };
 
@@ -176,7 +176,6 @@ AddStoreResponse::AddStoreResponse() : array(std::vector<AddStore>()){};
 nlohmann::json AddStoreResponse::UnMarshall()
 {
     nlohmann::json output;
-    //    output["addedStore"] = "succesfully";
     nlohmann::json outputArray = nlohmann::json::array();
     for (auto item = array.begin(); item != array.end(); ++item)
     {

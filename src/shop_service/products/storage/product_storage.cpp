@@ -36,17 +36,16 @@ std::shared_ptr<GetProductListResponse> ProductStorage::GetProductList(std::shar
     return res;
 }
 
-std::shared_ptr<AddProductResponse> ProductStorage::AddProduct(std::shared_ptr<AddProductRequest> req,
-                                                               std::shared_ptr<AddProductRequest> req2)
+std::shared_ptr<AddProductResponse> ProductStorage::AddProduct(std::shared_ptr<AddProductRequest> req, std::shared_ptr<AddProductRequest> req2)
 {
     auto q = std::make_shared<AddProductQuery>();
     q->SetupQuery(req);
     storage->Insert(q);
 
     auto q2 = std::make_shared<AddProductQuery>();
-    q2->SetupQueryForId(req2); // translate to postgres request
+    q2->SetupQueryForId(req2); //translate to postgres request
     auto reader = std::make_shared<AddProductReader>();
-    storage->Select(q2, reader); // return Id
+    storage->Select(q2, reader);//return Id
 
     auto res = std::make_shared<AddProductResponse>();
     res->array = reader->Get();
@@ -57,8 +56,7 @@ ProductStorage::~ProductStorage()
 {
 }
 
-std::shared_ptr<UpdateProductResponse> ProductStorage::UpdateProduct(std::shared_ptr<UpdateProductRequest> req,
-                                                                     std::shared_ptr<UpdateProductRequest> req2)
+std::shared_ptr<UpdateProductResponse> ProductStorage::UpdateProduct(std::shared_ptr<UpdateProductRequest> req, std::shared_ptr<UpdateProductRequest> req2)
 {
     auto q = std::make_shared<UpdateProductQuery>();
     q->SetupQuery(req);

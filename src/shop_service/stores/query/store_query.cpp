@@ -38,8 +38,7 @@ void GetStoreListQuery::SetupQuery(std::shared_ptr<GetStoreListRequest> req)
 {
     this->query = "SELECT id, name, open_at, close_at, address "
                   "FROM store WHERE name LIKE '" +
-                  (req->Search) + "%' LIMIT " + std::to_string(req->Limit) + " OFFSET " + std::to_string(req->Skip) +
-                  ";";
+                  (req->Search) + "%' LIMIT "+ std::to_string(req->Limit) + " OFFSET " + std::to_string(req->Skip) + ";";
 }
 
 GetStoreListQuery::~GetStoreListQuery()

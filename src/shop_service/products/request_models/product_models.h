@@ -67,6 +67,7 @@ class GetProductListRequest : public IQueryMarshaller
     std::string Search;
     int Limit;
     int Skip;
+    int StoreID;
 };
 
 class UpdateProductRequest : public IMarshaller
@@ -143,7 +144,7 @@ class AddProduct : public IMarshaller, public IUnMarshaller
 
     ~AddProduct() override = default;
 
-    // TODO: think about return only id
+    //TODO: think about return only id
     Product product;
 };
 

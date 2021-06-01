@@ -43,5 +43,6 @@ class StoreService : public IRouterSetupper
     std::shared_ptr<ErrorResponseWriter> errorWriter;
     std::shared_ptr<RequestQueryReader> queryReader;
     std::shared_ptr<StoreManager> manager;
+
 };
 #endif

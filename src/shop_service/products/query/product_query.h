@@ -5,10 +5,10 @@
 #ifndef TECHNO_SEARCH_PRODUCTS_QUERY_H
 #define TECHNO_SEARCH_PRODUCTS_QUERY_H
 
-#include "postgres_query.h"
 #include "product_models.h"
 
 #include <memory>
+#include "postgres_query.h"
 #include <string>
 
 class GetProductMetadataQuery : public PostgresQuery

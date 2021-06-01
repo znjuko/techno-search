@@ -19,11 +19,9 @@ class StoreManager
 
     std::shared_ptr<GetStoreListResponse> GetStoreList(std::shared_ptr<GetStoreListRequest> req);
 
-    std::shared_ptr<UpdateStoreResponse> UpdateStore(std::shared_ptr<UpdateStoreRequest> req,
-                                                     std::shared_ptr<UpdateStoreRequest> req2);
+    std::shared_ptr<UpdateStoreResponse> UpdateStore(std::shared_ptr<UpdateStoreRequest> req, std::shared_ptr<UpdateStoreRequest> req2);
 
-    std::shared_ptr<AddStoreResponse> AddStore(std::shared_ptr<AddStoreRequest> req,
-                                               std::shared_ptr<AddStoreRequest> req2);
+    std::shared_ptr<AddStoreResponse> AddStore(std::shared_ptr<AddStoreRequest> req, std::shared_ptr<AddStoreRequest> req2);
 
     ~StoreManager();
 
