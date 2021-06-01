@@ -323,9 +323,9 @@ std::vector<std::vector<double>> GraphConverter::GetAdjacencyTableFromPoints(con
     std::vector<std::vector<double>> adj(matrixSize - 1);
     for (size_t i = 0; i < matrixSize - 1; ++i) adj[i].resize(matrixSize - 1);
 
-    for (size_t i = 1; i < matrixSize - 1; ++i)
+    for (size_t i = 1; i < matrixSize; ++i)
     {
-        for (size_t j = 1; j < matrixSize - 1; ++j)
+        for (size_t j = 1; j < matrixSize; ++j)
         {
             adj[i-1][j-1] = adjacencyTable[i][j];
         }

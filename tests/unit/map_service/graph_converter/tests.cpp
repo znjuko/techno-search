@@ -47,15 +47,12 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
     map.SetFeatures(features);
     map.SetShop(shop);
 
-//    GraphConverter converter;
-//    converter.SetMap(map);
-
     clock_t start = clock();
 
     map.InitPointsAdjTable();
 
     PathFinder pf;
-    std::vector<size_t> path = pf.FindPath(9, 14, map.GetAdj().size() - 1, map.GetAdj());
+    std::vector<int> path = pf.FindPath(5, 13, map.GetAdj().size() - 1, map.GetAdj());
 
     for(auto point : path) {
         std::cout << point << ' ';
@@ -66,13 +63,6 @@ TEST(GRAPH_CONVERTER, GENERATE_1)
 
     std::cout << std::endl << elapsed << std::endl;
 
-//    std::cout << std::endl;
-//    std::map<int, int> counterPosID = map.GetCountersPosition();
-//    std::map<int, int>::iterator it;
-//    for (it = counterPosID.begin(); it != counterPosID.end(); it++)
-//    {
-//        std::cout << it->first << ' ' << it->second << std::endl;
-//    }
 }
 
 TEST(GRAPH_CONVERTER, GENERATE_2)
