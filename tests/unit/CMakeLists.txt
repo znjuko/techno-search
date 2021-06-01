@@ -1,0 +1,3 @@
+add_subdirectory(skill_service)
+add_subdirectory(shop_service)
+add_subdirectory(map_service)
